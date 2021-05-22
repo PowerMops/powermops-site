@@ -1,99 +1,95 @@
-### What is Mops? {#what_is_mops}
 
-Mops is a public-domain development system for the Mac. It\'s based on
+# FAQ
+
+### What is Mops?
+
+Mops is a public-domain development system for the Mac. It's based on
 Forth, with extensive OOP extensions, along the lines of Smalltalk. It
 comes with a class library which gives support for all the normal Mac
 interface functions. While not as full-featured as PowerPlant or MacApp,
-say, it\'s very adequate for the kind of applications which might be
+say, it's very adequate for the kind of applications which might be
 developed by a single programmer.
 
-### Where did it come from? {#where_did_it_come_from}
+### Where did it come from?
 
 Mops is derived from Neon, which was one of the first languages for the
-Mac that allowed actual development on the Mac itself. It\'s a close
-cousin to Yerk, which is a more \"conservative\" development of Neon,
+Mac that allowed actual development on the Mac itself. It's a close
+cousin to Yerk, which is a more "conservative" development of Neon,
 basically aimed at keeping up with later Macs and systems while
-remaining fully compatible with Neon. Mops is more \"radical\". It\'s a
+remaining fully compatible with Neon. Mops is more "radical". It's a
 complete reimplementation which compiles native (68k and PowerPC) code
-instead of the usual Forth threaded variety. It\'s very fast \-- about
+instead of the usual Forth threaded variety. It's very fast --- about
 as fast as anything on the Mac in fact. It has a few other improvements
 over the original Neon, such as multiple inheritance, public ivars,
 temporary (local) objects and object references.
 
-### Where can I get it? {#where_can_i_get_it}
+### Where can I get it?
 
 The most up-to-date copies of Mops can be downloaded from the
 [website](http://www.powermops.org) and the SourceForge project page
 [file download
-area](http://sourceforge.net/project/showfiles.php?group_id=152075).
+area](https://sourceforge.net/projects/powermops/files/).
 
 I highly encourage you to check the website every month or so for new
 updates. Some other Mops code is available, and there various other
 useful links there.
 
-If you\'ve obtained Mops from somewhere else, I recommend you check on
+If you've obtained Mops from somewhere else, I recommend you check on
 the web site to be sure you have the latest version. There are some
 ancient versions around.
 
-### Where can I find Mops discussion? {#where_can_i_find_mops_discussion}
+### Where can I find Mops discussion?
 
 The
-[Powermops-USERS](http://lists.sourceforge.net/lists/listinfo/powermops-users)
+[Powermops-USERS](https://sourceforge.net/p/powermops/mailman/powermops-users/)
 mailing list is an unmoderated discussion forum devoted to all issues
 relevant to using and programming PowerMops. Everyone is welcome to
 join, regardless of programming experience.
 
 Another place to find discussion of Mops is the newsgroup
-comp.lang.forth.mac. This is not exclusively Mops, but Mops is a primary
-topic of discussion.
-
-Also the MegaWolf forum
-\<<http://forums.megawolf.com/phpBB2/index.php%3E>; has a section for
-Mops discussion. This may be your best bet should you not happen to have
-newsnet access, though I don\'t check it very often.
+comp.lang.forth.mac. This is not exclusively Mops, but Mops is an
+occasional topic of discussion.
 
 There is a mailing list that for users interested in working with
 up-and-coming Mops releases. If you enjoy working with the cutting edge,
 or would just like to be kept apprised of new developments and bug
-fixes, consider joining this list. Instructions for subscribing to the
-beta list can be found at
-\<<http://lists.sourceforge.net/lists/listinfo/powermops-beta%3E>;.
+fixes, consider joining [Powermops-BETA](https://sourceforge.net/p/powermops/mailman/powermops-beta/).
 
 There may be other places on the net with an active interest that we
-haven\'t listed here. If you should know of one, please let this FAQ\'s
+haven't listed here. If you should know of one, please let this FAQ's
 maintainer know about them!
 
-### Do you have any other sample code available, apart from what\'s at those locations? {#do_you_have_any_other_sample_code_available_apart_from_whats_at_those_locations}
+### Do you have any other sample code available, apart from what's at those locations? 
 
-Sorry, I can\'t help much. I\'ve only written two \"real\" Mops
-applications myself, and I\'m not free to distribute the source. Most of
+Sorry, I can't help much. I've only written two "real" Mops
+applications myself, and I'm not free to distribute the source. Most of
 my Mops time has been spent on developing it rather than writing
-applications in it. If the above ftp and web sites don\'t have what you
+applications in it. If the above ftp and web sites don't have what you
 want, try posting on comp.lang.forth.mac or the MacForth Forum - maybe
 somebody else there can help.
 
-### Could I learn Mac programming with Mops? {#could_i_learn_mac_programming_with_mops}
+### Could I learn Mac programming with Mops? 
 
 You could make a good start. Mops comes with an on-line manual, which is
 derived from the original Neon manual. This assumes a very basic level
 of knowledge about programming, and none about the Mac. However to move
-on past the beginner stage with Mac programming, you\'ll really need to
+on past the beginner stage with Mac programming, you'll really need to
 read some of Inside Macintosh. You can certainly keep using Mops,
 though!
 
-### Could I learn OOP with Mops? {#could_i_learn_oop_with_mops}
+### Could I learn OOP with Mops?
 
 Definitely! - for the same reason as in the last question. OOP was still
 very new when Neon came out, so the manual explains everything from a
 very basic level.
 
-### Can I write things like Extensions or Control Panels in Mops? {#can_i_write_things_like_extensions_or_control_panels_in_mops}
+### Can I write things like Extensions or Control Panels in Mops?
 
-No, sorry, you can\'t do it. Mops only does applications, and shared
+No, sorry, you can't do it. Mops only does applications, and shared
 libraries on PowerMacs. In fact with OSX and shared libraries, the days
 of Extensions etc. as such are pretty much over.
 
-### What\'s the minimum system I need to run Mops? {#whats_the_minimum_system_i_need_to_run_mops}
+### What's the minimum system I need to run Mops?
 
 If your Mac can run Carbon applications, then you should be able to run
 Mops! So just about any machine running Mac OS X, Mac OS 9 (or a version
@@ -101,202 +97,179 @@ of Mac OS 8 with CarbonLib installed) should do nicely!
 
 Please note that some newer features introduced in recent releases
 (i.e., calling Cocoa frameworks) are specific to Mac OS X, and have no
-equivalent functionality on older \"Classic\" versions of Mac OS.
+equivalent functionality on older "Classic" versions of Mac OS.
 
-### Is Mops Carbon-compliant? {#is_mops_carbon_compliant}
+### Is Mops Carbon-compliant?
 
 It certainly is!
 
-### Does Mops run \"natively\" under OS X? {#does_mops_run_natively_under_os_x}
+### Does Mops run "natively" under OS X?
 
 Yes! The latest versions of Mops run natively on just about any version
 of Mac OS X and Mac OS 9, as well as versions of OS8 with CarbonLib
-installed. (The last of the \"Classic\" (non-Carbon) releases is also
+installed. (The last of the "Classic" (non-Carbon) releases is also
 still available for compatibility with older versions of Mac OS without
 CarbonLib.)
 
-### What about Cocoa? {#what_about_cocoa}
+### What about Cocoa?
 
 With the release of Mops 5.6, it is now possible to call Cocoa
 frameworks directly from within your Mops applications on Mac OS X!
 (However, it is not possible to create Cocoa frameworks with Mops.)
 
-### Does Mops support the AltiVec vector extensions found on Apple\'s G4-equipped computers? {#does_mops_support_the_altivec_vector_extensions_found_on_apples_g4_equipped_computers}
+### Does Mops support the AltiVec vector extensions found on Apple's G4-equipped computers?
 
-Yes, it does!
+Yes, it does! [AltiVec](https://en.wikipedia.org/wiki/AltiVec) was
+developed by Apple, IBM, and Freescale Semiconductor (formerly Motorola).
 
-If you don\'t know what AltiVec is, take a look at
-\<<http://www.freescale.com/webapp/sps/site/overview.jsp?code=DRPPCALTVC&srch=1%3E>;
-for more information.
-
-### Can PowerMops do 64-bit arithmetic on 64-bit Macs? {#can_powermops_do_64_bit_arithmetic_on_64_bit_macs}
+### Can PowerMops do 64-bit arithmetic on 64-bit Macs?
 
 With version 6.0, yes!
 
-### What about the new Mach-O executable format? {#what_about_the_new_mach_o_executable_format}
+### What about the new Mach-O executable format?
 
 With version 6.0, yes!
 
-### Do the Carbon-compliant versions of Mops still support 68k machines? {#do_the_carbon_compliant_versions_of_mops_still_support_68k_machines}
+### Do the Carbon-compliant versions of Mops still support 68k machines?
 
 Not anymore! With the release of Mops 5.6, 68k support has been largely
 stripped from the distribution.
 
 If you have a 68k Mac, we now recommend you download Mops 4.0.4, which
-is a complete distribution for these machines. However, we\'re not
+is a complete distribution for these machines. However, we're not
 planning any further 68k development, so this is not officially
 supported.
 
-### I\'d like to try Mops, but I don\'t have a Mac. {#id_like_to_try_mops_but_i_dont_have_a_mac.}
-
-If you have a Forth that is reasonably close to the ANS standard, you
-can download a package that will let you try the Mops Object model. As
-this is implemented entirely in higher-level Forth, it\'s not
-marvellously efficient, but it will let you try the Mops syntax. Search
-for the classM10.zip package. \<!\--This package can be gotten from:
-\<<ftp://ftp.powermops.org/pub/contrib/classM10.zip%3E>;.\--\>
-
-Note that I haven\'t finished the heap-based object part of this
-package, and in 4 years nobody\'s asked me for it, so I don\'t think
-I\'ll bother.
-
-### Will Mops run natively on Intel Macs? {#will_mops_run_natively_on_intel_macs}
+### Will Mops run natively on Intel Macs?
 
 No. It will run under Rosetta (which allows PowerPC code to run on Intel
 Macs), but to run natively the code generator would need to be rewritten
-to target the Intel architecture. This could be done, since it\'s
+to target the Intel architecture. This could be done, since it's
 written in Mops, but would take a lot of time. Adaptation to another
 RISC-style architecture could be done in a fairly straightforward way.
 The Intel architecture, however, is basically early-1980s vintage and is
-CISC, not RISC. Adaptation would be, let\'s say, exciting and
-challenging. And take even more time A LOT of time. It\'s not time that
+CISC, not RISC. Adaptation would be, let's say, exciting and
+challenging. And take even more time A LOT of time. It's not time that
 I have any enthusiasm whatever for putting in, especially as I strongly
 dislike the Intel architecture.
 
-### Do you or could you have plans for some other platform, especially \[insert favorite platform here\] ? {#do_you_or_could_you_have_plans_for_some_other_platform_especially_insert_favorite_platform_here}
+### Do you or could you have plans for some other platform, especially [insert favorite platform here]?
 
 Similar answer to the preceding question. Also, Mops is very closely
 tied to the Mac API for all its subsidiary services such as memory
 allocation and all the GUI stuff.
 
-### How about a version for \[some embedded 68k or PPC machine\] ? {#how_about_a_version_for_some_embedded_68k_or_ppc_machine}
+### How about a version for [some embedded 68k or PPC machine]?
 
 Same answer as the previous question.
 
-### I tried to compile up the system, but then \[whatever it was that went wrong\]. {#i_tried_to_compile_up_the_system_but_then_whatever_it_was_that_went_wrong.}
+### I tried to compile up the system, but then [whatever it was that went wrong].
 
-The latest versions are fully built up, so unless you\'re involved in
-implementing new features, you won\'t need to compile them up. You just
+The latest versions are fully built up, so unless you're involved in
+implementing new features, you won't need to compile them up. You just
 have to double-click Mops.dic (68k Mops) or PowerMops, and start using
 it!
 
-### I\'ve just got the latest version, but when I double-click on Mops.dic on my 68k Mac, I get a crash. {#ive_just_got_the_latest_version_but_when_i_double_click_on_mops.dic_on_my_68k_mac_i_get_a_crash.}
+### I've just got the latest version, but when I double-click on Mops.dic on my 68k Mac, I get a crash.
 
 The most usual cause of this is that you are upgrading from an earlier
 version of Mops, and you still have a copy of the earlier Mops nucleus
-around. From the Mac\'s point of view, \"Mops.dic\" is a document
-belonging to the application \"Mops\". When you double-click on
-\"Mops.dic\", the Mac system launches the application \"Mops\", but if
-you have two versions of Mops around, you can\'t be sure that it will
-fire up the latest. In fact, it probably won\'t. As the location of
-words in the nucleus will be different between versions, you can\'t have
-a new dictionary running on top of an old nucleus - you\'ll just get a
-crash. So trash the old nucleus (if you\'re the cautious type, save it
+around. From the Mac's point of view, "Mops.dic" is a document
+belonging to the application "Mops". When you double-click on
+"Mops.dic", the Mac system launches the application "Mops", but if
+you have two versions of Mops around, you can't be sure that it will
+fire up the latest. In fact, it probably won't. As the location of
+words in the nucleus will be different between versions, you can't have
+a new dictionary running on top of an old nucleus - you'll just get a
+crash. So trash the old nucleus (if you're the cautious type, save it
 offline first). That way, the Mac is forced to fire up the right version
 of Mops.
 
-### My code works fine in the Mops environment, but when I install it as an application \[whatever went wrong\]. {#my_code_works_fine_in_the_mops_environment_but_when_i_install_it_as_an_application_whatever_went_wrong.}
+### My code works fine in the Mops environment, but when I install it as an application [whatever went wrong].
 
 There are a couple of things that could be wrong here. A common
 situation is if you are using a module in an installed application, but
-you\'ve forgotten to put true setInstall: myModule
-
-somewhere in your code.
+you've forgotten to put `true setInstall: myModule` somewhere in your code.
 
 That sets the flag that makes Install include it. This will happen, for
-example, if you\'re using dialogs and you\'ve forgotten to put true
-setInstall: dialogMod
-
-somewhere.
+example, if you're using dialogs and you've forgotten to put `true
+setInstall: dialogMod` somewhere.
 
 Another common source of problems with installed applications can happen
-if at compile time you\'re ticking words, and comma-ing the resulting
+if at compile time you're ticking words, and comma-ing the resulting
 execution tokens (xts) into a table, then at run time executing the
-words via @ EXECUTE. This might happen, e.g. if you\'re porting your
-application from another Forth. The Forth standard doesn\'t guarantee
-that this sort of thing will work in a standard system, but it\'s fairly
-commonly done anyway. In Mops there\'s no problem with storing an xt at
-run time then using it later, but it\'s highly dangerous to store it at
+words via @ EXECUTE. This might happen, e.g. if you're porting your
+application from another Forth. The Forth standard doesn't guarantee
+that this sort of thing will work in a standard system, but it's fairly
+commonly done anyway. In Mops there's no problem with storing an xt at
+run time then using it later, but it's highly dangerous to store it at
 compile time, save it with the dictionary, then later try to load the
 dictionary and use the xt. This is because in Mops an xt is simply an
 absolute address, and absolute addresses of locations in your code will
 probably change between runs, depending on where Mops or your
-application happens to load into the Mac\'s memory. The best way to
+application happens to load into the Mac's memory. The best way to
 handle this kind of operation is with a DicAddr, X-Addr or X-Array
-object. Please see the section \"Addresses\--relocatable and absolute\"
+object. Please see the section "Addresses--relocatable and absolute"
 in Part II of the manual.
 
-### Can I use color in a Mops window? {#can_i_use_color_in_a_mops_window}
+### Can I use color in a Mops window?
 
 You have to make the window a color window. The Window class now has a
 new ivar, color?, and a method to set it, setColor: which takes a
 boolean flag. So before you send new: or getNew: to your window, do:
-true setColor: myWindow
+`true setColor: myWindow`
 
 Then when you send new: or getNew:, the window will be created as a
 color window.
 
-### How do I plot an Icon / use the Sound Manager / use an offscreen PixMap / use the serial port / \[insert favorite problem here\]. {#how_do_i_plot_an_icon_use_the_sound_manager_use_an_offscreen_pixmap_use_the_serial_port_insert_favorite_problem_here.}
+### How do I plot an Icon / use the Sound Manager / use an offscreen PixMap / use the serial port / [insert favorite problem here].
 
 Well, this is an interesting question, but as as this is a general Mac
 programming problem rather than something specifically to do with Mops,
-I\'m not really here to answer this sort of question. Try posting on
-comp.sys.mac.programmer.help. I\'m doing this in my spare time, so it\'s
+I'm not really here to answer this sort of question. Try posting on
+comp.sys.mac.programmer.help. I'm doing this in my spare time, so it's
 probably not right for me to be taking time to answer basic Mac
-programming questions. I don\'t have all the answers anyway. I\'m
+programming questions. I don't have all the answers anyway. I'm
 certainly not a substitute for Inside Mac. Read the appropriate parts
-first, and if you\'re still stuck, try the newsgroup. There are plenty
+first, and if you're still stuck, try the newsgroup. There are plenty
 of people willing and able to help there.
 
-### I\'ve written this nifty code, and I\'d like you to look at it and tell me what you think. {#ive_written_this_nifty_code_and_id_like_you_to_look_at_it_and_tell_me_what_you_think.}
+### I've written this nifty code, and I'd like you to look at it and tell me what you think.
 
-I\'d rather you didn\'t ask me that. If you go ahead and do it anyway,
-I\'ll probably give you a nice answer since I don\'t want to put anybody
+I'd rather you didn't ask me that. If you go ahead and do it anyway,
+I'll probably give you a nice answer since I don't want to put anybody
 off and try to be a nice guy most of the time, but it will go very low
 on the priority list and almost certainly never make it to the top.
 Maybe consider posting it to comp.lang.forth.mac.
 
-### I tried the code for the WhizBang99 algorithm that Joe Bloggs posted the other day, but it gave an error. {#i_tried_the_code_for_the_whizbang99_algorithm_that_joe_bloggs_posted_the_other_day_but_it_gave_an_error.}
+### I tried the code for the WhizBang99 algorithm that Joe Bloggs posted the other day, but it gave an error.
 
-It\'s very unlikely that I saw the code or have any idea what you\'re
+It's very unlikely that I saw the code or have any idea what you're
 talking about. Please see above for how to submit a bug report. If I
-respond at all, I\'m likely to be less than polite. Should I have to do
-detective work to find out what on earth you\'re talking about, when you
+respond at all, I'm likely to be less than polite. Should I have to do
+detective work to find out what on earth you're talking about, when you
 have all the information I need at your end? Please try to help me, and
-then I\'ll be able to help you.
+then I'll be able to help you.
 
-### What about a Windows version? {#what_about_a_windows_version}
+### What about a Windows version?
 
 Get Win32Forth (on [Taygeta](http://www.taygeta.com/forth.html)). It now
 supports much of the Mops OOP model.
 
-### I think Mops is great, but it would be even better with \[insert favorite nifty feature here\]. {#i_think_mops_is_great_but_it_would_be_even_better_with_insert_favorite_nifty_feature_here.}
+### I think Mops is great, but it would be even better with [insert favorite nifty feature here].
 
 Are you volunteering? (The person with the vision gets the job.)
 
-### The Manual seems to be a bit out of date in places? {#the_manual_seems_to_be_a_bit_out_of_date_in_places}
+### The Manual seems to be a bit out of date in places?
 
 Documentation for freeware products sometimes struggles (tm).
+Pull requests are welcome!
 
-I\'m not disagreeing, but we\'re trying. Now the manual is in wiki
-format various people will be able to contribute, and this should keep
-the manual from getting too far behind the project. Hopefully.
+### Will you continue to support Mops for some time to come?
 
-### Will you continue to support Mops for some time to come? {#will_you_continue_to_support_mops_for_some_time_to_come}
+I've been doing it for 30 years now, and don't plan to stop!
 
-I\'ve been doing it for 20 years now, and don\'t plan to stop!
-
-### Why an oddball language that isn\'t C++? {#why_an_oddball_language_that_isnt_c}
+### Why an oddball language that isn't C++?
 
 Try it and see how quickly you can get things done. The most popular way
-isn\'t always the best way. After all, you\'re using a Mac, aren\'t you?
+isn't always the best way. After all, you're using a Mac, aren't you?

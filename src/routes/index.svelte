@@ -9,9 +9,9 @@
                 such as multiple inheritance, early and late binding,
                 persistent objects, and garbage collection.</p>
             <ul>
-                <li>Open Me First</li>
-                <li>Manual</li>
-                <li>FAQ</li>
+                <li><a href="/pmops/OpenMeFirst">Open Me First</a></li>
+                <li><a href="/pmops/Documentation">Documentation</a></li>
+                <li><a href="/pmops/FAQ">FAQ</a></li>
                 <li><a href="https://sourceforge.net/projects/powermops/files/PowerMops/">Download</a></li>
             </ul>
         </aside>
@@ -42,11 +42,5 @@
 
         <p>The best way to connect with the community is through the
            <a href="https://sourceforge.net/p/powermops/mailman/powermops-users/">mailing list</a>.</p>
-    </section>
-    <hr>
-    <section>
-        <header>
-            <h2>Links</h2>
-        </header>
     </section>
 </main>

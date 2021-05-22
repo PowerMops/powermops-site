@@ -1,11 +1,10 @@
-Open Me First {#open_me_first}
-=============
+# Documentation
+## Open Me First
 
-The [Open Me First](OpenMeFirst "wikilink") document gives you a quick
+The [Open Me First](/pmops/OpenMeFirst) document gives you a quick
 introduction to what is new in the latest version.
 
-Manual
-======
+## Manual
 
 You can [download the
 manual](http://sourceforge.net/project/showfiles.php?group_id=152075)
@@ -13,33 +12,27 @@ from the SourceForge project page.
 
 You can browse the manual online:
 
--   [Overview](Overview "wikilink")
--   [Tutorial](Tutorial "wikilink")
--   [Reference](Reference "wikilink")
--   [Classes](Classes "wikilink")
+- [Overview](Overview "wikilink")
+- [Tutorial](Tutorial "wikilink")
+- [Reference](Reference "wikilink")
+- [Classes](Classes "wikilink")
 
-FAQ
-===
+## FAQ
 
-[Frequently asked
-questions](http://powermops.sourceforge.net/index.php/FAQ) (and answers)
-about PowerMops.
+[Frequently asked questions](/pmops/FAQ) (and answers) about PowerMops.
 
-Mailing List {#mailing_list}
-============
+## Mailing List
 
-Can\'t find the answer to your question? The
-[PowerMops-USERS](http://lists.sourceforge.net/lists/listinfo/powermops-users)
+Can't find the answer to your question? The
+[PowerMops-USERS](https://sourceforge.net/p/powermops/mailman/powermops-users/)
 mailing list is a good place to ask.
 
-Newsgroup
-=========
+## Newsgroup
 
 You can check the [newsgroup](news://comp.lang.forth.mac) for general
 questions about Forth on the Mac.
 
-Links
-=====
+## Links
 
-Our [links](links "wikilink") page lists some of the other places you
+Our [links](/pmops/Links) page lists some of the other places you
 can find information about PowerMops.
