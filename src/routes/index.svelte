@@ -7,6 +7,9 @@
         Mops is based on Forth with extended object-oriented features
         such as multiple inheritance, early and late binding,
         persistent objects, and garbage collection.</p>
+        <p>With over 20 years of development and use, the Mops
+            family is battle-tested.
+        </p>
     </section>
     <section>
         <aside>
@@ -39,14 +42,24 @@
                 <li><a href="https://sourceforge.net/projects/powermops/files/aMops-CG/">Download</a></li>
             </ul>
         </aside>
+        <aside>
+            <h3>MAX</h3>
+            <p><em>Mike's Architecture</em> Floating point and runtime.</p>
+            <ul>
+                <li>Manual</li>
+                <li><a href="https://sourceforge.net/projects/powermops/files/MAX/">Download</a></li>
+            </ul>
+        </aside>
     </section>
     <hr>
-    <section id="mailinglist">
+    <section id="more">
         <header>
-            <h2>Mailing List</h2>
+            <h2>Go Deeper!</h2>
         </header>
 
-        <p>The best way to connect with the community is through the
-           <a href="https://sourceforge.net/p/powermops/mailman/powermops-users/">mailing list</a>.</p>
+        <ul>
+        <li>The best way to connect with the community is through the
+           <a href="https://sourceforge.net/p/powermops/mailman/powermops-users/">mailing list</a>.</li>
+        </ul>
     </section>
 </main>

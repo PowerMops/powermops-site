@@ -5,7 +5,13 @@
 
 <header>
 	<div class="corner">
-		<a href="/"><img src={logo} alt="Powermops"></a>
+		<div>
+			<a href="/"><img src={logo} alt="Powermops"></a>
+		</div>
+		<div>
+			<h1>Mops</h1>
+			<h2>Powermops, iMops, aMops</h2>
+		</div>
 	</div>
 
 	<nav>
@@ -28,10 +34,9 @@
 	}
 
 	.corner {
-		width: 3em;
-		height: 3em;
+		display: flex;
+		align-items: flex-start;
 	}
-
 	.corner a {
 		display: flex;
 		align-items: center;
@@ -40,26 +45,21 @@
 		height: 100%;
 	}
 
+	.corner h1, .corner h2 {
+		text-align: left;
+		margin: 0;
+	}
 	.corner img {
-		width: 2em;
-		height: 2em;
+		width: 5em;
+		height: 5em;
 		object-fit: contain;
+		margin-right: 2em;
 	}
 
 	nav {
 		display: flex;
 		justify-content: center;
 		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
 	}
 
 	ul {
