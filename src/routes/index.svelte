@@ -29,7 +29,11 @@
             <p><em>Fast forward a few years,</em> and a new version with x86 code generation
                 was developed.</p>
             <ul>
-                <li>Manual</li>
+                <li>Manual<ul>
+                    <li><a href="http://s.powermops.org/imops/internals.pdf">Internals</a><small>&nbsp;PDF</small></li>
+                    <li><a href="http://s.powermops.org/imops/classreference.pdf">Class Reference</a><small>&nbsp;PDF</small></li>
+                    <li><a href="http://s.powermops.org/imops/nodegraph.pdf">Node Graph</a><small>&nbsp;PDF</small></li>
+                </ul></li>
                 <li><a href="https://sourceforge.net/projects/powermops/files/iMops/">Download</a></li>
             </ul>
         </aside>
