@@ -1,4 +1,4 @@
-Table of Contents {#table_of_contents}
+Table of Contents
 -----------------
 
 [Introduction](Tutorial) [Before we
@@ -115,7 +115,7 @@ Actions](Lesson_20#Scroll_Bar_Actions)
 Application](Lesson_22) &bull; [Where To Go From
 Here](Lesson_22#Where_To_Go_From_Here)
 
-Before we begin {#before_we_begin}
+Before we begin
 ---------------
 
 You can compile a floating-point enabled version of either Mops.dic or
@@ -132,9 +132,9 @@ Mops window, instructions for compiling source and saving the results
 are given a little farther on.
 
 *' Caution:*' In all the following keyboard examples, Mops commands
-are always terminated by \<span class=\"TYPE\"\>&lt;enter&gt;\</span\>,
-and \<span class=\"TYPE\"\>&lt;enter&gt;\</span\> is not the same as
-\<span class=\"TYPE\"\>&lt;return&gt;\</span\>. Many Mac applications
+are always terminated by \<span class="TYPE"\><enter>\</span\>,
+and \<span class="TYPE"\><enter>\</span\> is not the same as
+\<span class="TYPE"\><return>\</span\>. Many Mac applications
 treat these two keys as equivalent, but Mops doesn't. Once you've used
 Mops for a while you'll come to appreciate the usefulness of this
 feature.
@@ -153,7 +153,7 @@ Then, if you somehow destroy anything in the Mops system, you can easily
 get back to a working system, without having to download everything
 again.
 
-Using an editor {#using_an_editor}
+Using an editor
 ---------------
 
 Mops does not have a built-in editor, but works in close cooperation
@@ -176,7 +176,7 @@ in the Readme file in the **QuickEdit &\#131;** folder.
 In addition, QE is a proper standalone source-text editor for Mops
 programs.
 
-Mops - an object oriented language {#mops___an_object_oriented_language}
+Mops - an object oriented language
 ----------------------------------
 
 In Mops, much programming is done by sending **messages** to
@@ -192,7 +192,7 @@ Mops, itself, includes many predefined types of object. With this
 preexisting framework, you can create complex objects as simply as
 typing two words. Let's do that right now, so you can get a taste of
 what Mops has in store for you. This is just a demonstration, not a
-lesson. So type (or copy &amp; paste) along with us and observe what
+lesson. So type (or copy & paste) along with us and observe what
 happens without trying to remember each step.
 
 (Although there is a Mops-68K, comprised of the Mops and Mops.dic files,
@@ -206,9 +206,9 @@ it. In a moment, the Mops window appears. We'll explain the window's
 contents in detail in Lesson 1, but for now, create a rectangle object
 called `box` in memory by typing:
 
-`<code>rect box</code>`
+`rect box`
 
-(Remember to hit &lt;enter&gt; at the end.)
+(Remember to hit <enter> at the end.)
 
 We need to tell box where on the screen it should appear, and how big it
 should be. The rectangle framework inside Mops wants these instructions
@@ -218,14 +218,14 @@ the bottom right. Put these figures into box's memory by typing the
 following line, making sure you observe the spacing between elements and
 the colon:
 
-`<code> 20 10 100 50 put: box</code>`
+` 20 10 100 50 put: box`
 
 This line is called a **message**, which we just sent to box. Now we
 want to send messages to box so that it will draw itself on the screen.
 First, however, it will need a window to draw itself in. To set up a
 window object named `ww` in memory, type:
 
-`<code>window ww</code>`
+`window ww`
 
 Macintosh windows need a lot of information before they can be placed on
 the screen, including the rectangular limits of the window, the title of
@@ -236,7 +236,7 @@ classes, including Window, have test or example methods that display an
 instance of that class, with typical values. To see the window you just
 created, type the following message:
 
-`<code>test: ww</code>`
+`test: ww`
 
 +--------------------------------------------+------------------------+
 | Your screen should now look something like | ![](Box.png "Box.png") |
@@ -255,7 +255,7 @@ can type further commands. Resize the Mops window if necessary so that
 
 Now type:
 
-`<code>set: ww draw: box</code>`
+`set: ww draw: box`
 
 +--------------------------------+------------------------------------+
 | ![](BoxBkgd.png "BoxBkgd.png") | The message 'set: ww' tells the  |
@@ -275,7 +275,7 @@ Now type:
 When you are finished experimenting, select Quit from the File menu, or
 type
 
-`<code>bye</code>`
+`bye`
 
 in the Mops window to quit Mops
 
@@ -289,5 +289,5 @@ Mops.
   [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- ---------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)
+
+

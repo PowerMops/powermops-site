@@ -14,7 +14,7 @@ construct comes in.
 
 A loop sets up a kind of merry-go-round in your program, with a
 beginning and an end. At the end of the loop is an instruction that
-tells the program to \"loop back\" to the beginning of the loop. All the
+tells the program to "loop back" to the beginning of the loop. All the
 statements between the beginning and the end are repeated each time
 program execution goes through the loop.
 
@@ -26,7 +26,7 @@ hand, will loop (forever) until a certain condition is met.
 
 Let's look at each kind of loop more closely.
 
-Definite Loops {#definite_loops}
+Definite Loops
 --------------
 
 Consider the 10-number addition problem discussed above. Since you know
@@ -51,10 +51,10 @@ them inside colon definitions to see how they operate. Let's define a
 new word that adds up 10 numbers from the stack by repeatedly performing
 nine addition operations:
 
-`<nowiki>`\
+```mops
 `: ADDTEN  ( n1 ... n10 -- sum )`\
 `       9 0 DO  +  LOOP  . cr ;`\
-`</nowiki>`
+```
 
 During execution, this `DO`\...`LOOP`
 counts up from zero to nine each time through the loop. After the ninth
@@ -80,7 +80,7 @@ example, the index number bumps up to a one; the next time to a two, and
 so on. Each time the index is incremented (in `LOOP`), a
 check is done to see if the index and limit numbers are equal. If so,
 then the `DO`\...`LOOP` construction
-\"knows\" that it's time to move on and will not \"loop back\" (to
+"knows" that it's time to move on and will not "loop back" (to
 `DO`) for another iteration.
 
 What's interesting about this kind of indexing is that you can use the
@@ -91,7 +91,7 @@ the loop and use that number for a calculation, a graphics plot point, a
 multiplication factor, or whatever.
 
 The Mops word that copies the index to the parameter stack is
-\"`I`\":
+"`I`":
 
   `I`   `( \-- n )`   Copies the current index value to the parameter stack.
   -------------------- ---------------------------- --------------------------------------------------------
@@ -102,9 +102,9 @@ index in any way. Here are a couple of examples to demonstrate.
 Define a word, `FIVECOUNT`, that displays a series of
 numbers from 101 to 105\<nowiki\>: \</nowiki\>
 
-`<nowiki>`\
+```mops
 `: FIVECOUNT  106 101 DO  i .  LOOP  cr ;`\
-`</nowiki>`
+```
 
 Notice that the limit is set to 106. Remember that the index is
 incremented when execution reaches `LOOP`. The first time
@@ -119,10 +119,10 @@ You can similarly use the index number to perform operations on a number
 passed on the parameter stack prior to execution. Consider the following
 definition:
 
-`<nowiki>`\
+```mops
 `: TIMESTABLES  { n -- }`\
 `       13 1 DO  n i *  .  LOOP  cr ;`\
-`</nowiki>`
+```
 
 If you then type '`5 timestables`', the program goes
 through twelve loops of multiplying 5 times the incrementing index
@@ -143,16 +143,16 @@ the `+LOOP` ending will be the increment that the
 You can even use a negative number if you wish the loop to decrement.
 
   ------------------------ ------------------------------------------------------ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  `+LOOP`   class=\"STACK\" nowrap \| `( n \-- )`   Alternative word for `LOOP`. Increments the loop index by '`n`' and returns execution to the nearest `DO` if the index and the limit are equal.
+  `+LOOP`   class="STACK" nowrap \| `( n \-- )`   Alternative word for `LOOP`. Increments the loop index by '`n`' and returns execution to the nearest `DO` if the index and the limit are equal.
   ------------------------ ------------------------------------------------------ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Here's how you would use `+LOOP` to manage a countdown:
 
-`<nowiki>`\
+```mops
 `: COUNTDOWN`\
 `       1 10 DO  i . cr  -1 +LOOP`\
 `       ." Ignition...Liftoff!" cr ;`\
-`</nowiki>`
+```
 
 Notice that in this case, since the program loop is counting backwards,
 the limit is 1 and the index is 10. Each time through the loop, the
@@ -161,13 +161,13 @@ typed by the program. When the index is counted down and becomes equal
 to the limit, the loop continues and doesn't stop until the index is
 counted down to the limit minus 1, unlike the situation when the index
 is being incremented (where the loop stops when the index equals the
-limit). The best way to think about this is as if there is a \"fence\"
+limit). The best way to think about this is as if there is a "fence"
 in between the limit and one minus the limit. Whenever the index crosses
 the fence, in either direction, the loop stops. This will be true even
 if you write a program in which the increment value changes sign during
 the running of the loop, i.e., goes from negative to positive.
 
-Nested Loops {#nested_loops}
+Nested Loops
 ------------
 
 It is also sometimes desirable to have more than one
@@ -178,7 +178,7 @@ inside one another. All you have to remember is to supply one
 `LOOP` (or `+LOOP`) for each
 `DO` within the colon definition.
 
-`<nowiki>`\
+```mops
 `: NESTEDLOOP`\
 `       1 10 DO`\
 `               ." Loop: " i . cr`\
@@ -186,7 +186,7 @@ inside one another. All you have to remember is to supply one
 `                               ." Nested Loop: " i . cr`\
 `                       LOOP`\
 `       -1 +LOOP cr ;`\
-`</nowiki>`
+```
 
 Type `NESTEDLOOP` and watch how the inner loop iterates
 until completion for *each* iteration of the outer loop.
@@ -196,14 +196,14 @@ a predefined word that allows you to copy that number to the parameter
 stack, just like `I` copies the current loop index number
 to the stack. That word is `J`.
 
-  `J`   class=\"STACK\" nowrap \| `( \-- n )`   Copies to the parameter stack the index of the next outer loop from within a nested `DO`\...`LOOP` construct.
+  `J`   class="STACK" nowrap \| `( \-- n )`   Copies to the parameter stack the index of the next outer loop from within a nested `DO`\...`LOOP` construct.
   -------------------- ------------------------------------------------------ ---------------------------------------------------------------------------------------------------------------------------------------------
 
 In other words, `J` looks up the index of the loop just
 outside the current `DO`\...`LOOP`
 construction and copies that number to the parameter stack.
 
-`<nowiki>`\
+```mops
 `: NESTEDLOOP2`\
 `       1 10 DO`\
 `               ." Loop " i . cr`\
@@ -213,19 +213,14 @@ construction and copies that number to the parameter stack.
 `                               cr`\
 `                       LOOP`\
 `       -1 +LOOP cr ;`\
-`</nowiki>`
+```
 
-\<blockquote\>
+> Note: If you factor out an inner loop into another definition, you
+> can't use `J` --- you won't get the right value.
+> `J` only works with nested loops within the current
+> definition.
 
-Note: If you factor out an inner loop into another definition, you
-can't use `J` --- you won't get the right value.
-`J` only works with nested loops within the current
-definition.
-
-`</blockquote>`
-
-Abort Loop {#abort_loop}
-----------
+## Abort Loop
 
 You may have a situation in which you need to bail out of a
 `DO`\...`LOOP` before its normal
@@ -238,20 +233,19 @@ word `LEAVE` is available for this purpose.
 
 Here's our countdown example again, appropriately modified:
 
-`<nowiki>`\
+```mops
 `: COUNTDOWN2`\
 `       1 10 DO`\
 `               i . cr`\
 `               i 7 = IF  ." Aborted!!" cr LEAVE  THEN`\
 `       -1 +LOOP ;`\
-`</nowiki>`
+```
 
 We had to remove the Ignition\...Liftoff! message, otherwise it would
 have appeared after the countdown was aborted (which really isn't what
 we wanted). We'll show a better way of handling this shortly.
 
-Indefinite Loops {#indefinite_loops}
-----------------
+## Indefinite Loops
 
 An indefinite loop is another kind of loop you'll use often in a Mops
 program. As its name implies, an indefinite loop keeps going in circles
@@ -262,7 +256,7 @@ presence of a flag on top of the stack.
 
   ------------------------ ------------------------------------------------------ -------------------------------------------------------------------------------------------------------------------------------------------------------------
   `BEGIN`   `( \-- )`                               Marks the beginning of an indefinite loop.
-  `UNTIL`   class=\"STACK\" nowrap \| `( n \-- )`   Breaks out of an indefinite loop if '`n`' is non-zero (TRUE); otherwise returns execution to the nearest `BEGIN`.
+  `UNTIL`   class="STACK" nowrap \| `( n \-- )`   Breaks out of an indefinite loop if '`n`' is non-zero (TRUE); otherwise returns execution to the nearest `BEGIN`.
   ------------------------ ------------------------------------------------------ -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Indefinite loops with `BEGIN`\...`UNTIL`
@@ -278,7 +272,7 @@ A useful variation of this construct uses the word
 `NUNTIL`\<nowiki\>:\</nowiki\>
 
   ------------------------- ------------------------------------------------------ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  `NUNTIL`   class=\"STACK\" nowrap \| `( n \-- )`   Alternative word for `UNTIL`. Breaks out of an indefinite loop if '`n`' is zero (FALSE); otherwise returns execution to the nearest `BEGIN`.
+  `NUNTIL`   class="STACK" nowrap \| `( n \-- )`   Alternative word for `UNTIL`. Breaks out of an indefinite loop if '`n`' is zero (FALSE); otherwise returns execution to the nearest `BEGIN`.
   ------------------------- ------------------------------------------------------ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 It used in the place of `UNTIL` in the previous example:
@@ -301,11 +295,11 @@ flag) is placed on the stack, and the loop ends. Otherwise, a FALSE flag
 is placed on the stack, and execution returns to the beginning of the
 loop.
 
-`<nowiki>`\
+```mops
 `: BEGINTEST`\
 `       BEGIN  key 97 =  UNTIL`\
 `       ." Loop broken." cr ;`\
-`</nowiki>`
+```
 
 Now, type `BEGINTEST`, and tap all kinds of letters on
 the keyboard. Until you type a lower-case letter 'a' the program keeps
@@ -316,7 +310,7 @@ another kind of infinite loop. These are the new words:
 
   ------------------------- ------------------------------------------------------ ---------------------------------------------------------------------------------------------------
   `REPEAT`   `( \-- )`                               Returns execution unconditionally to the nearest `BEGIN`.
-  `WHILE`    class=\"STACK\" nowrap \| `( n \-- )`   Execution continues within a loop as long as '`n`' is non-zero (TRUE).
+  `WHILE`    class="STACK" nowrap \| `( n \-- )`   Execution continues within a loop as long as '`n`' is non-zero (TRUE).
   ------------------------- ------------------------------------------------------ ---------------------------------------------------------------------------------------------------
 
 With all three words taken together, it is called a
@@ -336,13 +330,13 @@ There's also a variation on `WHILE` called
 stack is zero (FALSE):
 
   ------------------------- ------------------------------------------------------ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  `NWHILE`   class=\"STACK\" nowrap \| `( n \-- )`   Alternative word for `WHILE`. Execution continues within a `BEGIN`\...`REPEAT` loop as long as '`n`' is zero (FALSE).
+  `NWHILE`   class="STACK" nowrap \| `( n \-- )`   Alternative word for `WHILE`. Execution continues within a `BEGIN`\...`REPEAT` loop as long as '`n`' is zero (FALSE).
   ------------------------- ------------------------------------------------------ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Here is a variation on our `BEGINTEST` example to show
 the new construct at work:
 
-`<nowiki>`\
+```mops
 `: BEGINTEST2`\
 `       ." Type a lower-case letter 'a', please." cr`\
 `       BEGIN`\
@@ -351,7 +345,7 @@ the new construct at work:
 `               ." Wrong key!" cr`\
 `       REPEAT`\
 `       ." Thank you. Loop broken." cr ;`\
-`</nowiki>`
+```
 
 This example begins by printing a message prompting the user to type the
 letter 'a'. Unlike our first `BEGINTEST`, this version
@@ -378,24 +372,24 @@ Unlike `LEAVE`, `EXIT` exits the
 `BEGINTEST` example that uses
 `EXIT`\<nowiki\>:\</nowiki\>
 
-`<nowiki>`\
+```mops
 `: BEGINTEST`\
 `       BEGIN`\
 `               key 97 = IF EXIT THEN`\
 `               key 98 =`\
 `       UNTIL ;`\
-`</nowiki>`
+```
 
 This definion will keep running until you type either an 'a' (ASCII
 code number 97) or a 'b' (ASCII code number 98). You can also write:
 
-`<nowiki>`\
+```mops
 `: BEGINTEST`\
 `       BEGIN`\
 `               key 97 = IF EXIT THEN`\
 `               key 98 = IF EXIT THEN`\
 `       AGAIN ;`\
-`</nowiki>`
+```
 
 Yes, we sneaked in yet another indefinite loop that uses
 `BEGIN`.
@@ -419,43 +413,31 @@ is, not via `LOOP`, `+LOOP` or
 `LEAVE`). The word to use is `UNLOOP`.
 
   ------------------------- ---------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------
-  `UNLOOP`   class=\"STACK\" nowrap \| `( \-- )`   This word will safely remove all loop information from the return stack when exiting from a `DO`\...`LOOP`.
+  `UNLOOP`   class="STACK" nowrap \| `( \-- )`   This word will safely remove all loop information from the return stack when exiting from a `DO`\...`LOOP`.
   ------------------------- ---------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------
 
 We'll illustrate this with the countdown example again:
 
-`<nowiki>`\
+```mops
 `: COUNTDOWN3`\
 `       1 10 DO`\
 `               i . cr`\
 `               i 7 = IF  ." Aborted!!" cr UNLOOP EXIT  THEN`\
 `       -1 +LOOP`\
 `       ." Ignition...Liftoff!" cr ;`\
-`</nowiki>`
+```
 
 You'll notice that we've been able to reinstate the
 Ignition\...Liftoff! message, but by aborting the loop via
 `UNLOOP` and `EXIT` we bypass them
 entirely.
 
-\<blockquote\>
+> Warning: When you're designing loops, it is sometimes possible for an
+> infinite loop to slip in accidentally. Try to avoid them! Double-check
+> the stack operations of your indefinite loops to make sure that there is
+> always at least one condition that will allow you or your program to
+> terminate the loop. Otherwise, your program will appear to "lock up"
+> and may be unresponsive to your keyboard input. If this happens, you'll
+> have to force quit the Mops application.
 
-Warning: When you're designing loops, it is sometimes possible for an
-infinite loop to slip in accidentally. Try to avoid them! Double-check
-the stack operations of your indefinite loops to make sure that there is
-always at least one condition that will allow you or your program to
-terminate the loop. Otherwise, your program will appear to \"lock up\"
-and may be unresponsive to your keyboard input. If this happens, you'll
-have to force quit the Mops application.
 
-`</blockquote>`
-
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 12](Lesson_12)           [Tutorial](Tutorial)   [Lesson 14](Lesson_14)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- -----------------------------------
-
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)

@@ -34,7 +34,7 @@ Execution then proceeds to perform operations written after
 encounters a zero on the stack, it ignores all operations between
 `IF` and `THEN` and only performs
 operation written after the `THEN` statement. In Mops the
-\"`THEN`\" means to proceed with the program after the
+"`THEN`" means to proceed with the program after the
 test, as in first do this, *then* do that.
 
 You won't be able to experiment with the
@@ -45,11 +45,11 @@ run on Mops. For this example, we'll put the code for the
 `IF`\...`THEN` statement inside a colon
 definition and compile it before we can run it. Type the following:
 
-`<nowiki>`\
+```mops
 `: TEST`\
 `       IF  ." There is a non-zero number on the stack."`\
 `       THEN  cr ;`\
-`</nowiki>`
+```
 
 This defines `TEST` as a word that performs a check on
 the top number on the stack. If the number is non-zero, then the
@@ -62,7 +62,7 @@ underflow error message to appear if there are no numbers to test. A
 zero, on the other hand, is indeed a number, and occupies space on the
 stack.)
 
-Two Alternatives {#two_alternatives}
+Two Alternatives
 ----------------
 
 Some decisions, however, are more complex because they involve two
@@ -94,22 +94,22 @@ stack is non-zero before it makes any decision. Now redefine
 `TEST` so it takes into account the `ELSE`
 provision.
 
-`<nowiki>`\
+```mops
 `: TEST`\
 `       IF    ." Non-zero number on stack."`\
 `       ELSE  ." Zero on stack."`\
 `       THEN  cr ;`\
-`</nowiki>`
+```
 
 Place three numbers (1, 0, and 3) on the stack and perform three tests:
 
-`<code>1 0 3</code>`
+`1 0 3`
 
-`<code>test</code>`\
+`test`\
 `Non-zero number on stack.`\
-`<code>test</code>`\
+`test`\
 `Zero on stack.`\
-`<code>test</code>`\
+`test`\
 `Non-zero number on stack.`
 
 Remember that the `IF` operation takes the top number off
@@ -120,14 +120,14 @@ operations. If you will need the number that is removed by
 convert your definition to use named input parameters or local variables
 to preserve the value for later calculation.
 
-Truths, Falsehoods, and Comparisons {#truths_falsehoods_and_comparisons}
+Truths, Falsehoods, and Comparisons
 -----------------------------------
 
 You may be wondering how the
 `IF`\...`THEN` construction can be useful
 if it can only determine whether or not the number on the stack is zero.
 You might think that this kind of test would be rather limiting in light
-of the \"real-world\" decisions that a program may have to make, such as
+of the "real-world" decisions that a program may have to make, such as
 whether two integers are equal to each other, whether one is larger than
 the other, or whether a number is positive or negative. Actually, the
 `IF`\...`THEN` construction frequently
@@ -157,9 +157,9 @@ Since these words --- or rather the numbers they represent ---
 are actually symbolic of a condition that has just been tested, they are
 sometimes referred to as flags. Flags in programs are something like
 markers planted in key places that symbolize a certain condition. A
-\"true\" flag signifies that a non-zero number is on the stack; a
-\"false\" flag signifies that a zero is on the stack. (Another term that
-is used is boolean&\#148;this really means the same as \"flag\".)
+"true" flag signifies that a non-zero number is on the stack; a
+"false" flag signifies that a zero is on the stack. (Another term that
+is used is boolean&\#148;this really means the same as "flag".)
 
 To help ingrain this difference between `TRUE` and
 `FALSE` n your mind, redefine `test` yet
@@ -168,27 +168,29 @@ again so that it reinforces the way the
 construction responds to `TRUE` and
 `FALSE` flags existing in the stack.
 
-`<nowiki>`\
+```mops
 `: TEST`\
 `       IF    ." True!"`\
 `       ELSE  ." False!"`\
 `       THEN  cr ;`\
-`</nowiki>`
+```
 
 Now, place the numbers (zero) and 4 on the stack, leaving the the true
 and false flags from before underneath them on the stack. Then run the
 test four times:
 
-`<code>0 4</code>`
+```mops
+0 4`
 
-`<code>test</code>`\
-`True!`\
-`<code>test</code>`\
-`False!`\
-`<code>test</code>`\
-`False!`\
-`<code>test</code>`\
-`True!`
+test
+True!
+test
+False!
+test
+False!
+test
+True!
+```
 
 Below is a list of comparison operations that test the values of one or
 more numbers on the stack and leave either `TRUE` or
@@ -203,18 +205,16 @@ stack. (The term boolean is named after George Boole, who developed a
 logic system based on `TRUE` and `FALSE`
 values.)
 
-  ---------------------------- ---------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  `0&lt;`       `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if '`n`' is less than zero, otherwise leaves a `FALSE` flag.
+  `0<`       `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if '`n`' is less than zero, otherwise leaves a `FALSE` flag.
   `0=`          `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if '`n`' equals zero, otherwise leaves a `FALSE` flag.
-  `0&lt;&gt;`   `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if '`n`' does not equal zero, otherwise leaves a `FALSE` flag.
-  `0&gt;`       `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if &\#152;`n`' is greater than zero, otherwise leaves a `FALSE` flag.
-  `&lt;`        `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' is less than '`n2`', otherwise leaves a `FALSE` flag.
-  `&lt;=`       `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' is less than or equal to '`n2`', otherwise leaves a `FALSE` flag.
-  &lt;&gt;                     `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' does not equal '`n2`', otherwise leaves a `FALSE` flag.
+  `0<>`   `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if '`n`' does not equal zero, otherwise leaves a `FALSE` flag.
+  `0>`       `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if &\#152;`n`' is greater than zero, otherwise leaves a `FALSE` flag.
+  `<`        `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' is less than '`n2`', otherwise leaves a `FALSE` flag.
+  `<=`       `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' is less than or equal to '`n2`', otherwise leaves a `FALSE` flag.
+  `<>`                     `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' does not equal '`n2`', otherwise leaves a `FALSE` flag.
   `=`           `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' equals '`n2`', otherwise leaves a `FALSE` flag.
-  `&gt;`        `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' is greater than '`n2`', otherwise leaves a `FALSE` flag.
-  `&gt;=`       `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' is greater than or equal to '`n2`', otherwise leaves a `FALSE` flag.
-  ---------------------------- ---------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  `>`        `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' is greater than '`n2`', otherwise leaves a `FALSE` flag.
+  `>=`       `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' is greater than or equal to '`n2`', otherwise leaves a `FALSE` flag.
 
 All the math in these comparison operations should be familiar to you.
 Remember that these operations, like the simple arithmetic ones, are set
@@ -224,11 +224,11 @@ algebraic notation. For example, to find out if
 '`n1`' is greater than
 '`n2`', the algebraic test would be:
 
-`<var>n1</var> &gt; <var>n2</var>`
+`<var>n1</var> > <var>n2</var>`
 
 In Mops, you simply move the operation sign to the right:
 
-`<var>n1</var> <var>n2</var> &gt;`
+`<var>n1</var> <var>n2</var> >`
 
 But in this case, Mops is testing the validity of the statement. The
 numbers are taken from the stack when they are tested. If the statement
@@ -238,7 +238,7 @@ a `FALSE` flag goes there. Then an
 `IF`\...`THEN`\...`ELSE`
 decision can be made on the number(s) in question.
 
-Nested Decisions {#nested_decisions}
+Nested Decisions
 ----------------
 
 It is also possible to have more than one
@@ -253,15 +253,15 @@ meets. To do this, you'll nest several
 `IF`\...`THEN` statements inside one
 another:
 
-`<nowiki>`\
+```mops
 `: IFTEST  { n -- }`\
-`       n 0&lt;`\
+`       n 0<`\
 `       IF    ." less than "`\
-`       ELSE  n 0&gt;`\
+`       ELSE  n 0>`\
 `               IF  ." greater than "`\
 `               THEN`\
 `       THEN  ." zero." cr ;`\
-`</nowiki>`
+```
 
 `IFTEST` is defined to check whether a number is
 positive, negative, or zero. Enter a number in the stack and then
@@ -307,7 +307,7 @@ with corresponding `IF`s, `ELSE`s and
 `THEN`s lining up, is a good idea for readability, not to
 mention subsequent debugging should you run into a snag.
 
-Logical Operators {#logical_operators}
+Logical Operators
 -----------------
 
 There will probably be occasions in your future programs in which you
@@ -341,10 +341,10 @@ either the first *or* the second numbers (or both numbers) have a
 For example, let's what happens when we `AND` and
 `OR` the numbers 1 and 3\<nowiki\>:\</nowiki\>
 
-`<code>1 3 and . cr</code>`\
+`1 3 and . cr`\
 `1`
 
-`<code>1 3 or . cr</code>`\
+`1 3 or . cr`\
 `3`
 
 Remember that `AND` and `OR` perform these
@@ -374,16 +374,12 @@ because the `OR` operation above returns a 1 for the two
 rightmost column of bits in the binary numbers because one or both bits
 in each column are 1.
 
-\<blockquote\>
-
-The names for these operations, `AND` and
-`OR`, are sometimes used as verbs, as in I want to AND 1
-and 3.
-
-`</blockquote>`
+> The names for these operations, `AND` and
+> `OR`, are sometimes used as verbs, as in I want to AND 1
+> and 3.
 
 There is one last logical operator you should know about, the word
-`XOR` (pronounced \"exclusive-or\"). Here is the formal
+`XOR` (pronounced "exclusive-or"). Here is the formal
 description:
 
   ---------------------- ----------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------
@@ -393,11 +389,11 @@ description:
 As you can see, you use it exactly like you would use
 `AND` or `OR`. Try this:
 
-`<code>1 3 xor . cr</code>`\
+`1 3 xor . cr`\
 `2`
 
-However, unlike a \"normal\" `OR` operation (sometimes
-referred to as \"inclusive-or\"), the `XOR` operation
+However, unlike a "normal" `OR` operation (sometimes
+referred to as "inclusive-or"), the `XOR` operation
 returns (FALSE) where both respective bit columns in each number are 1
 (TRUE). (In other words, we can have one or the other, but not *both*.)
 
@@ -406,10 +402,10 @@ This is the binary form of our answer, 2\<nowiki\>:\</nowiki\>
 `0010`
 
 In the second rightmost column, only one of our two integers was 1
-(TRUE), so the answer in that column is 1 (TRUE), just like a \"normal\"
+(TRUE), so the answer in that column is 1 (TRUE), just like a "normal"
 `OR`. However, the rightmost bit column of our answer is
 (FALSE) because the rightmost columns of both of our two integers (1 and
-3) is 1 (TRUE), *unlike* a \"normal\" `OR`.
+3) is 1 (TRUE), *unlike* a "normal" `OR`.
 
 Experiment a little bit with `AND`, `OR`,
 and `XOR` in this fashion. Remember that these operations
@@ -420,7 +416,7 @@ then performing the AND, OR, or XOR arithmetic on the numbers as shown
 above. Once you understand the concept, you can trust Mops to do these
 operations correctly for you at all times.
 
-The CASE Decision {#the_case_decision}
+The CASE Decision
 -----------------
 
 It's not uncommon to have an instance in a program in which the next
@@ -440,7 +436,7 @@ Mops' shortcut for this multiple-decision making is the
 `CASE` structure. Using the example above, you could
 define a word like this:
 
-`<nowiki>`\
+```mops
 `: CASETEST  ( n --  )  \ Print TWO, SIX, SEVEN, or OTHER`\
 `       CASE`\
 `               2  OF  ." TWO"    ENDOF`\
@@ -448,7 +444,7 @@ define a word like this:
 `               7  OF  ." SEVEN"  ENDOF`\
 `               ." OTHER"`\
 `       ENDCASE  cr ;`\
-`</nowiki>`
+```
 
 This word takes the number on the stack and checks whether it is a
 `CASE` OF 2, 6, or 7. If a particular
@@ -460,28 +456,16 @@ cases are valid, then execution continues toward the
 `ENDCASE` delimiter.
 
 If a statement is inserted before `ENDCASE` (like
-'`.\" OTHER\"`' in the example), then it is
+'`." OTHER"`' in the example), then it is
 executed whenever the test of all cases fail. This statement is known as
 the default statement, since it's the statementwhich gets executed by
 default if nothing else does.
 
-\<blockquote\>
+> Note: The `CASE` test retains the test value on the
+> stack, and it is dropped at the end by the `ENDCASE`. In
+> the default statement, particularly, you might want to make use of the
+> test value. But if you're going to use it (take it off the stack),
+> remember to `DUP` it first (or just put a dummy value on
+> the stack) to be dropped by the `ENDCASE`.
 
-Note: The `CASE` test retains the test value on the
-stack, and it is dropped at the end by the `ENDCASE`. In
-the default statement, particularly, you might want to make use of the
-test value. But if you're going to use it (take it off the stack),
-remember to `DUP` it first (or just put a dummy value on
-the stack) to be dropped by the `ENDCASE`.
 
-`</blockquote>`
-
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 11](Lesson_11)           [Tutorial](Tutorial)   [Lesson 13](Lesson_13)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- -----------------------------------
-
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)

@@ -1,4 +1,4 @@
-Mops Classes General Reference {#mops_classes_general_reference}
+Mops Classes General Reference
 ==============================
 
 Contents
@@ -49,7 +49,7 @@ Contents
     -   [Classes](Classes_2#Classes)
         -   [TrTbl](Classes_2#TrTbl)
         -   [String](Classes_2#String)
-        -   [String+](Classes_2#String&amp;#43;)
+        -   [String+](Classes_2#String&#43;)
 3.  [Files](Classes_3)
     -   [About this chapter](Classes_3#About_this_chapter)
     -   [Using files ](Classes_3#Using_files)
@@ -76,7 +76,7 @@ Contents
     -   [Creating windows](Classes_5#Creating_windows)
     -   [Classes](Classes_5#Classes)
         -   [Window](Classes_5#Window)
-        -   [Window+](Classes_5#Window&amp;#43;)
+        -   [Window+](Classes_5#Window&#43;)
 6.  [Views and Controls](Classes_6)
     -   [About this chapter](Classes_6#About_this_chapter)
     -   [Using Views ](Classes_6#Using_Views)
@@ -133,5 +133,5 @@ Contents
     -   [Classes](Classes_12#Classes)
         -   [Vector classes](Classes_12#Vector)
 
-[Category:Manual](Category:Manual)
-[Category:Classes](Category:Classes)
+
+

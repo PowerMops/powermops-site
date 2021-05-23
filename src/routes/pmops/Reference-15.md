@@ -1,22 +1,22 @@
-Assembler and Disassembler {#assembler_and_disassembler}
+Assembler and Disassembler
 ==========================
 
 The Mops' PowerPC assembler and disassembler were originally written by
 Xan Gregg for Power [MacForth](http://www.macforth.com/). They've been
 adapted for use in the Mops environment as modules. The source files are
-\"`pasmMod.txt`\" and \"`disasm`\". The
+"`pasmMod.txt`" and "`disasm`". The
 syntax is traditional Forth postfix-style.
 
-Assembler colon definitions {#assembler_colon_definitions}
+Assembler colon definitions
 ---------------------------
 
 You write a code definition thus:
 
-`<nowiki>`\
+```mops
 `:ppc_code  someName`\
-`       </nowiki><var>&lt;ppc instructions&gt;</var><nowiki>`\
+`       </nowiki><var><ppc instructions></var><nowiki>`\
 `;ppc_code`\
-`</nowiki>`
+```
 
 This will create a normal header for `someName` in the
 dictionary, then align the CDP to a 4-byte boundary (as required for
@@ -31,12 +31,12 @@ We don't provide a full rundown of the assembly syntax here; however
 the comments in the source files are fairly extensive. So if you're the
 type of person who might want to write assembly language, you'll
 probably be able to figure out what to do! &\#148;especially as the file
-\"`test pasm`\" in the 'Module Source' folder has a
+"`test pasm`" in the 'Module Source' folder has a
 definition containing all the PowerPC instructions supported by the
 assembler. Remember that it's a Forth-style postfix assembler. We also
 give a short example at the end of this section, and there are a number
 of code definitions in the source files in 'PPC source', especially
-the file \"`setup`\".
+the file "`setup`".
 
 We don't provide any way of writing a method with the assembler. This
 should never be necessary for performance, and if you really need access
@@ -44,7 +44,7 @@ to machine-level features, you can write a
 `\<nowiki\>:ppc\_code\</nowiki\>` word and call it from
 your method.
 
-Accessing the dictionary {#accessing_the_dictionary}
+Accessing the dictionary
 ------------------------
 
 If you need to get the address of an item in the code or data area of
@@ -59,7 +59,7 @@ example, but you could have used any free register. For a location in
 the data area, remember that ticking the name of the item won't get you
 there&\#148;you have to do something like this:
 
-`r0     ' <var>myValue</var> &gt;body  <var>dicaddr,</var>`
+`r0     ' <var>myValue</var> >body  <var>dicaddr,</var>`
 
 You can execute any code you like between naming the register and
 putting `dicaddr,`. You are in execution mode, and can
@@ -70,7 +70,7 @@ address can't be generated with a single `addi`
 instruction. If the assembler gives you an out-of-range error on a line
 with `dicaddr,` this is probably the reason.
 
-Executing colon definitions from code {#executing_colon_definitions_from_code}
+Executing colon definitions from code
 -------------------------------------
 
 In a word, don't. Mops colon definitions will expect various numbers of
@@ -79,7 +79,7 @@ for working this out is quite complex (and might even change!). So you
 should really only use code definitions for words that don't call any
 other words.
 
-Executing other code definitions from code {#executing_other_code_definitions_from_code}
+Executing other code definitions from code
 ------------------------------------------
 
 There's no problem with doing this, since you have full control of the
@@ -94,7 +94,7 @@ instruction of `someWord`, which we generate with
 '`someWord 2+`', to the offset that is required by the
 `bl` instruction.
 
-Assembler source {#assembler_source}
+Assembler source
 ----------------
 
 The assembler-related source files are all in the 'Module source'
@@ -102,7 +102,7 @@ folder. They are:
 
   ------------------- ---------------------------------------------------------------
   pasmMod.txt         the assembler
-  disasm              the disassembler (loaded by \"`pasmMod.txt`\")
+  disasm              the disassembler (loaded by "`pasmMod.txt`")
   test pasm           a big test definition with all the PPC instructions
   vectors pasm test   another big test definition with all the AltiVec instructions
   ------------------- ---------------------------------------------------------------
@@ -130,7 +130,7 @@ can use `fr0` and
 them. `fr14`-`31` are used for FP locals,
 so you can use them if you save and restore them.
 
-PowerPC register usage {#powerpc_register_usage}
+PowerPC register usage
 ----------------------
 
 Here's a summary of the register usage in the PowerMops runtime
@@ -208,10 +208,10 @@ Example
 -------
 
 Finally, here's a short example, from the file
-\"`pnuc1`\" (in 'PPC source'). This is the definition
+"`pnuc1`" (in 'PPC source'). This is the definition
 of `PICK`.
 
-`<nowiki>`\
+```mops
 `:ppc_code PICK`\
 `       r4      0               cmpi,       \is it 0 pick?`\
 `  eq if,`\
@@ -223,7 +223,7 @@ of `PICK`.
 `  then,`\
 `                               blr,        \and return.`\
 `;ppc_code`\
-`</nowiki>`
+```
 
 Note that `PICK` doesn't push or pop from the data
 stack, but simply replaces the top cell (in `r4`) with
@@ -246,23 +246,18 @@ case, since the desired cell isn't in the memory part of the stack, but
 is already in `r3`.
 
 For an example of a much longer code definition, have a look at
-`(EX)` in the file \"`setup`\" (in 'PPC
+`(EX)` in the file "`setup`" (in 'PPC
 source').
 
-\<blockquote\>
+> Warning: If you are already familiar with the old 68k Mops Assembler,
+> note that you *must* write instructions at the end of your code routine
+> so that it will return. The PowerPC Assembler doesn't do this for you,
+> since it can't always know where your return address is. (It might not
+> necessarily be in the link register at that point&\#148;you might have
+> put it in the count register or have saved it on the return stack or
+> somewhere else.)
 
-Warning: If you are already familiar with the old 68k Mops Assembler,
-note that you *must* write instructions at the end of your code routine
-so that it will return. The PowerPC Assembler doesn't do this for you,
-since it can't always know where your return address is. (It might not
-necessarily be in the link register at that point&\#148;you might have
-put it in the count register or have saved it on the return stack or
-somewhere else.)
-
-`</blockquote>`
-
-Disassembler
-------------
+## Disassembler
 
 The disassembler will disassemble PowerPC code from a range of addresses
 you specify, dumping its output to the Mops window.
@@ -273,16 +268,9 @@ You call the disassembler with one of the following words:
   `disasm\_word`   `someWord`                                        Disassembles the word `someWord`.
   `disasm\_xt`     `( xt \-- )`                                      Disassembles the word with the given xt.
   `disasm\_rng`    `( from to \-- )`                                 Disassembles within the given address range.
-  `disasm\_cnt`    class=\"STACK\" nowrap \| `( from \#inst \-- )`   Starts at 'from', disassembles the given number of instructions.
+  `disasm\_cnt`    class="STACK" nowrap \| `( from \#inst \-- )`   Starts at 'from', disassembles the given number of instructions.
   `disasm`         `( from \-- )`                                    Starts at 'from', keeps going till you hit a key or until a `blr` instruction is seen (which normally comes at the end of a definition).
   ------------------------------- ---------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-------------------------------------------------------------------------
 
-  ------------------------------------------- ----------------------------------- --------
-  [Reference 14](Reference_14)     [Reference](Reference)   &nbsp;
-  [Documentation](Documentation)                                       
-  ------------------------------------------- ----------------------------------- --------
 
-[Category:Manual](Category:Manual)
-[Category:Reference](Category:Reference)

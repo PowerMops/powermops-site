@@ -1,7 +1,7 @@
 Windows
 =======
 
-About this chapter {#about_this_chapter}
+About this chapter
 ------------------
 
 This chapter describes the Mops classes and words that manage windows
@@ -13,11 +13,11 @@ Window+ classes, freeing you to solve application-level problems instead
 of constantly having to rewrite system-level code for window management.
 
   ------------------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------
-  rowspan=4 style=\"border: thin \#aaa solid\" \| [Inside Macintosh](http://developer.apple.com/documentation/macos8/mac8.html)   [Event Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-28.html)
+  rowspan=4 style="border: thin \#aaa solid" \| [Inside Macintosh](http://developer.apple.com/documentation/macos8/mac8.html)   [Event Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-28.html)
   [Window Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-188.html)                                         
   [QuickDraw](http://developer.apple.com/documentation/mac/QuickDraw/QuickDraw-9.html)                                            
   [Control Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-297.html)                                        
-  rowspan=\"5\" style=\"border: thin \#aaa solid\" \| Mops                                                                        [Window](Lesson_20.html)
+  rowspan="5" style="border: thin \#aaa solid" \| Mops                                                                        [Window](Lesson_20.html)
   [Controls](Lesson_20#Controls)                                                                                       
   [QuickDraw](Classes_8)                                                                                               
   [Toolbox Views](Reference_3)                                                                                         
@@ -34,7 +34,7 @@ of constantly having to rewrite system-level code for window management.
 
   : Source files
 
-Using windows {#using_windows}
+Using windows
 -------------
 
 Mops provides two classes of window objects: class Window, built into
@@ -112,7 +112,7 @@ our view mechanism. You may, however, have a good reason to customize
 the activate or close handlers---for example, you may need to change
 menu items depending on which windows are open or in front.
 
-Creating windows {#creating_windows}
+Creating windows
 ----------------
 
 The steps involved in creating and using a window are as follows: First,
@@ -171,7 +171,7 @@ reflecting whether the window should be visible when created and whether
 it should have a close box. For instance:
 
 `10 10 300 200 put: tempRect`\
-`tempRect &quot; A New Window&quot; docWind true true new: myWind`
+`tempRect " A New Window" docWind true true new: myWind`
 
 would create a new document window using the dimensions stored in
 tempRect that would be visible and have a close box. If you would rather
@@ -341,7 +341,7 @@ see also [Reference 11](Reference_11) (at present).
 
 **Error messages** - None
 
-### Window+ {#window_1}
+### Window+
 
 ------------------------------------------------------------------------
 
@@ -406,5 +406,5 @@ to be very basic indeed, you should use this class.
   &nbsp;                           [Documentation](Documentation)   
   -------------------------------- ------------------------------------------- ----------------------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Classes](Category:Classes)
+
+

@@ -1,4 +1,4 @@
-Specialized Stack and Arithmetic Operations {#specialized_stack_and_arithmetic_operations}
+Specialized Stack and Arithmetic Operations
 ===========================================
 
 This is a good time to learn several other basic Mops operations.
@@ -34,13 +34,13 @@ self-evident.
   `1-`    `( n \-- n-1 )`   Subtracts 1 from the number on the stack.
   `2+`    `( n \-- n+2 )`   Adds 2 to the number on the stack.
   `2-`    `( n \-- n-2 )`   Subtracts 2 from the number on the stack.
-  `2\*`   `( n \-- 2n )`    Multiplies the number on the stack by 2.
+  `2*`   `( n \-- 2n )`    Multiplies the number on the stack by 2.
   `2/`    `( n \-- n/2 )`   Divides the number on the stack by 2.
   `3+`    `( n \-- n+3 )`   Adds 3 to the number on the stack.
   `3-`    `( n \-- n-3 )`   Subtracts 3 from the number on the stack.
   `4+`    `( n \-- n+4 )`   Adds 4 to the number on the stack.
   `4-`    `( n \-- n-4 )`   Subtracts 4 from the number on the stack.
-  `4\*`   `( n \-- 4n )`    Multiplies the number on the stack by 4.
+  `4*`   `( n \-- 4n )`    Multiplies the number on the stack by 4.
   `4/`    `( n \-- n/4 )`   Divides the number on the stack by 4.
   ---------------------- -------------------------------- -------------------------------------------
 
@@ -49,7 +49,7 @@ you program in Mops. The addition and subtraction shortcuts, for
 example, come in handy when you need to increment or decrement a counter
 of some kind.
 
-Displaying Text {#displaying_text}
+Displaying Text
 ---------------
 
 So far in this tutorial, we've used the `.` (dot)
@@ -60,8 +60,8 @@ user-friendly by describing what a purely numeric answer is supposed to
 represent. In the latter case, you are usually combining the display of
 an unchanging text message with a numeric answer which can change from
 execution to execution. For the text itself, we can use the Mops word
-`.\"` (pronouced \"dot-quote\"), followed by the desired
-text message, and followed by a final quotation mark (\")
+`."` (pronouced "dot-quote"), followed by the desired
+text message, and followed by a final quotation mark (")
 
 In Mops, like many computer languages, quotation marks fall into a broad
 category of symbols which are known as delimiters, because they
@@ -69,22 +69,22 @@ category of symbols which are known as delimiters, because they
 message. The text within this set of delimiters is called a text string,
 or just string. With normal Mops words, spaces, tabs, or carriage
 returns are the delimiters. However for message strings we usually want
-to be able to include spaces as part of the string, so we use \" as a
-delimiter instead. However, since `.\"` is a Mops word,
+to be able to include spaces as part of the string, so we use " as a
+delimiter instead. However, since `."` is a Mops word,
 it must itself be delimited by a space. This space is *not* included as
 part of the string, but the first character after the space is the first
 character of the string (even if it is a space). Here is an example:
 
-`<nowiki>`\
+```mops
 `: HI  ." Hello, this is Mops operating on the Mac."  cr ;`\
-`</nowiki>`
+```
 
 Now, when you type `HI` at the Mops prompt, the message
 between the quotes appears on the screen. Again, observe that the space
-immediately after the `.\"` is not part of the message,
-but just serves to delimit `.\"` as a word that Mops can
+immediately after the `."` is not part of the message,
+but just serves to delimit `."` as a word that Mops can
 recognize. If the space wasn't there, Mops would try to interpret
-\"`.\"hello,`\" as a word, which certainly isn't what we
+"`."hello,`" as a word, which certainly isn't what we
 want.
 
 One of the nice things about Mops is that you can use previously defined
@@ -92,35 +92,35 @@ words inside the definitions of new words. Therefore, you could take the
 `HI` word we just defined and incorporate it inside yet
 another Mops definition. For example,
 
-`<nowiki>`\
+```mops
 `: GREETING  hi ." How are you?" cr ;`\
-`</nowiki>`
+```
 
 produces not only the message of `HI`, but an additional
 text string whenever you type `GREETING` at a Mops
 prompt.
 
 Now combine your knowledge of arithmetic operations and text strings to
-\"humanize\" the arithmetic word, `ADD`, from our
+"humanize" the arithmetic word, `ADD`, from our
 previous lesson. Here's the new definition:
 
-`<nowiki>`\
+```mops
 `: ADD  ( n1 n2 --  )  + ." The sum is: " . cr ;`\
-`</nowiki>`
+```
 
 Or, if `ADD` is still defined from our last lesson (and
 you want to be tricky), we can also do:
 
-`<nowiki>`\
+```mops
 `: ADD  ( n1 n2 --  )  ." The sum is: " add ;`\
-`</nowiki>`
+```
 
 To use the new word, issue the command at the Mops prompt like this:
 
-`<code>10 20 add</code>`\
+`10 20 add`\
 `The sum is: 30 `
 
-Explicit Stack Manipulations {#explicit_stack_manipulations}
+Explicit Stack Manipulations
 ----------------------------
 
 While named input parameters and local variables will disguise many
@@ -145,11 +145,11 @@ for a subtraction or division. In fact, it could have been used in a
 less elegant definition for the problem cited in [ Lesson
 3](Lesson_3#Mastering_Postfix_Notation)\<nowiki\>:\</nowiki\>
 
-`<nowiki>`\
+```mops
 ` 5 * 12 * 50`\
 `-------------`\
 `     40`\
-`</nowiki>`
+```
 
 By putting the divisor at the bottom of the stack (the first one in),
 you can perform all the multiplications and then switch the order of the
@@ -160,10 +160,10 @@ operation would be:
 
 The word definition that calculates this would be:
 
-`<nowiki>`\
+```mops
 `: FORMULA3  ( denom num1 num2 num3 -- solution )`\
 `            * * swap / ;`\
-`</nowiki>`
+```
 
 `DUP` is sometimes useful for particular arithmetic
 applications. An example of how DUP works is to use it to calculate the
@@ -181,15 +181,15 @@ this:
 Therefore, you could set up a Mops word, `CUBED`, to
 perform the cube calculation:
 
-`<nowiki>`\
+```mops
 `: CUBED  ( n -- )  dup dup * * . cr ;`\
-`</nowiki>`
+```
 
 Then you could type '`3 cubed`' from the Mops prompt,
 and the answer would appear on the screen like this:
 
-`<code>`\
-`3 cubed</code>`\
+``\
+`3 cubed`\
 `27`
 
 Experiment with the other stack manipulation operators described above.
@@ -213,5 +213,5 @@ place.
   [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- -----------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)
+
+

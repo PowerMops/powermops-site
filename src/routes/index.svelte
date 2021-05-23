@@ -44,7 +44,7 @@
         </aside>
         <aside>
             <h3>MAX</h3>
-            <p><em>Mike's Architecture</em> Floating point and runtime.</p>
+            <p><em>Mike's Architecture:</em> Floating point and runtime.</p>
             <ul>
                 <li>Manual</li>
                 <li><a href="https://sourceforge.net/projects/powermops/files/MAX/">Download</a></li>

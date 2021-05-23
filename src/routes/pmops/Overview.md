@@ -1,7 +1,4 @@
-The Mops Manual {#the_mops_manual}
----------------
-
-Last Updated: *2005-12-16*
+# The Mops Manual
 
 Before you dive into Mops, it will be most helpful if you have an
 overview of the organization of this rather lengthy manual.
@@ -15,14 +12,16 @@ between.
 
 The manual is divided into these major parts:
 
-  ---------- ----------------------------------- --------------------------------- ----------- --
-             PART I                              [Overview](Overview)   1 Chapter   
-  PART II    [Tutorial](Tutorial)     21 Lessons                                    
-  PART III   [Reference](Reference)   14 Chapters                                   
-  PART IV    [Classes](Classes)       12 Chapters                                   
-  ---------- ----------------------------------- --------------------------------- ----------- --
+| | | |
+|:---      | :--------------------- | ----------: |
+| PART I   | [Overview](Overview)   |  1 Chapter  |
+| PART II  | [Tutorial](Tutorial)   | 21 Lessons  |
+| PART III | [Reference](Reference) | 14 Chapters |
+| PART IV  | [Classes](Classes)     | 12 Chapters |
 
-**PART I; Tutorial**\<br /\> The Introduction is a section is for
+## Tutorial
+
+The Introduction is a section is for
 everyone, regardless of expertise. It should be the first section of the
 manual you study.
 
@@ -39,12 +38,16 @@ familiarity with that language, it will certainly help. Mops adds the
 power of the Object Oriented paradigm to traditional Forth, as well as
 other very useful tools.
 
-**PART II; Reference**\<br /\> Six chapters in this Part provide
+## Reference
+
+Six chapters in this Part provide
 numerous details about Mops, including considerable expansion on topics
 touched on in the Tutorial. Read this part only after going through the
 Tutorial.
 
-**PART III; Classes**\<br /\> This part of the manual will become one of
+## Classes
+
+This part of the manual will become one of
 the most used reference sections once you begin writing Mops programs.
 It contains details about the parts of the Mops language that have
 already been written for you to help you communicate your program ideas
@@ -58,8 +61,7 @@ listings for many parts of Mops. These files are actually further
 documentation for you. You will get instructions in the Tutorial about
 how to organize them for ready reference.
 
-Developing standalone applications {#developing_standalone_applications}
-----------------------------------
+## Developing standalone applications
 
 Mops can be used to produce stand-alone doubleclickable applications,
 whose users won't need to concern themselves with what language the
@@ -67,31 +69,35 @@ application was written in. These users won't have or need access to
 the Mops dictionary and interpreter. Instructions for this procedure are
 given in the Tutorial.
 
-What your Mops system contains {#what_your_mops_system_contains}
-------------------------------
+## What your Mops system contains
 
 Once you have installed the Mops system as described above, you will
 find several folders containing Mops files. They are:
 
--   Mops &\#131;\<br /\> Essential files including:
-    -   The Mops kernel (Mops).
-    -   An image of a Mops dictionary with many of the predefined
-        classes already loaded (Mops.dic).
--   QuickEdit &\#131;\<br /\> Files in this folder are for Doug
-    Hoffman's QuickEdit programming editor.
--   Mops source\<br /\> All the Mops source code. There are various
-    other folders inside here, as follows:
-    -   More classes\<br /\> Source files for a number of other
-        (possibly) useful classes.
-    -   System source\<br /\> Source code for the basic Mops classes and
-        other support code.
-    -   Toolbox classes\<br /\> Source code for Mops classes that
-        interact with the Mac Toolbox.
-    -   Module source\<br /\> Source code for the Mops modules.
-    -   Asm source\<br /\> Source code for the Mops 68k assembler.
-    -   Demo folder\<br /\> Source files for demonstration programs used
-        in the tutorial.
--   Mops manual\<br /\> Uhm. That's where the documentation you are
+- Mops &\#131;  
+  Essential files including:
+  - The Mops kernel (Mops).
+  - An image of a Mops dictionary with many of the predefined
+    classes already loaded (Mops.dic).
+- QuickEdit &\#131;  
+  Files in this folder are for Doug Hoffman's QuickEdit programming editor.
+- Mops source  
+  All the Mops source code. There are various
+  other folders inside here, as follows:
+  - More classes  
+    Source files for a number of other (possibly) useful classes.
+    - System source  
+      Source code for the basic Mops classes and other support code.
+    - Toolbox classes  
+      Source code for Mops classes that interact with the Mac Toolbox.
+    - Module source  
+      Source code for the Mops modules.
+    - Asm source  
+      Source code for the Mops 68k assembler.
+    - Demo folder  
+      Source files for demonstration programs used in the tutorial.
+-   Mops manual  
+    Uhm. That's where the documentation you are
     reading is stored.
 
 Most of the source code files in System, Toolbox, and Demo folders are
@@ -103,16 +109,15 @@ The predominant file you will be opening will normally be one of
 Mops.dic, MopsFP.dic or PowerMops. They contain the majority of the Mops
 words and predefined classes on which you will build programs.
 
-Conventions used in this manual {#conventions_used_in_this_manual}
--------------------------------
+## Conventions used in this manual
 
 We use a couple of conventions throughout this manual that you should be
 aware of.
 
 In the Tutorial, we present many examples of things you should type into
-the computer.&nbsp; To differentiate the characters you type from the
-characters that the computer generates on the screen, we \<span
-class=\"TYPE\"\>stylize\</span\> those characters you type. The
+the computer. To differentiate the characters you type from the
+characters that the computer generates on the screen, we 
+`stylize` those characters you type. The
 computer's prompt and other responses are printed in regular monospace
 type.
 
@@ -133,15 +138,14 @@ combination thereof, and Mops will recognize it as the same word. As you
 become more experienced in Mops, the capitalization standards we have
 set will make more sense to you.
 
-**Special note to experienced Forth and Smalltalk programmers:**\<br /\>
-Mops is based on Forth, and its object-oriented features owe a lot to
-Smalltalk. Experienced programmers in either Smalltalk or Forth should
-take care not to jump to any conclusions regarding Mops' behavior on
-the basis of previous experience, and to read carefully through the
-tutorial.
+> **Special note to experienced Forth and Smalltalk programmers:**
+> Mops is based on Forth, and its object-oriented features owe a lot to
+> Smalltalk. Experienced programmers in either Smalltalk or Forth should
+> take care not to jump to any conclusions regarding Mops' behavior on
+> the basis of previous experience, and to read carefully through the
+> tutorial.
 
-History
--------
+## History
 
 Mops is an object oriented programming system, derived from the Neon
 language developed by Charles Duff and sold by Kriya, Inc. Kriya
@@ -154,14 +158,15 @@ enhancements. It is also in the public domain.
 Many portions of this manual were pulled directly from the Mops 4
 manual, released in September 2000 in MS Word format. The original HTML
 release was completed in 2003 by
-[Gnarlodious.](http://Gnarlodious.com)\<br /\> At that time some parts
+[Gnarlodious.](http://Gnarlodious.com)
+
+At that time some parts
 of the material were updated to reflect the advent of OS X, and this
 will be ongoing, however as a web site the versioning seems irrelevant
 and so this manual has no version numbers but rather an *Updated on*
 entry in this page's title bar.
 
-Mops
-----
+## Mops
 
 The name Mops could well be an acronym for *Mike's Object oriented
 Programming System* but since Mike feels the computing world has enough
@@ -176,17 +181,15 @@ encumbered development systems for the Mac, and would be happy to
 concentrate on the low-level implementation of the Mops nucleus and
 basic system code.
 
-  ----------------------- ----------------------------------------------------------------------
   Mops implemented by:    Michael Hore
   Able assistance from:   Doug Hoffman, Nao Sacrada, Greg Haverkamp, Xan Gregg
                           
   Documentation:          Mike Hore, Ed Williams, Nao Sacrada, Arthur W. Green
   HTML:                   [Gnarlodious](http://Gnarlodious.com), Arthur W. Green, Jim Tittsler
-  ----------------------- ----------------------------------------------------------------------
 
 Please direct corrections, suggestions and criticism regarding this
 documentation to the [PowerMops
 Users](http://lists.sourceforge.net/lists/listinfo/powermops-users)
 mailing list.
 
-[Category:Manual](Category:Manual)
+

@@ -1,4 +1,4 @@
-Create a Mini-Logo Language {#create_a_mini_logo_language}
+Create a Mini-Logo Language
 ---------------------------
 
 The framework established by classes Pen and Poly allow you to create a
@@ -34,16 +34,13 @@ definition of Sin --- the program loaded prior to Turtle.
 If, on the other hand, you are starting this lesson fresh, then start up
 Mops and load Sin. Our Logo program will load atop Sin.
 
-\<blockquote\> Note: FORGET is obsoleted in PowerMops. Surely, it is
-defined in PowerMops but its execution deletes only a part (code part)
-of the dictionary.
+> Note: FORGET is obsoleted in PowerMops. Surely, it is
+> defined in PowerMops but its execution deletes only a part (code part)
+> of the dictionary.
+> 
+> **So in the present case it is better to quit PowerMops once.**
 
-`So in the present case it is better to quit PowerMops once.`
-
-\</blockquote\>
-
-Designing the language {#designing_the_language}
-----------------------
+## Designing the language
 
 We start by defining in our minds what we want our mini language to
 do.\<br /\> First of all, we want a turtle on the screen that will be a
@@ -73,17 +70,17 @@ the powers of Mops to help you. For example, while you are experimenting
 with parameters, you can place a special method inside class Pen that
 fetches the current values of the parameters from an object:
 
-`<nowiki>`\
+```mops
 `:m INSPECT:            \ (  --  HiPat  LoPat  mode w h x y )`\
 `            get: PnPatHi  get: PnPatLo  get: PnMode`\
 `            get: PnSize  get: PnLoc   ;m`\
-`</nowiki>`
+```
 
 Send a message like:
 
-`<nowiki>`\
-`inspect: Bic`\
-`</nowiki>`
+```mops
+inspect: Bic
+```
 
 Then perform a .S operation to view the parameters on the stack.
 Experiment by placing other values in the parameters via a message that
@@ -96,19 +93,18 @@ integer of the pair in each variable, PnPatHi and PnPatLo, draw the
 object with a white pen, and then restore the pen to black.\<br /\> The
 UNDRAW: method could look like this:
 
-`<nowiki>`\
+```mops
 `:m UNDRAW:            \ Erases object before moving it and restore black pen`\
 `            0 0  put: PnPatHi  put: PnPatLo  draw: self`\
 `            -1 -1  put: PnPatHi  put: PnPatLo  ;m`\
-`</nowiki>`
+```
 
-Implementing a Logo-like language {#implementing_a_logo_like_language}
----------------------------------
+## Implementing a Logo-like language
 
 Here is the listing of Mops definitions added to the end of the modified
 Turtle listing:
 
-`<nowiki>`\
+```mops
 `\ Create Logo-like environment`
 
 `poly turtle                   \ the name of our Logo object`\
@@ -140,7 +136,7 @@ Turtle listing:
 `: SQUARE   { len -- }`\
 `           -curs   4 0  DO  len forward  90 right   LOOP`\
 `            .ok  ;`\
-`</nowiki>`
+```
 
 The above Mops words should be self explanatory, except perhaps for the
 two that control the location of the Logo prompt. In Logo, the
@@ -163,7 +159,7 @@ defined, the load will stop, and a message will tell you what word you
 need to define. Some other messages such as 'object not unique' may
 appear as well. As long as the load doesn't stop, however, nothing
 fatal is occurring in memory. When the load is complete, clear the
-screen with CLS (select 'Clear Window' item of \"Utilities\" menu
+screen with CLS (select 'Clear Window' item of "Utilities" menu
 (CMD+2) on PowerMops) and check your program.
 
 Starting the turtle in the home location, try issuing some Logo commands
@@ -189,12 +185,3 @@ Mops' predefined classes more closely, with the help of an extension of
 the Turtle program that adds Macintosh-like features to it, such as
 scroll bars, mouse input, windows, and menus.
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 17](Lesson_17)           [Tutorial](Tutorial)   [Lesson 19](Lesson_19)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- -----------------------------------
-
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)

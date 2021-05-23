@@ -1,4 +1,4 @@
-Utility Modules {#utility_modules}
+Utility Modules
 ===============
 
 The Mops system contains several modules providing general functions
@@ -10,23 +10,23 @@ Modules are advantageous in that they take up very little room in the
 resident dictionary, and load themselves only when needed on the
 application heap.
 
-The Alert Box {#the_alert_box}
+The Alert Box
 -------------
 
 This module gives you a predefined alert box without having to define
-any resources. Use `Alert\"` within a word or method to
+any resources. Use `Alert"` within a word or method to
 produce an informatory message. Example:
 
 `readLine: myFcb 2 alert" A read error has occurred"`
 
 If the readLine is successful no alert will appear, but if readLine
 returns a nonzero result, an alert box with the given message will be
-displayed along with the specific error number. You may use Alert\" in
-place of Abort\" in your final application to comply with the 'Mac
+displayed along with the specific error number. You may use Alert" in
+place of Abort" in your final application to comply with the 'Mac
 Standard'. Although customized alert boxes are better, this gives
 you a "quick and dirty" means of producing an alert box.
 
-To use `Alert\"`, you must first include the source file
+To use `Alert"`, you must first include the source file
 AlertQ in your application. You may use `NEED AlertQ` to
 accomplish this.
 
@@ -36,7 +36,7 @@ application. These resources come initially from Mops.rsrc, and are
 copied into installed applications by Install, if the file AlertQ has
 been included.
 
-The Decompiler and Debugger {#the_decompiler_and_debugger}
+The Decompiler and Debugger
 ---------------------------
 
 These are only implemented for 68k Mops, and will probably never be
@@ -67,7 +67,7 @@ step through the compiled code.
 If you're running under System 7 and also have QuickEdit running, then
 instead of Mops producing its own (rather primitive) source code
 display, an Apple event will be sent to QuickEdit asking it to open the
-source file. If you type &lt;return&gt; instead of space, then if you
+source file. If you type <return> instead of space, then if you
 are looking at a call to another word (JSR or BSR), you will go down
 into that definition. If you type U, you will come back up again. Q will
 quit decompiling/debugging.
@@ -116,7 +116,7 @@ lookup, the Apple event is sent to QuickEdit so that it will open the
 file. If the file can't be found, or QuickEdit isn't running, you'll
 get an error message. This works also on PPC/OS X.
 
-The Profiler {#the_profiler}
+The Profiler
 ------------
 
 Again this is only implemented for 68k Mops. The purpose of a profiler
@@ -168,7 +168,7 @@ Finally, this is a new feature, and it hasn't been very extensively
 tested, so please exercise caution (i.e. don't blame me if you crash
 without saving).
 
-Runtime Initialization {#runtime_initialization}
+Runtime Initialization
 ----------------------
 
 We have a feature to make it easy to do special-purpose runtime
@@ -204,5 +204,5 @@ the current top of the dictionary. This prevents
   [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- -----------------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Reference](Category:Reference)
+
+

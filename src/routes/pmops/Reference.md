@@ -58,11 +58,11 @@ Reference
             Binding](Reference_4#When_to_Use_Late_Binding)
     -   [References](Reference_4#References)
         -   [Prefix Operator
-            -&gt;](Reference_4#Prefix_Operator_-&amp;gt;)
+            ->](Reference_4#Prefix_Operator_->)
         -   [Prefix Operator
-            new&gt;](Reference_4#Prefix_Operator_new&amp;gt;)
+            new>](Reference_4#Prefix_Operator_new>)
         -   [Prefix Operator
-            release&gt;](Reference_4#Prefix_Operator_release&amp;gt;)
+            release>](Reference_4#Prefix_Operator_release>)
     -   [Dynamic (heap-based)
         Objects](Reference_4#Dynamic_(heap-based)_Objects)
     -   [More Ways of Early
@@ -70,7 +70,7 @@ Reference
         -   [Declared
             References](Reference_4#Declared_References)
         -   [Object Pointers](Reference_4#Object_Pointers)
-        -   [class\_as&gt;](Reference_4#class_as&amp;gt;)
+        -   [class\_as>](Reference_4#class_as>)
     -   [Public and Static
         ivars](Reference_4#Public_and_Static_ivars)
 5.  [Memory Organization](Reference_5)
@@ -214,5 +214,5 @@ Reference
     -   [Example](Reference_15#Example)
     -   [Disassembler](Reference_15#Disassembler)
 
-[Category:Manual](Category:Manual)
-[Category:Reference](Category:Reference)
+
+

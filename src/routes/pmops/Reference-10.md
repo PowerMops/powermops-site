@@ -1,8 +1,6 @@
-PowerMops
-=========
+# PowerMops
 
-Introduction
-------------
+## Introduction
 
 PowerMops is native code Mops for the PowerPC. We've tried to make it
 as close as possible to 68k Mops ('Mops Classic'?) at the source code
@@ -10,8 +8,7 @@ level, so that you can compile for either platform without difficulty.
 However there are inevitably a few differences, which we'll discuss
 here.
 
-Separate Code and Data {#separate_code_and_data}
-----------------------
+## Separate Code and Data
 
 The PowerPC microprocessor uses the idea of code and data being in
 different areas. Under certain conditions the code area might be
@@ -40,8 +37,7 @@ lesson to learn from this is that you shouldn't do this kind of thing
 at all. Stick to the standard ways of using Values, Variables and
 objects, and your code should work in both versions of Mops.
 
-No Separate Nucleus and Dictionary {#no_separate_nucleus_and_dictionary}
-----------------------------------
+## No Separate Nucleus and Dictionary
 
 With PowerMops we're abandoning the idea of separate nucleus and
 dictionary files. This came from a time when everything had to fit on a
@@ -50,8 +46,7 @@ architecture. So in PowerMops, when you do a save, you get a new
 application generated, which has everything in it, and you just
 double-click on it.
 
-Under the Hood {#under_the_hood}
---------------
+## Under the Hood
 
 If you want to get an idea of how things work under the hood, at the
 moment all I can do is refer you to the comments in the code. These,
@@ -72,8 +67,7 @@ But if you're interested, at the end of the first code generator file
 register usage, etc. as well as a full description of the PPC version of
 our class and object formats.
 
-Toolbox Calls {#toolbox_calls}
--------------
+## Toolbox Calls
 
 Remember that for Toolbox calls you MUST use the SYSCALL syntax. The old
 'call xxxx' syntax isn't implemented in PowerMops.
@@ -99,8 +93,7 @@ treated the same as `record{`, so you can always use
 `68k\_record{` for records you pass to the Toolbox,
 whatever version of Mops you're running.
 
-Source Filename Conventions and Loading Order {#source_filename_conventions_and_loading_order}
----------------------------------------------
+## Source Filename Conventions and Loading Order
 
 Files 'cgx' belong to the code generator proper. During the building
 of the PowerMops system, these get loaded twice --- the first time
@@ -136,7 +129,7 @@ pnuc2, pnuc3 and pnuc4. (CROSS itself is at the start of setup.)
 
 Then we need to load the immediate words again, but this time they'll
 be native. This is done in the files pBase, pArgs and qpClass. Note that
-these files start with a 'p' &ndash; except for qpClass, which gets
+these files start with a 'p' -- except for qpClass, which gets
 loaded at 'q' time as well. I have been able to use conditional
 compilation of the form PPC? \[IF\]\...\[ELSE\]\...\[THEN\] to be able
 to get most of the Class-related code into one file. (The flag PPC? get
@@ -159,8 +152,7 @@ zModules and zPEF or zMachO (which is a modified version of the code
 generator file cg4). A few of the other Mops files have 'z' versions
 as well.
 
-Performance
------------
+## Performance
 
 I expect the performance will be quite competitive with C or even
 assembler. If you have a look at the source, you'll notice that there
@@ -171,8 +163,7 @@ significantly different! So I ended up only writing those words in
 assembly that absolutely had to be, because they needed access to
 special registers or whatever.
 
-Install
--------
+## Install
 
 This is a little simpler than in the 68k version. You don't get a
 separate dialog for setting the stack and dictionary sizes, since we
@@ -191,16 +182,16 @@ If you want to create a 'FAT' application (with native code for both
 separately. Then you can use ResEdit to copy all the resources of the
 68k version to the PPC version. Here's one way you might do this:
 
-1.  Let's say you want your final fat application to be called
+1. Let's say you want your final fat application to be called
     'MyApp'. Start 68k Mops, load your source files, do Install. Call
-    the application 'MyApp\_68k'. Use ResEdit to copy your resources
-    over to MyApp\_68k.
-2.  Now run PowerMops, load your source files again, and do Install.
+    the application 'MyApp_68k'. Use ResEdit to copy your resources
+    over to MyApp_68k.
+2. Now run PowerMops, load your source files again, and do Install.
     This time call the application 'MyApp'. When you're finished, run
-    ResEdit, and this time copy ALL the resources in MyApp\_68k over to
+    ResEdit, and this time copy ALL the resources in MyApp_68k over to
     MyApp. This will include all your usual resources, since you copied
-    them to MyApp\_68k before, and it will also include all the CODE
-    resources from MyApp\_68k, which is where all the compiled 68k code
+    them to MyApp_68k before, and it will also include all the CODE
+    resources from MyApp_68k, which is where all the compiled 68k code
     lives.
 
 That's all you have to do. MyApp should now be a fat application, which
@@ -209,8 +200,7 @@ will run in native mode on both the 68k and PowerPC.
 In a future Mops version I might provide a simpler way to handle this
 process, but as you can see it's not very difficult as it is.
 
-Shared Libraries {#shared_libraries}
-----------------
+## Shared Libraries
 
 PowerMops allows you to both call and compile shared libraries. Shared
 libraries are intended to replace things like extensions or
@@ -226,7 +216,7 @@ be written in any language, and called from any language.
 This last point means that since PowerMops can produce a shared library,
 you can write code in Mops that can be called from some other language.
 
-### Calling a Shared Library {#calling_a_shared_library}
+### Calling a Shared Library
 
 You do this in a rather similar way to calling the system. You must
 first declare your library, like this:
@@ -279,7 +269,7 @@ limitation for your internal words in the code for your library. But for
 your 'entry points' --- the words that are to be callable from the
 outside world --- you do have to observe this convention.
 
-### Generating a Shared Library {#generating_a_shared_library}
+### Generating a Shared Library
 
 You generate a shared library via a new option in the Install dialog.
 Generating a shared library is a special case of Install, since in both
@@ -290,11 +280,11 @@ Now, you need to be able to specify which words in your shared library
 you want to be callable from the outside world. These are 'entry
 points' to your library. You declare them like this:
 
-`<nowiki>`\
+```mops
 `:entry  myEntry  { parm1 parm2 %parm3 -- result }`\
-`       &lt;your code&gt; `\
+`       <your code> `\
 `;entry`\
-`</nowiki>`
+```
 
 That should look familiar! It's the same as the word we called with a
 LIBCALL or FRWKCALL above. You'll see that the syntax is basically the
@@ -310,6 +300,3 @@ if you want.)
   [Reference 9](Reference_9)       [Reference](Reference)   [Reference 11](Reference_11)
   [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- -----------------------------------------
-
-[Category:Manual](Category:Manual)
-[Category:Reference](Category:Reference)

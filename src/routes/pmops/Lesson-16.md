@@ -1,4 +1,4 @@
-Sine Table Demo {#sine_table_demo}
+Sine Table Demo
 ===============
 
 One of the best ways to learn the fine points of Mops programming is to
@@ -8,8 +8,8 @@ objects, and sending messages to the various objects in memory.
 
 In the next few lessons, You'll be studying two programs whose source
 files are in the folder 'Demo folder' as plain document files. The
-first one is called Sin (the source file \"`Sin`\"), the
-second is called Turtle (the source file \"`Turtle`\").
+first one is called Sin (the source file "`Sin`"), the
+second is called Turtle (the source file "`Turtle`").
 Although we provide a listing for you in the next pages, you might also
 want to print out a copy of the source code to follow along as the
 discussion works its way into the lesson. Sin is an excellent example of
@@ -23,7 +23,7 @@ various operations. There are, of course, no line numbers in Mops code
 (although if you are using QuickEdit, you will have a general idea where
 you are in the file).
 
-Building a Sine Table {#building_a_sine_table}
+Building a Sine Table
 ---------------------
 
 Before we proceed, it's important that you understand what these
@@ -55,7 +55,7 @@ values.
 
 Notice, however, that two angular measurements can, for example, have
 sine values of 0.5. In the first quadrant, it's at 30 degrees. In the
-second quadrant, it's at 150 degrees, -30 degrees from the \"zero\"
+second quadrant, it's at 150 degrees, -30 degrees from the "zero"
 value (180 degrees). In other words, the sin values in the first and
 second quadrants, dividing them at the 90 degree mark, are mirror images
 of each other.
@@ -88,7 +88,7 @@ and parts of Turtle, can be used in a wide variety of programs, making
 it easier and faster to assemble programs from your library of proven
 blocks.
 
-How the Sine Table Works {#how_the_sine_table_works}
+How the Sine Table Works
 ------------------------
 
 Let's start with the Sin source code, which is numbered from lines 1 to
@@ -112,9 +112,9 @@ Let's start with the Sin source code, which is numbered from lines 1 to
 `16     \ Looks up a sin * 10000 of an angle`\
 `17`\
 `18             degree 360 mod                  \ Put angle in range -359 to +359`\
-`19             dup 0&lt; IF 360 + THEN         \ Now 0 to +359`\
+`19             dup 0< IF 360 + THEN         \ Now 0 to +359`\
 `20             90 /mod         \ Convert angle to range 0-89 and get quadrant`\
-`21             -&gt; quadrant   -&gt; degree`\
+`21             -> quadrant   -> degree`\
 `22             degree                          \ Test for an axis`\
 `23             NIF     quadrant at: axisVals   \ If an axis, get value`\
 `24             ELSE    quadrant 1 and          \ True for "mirror" quadrants 1 and 3`\
@@ -171,19 +171,19 @@ Let's start with the Sin source code, which is numbered from lines 1 to
 `75`\
 `76     ;class`
 
-### Lines 1 to 5 {#lines_1_to_5}
+### Lines 1 to 5
 
 These lines are comments that serves as a plain English heading for the
 source code, describing what this module does, who wrote it, and what
 its main features are. This particular module creates a table of sine
 values that Turtle will use to draw complex curves and graphics. We use
-the \"backslash\" (\\) type of comment here, in which a word consisting
+the "backslash" (\\) type of comment here, in which a word consisting
 of just a backslash causes Mops to ignore the rest of that line.
 
-### Line 8 {#line_8}
+### Line 8
 
 This line causes Mops to load (compile) the file
-\"`Struct1`\" (in the folder 'Extras'), if it is not
+"`Struct1`" (in the folder 'Extras'), if it is not
 already loaded. This file contains the definitions for the class
 `wArray`, which we will need here. The use of the syntax
 '`need \<var\>myfilename\</var\>`' means that you
@@ -194,7 +194,7 @@ not, at different stages of your program development. Using the
 requirements of this source file; Mops will then take care of the
 details.
 
-### Line 11 {#line_11}
+### Line 11
 
 Here marks the beginning of a class definition for the class
 `TrigTable`. This class establishes the rules and
@@ -207,13 +207,13 @@ one byte of memory). Class `TrigTable` is defined as a
 subclass of class `wArray`.
 
 If you look at the source code listing for the superclass
-`wArray` (in the file \"`Struct1`\"),
+`wArray` (in the file "`Struct1`"),
 You'll notice that `wArray` is defined as an *indexed
 class*\<nowiki\>:\</nowiki\>
 
-`<nowiki>`\
+```mops
 `:class WARRAY  super{ indexed-obj }  2 indexed`\
-`</nowiki>`
+```
 
 When a class in indexed, it means that every object created of that
 class must explicitly state how big an area of memory is to be reserved
@@ -230,7 +230,7 @@ byte wide indexed class behavior. Indexing should become more clear as
 we describe the rest of this class definition and see some practical
 examples.
 
-### Line 13 {#line_13}
+### Line 13
 
 This line establishes the instance variable (ivar) for an object of
 class `TrigTable`. Every object created from class
@@ -268,7 +268,7 @@ In subsequent reference to our four quadrants, we'll refer to them as
 they are listed here (counting up from integer , not the natural number
 one).
 
-### Line 15 {#line_15}
+### Line 15
 
 This begins the definition of the method `SIN:`. The
 notation '`{ degree \\ quadrant \-- sin }`' indicates
@@ -289,14 +289,14 @@ you pass a degree figure as a parameter, (e.g., '`90 SIN:
 would be left on the stack when the method's computations are
 completed.
 
-### Line 16 {#line_16}
+### Line 16
 
 The comment tells you what is happening in this method: the program
 looks up the sine value of an angle (in degrees). In the calculations
 the actual sine values will be (implicitly) multiplied by a factor of
 10000. All sine values in the sine table, therefore, will be integers.
 
-### Lines 18 to 34 {#lines_18_to_34}
+### Lines 18 to 34
 
 Next comes the actual calculation and retrieval of the sine values.
 Because the math in this calculation is so tightly interwoven with
@@ -307,7 +307,7 @@ why various operations are performed.
 As an overview, we can say that the math calculations first convert the
 degree value to be in the range -359. Allowance is made for degree
 values entered as negative numbers, or degrees of magnitude 360 or
-greater. Once the degree is \"normalized\", it is converted to the
+greater. Once the degree is "normalized", it is converted to the
 equivalent degree in the range -89 and the quadrant is saved for doing
 mirror image calculations and determining the sign. For degrees on an
 axis (, 90, 180, or 270) the sine is gotten from the ivar
@@ -322,7 +322,7 @@ properly, we should go on to explain how the arrays are filled with the
 values that the method `SIN:` will be retrieving, and
 what those values mean.
 
-### Line 36 to 40 {#line_36_to_40}
+### Line 36 to 40
 
 The method `CLASSINIT:` is a special method that executes
 whenever an object of the current class is created. The operations in
@@ -349,13 +349,13 @@ space is there, ready for values to be plugged in. The array bears the
 characteristics of arrays defined in `TrigTable`'s
 superclass, `wArray`.
 
-### Line 46 to 66 {#line_46_to_66}
+### Line 46 to 66
 
 While the columns of numbers in lines 49 through 66 may look
 intimidating, they are really nothing more than the values of what
 becomes a computer version of a lookup table, like the kind at the end
 of a trigonometry text book. Lines 46 and 47 define a Mops word,
-`'s` (the apostrophe is pronounced \"tick\") that
+`'s` (the apostrophe is pronounced "tick") that
 performs a similar kind of `TO:` storage operation as
 demonstrated in `CLASSINIT:`, but this time the storage
 is to an instance of `TrigTable` called
@@ -390,7 +390,7 @@ The sine values, then, are added to the table by the long series of
 `'s` operations, each preceded by the sine value (times
 10000) and the double-purpose index/degree value.
 
-What Happens On the Stack {#what_happens_on_the_stack}
+What Happens On the Stack
 -------------------------
 
 Now we can go back to method `SIN:` in lines 15 to 31 to
@@ -410,7 +410,7 @@ stack.
   `mod`              35                        180                       293
   `dup`              35                        180                       293
                                     35                        180                       293
-  `0&lt;`            0                         0                         0
+  `0<`            0                         0                         0
                                     35                        180                       293
   `IF`               35                        180                       293
   `360`              \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>
@@ -419,8 +419,8 @@ stack.
                                     35                        180                       293
   `/mod`             0                         2                         3
                                     35                        0                         23
-  `-&gt; quadrant`   35                        0                         23
-  `-&gt; degree`     \-\--                     \-\--                     \-\--
+  `-> quadrant`   35                        0                         23
+  `-> degree`     \-\--                     \-\--                     \-\--
   `degree`           35                        0                         23
   `NIF`              \-\--                     \-\--                     \-\--
                                     \<nowiki\>: \</nowiki\>                             \<nowiki\>: \</nowiki\>
@@ -553,7 +553,7 @@ only code you need in a program to obtain the sine of an angle is:
 
 `125 sin`
 
-### Lines 71 to 76 {#lines_71_to_76}
+### Lines 71 to 76
 
 Class `Angle` provides an example of how the
 `SIN` and `COS` definitions in lines 68
@@ -600,7 +600,7 @@ calculated by the Mops word, `SIN`.
 
 With Mops loaded up and running, try this out yourself. Use Mops'
 `Load` menu item (in the File menu) to load the file
-\"`Sin`\" (in 'Demo folder') into the dictionary, and
+"`Sin`" (in 'Demo folder') into the dictionary, and
 then create an object of class `Angle`. Then,
 `PUT:` a value in the object, then send messages to that
 object to calculate the sine and cosine of the value.
@@ -612,5 +612,5 @@ object to calculate the sine and cosine of the value.
   [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- -----------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)
+
+

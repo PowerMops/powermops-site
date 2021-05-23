@@ -1,4 +1,4 @@
-Memory Organization {#memory_organization}
+Memory Organization
 ===================
 
 We will now move on to some of Mops' more advanced capabilities. Some
@@ -30,7 +30,7 @@ of the Mac's memory while a Mops program is running.\<br /\>
 everything in the diagram means at this stage --- we'll describe
 the main things you need to know as we go along.
 
-The Mops Dictionary {#the_mops_dictionary}
+The Mops Dictionary
 -------------------
 
 Near the beginning of this manual we said that a Mops program builds a
@@ -98,7 +98,7 @@ and constants it contains the actual 4-byte value. In this case we call
 this field the 'data field', since it contains data. But it is really
 the same field by a different name.
 
-The Kernel or Nucleus {#the_kernel_or_nucleus}
+The Kernel or Nucleus
 ---------------------
 
 In the diagram, you'll see that above some memory areas used by the Mac
@@ -127,7 +127,7 @@ just doubleclick on that to relaunch it.
 The memory area dedicated to the Mops kernel and other specifics of your
 program is known as the **application heap**, or simply the **heap**.
 
-The Heap {#the_heap}
+The Heap
 --------
 
 The heap is a region of memory that can be divided into smaller
@@ -190,7 +190,7 @@ fairly easy. A Mops word need only place parameters on the data stack,
 just as if it were about to execute another word or method (also see the
 later chapter 'Calling the Toolbox').
 
-Addresses-Relocatable and Absolute {#addresses_relocatable_and_absolute}
+Addresses-Relocatable and Absolute
 ----------------------------------
 
 For speed, we normally hold all addresses in the normal Mac form (which
@@ -219,7 +219,7 @@ Note that relocatable conversion does not need to be done nearly as
 often as `@`, `w@` or `c@`,
 so that we really do gain by standardizing on absolute addresses.
 
-Handles and Pointers {#handles_and_pointers}
+Handles and Pointers
 --------------------
 
 Handles and pointers are fundamental to programming on the Mac, relying
@@ -285,5 +285,5 @@ occupy is allocated dynamically.
   [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- ---------------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Reference](Category:Reference)
+
+

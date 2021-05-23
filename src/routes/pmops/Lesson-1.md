@@ -1,8 +1,8 @@
-Starting Up {#starting_up}
+Starting Up
 -----------
 
 To start Mops, if the 'Mops &fnof;' folder is not open, double-click
-its icon. Double-click the icon labeled `\"PowerMops\"`.
+its icon. Double-click the icon labeled `"PowerMops"`.
 The Mops window should appear on the screen.
 
 ![](PowerMops.png "PowerMops.png")
@@ -12,11 +12,11 @@ that's alright!)*
 
 On OS X, the Apple menu contains the usual items and is not affected by
 Mops. The application menu (e.g., PowerMops) contains the `About
-Mops&hellip;` menu item, which will bring up a box telling you
+Mops...` menu item, which will bring up a box telling you
 which version of Mops you are running.
 
 On OS 9, there is no application menu and the Apple menu contains the
-`About Mops&hellip;` menu item.
+`About Mops...` menu item.
 
 The File menu is much like the File menu in other applications, but with
 a special item (`Load`), which you can use later for
@@ -31,7 +31,7 @@ that will be useful in the writing and debugging of Mops programs. More
 [ useful information on these menus](Reference_1) will be
 discussed later.
 
-The Mops Window {#the_mops_window}
+The Mops Window
 ---------------
 
 For now, ignore the top part of the Mops window and any existing text in
@@ -42,7 +42,7 @@ might see in a word processor or text editor. Try typing something, and
 you will see that this window is indeed a text editing window. You may
 type and edit text here, as in any text editor.
 
-The ENTER Key {#the_enter_key}
+The ENTER Key
 -------------
 
 There is one important difference however, which we have already seen in
@@ -52,7 +52,7 @@ Mops, however, ENTER causes Mops commands to be executed. We'll try
 this now.
 
 We said earlier that Mops behaves like a dictionary. In other words,
-when you opened `\"PowerMops\"` just now, the Mac
+when you opened `"PowerMops"` just now, the Mac
 automatically loaded the basic Mops vocabulary into its memory. Each
 time you type a word&\#148;any group of text characters&\#148;and press
 ENTER, Mops searches through its dictionary for that word and carries
@@ -62,11 +62,11 @@ to advise you that Mops could not find the word. We'll try it in a
 moment.
 
 If you're familiar with another computer language, note that in Mops
-(as in other Forths), we use the word \"word\" in a different way from
+(as in other Forths), we use the word "word" in a different way from
 normal computer terminology. A Mops word is any group of text
 characters, terminated by white space (a space, tab or carriage return).
 In a programming language like C, you might say
-'`if(a&gt;b)foo(bar);`' (don't worry if you don't
+'`if(a>b)foo(bar);`' (don't worry if you don't
 know what that means!) but in Mops that would be one word, because it
 contained no white space. Characters which are punctuation or special
 characters in other languages can be part of a Mops word, since the only
@@ -76,13 +76,13 @@ Now we'll demonstrate the difference between the RETURN and ENTER keys.
 
 First, type a nonsensical word and press RETURN\<nowiki\>:\</nowiki\>
 
-`<code>gnarly</code>&lt;RETURN&gt;`
+`gnarly</code><RETURN>`
 
 The line just sits there in the Mops window, exactly as if you'd typed
 it into a text editor. Nothing else happens. Now try it again, but this
 time use ENTER\<nowiki\>:\</nowiki\>
 
-`<code>gnarly</code>&lt;ENTER&gt;`
+`gnarly</code><ENTER>`
 
 `Error # -13  undefined word`\
 `gnarly`\
@@ -119,9 +119,9 @@ The stack depth is now 2, since there are two numbers there.
 
 You can now change the numeric base that Mops is using. Watch what
 happens when you change the base from decimal (the base that Mops starts
-in) to hexadecimal (\"hex\" for short). Type
+in) to hexadecimal ("hex" for short). Type
 
-`<code>hex</code>&lt;ENTER&gt;`
+`hex</code><ENTER>`
 
 The stack display (the upper part of the Mops window) should change to
 
@@ -136,7 +136,7 @@ description in Lesson
 14](Lesson_14#Decimal,_Hex,_and_Binary_Arithmetic).) To
 change back to decimal, simply type
 
-`<code>decimal</code>&lt;ENTER&gt;`
+`decimal</code><ENTER>`
 
 Now try the same thing, this time using upper-case letters (typing HEX
 and DECIMAL). The results should be exactly the same. That's because
@@ -155,5 +155,5 @@ part of Mops' error handling&\#148;the stack is emptied on an error.
   [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- ---------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)
+
+

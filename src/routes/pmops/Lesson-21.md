@@ -98,7 +98,7 @@ under the Apple menu. In our program here it will handle everything
 except the first item, which (as is normal Mac practice) is
 'About\...', in this case 'About Curves'.\<br /\>
 
-Running the Program {#running_the_program}
+Running the Program
 -------------------
 
 The last definition of this program is that of a word that gets the
@@ -138,8 +138,8 @@ the three scroll bars are put in place, and the cursor is turned off.
 In the next line, we bring our window, `dWind`, to life
 with a `NEW:` message. We pass in the address and length
 of the text that will appear as the title of the window. The syntax
-`\" Curves\" ` (with a space after the first
-`\"`) compiles the text 'Curves' into the dictionary,
+`" Curves" ` (with a space after the first
+`"`) compiles the text 'Curves' into the dictionary,
 and at run time pushes the address and length of the text on to the
 stack, which is what we need to pass with the `NEW:`
 message.
@@ -162,7 +162,7 @@ have to do is enter the startup word, go, as the last word of the grDemo
 source file. When the file is loaded, Mops will act on that startup word
 as if you had typed it at the Mops prompt.
 
-In Summary {#in_summary}
+In Summary
 ----------
 
 Now that you have seen the entire grDemo program, you should notice some
@@ -185,5 +185,5 @@ let the program respond to your input.
   [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- -----------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)
+
+

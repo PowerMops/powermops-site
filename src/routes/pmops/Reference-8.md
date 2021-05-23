@@ -12,7 +12,7 @@ on the heap whenever one of the exported definitions is referenced. The
 application must manage and release any modules that are no longer
 needed.
 
-Module Guidelines {#module_guidelines}
+Module Guidelines
 -----------------
 
 Certain guidelines must be observed when dividing your application into
@@ -53,7 +53,7 @@ being stored outside the module, so as to give an error message if this
 is attempted. This check can be turned off, but don't do it unless you
 are absolutely sure you know what you are doing!
 
-How to Use Modules {#how_to_use_modules}
+How to Use Modules
 ------------------
 
 Each module has a corresponding object in the main dictionary, which is
@@ -66,7 +66,7 @@ purge them, query their status etc.
 1.  Create a definition for the module and the entry points that are to
     be available to the rest of the application. This must exist in the
     resident portion of the application, and has the following
-    format:\<pre\>FROM MyMod IMPORT{ word1 word2 word3 }\</pre\>This
+    format:`FROM MyMod IMPORT{ word1 word2 word3 }`This
     statement declares a module, MyMod, from which will be imported
     three definitions, `word1`, `word2`
     and `word3`. These two names will exist only in the
@@ -79,8 +79,8 @@ purge them, query their status etc.
     the above example the source file would be called MyMod.txt.
 3.  The module must be compiled and saved in its binary format before it
     will be available to callers. To compile a module, you must send a
-    compile: message to the module, e.g. \<pre\>compile:
-    MyMod\</pre\>When the module has been compiled, a message will
+    compile: message to the module, e.g. `compile:
+    MyMod`When the module has been compiled, a message will
     appear stating that the module has been saved. You must have room in
     your dictionary to load the module source file.\<br\>When we compile
     a module, we temporarily hide all of the main dictionary above the
@@ -137,5 +137,5 @@ any time before calling install. Do it like this:
   [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- ---------------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Reference](Category:Reference)
+
+

@@ -1,8 +1,6 @@
-Strings
-=======
+# Strings
 
-About this chapter {#about_this_chapter}
-------------------
+## About this chapter
 
 This chapter describes Mops' string-handling classes. Strings are
 objects that contain variable-length sequences of text, with methods for
@@ -27,8 +25,7 @@ utilities.
 
   : Source files
 
-Using strings {#using_strings}
--------------
+## Using strings
 
 Mops strings are implemented as relocatable blocks of heap that can
 expand and contract as their contents change. A string object itself
@@ -80,8 +77,7 @@ LIM, which we call the active part of the string, rather than the whole
 string. We also keep the size of the string (the real size, that is) in
 an ivar, so that we can get it quickly without a system call.
 
-Communicating with other objects {#communicating_with_other_objects}
---------------------------------
+## Communicating with other objects
 
 While most of the method descriptions below should be self-explanatory,
 several are worth additional comment. One group of String+'s methods
@@ -100,20 +96,18 @@ Finally, String+'s Draw: method accepts a Rect object and a
 justification parameter, and draws the contents of the string as
 justified text within the box specified by the rectangle.
 
-Translate tables {#translate_tables}
-----------------
+## Translate tables
 
 Translate tables allow very fast searching of strings for specified sets
 of characters. In effect we are separating the specification of what we
 are searching for from the actual search operation itself. This allows
-an uncluttered and extremely fast search operation (the scan:,
-&lt;scan:, scax: and &lt;scax: methods of class String+), and it also
+an uncluttered and extremely fast search operation (the `scan:`,
+`<scan:`, `scax:`, and `<scax:` methods of class String+), and it also
 allows a very flexible (and easily extensible) choice of what to search
 for. The setup time for translate tables can generally be factored out
 of inner loops, or done at compile time, and is quite fast, anyway.
 
-Classes
--------
+## Classes
 
 ### TrTbl
 
@@ -172,7 +166,7 @@ thought of as one class, so we put all the methods together here.
   nowrap \| selcharNC:
   selRange:
   invert:
-  &gt;uc:
+  >uc:
   operations
   transc:
 
@@ -181,8 +175,6 @@ thought of as one class, so we put all the methods together here.
 **Error messages** - None
 
 ### String
-
-------------------------------------------------------------------------
 
 String defines a variable-length string object with basic access methods
 whose data exists as a relocatable block of heap. Size is limited only
@@ -213,7 +205,7 @@ by available memory.
 |                             |  char in the active part. Note that i |
 |                             | f pos = lim, the active part is empty |
 |                             | . Some methods signal an error if pos |
-|                             |  &gt; lim, or if either is negative o |
+|                             |  > lim, or if either is negative o |
 |                             | r greater than the size of the string |
 |                             |   Var     size    The size of the     |
 |                             | heap block containing the string data |
@@ -228,6 +220,7 @@ by available memory.
   Inherits:   Handle, Var, Longword, Object
   ----------- -------------------------------
 
+```
 +----------------------------------------------------------------------+
 | accessing                                                            |
 +======================================================================+
@@ -235,15 +228,15 @@ by available memory.
 +----------------------------------------------------------------------+
 | pos:                                                                 |
 +----------------------------------------------------------------------+
-| &gt;pos:                                                             |
+| >pos:                                                             |
 +----------------------------------------------------------------------+
 | lim:                                                                 |
 +----------------------------------------------------------------------+
-| &gt;lim:                                                             |
+| >lim:                                                             |
 +----------------------------------------------------------------------+
 | len:                                                                 |
 +----------------------------------------------------------------------+
-| &gt;len:                                                             |
+| >len:                                                             |
 +----------------------------------------------------------------------+
 | skip:                                                                |
 +----------------------------------------------------------------------+
@@ -261,7 +254,7 @@ by available memory.
 +----------------------------------------------------------------------+
 | step:                                                                |
 +----------------------------------------------------------------------+
-| &lt;step:                                                            |
+| <step:                                                            |
 +----------------------------------------------------------------------+
 | manipulation                                                         |
 +----------------------------------------------------------------------+
@@ -287,7 +280,7 @@ by available memory.
 +----------------------------------------------------------------------+
 | put:                                                                 |
 +----------------------------------------------------------------------+
-| -&gt;:                                                               |
+| ->:                                                               |
 +----------------------------------------------------------------------+
 | insert:                                                              |
 +----------------------------------------------------------------------+
@@ -343,18 +336,17 @@ by available memory.
 +----------------------------------------------------------------------+
 | bring:                                                               |
 +----------------------------------------------------------------------+
+```
 
 : Methods
 
-  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   **Error messages**
   **"String pointer(s) out of bounds"**
-  Pos was found to be greater than Lim, or either was negative or greater than the size of the string. Pos and Lim are also displayed when this message is given. We check for this error condition whenever we access the actual characters of the string. Operations such as &gt;pos: don't perform the check --- this is for speed, and also because when we are doing manipulations on Pos and Lim we don't want to put any restriction on intermediate values.
+  Pos was found to be greater than Lim, or either was negative or greater than the size of the string. Pos and Lim are also displayed when this message is given. We check for this error condition whenever we access the actual characters of the string. Operations such as >pos: don't perform the check --- this is for speed, and also because when we are doing manipulations on Pos and Lim we don't want to put any restriction on intermediate values.
   **"Can't do that on a string copy"**
   You attempted to insert, delete, or change the size of a string object which was flagged as a 'copy'. See above under copyto:.
-  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### String+ {#string_1}
+### String+
 
 ------------------------------------------------------------------------
 
@@ -373,6 +365,7 @@ shouldn't affect your source code at all
   Inherits:   String, Handle, Var, Longword, Object
   ----------- ---------------------------------------
 
+```
   accessing
   -----------------------
   swapPos:
@@ -388,36 +381,36 @@ shouldn't affect your source code at all
   ch=?:
   searching
   search:
-  &lt;search:
-  sch&amp;skip:
+  <search:
+  sch&skip:
   chsearch:
-  &lt;chsearch:
-  chsch&amp;skip:
+  <chsearch:
+  chsch&skip:
   chskip?:
   chskip:
   scanning
   scan:
-  &lt;scan:
+  <scan:
   scax:
-  &lt;scax:
+  <scax:
   translate:
   trans1st:
-  &gt;uc:
-  ch&gt;uc:
+  >uc:
+  ch>uc:
   chinsert:
   ovwr:
   chovwr:
   \$ovwr:
   repl:
   \$repl:
-  sch&amp;repl:
+  sch&repl:
   replAll:
   delete:
   deleteN:
   line-oriented methods
-  line&gt;:
+  line>:
   nextline?:
-  &lt;nextline?:
+  <nextline?:
   addline:
   \$addline:
   I/O methods
@@ -435,13 +428,4 @@ shouldn't affect your source code at all
   : Methods
 
 **Error messages** - None
-
-------------------------------------------------------------------------
-
-  ----------------------------------------------- ------------------------------- -------------------------------
-  [Basic Data Structures](Classes_1)   [Classes](Classes)   [Files](Classes_3)
-  [Documentation](Documentation)                                       
-  ----------------------------------------------- ------------------------------- -------------------------------
-
-[Category:Manual](Category:Manual)
-[Category:Classes](Category:Classes)
+```

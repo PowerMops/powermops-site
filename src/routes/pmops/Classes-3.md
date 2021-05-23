@@ -1,7 +1,7 @@
 Files
 =====
 
-About this chapter {#about_this_chapter}
+About this chapter
 ------------------
 
 This chapter describes the Mops classes and words that provide an
@@ -30,7 +30,7 @@ having to create them statically in the dictionary.
 
   : Source files
 
-Using files {#using_files}
+Using files
 -----------
 
 All file access in Mops is done through an object of class File. For
@@ -61,8 +61,8 @@ what routines are being used. To create an access path to a file, you
 must first create an object of class File, give it a name, and open it:
 
 `File myFile`\
-`&quot; someFilename&quot; name: myFile`\
-`open: myFile abort&quot; open failed&quot;`
+`" someFilename" name: myFile`\
+`open: myFile abort" open failed"`
 
 The Name: message first clears the parameter block so that fields won't
 be left over from a previous open. (This implies that you must set
@@ -107,8 +107,7 @@ text to the screen if the system Value echo? is true, and will end
 immediately if there is an error. There is also an Accept: method in
 File that simulates a Mops ACCEPT, but reads from a file.
 
-Standard File Package {#standard_file_package}
----------------------
+## Standard File Package
 
 The StdGet: and StdPut: methods give easy access to the Macintosh
 Standard File Package. This code is called by most applications when the
@@ -142,7 +141,7 @@ specified). If you want all file types to be shown, do it thus:
 `-1 stdGet: topfile`
 
 Keep in mind that neither StdGet: nor StdPut: ever actually open the
-chosen file. They are identical in function to sending Name: &amp;
+chosen file. They are identical in function to sending Name: &
 SetVref: to the file object. You must subsequently send a Create:,
 CreateNew:, Open: or OpenReadOnly: before you can access the file. The
 difference between Create: and CreateNew: is that the former will reuse
@@ -151,8 +150,7 @@ icon stays where it was (useful if you are saving the same file over and
 over). The latter always creates a new file, so the file creation date
 is always correct.
 
-Hierarchical File System {#hierarchical_file_system}
-------------------------
+## Hierarchical File System
 
 Mac folders are the equivalent of MS-DOS or Unix directories. This means
 that to find a file, the system needs not only its name but the names of
@@ -208,7 +206,7 @@ or you might use three colons which say to step out of two folder levels
 then step down. You may also begin with no colon which specifies a disk
 name. To load a pathlist file, type e.g.:
 
-`&quot; myPath&quot; getPaths`
+`" myPath" getPaths`
 
 This loads the list from the file named myPath into a string which is
 maintained by the PathsMod module, which is called by Open:. From then
@@ -234,6 +232,7 @@ object of class File should be created for each separate access path
 required in your application. File objects can be allocated dynamically
 by using a FileList.
 
+```
 +------------------------------+--------------------------------------+
 | Superclass                   | Object                               |
 +==============================+======================================+
@@ -345,7 +344,7 @@ by using a FileList.
   : Methods
 
 **Error messages** - None --- return codes from File Manager
-
+```
 ### Container
 
 ------------------------------------------------------------------------
@@ -447,12 +446,5 @@ stack.
   **"My list is empty"**
   ------------------------------------
 
-------------------------------------------------------------------------
 
-  ---------------------------------- ------------------------------------------- --------------------------------
-  [ Strings](Classes_2)   [Classes](Classes)               [Events](Classes_4)
-  &nbsp;                             [Documentation](Documentation)   
-  ---------------------------------- ------------------------------------------- --------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Classes](Category:Classes)

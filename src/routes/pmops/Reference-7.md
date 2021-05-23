@@ -1,4 +1,4 @@
-Calling the Toolbox {#calling_the_toolbox}
+Calling the Toolbox
 ===================
 
 Toolbox calls are calls you make to the Macintosh Operating System.
@@ -12,7 +12,7 @@ PowerMops, you *must* use this syntax, since the old syntax (call xxxx)
 isn't supported any more, as indeed it couldn't be on the PowerPC.
 Here's an example of a word to set the cursor:
 
-`<nowiki>`\
+```mops
 `syscall GetCursor              \ Note: these are CASE-SENSITIVE!`\
 `syscall SetCursor`
 
@@ -22,7 +22,7 @@ Here's an example of a word to set the cursor:
 `       @                       \ needs to be a pointer for SetCursor`\
 `       SetCursor`\
 `;`\
-`</nowiki>`
+```
 
 Note the following points:
 
@@ -34,14 +34,14 @@ Note the following points:
 2.  The name of the Toolbox call (following `SYSCALL`) is
     case-sensitive, unlike everything else in Mops! This was
     unavoidable, because of the way Toolbox calls are handled on the
-    PowerPC. So for example, if we had put \<pre\>syscall
-    getcursor\</pre\> above, we would have copped a compile-time error
+    PowerPC. So for example, if we had put `syscall
+    getcursor` above, we would have copped a compile-time error
     message telling us that Mops couldn't find the name.
 3.  The returned result from a function is simply pushed on to the stack
     --- in earlier versions of Mops you had to push a zero there at
     the beginning to make room, but this is now not needed.
 4.  Likewise, the words `makeint`,
-    `I-&gt;L`, `Word0`,
+    `I->L`, `Word0`,
     `pack` and `unpack` are no longer
     necessary for Toolbox calls although, as we shall see later, they
     may be necessary for **callback** routines, routines that are
@@ -57,7 +57,7 @@ Note the following points:
     registers, not the stack,. so we really had to do something about
     this.)
 
-SYSCALL and the Universal Headers {#syscall_and_the_universal_headers}
+SYSCALL and the Universal Headers
 ---------------------------------
 
 As many of you no doubt know, for the last few years Apple has been
@@ -100,12 +100,11 @@ I know there are still a number of places in the Mops system where I
 access globals directly, but I'll be trying to get rid of these
 progressively.
 
-\<blockquote\> Note: Rhapsody has been realized as Mac OS X. Now that
-PowerMops runs with Mac OS X, the task described above has been
-completed. \</blockquote\>
+> Note: Rhapsody has been realized as Mac OS X. Now that
+> PowerMops runs with Mac OS X, the task described above has been
+> completed.
 
-Time and Space {#time_and_space}
---------------
+## Time and Space
 
 The Universal Headers are large, so the xcalls file turns out to be 1.4
 megabytes long. We achieve some savings by encoding the information
@@ -134,7 +133,7 @@ as to incorporate bug fixes).
 
 (Bugs? What bugs?)
 
-Toolbox Data Types {#toolbox_data_types}
+Toolbox Data Types
 ------------------
 
 For all Toolbox data types which are 32 bits long or less, you just push
@@ -149,7 +148,7 @@ address, and must use a pointer to the actual data structure, even if it
 is an Integer or a Long. This is because the Toolbox will actually
 change the value of the parameter, and needs its location to do so.
 
-Procedure and Function Calls {#procedure_and_function_calls}
+Procedure and Function Calls
 ----------------------------
 
 Toolbox routines have been, for historical reasons, defined in terms of
@@ -177,7 +176,7 @@ C:
 
 Mops:
 
-`<nowiki>`\
+```mops
 `syscall InvertRoundRect`
 
 `rect   myRect                  \ declare a rectangle object`
@@ -187,7 +186,7 @@ Mops:
 `       rWidth rHeight          \ push width and height`\
 `       InvertRoundRect         \ call the Toolbox routine`\
 `;`\
-`</nowiki>`
+```
 
 &nbsp;
 
@@ -214,18 +213,16 @@ Mops:
 `GetNewWindow           \ call the Toolbox routine`\
 `put: windowPtr         \ save the returned window ptr (ivar)`
 
-Accessing System Constants {#accessing_system_constants}
---------------------------
+## Accessing System Constants
 
 You may sometimes need to access system constants which Apple defines by
 name. You do it thus:
 
-`konst &lt;name&gt;`
+`konst <name>`
 
-and the value corresponding to &lt;name&gt; will be pushed at run time.
+and the value corresponding to `<name>` will be pushed at run time.
 
-Callback Routines {#callback_routines}
------------------
+## Callback Routines
 
 "Callback routines" are definitions you write which you
 don't call from your Mops code, but which get 'called back' by the
@@ -248,20 +245,20 @@ Here's an example of a callback routine, taken from the class
 
 PowerMops:
 
-`<nowiki>`\
+```mops
 `' NewControlActionUPP  ' DisposeControlActionUPP`\
 `:callback  CtlProc  { ^ctl part# -- }  \ on PPC, callback parms must be named`\
 `   part#  ctlExec`\
 `;callback`\
-`</nowiki>`
+```
 
 68k Mops:
 
-`<nowiki>`\
+```mops
 `:proc CtlPROC      \  ( ^ctl int:part# -- )`\
 `   word0  nip  ctlExec`\
 `;proc`\
-`</nowiki>`
+```
 
 Note firstly, that callbacks are a bit different on the 68k and on the
 PowerPC, so we have to use some conditional compilation to handle the
@@ -289,8 +286,8 @@ callback. You will need to consult [Inside
 Macintosh](http://developer.apple.com/techpubs/mac/IAC/IAC-2.html) for
 the name of the appropriate functions for your callback. These names
 should always have the form
-"`New&lt;something&gt;UPP`" and
-"`Dispose&lt;something&gt;UPP`". When Mops
+"`New<something>UPP`" and
+"`Dispose<something>UPP`". When Mops
 encounters '`:callback`' in your code, it creates an
 information block for that callback, and puts the xt values in the
 appropriate place in that block, where the system expects it.
@@ -314,7 +311,7 @@ stack. However, the shorter data types (16 bits or less) will occupy
 only 16 bits. So you will need to use the words that Mops supplies for
 manipulating half-size stack cells (`word0`,
 `pack`, `unpack`,
-`makeint`, `i-&gt;l`,
+`makeint`, `i->l`,
 `tbool`). These are almost obsolete, since our
 `SYSCALL`-based way of calling the Toolbox means you
 don't have to use them any more when you call the Toolbox. However,
@@ -327,9 +324,9 @@ call the routine you provide with a pointer the the dialog (32-bit) and
 the number of the item (16-bit) on the stack. Your
 `:PROC` might look like this:
 
-`<nowiki>`\
+```mops
 `:proc mydrawitemproc ( dlgptr w:item -- )`\
-`       i-&gt;l                 \ convert 16-bit to 32-bit`\
+`       i->l                 \ convert 16-bit to 32-bit`\
 `       MyDrawItemWord`\
 `;proc`
 
@@ -338,7 +335,7 @@ the number of the item (16-bit) on the stack. Your
 `                               \ be taken off the stack normally by Mops`\
 `(Do your stuff here)`\
 `;`\
-`</nowiki>`
+```
 
 If the callback requires you to return a result to the Toolbox,
 typically a boolean, you must adjust the Mops True or False on the stack
@@ -347,13 +344,3 @@ a Toolbox True (1), if necessary. You can do this with the word
 `TBOOL`, as in `TRUE Tbool`. As this
 messes up the stack as far as Mops is concerned, you do it right at the
 end of your `:proc`.
-
-------------------------------------------------------------------------
-
-  ------------------------------------------- ----------------------------------- ---------------------------------------
-  [Reference 6](Reference_6)       [Reference](Reference)   [Reference 8](Reference_8)
-  [Documentation](Documentation)                                       
-  ------------------------------------------- ----------------------------------- ---------------------------------------
-
-[Category:Manual](Category:Manual)
-[Category:Reference](Category:Reference)

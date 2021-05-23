@@ -1,4 +1,4 @@
-Stack Notation {#stack_notation}
+Stack Notation
 ==============
 
 Before we go further, you should become acquainted with a special
@@ -39,7 +39,7 @@ command's notation is:
 
 The definition of every Mops word you define in a program should be
 accompanied by its stack notation. Our convention is that we may omit
-the stack notation if it is \<code class=\"STACK\"\>( \-- )`,
+the stack notation if it is \<code class="STACK"\>( \-- )`,
 but only in this situation.
 
 Peruse the \[../Classes/index.html Classes section of this manual\] to
@@ -53,21 +53,18 @@ notations are there to aid you in tracing your program if you run into a
 snafu during program development.
 
 All in all, the stack notation is a handy shortcut to documenting your
-programs. \<blockquote\>
+programs.
 
-Note: Since anything in parentheses (i.e., starting with an open
-parenthesis followed by one or more spaces) is ignored by Mops, you
-don't have to type stack notation for words you define at the Mops
-prompt. Stack notation is strictly an aid for reading source code. In
-this tutorial, we often show the stack notation for words you define.
-The notation is presented to help you better understand the definition
-and show you how your definitions should look once you begin writing
-your own programs in an editor.
+> Note: Since anything in parentheses (i.e., starting with an open
+> parenthesis followed by one or more spaces) is ignored by Mops, you
+> don't have to type stack notation for words you define at the Mops
+> prompt. Stack notation is strictly an aid for reading source code. In
+> this tutorial, we often show the stack notation for words you define.
+> The notation is presented to help you better understand the definition
+> and show you how your definitions should look once you begin writing
+> your own programs in an editor.
 
-`</blockquote>`
-
-Arithmetic Operators {#arithmetic_operators}
---------------------
+## Arithmetic Operators
 
 Here are Mops stack descriptions of the four basic arithmetic
 operations:
@@ -75,7 +72,7 @@ operations:
   `+`                         `( n1 n2 \-- sum )`    Adds &\#152;n1' and &\#152;n2' and leaves the sum on the stack.
   ------------------------------------------ ------------------------------------- -------------------------------------------------------------------------------
   `-`                         `( n1 n2 \-- diff )`   Subtracts &\#152;n1' and &\#152;n2' and leaves the difference on the stack.
-  `\<nowiki\>\*\</nowiki\>`   `( n1 n2 \-- prod )`   Multiplies &\#152;n1' and &\#152;n2' and leaves the product on the stack.
+  `\<nowiki\>*\</nowiki\>`   `( n1 n2 \-- prod )`   Multiplies &\#152;n1' and &\#152;n2' and leaves the product on the stack.
   `/`                         `( n1 n2 \-- quot )`   Divides &\#152;n1' and &\#152;n2' and leaves the quotient on the stack.
 
 To newcomers, the stack order (the way in which numbers come out in the
@@ -123,7 +120,7 @@ If you tried it, everything should have worked well, except when you
 divided numbers that were not even multiples of each other. For example,
 if you divide 10 by 3, the Mops answer is 3.
 
-`<code>10 3 / . CR</code>`\
+`10 3 / . CR`\
 `3`
 
 When you use the divide operation (`/`) in Mops, the
@@ -139,7 +136,7 @@ Let's try dividing 10 by 3 again, but this time using the
 `/MOD` operation instead of straight division
 (`/`). (Remember! Mops is case-insensitive.)
 
-`<code>10 3 /mod . . cr</code>`\
+`10 3 /mod . . cr`\
 `3 1`
 
 Notice now that both the quotient (3) and remainder (1) were returned to
@@ -152,15 +149,14 @@ be printed out on the display.
 
 Division involving negative numbers can be done in two different ways.
 In Mops we use the convention used by the Apple hardware, namely
-\"towards zero\" division (often referred to as symmetric division). If
+"towards zero" division (often referred to as symmetric division). If
 the exact quotient isn't an integer, the quotient that the division
 operation gives will be the next integer towards zero. For example, -10
 divided by 7 will give a quotient of -1, with a remainder of -3. (The
 remainder will always have the same sign as the first operand, the
 dividend, unless it is zero.)
 
-Mastering Postfix Notation {#mastering_postfix_notation}
---------------------------
+## Mastering Postfix Notation
 
 If you're not particularly well versed in this reverse notation, called
 postfix notation (also known as reverse Polish notation), then it is
@@ -169,11 +165,11 @@ before they can be entered into Mops's postfix, integer arithmetic
 environment. For example, you may find yourself confronted with having
 to include the following formula in a Mops program:
 
-`<nowiki>`\
+```mops
 ` 1.25 * 12 * 50`\
 `----------------`\
 `      10`\
-`</nowiki>`
+```
 
 If so, then Mops' integer arithmetic might seem like a stumbling block,
 and its postfix notation may seem worthless. But call upon simple
@@ -206,12 +202,3 @@ substitute readily identifiable names for the values on the stack and
 use them at will. The stack will become almost invisible to you. It is
 important, however, to understand the stack fundamentals just the same.
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- ---------------------------------
-  [Lesson 2](Lesson_2)             [Tutorial](Tutorial)   [Lesson 4](Lesson_4)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- ---------------------------------
-
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)

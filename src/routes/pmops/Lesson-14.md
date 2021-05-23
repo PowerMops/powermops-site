@@ -1,4 +1,4 @@
-Fixed-Point Arithmetic {#fixed_point_arithmetic}
+Fixed-Point Arithmetic
 ======================
 
 The version of Mops that you've been using in this tutorial utilizes
@@ -51,8 +51,8 @@ Two of the most used scalars are those that are actually special-case
 combinations of familiar arithmetic operations:
 
   ---------------------------------------------- ------------------------------------------------------------------------------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  `\<nowiki\>\*/\</nowiki\>`      class=\"STACK\" nowrap \| `( n1 n2 n3 \-- result )`             Multiplies '`n1`' times '`n2`' and then divides that result by '`n3`', leaving the final result on the stack.
-  `\<nowiki\>\*/MOD\</nowiki\>`   class=\"STACK\" nowrap \| `( n1 n2 n3 \-- remainder result )`   Same as `\<nowiki\>\*/\</nowiki\>` but leaves both the result and the remainder on the stack.
+  `\<nowiki\>*/\</nowiki\>`      class="STACK" nowrap \| `( n1 n2 n3 \-- result )`             Multiplies '`n1`' times '`n2`' and then divides that result by '`n3`', leaving the final result on the stack.
+  `\<nowiki\>*/MOD\</nowiki\>`   class="STACK" nowrap \| `( n1 n2 n3 \-- remainder result )`   Same as `\<nowiki\>*/\</nowiki\>` but leaves both the result and the remainder on the stack.
   ---------------------------------------------- ------------------------------------------------------------------------------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Notice carefully the order of the items on the stack and how they are
@@ -74,22 +74,22 @@ Similar operations can be used to work with percentages. Simply put a
 above and the percentage figure in place of
 '`n2`'.
 
-Decimal, Hex, and Binary Arithmetic {#decimal_hex_and_binary_arithmetic}
+Decimal, Hex, and Binary Arithmetic
 -----------------------------------
 
-When Mops works with numbers \"under the hood\", it often uses numbering
+When Mops works with numbers "under the hood", it often uses numbering
 systems other than the traditional decimal (base-10) system. The two
 most often used non-decimal numbering systems are the hexadecimal and
 binary numbering systems. Each has very different characteristics.
 
 The hexadecimal numbering system is a base-16 system. That is, instead
-of numbers increasing say, from one to two digits after the \"ones\"
+of numbers increasing say, from one to two digits after the "ones"
 digit has cycled from zero through nine, it cycles after fifteen digits.
 To denote the digits after 9, hexadecimal notation uses the first
 several letters of the alphabet. Corresponding to decimal 10 is
 hexadecimal A\<nowiki\>; decimal \</nowiki\>11 is hexadecimal
 B\<nowiki\>; and so on through hexadecimal \</nowiki\>F. A hexadecimal
-(sometimes shorted to \"hex\") number is usually preceded by a special
+(sometimes shorted to "hex") number is usually preceded by a special
 sign (\$) so you know that \$24 is hexadecimal 24 (decimal 36) instead
 of the decimal 24.
 
@@ -146,23 +146,18 @@ thirty-two bit binary number, it would come out to 4294967296, that's
 over four-billion. Plenty big for just about every job you'll put your
 Mac to.
 
-\<blockquote\>
-
-Note: You've probably noticed that we space out binary numbers in
-groups of four bits. In a computer's memory, bits are stored
-consecutively, one after the other, but we use this convention to
-improve readability. For example, is 10000010110001000000 the same
-number as 10000101100001000000? When you group them in fours, it would
-be easy to see without hesitating or getting cross-eyed that they are
-*not* the same numbers.
-
-`</blockquote>`
+> Note: You've probably noticed that we space out binary numbers in
+> groups of four bits. In a computer's memory, bits are stored
+> consecutively, one after the other, but we use this convention to
+> improve readability. For example, is 10000010110001000000 the same
+> number as 10000101100001000000? When you group them in fours, it would
+> be easy to see without hesitating or getting cross-eyed that they are
+> *not* the same numbers.
 
 But, that's four-billion *positive* numbers. How do you work with
 negative numbers?
 
-Signed and Unsigned Numbers {#signed_and_unsigned_numbers}
----------------------------
+## Signed and Unsigned Numbers
 
 The answer lies in a special technique of Mops that takes the unsigned
 (positive only) range of four-billion and divides it into two halves,
@@ -201,8 +196,10 @@ numbers only within the plus-or-minus two-billion range. Prove it now by
 entering three-billion (a 3 and nine zeros) on the stack. Sure enough,
 the stack display will show:
 
-`Stack:  depth 1`\
-`-1294967296`
+```mops
+Stack:  depth 1
+-1294967296
+```
 
 which is a signed number equivalent, a negative number near one-billion.
 
@@ -212,44 +209,39 @@ you use the word `U.`, which first converts the number to
 an unsigned number and then types it to the screen.
 
   ------------------------ ------------------------------------------------------------------ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  `U.`      class=\"STACK\" nowrap \| `( n \-- )`               Prints the number on the top of the stack to the screen as an unsigned, single-precision number.
-  `U&lt;`   class=\"STACK\" npwrap \| `( u1 u2 \-- boolean )`   Compares two unsigned single-precision numbers. If '`u1`' is less than '`u2`', then leaves TRUE on the stack; otherwise, leaves FALSE.
-  `U&gt;`   class=\"STACK\" nowrap \| `( u1 u2 \-- boolean )`   Compares two unsigned single-precision numbers. If '`u1`' is greater than '`u2`', then leaves TRUE on the stack; otherwise, leaves FALSE.
+  `U.`      class="STACK" nowrap \| `( n \-- )`               Prints the number on the top of the stack to the screen as an unsigned, single-precision number.
+  `U<`   class="STACK" npwrap \| `( u1 u2 \-- boolean )`   Compares two unsigned single-precision numbers. If '`u1`' is less than '`u2`', then leaves TRUE on the stack; otherwise, leaves FALSE.
+  `U>`   class="STACK" nowrap \| `( u1 u2 \-- boolean )`   Compares two unsigned single-precision numbers. If '`u1`' is greater than '`u2`', then leaves TRUE on the stack; otherwise, leaves FALSE.
   ------------------------ ------------------------------------------------------------------ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Try this sequence and watch what happens:
 
-`<code>-1 U. cr</code>`\
+`-1 U. cr`\
 `4294967295 `
 
 Just to reinforce the difference, now try the same example with -1 using
 `.` instead of `U.`.
 
-One Last Set of Numbers; ASCII {#one_last_set_of_numbers_ascii}
-------------------------------
+## One Last Set of Numbers; ASCII
 
 You've already had a preview of a set of numbers called ASCII codes.
 These are numbers that were assigned by an industry standards group to
 every number, letter, and symbol on the computer keyboard, plus many
 control codes that computers use to communicate with each other and with
-peripherals they use (such as printers). ASCII (pronounced \"as-key\")
+peripherals they use (such as printers). ASCII (pronounced "as-key")
 is an acronym for American Standard Code for Information Interchange. It
 is this standard that allows computers to communicate so effectively
 over telephone lines and even network connections.
 
-\<blockquote\>
-
-Note: Actually, Mops itself supports Unicode, which is a vastly larger
-standard that encompasses many languages around the world, as well as
-formal rules for encoding, manipulating, and displaying those languages.
-The good news is that you won't generally need to be aware of this
-difference, since all the characters in the ASCII standard have been
-included as a subset of the of the Unicode standard. In this manual,
-consider our use of the term ASCII to be synonymous with that subset of
-the Unicode standard made up of characters found in the ASCII character
-set.
-
-`</blockquote>`
+> Note: Actually, Mops itself supports Unicode, which is a vastly larger
+> standard that encompasses many languages around the world, as well as
+> formal rules for encoding, manipulating, and displaying those languages.
+> The good news is that you won't generally need to be aware of this
+> difference, since all the characters in the ASCII standard have been
+> included as a subset of the of the Unicode standard. In this manual,
+> consider our use of the term ASCII to be synonymous with that subset of
+> the Unicode standard made up of characters found in the ASCII character
+> set.
 
 When you press the letter 'a' on the keyboard, the computer recognizes
 the character only as the number 97 (decimal). Because each letter and
@@ -260,45 +252,39 @@ all capital letters of the alphabet are numbered from 65 to 90, it is
 possible to create a `DO`\...`LOOP` that
 instantly prints those letters on the screen:
 
-`<nowiki>`\
+```mops
 `: ALPHABET  91 65 DO  i emit cr  LOOP ;`\
-`</nowiki>`
+```
 
 `EMIT` is a Mops word that displays on the screen the
 character that is referenced by its ASCII number. If you want to put a
 particular ASCII character value on the stack, you can use the Mops word
-`&amp;` (\"ampersand\"). Try typing:
+`&` ("ampersand"). Try typing:
 
-`<code>&amp; c . cr</code>`\
-`99`
+```mops
+& c . cr
+99
+```
 
 and you'll see that the stack display shows 99, which is the ASCII
 value for 'c'. Other Mops words that might go along with
-`EMIT` and `&amp;` are:
+`EMIT` and `&` are:
 
   ------------------------- ------------------------------------------------------ --------------------------------------------------------------------------------------
-  `EMIT`     class=\"STACK\" nowrap \| `( n \-- )`   Displays the character referenced by ASCII number, '`n`'.
-  `SPACE`    class=\"STACK\" nowrap \| `( \-- )`     Displays a blank space on the screen.
-  `SPACES`   class=\"STACK\" nowrap \| `( n \-- )`   Displays '`n`' blank spaces on the screen.
+  `EMIT`     class="STACK" nowrap \| `( n \-- )`   Displays the character referenced by ASCII number, '`n`'.
+  `SPACE`    class="STACK" nowrap \| `( \-- )`     Displays a blank space on the screen.
+  `SPACES`   class="STACK" nowrap \| `( n \-- )`   Displays '`n`' blank spaces on the screen.
   ------------------------- ------------------------------------------------------ --------------------------------------------------------------------------------------
 
 Here's a use of `SPACES` in a modified alphabet
 definition to demonstrate its power:
 
-`<nowiki>`\
-`: ALPHABET2  91 65 DO  i dup  64 -  spaces  emit cr  LOOP ;`\
-`</nowiki>`
+```mops
+: ALPHABET2  91 65 DO  i dup  64 -  spaces  emit cr  LOOP ;
+```
 
 It is also convenient to remember that upper- and lower-case letters are
 separated by a factor of 32, regardless of the letter. This may come in
 handy when you need to convert upper to lower cases or vice versa.
 
-------------------------------------------------------------------------
 
-  ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 13](Lesson_13)           [Tutorial](Tutorial)   [Lesson 15](Lesson_15)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- -----------------------------------
-
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)

@@ -1,4 +1,4 @@
-Mops and OOP {#mops_and_oop}
+Mops and OOP
 ============
 
 Armed with a basic knowledge of Mops' stack, you're now ready for an
@@ -17,11 +17,11 @@ The primary terms to concern yourself with at this point are:
 -   MESSAGE
 -   SELECTOR
 
-To help you visualize the \"big picture\" of an object oriented system
+To help you visualize the "big picture" of an object oriented system
 and what the relationships are among all the parts, we'll use an
 analogy.
 
-Methods and Inheritance {#methods_and_inheritance}
+Methods and Inheritance
 -----------------------
 
 Let's say you want to hire an accountant to prepare your income tax
@@ -64,7 +64,7 @@ like this:
 
 ![](ClassHierarchy.png "ClassHierarchy.png")
 
-Objects and Messages {#objects_and_messages}
+Objects and Messages
 --------------------
 
 So far, we've been talking only about classes of accountants, not the
@@ -74,7 +74,7 @@ best meets your particular tax needs.
 
 For the sake of this example, Let's say that John is a member of the
 class of accountants that works with family tax planning and tax return
-preparation. In other words, John is an \"instance\", or an actual,
+preparation. In other words, John is an "instance", or an actual,
 physical example (an object) of the class of family tax accountants.
 When you summon John to do your taxes, he automatically brings with him
 the ability to perform all the accounting and tax preparation methods
@@ -129,7 +129,7 @@ no interference among the three returns you have in the works.
 
 If this accountant example were a true object oriented system, the class
 of all accountants would itself be based on another all-encompassing
-superclass, something like \"all living beings\". In other words, there
+superclass, something like "all living beings". In other words, there
 must be a primeval class from which all classes are derived, and all the
 primeval methods apply down the line, as long as they haven't been
 modified by a subclass. Therefore, even though John doesn't think about
@@ -180,5 +180,5 @@ your figures, which John has to himself:
   [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- ---------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)
+
+

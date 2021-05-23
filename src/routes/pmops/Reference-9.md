@@ -1,4 +1,4 @@
-Implementing an Application {#implementing_an_application}
+Implementing an Application
 ===========================
 
 Once you have a blueprint for the class hierarchy of a program, you're
@@ -12,7 +12,7 @@ chapter, we provide the details for the following steps:
 -   Debugging the program;
 -   Installing the program as a standalone application.
 
-Structure of a Typical Application {#structure_of_a_typical_application}
+Structure of a Typical Application
 ----------------------------------
 
 In most Mops programs for the Macintosh, a handful of classes will be
@@ -36,7 +36,7 @@ application or to alter an option setting.
 And **Dialogs** are special-purpose windows that focus the user's
 attention on a specific choice or set of choices.
 
-Bringing Objects to Life {#bringing_objects_to_life}
+Bringing Objects to Life
 ------------------------
 
 All of the above classes create objects that are recognized by both Mops
@@ -49,7 +49,7 @@ keep track of the objects' states. Then the application will begin
 listening to events --- thereby becoming sensitive to the user's
 keyboard and mouse input.
 
-Waiting for Events {#waiting_for_events}
+Waiting for Events
 ------------------
 
 Mac applications, rather than simply starting at the beginning and
@@ -62,12 +62,12 @@ enough, the **event loop**. Mops simplifies this for you by providing a
 word, `EventLoop`, which executes this loop. The
 definition isn't very complex:
 
-`<nowiki>`\
+```mops
 `: EVENTLOOP`\
 `       BEGIN`\
 `               next: fevent`\
 `       AGAIN ;`\
-`</nowiki>`
+```
 
 `FEvent` is our one-off object of class
 `Event`. The `next:` method makes the
@@ -96,7 +96,7 @@ example of an event-driven Mac application, and is worth examining
 rather closely for the manner in which the program and user communicate
 with each other.
 
-Apple Events {#apple_events}
+Apple Events
 ------------
 
 Mops is "System 7 friendly". Among other things, this means
@@ -151,10 +151,10 @@ which takes some action depending on the result returned from the vector
 `QuitVec` and `AbortVec` and returns to
 the system.
 
-\<blockquote\> **Warning:** In Carbon PowerMops, all Apple event vectors
-described below are `NULL` at present. Apple event
-handling scheme described below also has been changed in Carbon
-PowerMops. \</blockquote\>
+> **Warning:** In Carbon PowerMops, all Apple event vectors
+> described below are `NULL` at present. Apple event
+> handling scheme described below also has been changed in Carbon
+> PowerMops.
 
 The Apple event vectors are `OpenAppVec`,
 `OpenDocVec`, `PrintDocVec` and
@@ -229,15 +229,13 @@ Well, sorry about that terribly long winded dissertation on Apple
 events. They do represent a major new addition to Apple's system, and
 are decidedly nontrivial to handle and describe!
 
-\<blockquote\> **Note:** Unfortunately, you must write your Apple event
-handlers almost from scratch in Carbon PowerMops (see file CarbonEvents)
-at present. But, on the other hand, you can use
-`Class\_AEDesc`, `Class\_AEList`, and
-`Class\_AEAddress` classes defined in file AEClasses.
-\</blockquote\>
+> **Note:** Unfortunately, you must write your Apple event
+> handlers almost from scratch in Carbon PowerMops (see file CarbonEvents)
+> at present. But, on the other hand, you can use
+> `Class\_AEDesc`, `Class\_AEList`, and
+> `Class\_AEAddress` classes defined in file AEClasses.
 
-Compiling Your Source {#compiling_your_source}
----------------------
+## Compiling Your Source
 
 As you write portions of your program, you can load them into Mops (they
 compile while loading) to let the compiler search the code for errors
@@ -249,8 +247,8 @@ reworking a section, you should maintain your program as text files and
 load them into Mops each time you want to test the code.
 
 When you load a typical program, you will be doing so on top of Mops.dic
-(or MopsFP.dic), which contains a number of &ndash; but not all of
-&ndash; Mops' predefined classes already compiled. It is important to
+(or MopsFP.dic), which contains a number of -- but not all of
+-- Mops' predefined classes already compiled. It is important to
 understand how source files for your program and the optional predefined
 classes should be loaded onto Mops.dic. When you loaded the grDemo in
 the Tutorial several predefined classes were automatically loaded before
@@ -266,7 +264,7 @@ interrupt loading of one file) and begins loading the new file. When the
 second file load is complete, the load of the original, stacked file
 resumes on the line following the `NEED` statement.
 
-### Switching Between Compiler and Editor {#switching_between_compiler_and_editor}
+### Switching Between Compiler and Editor
 
 When you compile a source file the first time, you may discover that an
 error crops up, at which point, the compiler displays a message
@@ -309,7 +307,7 @@ the time that would be taken to remember something while editing, you
 could have gotten an answer directly by using the full power of Mops'
 interpreter.
 
-### Saving Compiled Programs {#saving_compiled_programs}
+### Saving Compiled Programs
 
 You can Save an image of the dictionary at any point during compilation
 of your source (this is different from installing a finished
@@ -329,7 +327,7 @@ As you will see in the next chapter, we have changed this slightly for
 PowerPC Mops, where we actually save the whole dictionary, including the
 nucleus, each time.
 
-### Other Compiling Tips {#other_compiling_tips}
+### Other Compiling Tips
 
 When loading a file that has never before been compiled, select Echo
 During Load from the Mops menu to cause each line of the file to be
@@ -349,8 +347,7 @@ pause an echoed load at any time by hitting the space bar. You can then
 either continue (by pressing the space bar again), or abort the load (by
 pressing a different key).
 
-Debugging Your Code {#debugging_your_code}
--------------------
+## Debugging Your Code
 
 You should begin debugging as soon as you have a small section of code
 that compiles successfully. Start testing the lowest-level words or
@@ -361,7 +358,7 @@ the .S stack dump to determine if the results are correct. You can also
 use the Debugger utility to step through a definition instruction by
 instruction. We will describe this utility shortly.
 
-### Evaluating Error Messages {#evaluating_error_messages}
+### Evaluating Error Messages
 
 It's quite possible that in the early stages of program development,
 you'll generate a Mops error during execution or compilation of a word
@@ -382,7 +379,7 @@ incorrect result, and make a change in the source code accordingly. It
 can be very helpful to place statements in your code that print out key
 data values.
 
-### System Errors {#system_errors}
+### System Errors
 
 Sometimes, your code will produce an error that is caught by the
 Macintosh system before Mops becomes aware of it. In these cases, unless
@@ -436,13 +433,12 @@ break up the video. In these cases, the code has destroyed something
 essential to the operating system before either Mops or the Macintosh
 Operating System could detect it. The only choice here is to reset the
 Mac and try to determine where the code is going wrong. You might want
-to scatter .\" messages through your code, which can print values and
+to scatter ." messages through your code, which can print values and
 strings to keep you posted on where the code is executing at a given
 moment. This will help you narrow down the location of a problem fairly
 quickly.
 
-Your Application Icons {#your_application_icons}
-----------------------
+## Your Application Icons
 
 We have already described the use of the Install utility in the final
 Tutorial lesson. Here we will discuss how to give your application and
@@ -467,12 +463,12 @@ way of specifying the resource IDs of the icons.
 Assuming you have created a resource file using one of these utilities,
 and that you have given the icons the right IDs, do the following:
 
-1.  Start ResEdit, then open both your new application and your icon
+1. Start ResEdit, then open both your new application and your icon
     resource file
-2.  Select your icon file, and do Select All (Command-A), then Copy
-3.  Select your application
-4.  Do Paste, then Save
-5.  Quit ResEdit
+2. Select your icon file, and do Select All (Command-A), then Copy
+3. Select your application
+4. Do Paste, then Save
+5. Quit ResEdit
 
 Your application may not appear with its new icon immediately, since the
 Finder keeps icon information in its own 'desktop file'. If you close
@@ -485,21 +481,13 @@ PowerMops is a Mach-O application. It will be a not yet packed folder
 structure of the application bundle at first. Assuming you have created
 a data fork icns resource file, do the following:
 
-1.  Rename the icon file to be "app.icns"
-2.  Put your icon file in "yourApp:Contents:Resources:\" folder
-3.  Complete your application bundle packaging by adding .app extension
+1. Rename the icon file to be "app.icns"
+2. Put your icon file in "yourApp:Contents:Resources:" folder
+3. Complete your application bundle packaging by adding .app extension
     to the name of outer most folder of your application bundle, i.e.
     rename 'yourApp' to 'yourApp.app'
 
 "app.icns" is set as a default application icon file name in
 file 'info.plist'. You can change it by editing the info.plist file.
 
-------------------------------------------------------------------------
 
-  ------------------------------------------- ----------------------------------- -----------------------------------------
-  [Reference 8](Reference_8)       [Reference](Reference)   [Reference 10](Reference_10)
-  [Documentation](Documentation)                                       
-  ------------------------------------------- ----------------------------------- -----------------------------------------
-
-[Category:Manual](Category:Manual)
-[Category:Reference](Category:Reference)

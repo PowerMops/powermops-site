@@ -1,4 +1,4 @@
-Inside the grDemo {#inside_the_grdemo}
+Inside the grDemo
 =================
 
 Before we begin to explain the inner workings of the graphics
@@ -85,7 +85,7 @@ rather familiar.
   Let's look again at the Curves window to identify the views controls.   ![](CurvesWindow.png "CurvesWindow.png")   This window has a pane in which the graphics are drawn --- clearly this will be a view. There are also the three scroll bars and the digital displays beneath each one. The scroll bars will be views, and the digital displays will also be views.
   ------------------------------------------------------------------------ ------------------------------------------ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Positioning Views {#positioning_views}
+Positioning Views
 -----------------
 
 So far so good. Now we also need to look at how these views will be
@@ -157,7 +157,7 @@ parent view moves
 Let's look at how we've set up these quantities for the views in our
 grDemo application. Look at the CLASSINIT: method in class Indicator:
 
-`<nowiki>`\
+```mops
 `:m CLASSINIT:`\
 `      parCenter   parTop      parCenter   parBottom   setJust: theVscroll`\
 `      -8          0           8           -20         setBounds: theVscroll`\
@@ -165,7 +165,7 @@ grDemo application. Look at the CLASSINIT: method in class Indicator:
 `      -12         -16         12          0           setBounds: theReadout`\
 `      classinit: super`\
 `;m`\
-`</nowiki>`
+```
 
 Here we position the child views of the Indicator, namely the vertical
 scroll bar theVscroll, and the box with the digital display, theReadout.
@@ -225,7 +225,7 @@ instead, the Indicators will be evenly spaced along the bottom of the
 window, instead of at the right hand side. Note how we use the parProp
 justification to achieve the even spacing.
 
-Drawing Views-the DRAW: method {#drawing_views_the_draw_method}
+Drawing Views-the DRAW: method
 ------------------------------
 
 The screen coordinates will have been set so that the top left corner of
@@ -308,5 +308,5 @@ Mops runs.
   [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- -----------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)
+
+

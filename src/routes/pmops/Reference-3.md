@@ -1,5 +1,4 @@
-Object Creation and Message Syntax {#object_creation_and_message_syntax}
-==================================
+# Object Creation and Message Syntax
 
 'Instantiation', or the instantiation of a class, is used in this
 manual to mean the creation of an object instance without regard to how
@@ -22,12 +21,11 @@ chapter, "More About Objects". Complete syntax for
 early-bound messages is given below, and some differences are commented
 on.
 
-Object Declarations vs. Creation Methods {#object_declarations_vs._creation_methods}
-----------------------------------------
+## Object Declarations vs. Creation Methods
 
-### Declaration Instantiation {#declaration_instantiation}
+### Declaration Instantiation
 
-All compiled &ndash; as opposed to dynamic &ndash; objects require only
+All compiled -- as opposed to dynamic -- objects require only
 a simple declaration for their instantiation. Typically, the predefined
 classes described as basic data structures in Chapter 1 of Part III, as
 well as the string, file, floating-point, and vector objects (Chapters
@@ -55,17 +53,17 @@ examples are:
 `16     fArray          BIGNUMBS`\
 `       SWord_vector    VECTORVALUE`
 
-\<blockquote\> NOTE: Though constant and value definitions look much
-like array-object declarations, they are not objects but simply
-primitive data items, i.e., Mops words. (Unlike the analogous objects
-they cannot participate in complex objects as either ivars or array
-elements.) \</blockquote\>
+> NOTE: Though constant and value definitions look much
+> like array-object declarations, they are not objects but simply
+> primitive data items, i.e., Mops words. (Unlike the analogous objects
+> they cannot participate in complex objects as either ivars or array
+> elements.)
 
 The event-related classes Event and Mouse (Chapter 4, Part 3) would be
 instantiated as above but are seldom if ever subclassed as it is very
 unlikely that the need to do so would arise.
 
-### Special-case TEMP Declarations {#special_case_temp_declarations}
+### Special-case TEMP Declarations
 
 The `TEMP{ \... }` declaration 'envelops', or takes a
 list of data-object declarations and declares them to be temporary
@@ -90,7 +88,7 @@ characters after the `TEMP`) is equivalent to
 `       register        Word_vector  AVECTVARIABLE`\
 `}`
 
-### Creation-Method Instantiation {#creation_method_instantiation}
+### Creation-Method Instantiation
 
 Nameless dynamic objects, that is, heap-based objects of variable
 lifetime, are accessed either individually by a handle or by index into
@@ -125,7 +123,7 @@ same-class instances.
 `       ['] Oddball newObj:  BUNCH_OF_OBJS      \ Creation of an object of a `\
 `                                               \ differing class`
 
-### The Mops Toolbox Classes {#the_mops_toolbox_classes}
+### The Mops Toolbox Classes
 
 Many interactions with the Mac Toolbox are quite complex and so are the
 Mops predefined classes and corresponding objects that deal with them.
@@ -162,7 +160,7 @@ Thus, not only is the user insulated from system calls and all the
 attendant details, but also much inter-object messaging is made as
 transparent as possible.
 
-### Message Syntax {#message_syntax}
+### Message Syntax
 
 The basic form of a message to an object is:
 
@@ -202,7 +200,7 @@ this case square brackets, i.e., `\[ \]`, usually appear
 in the message surrounding the identity of the receiver, which might be
 given by a runtime expression. Also, the receiver may be given by an
 object handle. Forms such as "`selector
-\*\*`" and "`selector \[\]`"
+**`" and "`selector \[\]`"
 are possible, as well as "`selector
 \[SELF\]`"
 
@@ -216,5 +214,5 @@ The possible forms of late-bound messages are described in detail in the
   [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- ---------------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Reference](Category:Reference)
+
+

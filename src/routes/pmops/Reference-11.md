@@ -1,4 +1,4 @@
-Coding V. 5.1 and Later {#coding_v._5.1_and_later}
+Coding V. 5.1 and Later
 =======================
 
 Introduction
@@ -92,7 +92,7 @@ before `:CALLBACK`. See the file
 'CarbonEvents' for more comments and some actual examples
 you can copy.
 
-Changed Classes {#changed_classes}
+Changed Classes
 ---------------
 
 The following classes are those that have needed significant changes
@@ -114,7 +114,7 @@ Window is the basic class of windows without controls:
   Source file   zWindowMod.txt
   Status        Core
 
-### Carbon Changes {#carbon_changes}
+### Carbon Changes
 
 Windows are no longer subclassed from `GrafPor`t. The
 first ivar is `theWindowRef`, which is a (MacOS)
@@ -232,5 +232,5 @@ generic document-style window.
   [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- -----------------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Reference](Category:Reference)
+
+

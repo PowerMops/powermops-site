@@ -1,4 +1,4 @@
-Building a Turtle Graphics Program {#building_a_turtle_graphics_program}
+Building a Turtle Graphics Program
 ==================================
 
 Now we can look at a graphics program, called Turtle. It defines a
@@ -9,7 +9,7 @@ called 'Turtle', and is in 'Demo folder'.
 
 Here's the whole thing first. We'll then go through it in detail.
 
-`<nowiki>`\
+```mops
 `\ Turtle Graphics Objects for Demo`
 
 `need   sin`
@@ -79,17 +79,17 @@ Here's the whole thing first. We'll then go through it in detail.
 `:m SPIRAL: { \ dist degrees delta reps -- }`\
 `               \ Draws a spiral of line segments - Logo POLYSPI`\
 `       home: self`\
-`       get: initLen -&gt; dist get: deltaLen -&gt; delta`\
-`       get: deltaDeg -&gt; degrees   0 -&gt; reps`\
-`       BEGIN   1 ++&gt; reps reps get: maxReps &lt;`\
+`       get: initLen -> dist get: deltaLen -> delta`\
+`       get: deltaDeg -> degrees   0 -> reps`\
+`       BEGIN   1 ++> reps reps get: maxReps <`\
 `       WHILE   dist move: self   degrees turn: self`\
-`               delta ++&gt; dist`\
+`               delta ++> dist`\
 `       REPEAT ;m`
 
 `:m DRAGON:     \ ( n -- )   Dragon curves from Martin Gardner`\
 `       dup`\
 `       NIF     get: deltaLen move: self drop`\
-`       ELSE    dup 0&gt;`\
+`       ELSE    dup 0>`\
 `               IF      dup 1- dragon: self`\
 `                       get: deltadeg turn: self`\
 `                       1 swap -   dragon: self`\
@@ -101,11 +101,11 @@ Here's the whole thing first. We'll then go through it in detail.
 `       THEN ;m`
 
 `:m LJ: { \ reps -- }   \ Draws an infinite Lissajous figure`\
-`       up: self   0 -&gt; reps`\
+`       up: self   0 -> reps`\
 `       get: initLen get: direction * cos 120 /         getX: homeLoc +`\
 `       get: deltalen get: direction * sin 120 / negate getY: homeLoc +`\
 `       goto: self`\
-`       BEGIN   1 ++&gt; reps reps get: maxReps &lt;`\
+`       BEGIN   1 ++> reps reps get: maxReps <`\
 `       WHILE`\
 `               get: initLen get: direction * cos 120 / getX: homeLoc +`\
 `               get: deltaLen get: direction * sin 120 / negate`\
@@ -122,7 +122,7 @@ Here's the whole thing first. We'll then go through it in detail.
 `       int     Length                  \ Length of each side`
 
 `:m DRAW: { \ turnAngle -- }`\
-`       360 get: sides /   -&gt; turnAngle`\
+`       360 get: sides /   -> turnAngle`\
 `       get: sides 0`\
 `       DO      get: length move: self`\
 `               turnAngle turn: self`\
@@ -134,10 +134,10 @@ Here's the whole thing first. We'll then go through it in detail.
 
 `:m SPIN: { \ reps -- }         \ Spins a series of polygons around a point`\
 `       home: self 10 get: initLen size: self`\
-`       0 -&gt; reps`\
-`       BEGIN   reps get: maxReps &lt;`\
+`       0 -> reps`\
+`       BEGIN   reps get: maxReps <`\
 `       WHILE   draw: self get: deltaDeg turn: self`\
-`               get: deltaLen +: length 1 ++&gt; reps`\
+`               get: deltaLen +: length 1 ++> reps`\
 `       REPEAT ;m`
 
 `:m CLASSINIT:          \ Default Poly is 30-dot triangle`\
@@ -151,7 +151,7 @@ Here's the whole thing first. We'll then go through it in detail.
 `\ Create a Polygon named Anna`\
 `Poly   ANNA`\
 `60 4 size: Anna`\
-`</nowiki>`
+```
 
 We'll now look at this program in detail.
 
@@ -219,10 +219,10 @@ necessary adjustments behind the scenes. This was something we had to do
 for the PowerPC in any case, since the lengths of parameters can be
 different.
 
-`<nowiki>`\
+```mops
 `:class PEN super{ object }`\
 `...`\
-`</nowiki>`
+```
 
 This is the beginning of the definition of a major class for this
 program, the one that defines the characteristics of a pen that draws on
@@ -272,10 +272,10 @@ methods definitions of this class. If you were building this class from
 scratch, you would probably be inserting new instance variables in this
 list as you find need for them while defining methods.
 
-`<nowiki>`\
+```mops
 `:m GET:    ^base GetPenState ;m                \ Save state here`\
 `:m SET:    ^base SetPenState ;m                \ Restore from here`\
-`</nowiki>`
+```
 
 These two methods will be used frequently whenever an object of this
 class draws something on the screen. The first, GET:, copies the values
@@ -296,11 +296,11 @@ the data in Scripto1. Later, when you need to work with Scripto1, the
 SET: command reminds the Toolbox where Scripto1's position was the last
 time.
 
-`<nowiki>`\
+```mops
 `:m TURN:             ( deg -- )    +: direction ;m`\
 `&#133;`\
 `&#133;`\
-`</nowiki>`
+```
 
 The next twelve methods are responsible for manipulating the parameters
 that affect any object of this class. For example, TURN: increments the
@@ -380,7 +380,7 @@ pen state parameters (the ones the Toolbox starts up with) from the
 Toolbox into an object's first five ivars (get: self). Finally, the
 maxReps ivar for the object is set to 200.
 
-`<nowiki>`\
+```mops
 `:m SPIRAL: { \ dist degrees delta reps -- }`\
 `&#133;`
 
@@ -389,7 +389,7 @@ maxReps ivar for the object is set to 200.
 
 `:m LJ: { \ reps -- }   \ Draws an infinite Lissajous figure`\
 `&#133;`\
-`</nowiki>`
+```
 
 These three methods are largely Mops versions of math calculations for
 three types of graphics images: spirals, dragon curves, and Lissajous
@@ -411,13 +411,13 @@ delta and reps.
 
 moves the pen to the center of the current drawing window.
 
-`get: initLen -&gt; dist get: deltaLen -&gt; delta`
+`get: initLen -> dist get: deltaLen -> delta`
 
 Dist and delta are given values by first fetching values from two of the
 object's ivars, initLen and deltaLen, and then storing the values in
-their respective local variables (via -&gt; operations).
+their respective local variables (via -> operations).
 
-`get: deltaDeg -&gt; degrees 0 -&gt; reps`
+`get: deltaDeg -> degrees 0 -> reps`
 
 Here the third local variable, degrees, gets its value after the
 deltaDeg ivar value is fetched from the object's memory. Reps is
@@ -426,9 +426,9 @@ maxReps. Once these local variables have values stored in them, they can
 be used throughout that method for whatever calculations are desired, as
 shown in the following lines:
 
-`BEGIN  1 ++&gt; reps reps get: maxReps &lt;`\
+`BEGIN  1 ++> reps reps get: maxReps <`\
 `WHILE  dist move: self   degrees turn: self`\
-`       delta ++&gt; dist`\
+`       delta ++> dist`\
 `REPEAT ;m`
 
 Without local variables, you would have to arrange for a significant
@@ -441,28 +441,28 @@ This means, of course, that the program will have to load values into
 initLen, deltaLen, and deltaDeg before a SPIRAL: selector message can be
 sent. But that's why PUTRANGE: was defined earlier.
 
-`<nowiki>`\
+```mops
 `;class`\
-`</nowiki>`
+```
 
 ends the definition of class Pen.
 
-`<nowiki>`\
+```mops
 `\ Define a Smalltalk Polygon object as subclass of Pen`
 
 `:class POLY super{ pen }`\
 `&#133;`\
-`</nowiki>`
+```
 
 This next section is another class definition. This class, Poly, is a
 subclass of Pen, so it inherits the methods and ivars of Pen. Therefore,
 if you create an object of the class Poly, you can still issue messages
 with selectors like MOVE: and HOME:.
 
-`<nowiki>`\
+```mops
 `int    Sides           \ # of sides in the Polygon`\
 `int    Length          \ Length of each side  `\
-`</nowiki>`
+```
 
 Class Poly has two additional instance variables, both of them integers.
 When you create an object of this class, the extra ivars are added to
@@ -470,14 +470,14 @@ the list of ivars inherited from class Pen. One ivar is for the number
 of sides of a polygon object created from this class. The other is the
 length (in pixels) of each side (all sides are of equal length).
 
-`<nowiki>`\
+```mops
 `:m DRAW: { \ turnAngle -- }`\
-`       360 get: sides /   -&gt; turnAngle`\
+`       360 get: sides /   -> turnAngle`\
 `       get: sides 0`\
 `       DO      get: length move: self`\
 `               turnAngle turn: self`\
 `       LOOP ;m`\
-`</nowiki>`
+```
 
 This method is an extension of the MOVE: and TURN: methods defined in
 class Pen. First the angle of the turn is calculated by dividing 360 by
@@ -488,11 +488,11 @@ Length MOVE: Self). Then the direction is changed by the amount of
 turnAngle. This draw\...turn action is repeated until the index equals
 the limit of the loop.
 
-`<nowiki>`\
+```mops
 `:m SIZE:       \ ( len #sides -- )     Stores sides and goes to Home`\
 `       get: self put: sides put: length`\
 `       home: self   up: self ;m`\
-`</nowiki>`
+```
 
 SIZE: is redefined for this subclass. It takes two parameters: the
 length of each side and the number of sides for the polygon. GET: Self
@@ -505,46 +505,46 @@ positions an object to the home position (as defined by the HOME: method
 in class Pen) and orients it facing to the top of the screen (from the
 UP: method also in class Pen).
 
-`<nowiki>`\
+```mops
 `:m SPIN: { \ reps -- } \ Spins a series of polygons around a point`\
 `       home: self 10 get: initLen size: self`\
-`       0 -&gt; reps`\
-`       BEGIN   reps get: maxReps &lt;`\
+`       0 -> reps`\
+`       BEGIN   reps get: maxReps <`\
 `       WHILE   draw: self get: deltaDeg turn: self`\
-`               get: deltaLen +: length 1 ++&gt; reps`\
+`               get: deltaLen +: length 1 ++> reps`\
 `       REPEAT ;m`\
-`</nowiki>`
+```
 
 The SPIN: method is a routine that draws a sequence of polygons around a
 center point to make them look as if they are spinning. Notice that this
 method has one local variable, reps, which is used as a counter for the
 number of repetitions through the BEGIN\...WHILE\...REPEAT loop.
 
-`<nowiki>`\
+```mops
 ` :m CLASSINIT: \ Default Poly is 30-dot triangle`\
 `       30 3 size: self 100 put: maxReps ;m`\
-`</nowiki>`
+```
 
 Finally, the default settings for an object of class Poly are set by
 CLASSINIT:. Unless otherwise specified, a Poly object will be a polygon
 with 3 sides, each 30 pixels long. This method also sets the ivar,
 maxReps, to 100.
 
-`<nowiki>`\
+```mops
 `\ Create a pen named Bic`\
 `Pen    BIC`
 
 `\ Create a Polygon named Anna`\
 `Poly   ANNA`\
 `60 4 size: Anna`\
-`</nowiki>`
+```
 
 These are two examples of objects ceated from the classes just defined.
 The first, Bic, is an object of class Pen. Anna is an object of class
 Poly. In the last line, Anna is changed from its default 30-pixel
 triangle to a square (4 sides) of 60 pixels on a side.
 
-Experimenting With Turtle {#experimenting_with_turtle}
+Experimenting With Turtle
 -------------------------
 
 Now that you have an understanding of the inner workings of the Turtle
@@ -565,12 +565,11 @@ loaded; you may see occasional messages when words are redefined or if
 an object name is being reused (is not unique). This will happen if TRUE
 has been put in the global value WARNINGS?
 
-`TRUE -&gt; warnings?`
+`TRUE -> warnings?`
 
 Normally this value is set to FALSE, so warnings are not displayed.
 
-\<blockquote\> Note: A value 'WARNINGS?' was gone in PowerMops.
-\</blockquote\>
+> Note: A value 'WARNINGS?' was gone in PowerMops.
 
 Once the files are loaded, you might want to see what Lissajous figures
 are. Use the Bic pen object as your drawing device. If you look closely
@@ -584,11 +583,11 @@ homeLocation in the center of the screen (performed by method CENTER:),
 and c) draws the Lissajous figures (method LJ:). Here's one way to do
 it:
 
-`<nowiki>`\
-`: lj  cls  putrange: bic`\
-`            250 160 center: bic`\
-`            lj: bic   cr   ;`\
-`</nowiki>`
+```mops
+: lj  cls  putrange: bic
+            250 160 center: bic
+            lj: bic   cr   ;
+```
 
 Try typing in various three integer combinations (e.g., 9 11 301 lj )
 and watch the variety of curves that are drawn. Try 2 2 2 lj, and
@@ -601,18 +600,18 @@ cursor back on).
 Now, define a new word that turns the cursor off before doing the
 Lissajous figures, and turns it on when the drawing is completed:
 
-`<nowiki>`\
+```mops
 `: cleanlj -curs lj +curs ;`\
-`</nowiki>`
+```
 
-\<br\> \<blockquote\> A Tip: Since PowerMops uses MLTE (Multi-Lingual
-Text Engine), Graphics drawn on PowerMops console will be a bit dirty.
-When you try the experiments in this section on PowerMops, you can use,
-instead, a Test window as the screen. First, execute: \<pre\>Window ww
-Test: ww\</pre\> Then resize the test window up to about 512\*512. Then
-execute Graphic words, lj, creanlj etc. from QuickEdit (When you ENTER a
-command on a QuickEdit window, an Apple event is sent to PowerMops and
-the command will be executed in PowerMops). \</blockquote\>
+> A Tip: Since PowerMops uses MLTE (Multi-Lingual
+> Text Engine), Graphics drawn on PowerMops console will be a bit dirty.
+> When you try the experiments in this section on PowerMops, you can use,
+> instead, a Test window as the screen. First, execute: `Window ww
+> Test: ww` Then resize the test window up to about 512*512. Then
+> execute Graphic words, lj, creanlj etc. from QuickEdit (When you ENTER a
+> command on a QuickEdit window, an Apple event is sent to PowerMops and
+> the command will be executed in PowerMops).
 
 On some integer combinations, the number of repetitions may not be
 sufficient for the Lissajous figures to complete their drawing (or
@@ -657,5 +656,5 @@ messed things up. Therefore, define a Mops word that:
   [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- -----------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)
+
+

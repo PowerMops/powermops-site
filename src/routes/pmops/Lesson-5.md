@@ -1,4 +1,4 @@
-Mapping Class-Object Relationships {#mapping_class_object_relationships}
+Mapping Class-Object Relationships
 ==================================
 
 An object-oriented language like Mops builds programs around the same
@@ -25,7 +25,7 @@ debugging and enhancement. Also consult Chapters 3, 5, and 6 of the
 \[../Reference/index.html Reference\] for in-depth discussions of this
 and related topics.
 
-Defining a Class {#defining_a_class}
+Defining a Class
 ----------------
 
 As you may have noticed in the accountant class metaphor, each class was
@@ -61,15 +61,15 @@ rectangle can be drawn.
 
 The class definition up to this point looks like this:
 
-`<nowiki>`\
+```mops
 `:class  RECT  super{ object }`\
 `       point     TopLeft`\
 `       point     BotRight`\
-`</nowiki>`
+```
 
 Notice several things. First of all, the beginning of a class definition
-is `\<nowiki\>:class\</nowiki\>` (pronounced \"colon
-class\") with no space between the colon and the word \"class\". There
+is `\<nowiki\>:class\</nowiki\>` (pronounced "colon
+class") with no space between the colon and the word "class". There
 is at least one space or a tab between
 `\<nowiki\>:class\</nowiki\>` and the name of the class.
 We have put `RECT` in capitals to make it stand out,
@@ -80,7 +80,7 @@ style of formatting you prefer.
 On the same line as the name of the class is a reference to the
 superclass from which our rectangle class is derived. This reference
 takes the form of the word `super{` (no space between
-\"super\" and the left brace), then the name of the superclass, then a
+"super" and the left brace), then the name of the superclass, then a
 `}`. These three items are separated by spaces or tabs,
 as for all Mops words. We will see later that it is possible for a class
 to have more than one superclass, known as multiple inheritance. We
@@ -92,12 +92,12 @@ Although in this example the superclass name is `Object`,
 this should not be confused with the general use of the word object in
 the Mops system, where it refers to all objects generally. In this one
 special case `Object` is a class. This may seem a little
-confusing, but it is actually because we do use the word \"object\" in a
+confusing, but it is actually because we do use the word "object" in a
 general way, that we have named this special class
 `Object`. This is because all classes in Mops can trace
 their inheritance to class `Object`. Thus, class
 `Object` defines the behavior appropriate to *all* Mops
-objects. This is why the name \"`Object`\" is appropriate
+objects. This is why the name "`Object`" is appropriate
 for this class.
 
 So by its inheritance, class `Rect` has at its disposal
@@ -105,7 +105,7 @@ all the methods defined in class `Object`. If you are
 interested in what methods are defined for class
 `Object`, you could check the source code listing
 (located in 'PPC source' folder as the source file
-\"`qpClass`\").
+"`qpClass`").
 
 The instance variables tell Mops to reserve memory space in the data
 area of any object created from this class. The amount of space to be
@@ -119,36 +119,32 @@ variables (ivars) are named `TopLeft` and
 previously defined. Fortunately, class `Point` is one of
 [ Mops' many predefined classes](Classes).
 
-\<blockquote\>
-
-Note: For procedural language buffs, a key to understanding the object
-orientation of Mops is that as you follow the threads through the
-dictionary in the next few steps, you are not watching straight
-execution steps. Rather, you are building a framework that will reside
-in memory as a kind of potential energy that is released only when a
-message is sent sometime later in the program.
-
-`</blockquote>`
+> Note: For procedural language buffs, a key to understanding the object
+> orientation of Mops is that as you follow the threads through the
+> dictionary in the next few steps, you are not watching straight
+> execution steps. Rather, you are building a framework that will reside
+> in memory as a kind of potential energy that is released only when a
+> message is sent sometime later in the program.
 
 To understand what the rules and procedures are for the
 `Point` objects (`TopLeft` and
 `BotRight`) created inside class `Rect`,
 you can look up the Mops source code for the `Point`
-class (located in the \"`zQD`\" source file in the
+class (located in the "`zQD`" source file in the
 'Toolbox classes' folder). The class definition should look something
 like this:
 
-`<nowiki>`\
+```mops
 `:class  POINT  super{ object }`\
 `record`\
 `{      int     Y       \ Vertical coordinate`\
 `       int     X       \ Horizontal  coordinate`\
 `}`
 
-`&hellip;`
+`...`
 
 `;class`\
-`</nowiki>`
+```
 
 We'll explain all of this shortly, but the main thing to notice first
 of all is that this class, itself, uses two more ivars,
@@ -165,7 +161,7 @@ Notice too, that we've started adding plain English remarks about the
 code as a way of *documenting* the program. There are three ways of
 specifying comments in Mops:
 
-`<nowiki>`\
+```mops
 `( this kind of comment continues to a )`
 
 `\ This is another comment, which extends to the end of the line`
@@ -174,10 +170,10 @@ specifying comments in Mops:
 `can go over several lines,`\
 `    (* and can be nested *)`\
 `*)`\
-`</nowiki>`
+```
 
-Note that `(`, `\\`, `(\*`
-and `\<nowiki\>\*)\</nowiki\>` are Mops words, and so
+Note that `(`, `\\`, `(*`
+and `\<nowiki\>*)\</nowiki\>` are Mops words, and so
 must be followed by a white space character. Thus if you had
 
 `(this isn't a comment)`
@@ -192,19 +188,19 @@ more, but this time for the class definition of class
 `Int`, because the data of class `Point`
 consists of ivars `Y` and `X` that have
 the characteristics of class `Int`. Class
-`Int` is defined in the file \"`pStruct`\"
+`Int` is defined in the file "`pStruct`"
 in 'PPC source' folder. The search reveals:
 
-`<nowiki>`\
+```mops
 `:class INT     super{ object }`
 
 `       2 bytes data`
 
 `:m PUT:                inline{ ^base w!}    ;m`\
-`&hellip;`
+`...`
 
 `;class`\
-`</nowiki>`
+```
 
 Class `Int` is another one of [ Mops' predefined
 classes](Classes). It states, first of all, that its
@@ -219,9 +215,9 @@ this method definition stores an integer in a special area of memory.
 Going back to the definition of class `Point`, the ninth
 method:
 
-`<nowiki>`\
+```mops
 `:m PUT:                put: Y  put: X   ;m`\
-`</nowiki>`
+```
 
 is a single instruction for Mops to store *both* the `X`
 and `Y` coordinates in memory. Therefore, every time one
@@ -235,7 +231,7 @@ stack.
 
 Next in the class `Rect` definition come two methods:
 
-`<nowiki>`\
+```mops
 `:class  RECT  super{ object }`\
 `       point     TopLeft`\
 `       point     BotRight`
@@ -245,7 +241,7 @@ Next in the class `Rect` definition come two methods:
 `:m DRAW:       ^base  FrameRect  ;m`
 
 `;class`\
-`</nowiki>`
+```
 
 As detailed in the stack notation, the first method,
 `PUT:`, requires four integers on the stack (here
@@ -292,10 +288,10 @@ including the class of the object. However, the Carbon framework
 doesn't know anything about Mops objects, and just expects 2 bytes each
 for `TopLeft` and `BotRight`, with no
 extra bytes present. Accordingly we have to have a way of omitting this
-extra information, and we do this with the '`record{ &hellip;
+extra information, and we do this with the '`record{ ...
 }`' syntax, as follows:
 
-`<nowiki>`\
+```mops
 `:class  RECT  super{ object }`\
 `record`\
 `{      point     TopLeft`\
@@ -307,15 +303,10 @@ extra information, and we do this with the '`record{ &hellip;
 `:m DRAW:       ^base  FrameRect  ;m`
 
 `;class`\
-`</nowiki>`
+```
 
-\<blockquote\>
-
-Note: You can either use either '`record{ &hellip; }`'
-or '`record \<var\>&lt;optional name&gt;\</var\> { &hellip;
-}`'.
-
-`</blockquote>`
+> Note: You can either use either '`record{ ... }`'
+> or '`record <var><optional name></var> { ... }`'.
 
 Any ivars declared as part of a record won't carry any extra
 information. This will limit some of the things you can do with these
@@ -324,8 +315,7 @@ extra information available. But as we'll see, this isn't a very
 serious restriction.
 
 Finally, be sure to end the class definition using
-`\<nowiki\>;class\</nowiki\>` (pronounced \"semicolon
-class\").
+`;class` (pronounced "semicolon class").
 
 One last thing: you can format your class definitions (and all of your
 code for that matter) however you like, as long as at least one space or
@@ -337,12 +327,3 @@ your code to understand it (and you yourself for that matter, when in a
 few weeks time when it's no longer fresh in your mind). But in the end,
 the choice is up to you.
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- ---------------------------------
-  [Lesson 4](Lesson_4)             [Tutorial](Tutorial)   [Lesson 6](Lesson_6)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- ---------------------------------
-
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)

@@ -17,22 +17,22 @@ After you press ENTER, the stack display should now look like this:
 
 The space (or delimiter) you typed between the three digits told Mops that you intended those three digits to be three different numbers. (You are not limited to one space. You may use two or more spaces, as well as the TAB key.) If you had typed 741 instead, then the single number 741 would have been put on the stack. It is important that you understand how numbers (such as these) are entered and stored on the stack.
 
-The best way to demonstrate how a stack works is to use the oft-cited analogy of the spring-loaded pile of dishes you encounter in a cafeteria line. If you place one plate on the spring, it will obviously be the first one that will come off the top. But if you place a second plate on top of the first plate, the weight of the second plate pushes the first one down one step, and the second plate is the one that will be picked up off the top by the next customer in line. In other words, the last one put on the stack is the first one to be taken off the stack. (LIFO, in computer jargon, meaning &quot;Last In, First Out&quot;.)
+The best way to demonstrate how a stack works is to use the oft-cited analogy of the spring-loaded pile of dishes you encounter in a cafeteria line. If you place one plate on the spring, it will obviously be the first one that will come off the top. But if you place a second plate on top of the first plate, the weight of the second plate pushes the first one down one step, and the second plate is the one that will be picked up off the top by the next customer in line. In other words, the last one put on the stack is the first one to be taken off the stack. (LIFO, in computer jargon, meaning "Last In, First Out".)
 
 [[Image:Stack.png]]
 
 You can see that this principle applies to the Mops stack, since the number 7, which you entered first, is at the bottom of the stack, while the number 1, which is the most recent entry, is at the top.
 
-How can you remove numbers from the stack? One way is to use the Mops word that does the reverse of what you did when you entered a number&amp;#148;it takes a number off the stack, and &quot;types&quot; (or prints) it at position of the flashing cursor in the lower part of the screen. That word is a simple `.` (a period, pronounced &quot;dot&quot;). Try typing this:
+How can you remove numbers from the stack? One way is to use the Mops word that does the reverse of what you did when you entered a number&#148;it takes a number off the stack, and "types" (or prints) it at position of the flashing cursor in the lower part of the screen. That word is a simple `.` (a period, pronounced "dot"). Try typing this:
 
 ```mops
 .<ENTER>
  1
 ```
 
-What happened here was that the dot (type to screen) command pulled the 1 off the top of the stack and &quot;typed&quot; it. The stack display will show that two numbers (4 and 7) are still on the stack.
+What happened here was that the dot (type to screen) command pulled the 1 off the top of the stack and "typed" it. The stack display will show that two numbers (4 and 7) are still on the stack.
 
-In other words, whenever you perform a dot operation on a number in the stack, the number is removed from the stack and &quot;typed&quot;&amp;#148;that is, displayed in the current window. If the Mops window is the current window (as it is in this example), any number &quot;typed&quot; will appear at the cursor position, just as if you had typed it at the keyboard yourself.
+In other words, whenever you perform a dot operation on a number in the stack, the number is removed from the stack and "typed"&#148;that is, displayed in the current window. If the Mops window is the current window (as it is in this example), any number "typed" will appear at the cursor position, just as if you had typed it at the keyboard yourself.
 
 To bring the Mops prompt to the left margin, where it will be less confusing, simply press RETURN (''not'' ENTER!) once. (Carriage returns are not automatically printed, unless you, as the programmer, tell Mops to print one. We'll show how to do that very shortly.)
 
@@ -45,7 +45,7 @@ Now type two periods, with a space in between, and press ENTER.
 
 Mops has now printed the two remaining numbers in the order in which they came off the stack. Remember that the 7 was at the bottom of the stack; it was therefore the last number off the stack, and was displayed on the screen as the final item before the Mops prompt (the flashing cursor) reappeared. As you can see, multiple dot commands leave a trail of numbers coming off the top of the stack, printing them from left to right across the screen. And notice, too, that nothing remains in the stack when the last dot command was executed.
 
-Mops also has a word, `.S` (pronounced &quot;dot-ess&quot;), that displays a list of all numbers on the stack without removing them. This can be useful during the running of a program, since you may not want to stop the program to see the stack displayed at the top of the window. Also, there may be more items on the stack than can fit in the stack display. The stack can hold far more items than we have room to display in the upper part of the Mops window, but if you use `.S`, ''all'' the stack items will be typed in the lower part of the window.
+Mops also has a word, `.S` (pronounced "dot-ess"), that displays a list of all numbers on the stack without removing them. This can be useful during the running of a program, since you may not want to stop the program to see the stack displayed at the top of the window. Also, there may be more items on the stack than can fit in the stack display. The stack can hold far more items than we have room to display in the upper part of the Mops window, but if you use `.S`, ''all'' the stack items will be typed in the lower part of the window.
 
 To see how it works, place the same three numbers that we used before on the stack (don't forget the spaces):
 
@@ -65,7 +65,7 @@ Stack: depth 3
 
 The numbers to the left of the dollar sign ($) are the decimal values, while the numbers to the right are the hexadecimal values. The dollar sign in this list is a hex indicator. In this case, it happens that the stack numbers in both bases are the same. Note also that the Mops prompt at the end shows that the three numbers are still on the stack. The regular `.` command displays and removes one number at a time, while `.S` displays all numbers on the stack without removing any of them.
 
-Experiment with the operation of the stack by putting numbers on the stack, viewing them with the `.S` operation, and taking them off by printing them to the screen, either one-by-one or in a series. As an added shortcut, you can use the `CR` command, which is short for &quot;Carriage Return&quot;, after a dot command. If you type a `CR` as a command after one or more `.` commands (remember to type a space between the last period and the `CR`), the Mops prompt returns to the left margin of the next line.
+Experiment with the operation of the stack by putting numbers on the stack, viewing them with the `.S` operation, and taking them off by printing them to the screen, either one-by-one or in a series. As an added shortcut, you can use the `CR` command, which is short for "Carriage Return", after a dot command. If you type a `CR` as a command after one or more `.` commands (remember to type a space between the last period and the `CR`), the Mops prompt returns to the left margin of the next line.
 
 For example:
 

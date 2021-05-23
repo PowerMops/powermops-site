@@ -1,7 +1,7 @@
-Mops and QuickEdit {#mops_and_quickedit}
+Mops and QuickEdit
 ==================
 
-The Mops Menu Bar {#the_mops_menu_bar}
+The Mops Menu Bar
 -----------------
 
 Mops has a simple set of menus, yet the features built into them make
@@ -16,7 +16,7 @@ debugging. Also see Part II, Chapter 2 for more details on the operation
 of an Editor.
 
 +----------------------------------------------+
-| ### The Apple Menu {#the_apple_menu}         |
+| ### The Apple Menu         |
 +----------------------------------------------+
 | About Mops&\#133;                            |
 +----------------------------------------------+
@@ -24,7 +24,7 @@ of an Editor.
 +----------------------------------------------+
 | Quit PowerMops                               |
 +----------------------------------------------+
-| ### The File Menu {#the_file_menu}           |
+| ### The File Menu           |
 +----------------------------------------------+
 | Load&\#133;                                  |
 +----------------------------------------------+
@@ -34,11 +34,11 @@ of an Editor.
 +----------------------------------------------+
 | Quit                                         |
 +----------------------------------------------+
-| ### The Edit Menu {#the_edit_menu}           |
+| ### The Edit Menu           |
 +----------------------------------------------+
 | Cut, Copy, Paste, Clear and Select All       |
 +----------------------------------------------+
-| ### The List Menu {#the_list_menu}           |
+| ### The List Menu           |
 +----------------------------------------------+
 | Words                                        |
 +----------------------------------------------+
@@ -46,7 +46,7 @@ of an Editor.
 +----------------------------------------------+
 | Classes&\#133;                               |
 +----------------------------------------------+
-| ### The Show Menu {#the_show_menu}           |
+| ### The Show Menu           |
 +----------------------------------------------+
 | HFS Paths                                    |
 +----------------------------------------------+
@@ -60,7 +60,7 @@ of an Editor.
 +----------------------------------------------+
 | &nbsp;                                       |
 +----------------------------------------------+
-| ### The Utilities Menu {#the_utilities_menu} |
+| ### The Utilities Menu |
 +----------------------------------------------+
 | Echo During Load                             |
 +----------------------------------------------+
@@ -73,7 +73,7 @@ of an Editor.
 | Purge Modules                                |
 +----------------------------------------------+
 
-Communication with QuickEdit {#communication_with_quickedit}
+Communication with QuickEdit
 ----------------------------
 
 Mops and QuickEdit send [Apple
@@ -102,7 +102,7 @@ In QE, there is now a 'Mops' menu with a number of commands:
 4.  Open Source (command- =). You highlight a word, 'someWord' say,
     then choose this command, and QE asks Mops to execute 'OpenSource
     someWord' as described above.
-5.  Clear Window (command- &ndash;). Clears the Mops window. Also
+5.  Clear Window (command- --). Clears the Mops window. Also
     available in Mops as command-2.
 6.  Glossary (command- Y). Opens QE's glossary of Mops words and
     classes. The word under or to the left of the cursor (if any) is
@@ -118,5 +118,5 @@ In QE, there is now a 'Mops' menu with a number of commands:
   [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- ---------------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Reference](Category:Reference)
+
+

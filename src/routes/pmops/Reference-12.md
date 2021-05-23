@@ -1,8 +1,6 @@
-Miscellaneous Topics {#miscellaneous_topics}
-====================
+# Miscellaneous Topics
 
-ANSI Standard {#ansi_standard}
--------------
+## ANSI Standard
 
 Mops is fairly close to the ANSI Forth standard. If you load the file
 ANSI, the remaining differences are dealt with, and you should, we hope,
@@ -17,8 +15,7 @@ words. We have therefore provided a value SLCTRS? which if set to false
 will disable selectors. The file ANSI sets this flag false. Set it back
 to true if you need to.
 
-Local Sections and Temporary Objects {#local_sections_and_temporary_objects}
-------------------------------------
+## Local Sections and Temporary Objects
 
 Local sections are an extension to the named parameter/local variable
 scheme. Local variables are so useful, that there could be a tendency to
@@ -61,7 +58,7 @@ objects in all respects, except that they only exist within one
 definition (or local section), and have no storage allocated otherwise.
 The syntax is as in this example:
 
-`<nowiki>`\
+```mops
 `: SomeWord`\
 `temp{  int     anInt`\
 `       var     aVar`\
@@ -71,7 +68,7 @@ The syntax is as in this example:
 `       " hello" put: aString`\
 `       ...`\
 `;`\
-`</nowiki>`
+```
 
 You can also use the syntax
 
@@ -85,7 +82,7 @@ declaring, and how I want to format the declaration.
 As you can see, within the definition you can use the temporary objects
 in exactly the same way as normal objects. They are actually allocated
 in a frame on the return stack. However you can use
-`&gt;R` etc freely in the definition, since I keep a
+`>R` etc freely in the definition, since I keep a
 separate frame pointer. Of course, the temporary objects get a
 `classInit:` message automatically when the definition is
 entered and their space is allocated. They also get a
@@ -107,8 +104,7 @@ The local variables here are entirely optional. A local section can have
 either local variables, or temporary objects, or both. (Not much point
 in having neither!!)
 
-Case Statements {#case_statements}
----------------
+## Case Statements
 
 We provide no less than three different flavors of case statement in
 Mops; each of these is most suitable in a different situation.
@@ -162,11 +158,11 @@ The second type of `CASE` we have in Mops is a keyed
 case, in which a test value is compared to succesive values in a linear
 list. Here's the equivalent of the above example:
 
-`CASE[ 10 ]=&gt;                ." ten"`\
-`    [ 12 ]=&gt;                ." twelve"`\
-`    [ 13 ], [ 16 ]=&gt;        ." thirteen or sixteen"`\
-`    [ 20 30 RANGE]=&gt;        ." twenty to thirty inclusive"`\
-`    DEFAULT=&gt;               ." something else, namely " .`\
+`CASE[ 10 ]=>                ." ten"`\
+`    [ 12 ]=>                ." twelve"`\
+`    [ 13 ], [ 16 ]=>        ." thirteen or sixteen"`\
+`    [ 20 30 RANGE]=>        ." twenty to thirty inclusive"`\
+`    DEFAULT=>               ." something else, namely " .`\
 `]CASE`
 
 This format will compile to more compact code than the former example,
@@ -178,7 +174,7 @@ more likely, the latter `CASE\[` syntax is better to use,
 since the test values are obtained at compile time and compiled once and
 for all into the code. As you may gather from the syntax, compilation is
 turned off and on when obtaining the test values, so that for example
-you could put `CASE\[ value1 value2 + \]=&gt;` etc. The
+you could put `CASE\[ value1 value2 + \]=>` etc. The
 arithmetic will take place at compile time.
 
 You can also see that there's a straightforward way of handling
@@ -189,10 +185,10 @@ The third type of case we have is an indexed case. In this kind of case,
 a direct table lookup is done to determine the outcome. Here's our
 example again, with one change:
 
-`SELECT[ 10 ]=&gt;              ." ten"`\
-`       [ 12 ]=&gt;             ." twelve"`\
-`       [ 13 ], [ 16 ]=&gt;     ." thirteen or sixteen"`\
-`       DEFAULT=&gt;            ." something else, namely " .`\
+`SELECT[ 10 ]=>              ." ten"`\
+`       [ 12 ]=>             ." twelve"`\
+`       [ 13 ], [ 16 ]=>     ." thirteen or sixteen"`\
+`       DEFAULT=>            ." something else, namely " .`\
 `]SELECT`
 
 Notice that the syntax is almost the same as for the keyed case, but
@@ -212,8 +208,7 @@ This would be fine, but in many situations the table would be enormous.
 Mops will assume that an attempt to build a table of more than 500
 entries is an error, and give a message.
 
-Recursion and Forward Referencing {#recursion_and_forward_referencing}
----------------------------------
+## Recursion and Forward Referencing
 
 You may occasionally wish to call a word from within its own definition
 (this is called **recursion**). At first glance you may think that the
@@ -257,12 +252,12 @@ An important example of forward referencing is the word
 classes and modules to check the return code from file and other I/O
 operations:
 
-`<nowiki>`\
-`forward        I/O_ERR         \ ( err# -- )  Call when there's an I/O error.`
+```mops
+forward        I/O_ERR         \ ( err# -- )  Call when there's an I/O error.
 
-`: OK?          \ ( rc -- )  A useful word to use after an I/O op.`\
-`       ?dup  0EXIT  I/O_err  ;`\
-`</nowiki>`
+: OK?          \ ( rc -- )  A useful word to use after an I/O op.
+       ?dup  0EXIT  I/O_err  ;
+```
 
 The word `I/O\_ERR` is not actually defined in the basic
 Mops dic.! You won't notice this unless there is an error code
@@ -273,8 +268,7 @@ reference" error. You must therefore define
 intelligent way, and it must be defined as a `:f\....;f`
 word.
 
-Using Resources in Mops {#using_resources_in_mops}
------------------------
+## Using Resources in Mops
 
 A resource on the Macintosh is essentially a structured database into
 which you can store initialization information for Toolbox objects and
@@ -287,7 +281,7 @@ that they shift the burden of storage for initialization values from
 your resident code to the dynamic heap, so your application takes up
 less memory space.
 
-### Toolbox Resources {#toolbox_resources}
+### Toolbox Resources
 
 There are several ways in which you can use resources with Mops. For
 example, Toolbox objects such as Windows generally have two methods you
@@ -311,7 +305,7 @@ predefined template type. For these objects, you will need to use an
 existing type such as STR, or define your own types using ResEdit (see
 Putting Together a Mops Application).
 
-### Defining and Using Resources {#defining_and_using_resources}
+### Defining and Using Resources
 
 Mops provides an easy way to define a resource item from within your
 application. For instance:
@@ -344,19 +338,17 @@ automatically when your application terminates. Mops uses the file
 mops.rsrc for its resources during normal operation, and you can add
 your own resources to this file with ResEdit.
 
-\<blockquote\> **Note:** At present, `openResFile` is not
+> **Note:** At present, `openResFile` is not
 defined in PowerMops. You need to use Carbon function like
-`HOpenResFile`. For example : \<pre\> 0 0 \"
-myFile.rsrc\" str255 0 HOpenResFile ( \-- fileRefNum ) \</pre\>
-\</blockquote\>
+`HOpenResFile`. For example : 
+`0 0 " myFile.rsrc" str255 0 HOpenResFile ( \-- fileRefNum ) `
 
 The source file QD1 includes support for cursors, icons and QuickDraw
 pictures via the resource interface. This makes it very easy for you to
 dress up your application with fancy graphics that you can create with a
 graphics application, and then add them to a resource file.
 
-Clearing Nested Stacks - Become {#clearing_nested_stacks___become}
--------------------------------
+## Clearing Nested Stacks - Become
 
 In a non-hierarchical, non-modal environment such as the Macintosh, the
 user is generally free to select another menu choice or open a different
@@ -388,8 +380,7 @@ callable from the other. At the point that `BECOME` is
 executed, you can rest assured that the stacks are empty and the
 application is essentially at ground zero.
 
-System Vectors {#system_vectors}
---------------
+## System Vectors
 
 Mops uses a powerful technique called **vectoring** to provide maximum
 flexibility for the programmer. Vectoring is the name given to the
@@ -403,14 +394,14 @@ special word you define --- a word that reads a single character
 from disk --- all Mops words that accept keyboard input will then
 take their input from disk, instead of from the keyboard. For example:
 
-`<nowiki>`\
-`: diskKey Here 1 read: ffcb drop       \ get 1 character from disk`\
-`       here c@ ;                       \ place it on the stack`
+```mops
+: diskKey Here 1 read: ffcb drop       \ get 1 character from disk
+       here c@ ;                       \ place it on the stack
 
-`" sam" name: ffcb`\
-`open: ffcb .`\
-`' diskKey -&gt; keyVec                 \ set KEYVEC to get chars from disk file Sam`\
-`</nowiki>`
+" sam" name: ffcb
+open: ffcb .
+' diskKey -> keyVec                 \ set KEYVEC to get chars from disk file Sam
+```
 
 Of course, in a real example you would have to restore the proper
 `KEYVEC` value when EOF (end of file condition) was
@@ -450,8 +441,7 @@ discussed separately later.
   HEADER     ( \-- )                        lays down a dictionary header
   ---------- ------------------------------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Defining and Compiling Words {#defining_and_compiling_words}
-----------------------------
+## Defining and Compiling Words
 
 Much of the Mops language is, itself, written in Mops. This seemingly
 unlikely loop is possible because Mops is an **extensible** language
@@ -460,11 +450,11 @@ extend the basic behavior of the language itself. In a sense, every word
 that you write extends Mops, because it adds to the same dictionary used
 by the Mops system. There are three layers of extensibility in Mops:
 
-1.  **Vocabulary extensions**\<br /\> Whenever you write a new word,
+1. **Vocabulary extensions** Whenever you write a new word,
     instantiate a new object, create a new Value, and so on, you are
     extending the vocabulary of words that succeeding words can use.
     This obviously adds more power and function to the language.
-2.  **Class extensions**\<br /\> When you define a new class of objects,
+2. **Class extensions** When you define a new class of objects,
     you are extending Mops in a somewhat more profound way than in a
     vocabulary extension. Creating a new class creates a new template
     for building other objects. These templates are known as **defining
@@ -474,7 +464,7 @@ by the Mops system. There are three layers of extensibility in Mops:
     applications. Eventually, you'll develop a large library of
     Classes, which should make your future application development much
     easier.
-3.  **Compiler extensions**\<br /\> The deepest layer of extensibility
+3. **Compiler extensions** The deepest layer of extensibility
     is concerned with constructing the tools that create defining words.
     Words such as `:CLASS` or `:M` are
     specialized compiling words that can truly extend the language
@@ -494,8 +484,7 @@ literature around, although you won't usually see it in mainstream
 computer bookstores. It can, however, be obtained through the [Forth
 Interest Group](http://forth.org)
 
-Error Handling {#error_handling}
---------------
+## Error Handling
 
 Mops' error handling is based upon the ANSI Forth Standard, which uses
 the two words `CATCH` and `THROW`.
@@ -546,18 +535,18 @@ tells the user what is happening and a suitable action to take (most
 likely in an Alert or Dialog box).
 
 There are two error routines that indirectly call `ABORT`
---- `ABORT\"` and `?ERROR`.
-`ABORT\"` must be followed by a space, and then a string
+--- `ABORT"` and `?ERROR`.
+`ABORT"` must be followed by a space, and then a string
 terminated by a quote. Its action at runtime is as follows: if the top
 of the data stack is true (nonzero), it will print the string between
-the quotes and then execute abort. If false, `ABORT\"`
+the quotes and then execute abort. If false, `ABORT"`
 returns without doing anything. For instance, the phrase
 
 `read: theFile abort" File read failed"`
 
 would check the return code from a disk read operation, and abort if it
-indicated an error. You can force an `ABORT\"` to occur
-with the statement `TRUE ABORT\" \...\"`.
+indicated an error. You can force an `ABORT"` to occur
+with the statement `TRUE ABORT" \..."`.
 
 Embedding a lot of error strings in your code can take up unnecessary
 memory space, and it also makes the messages difficult to change.
@@ -565,7 +554,7 @@ memory space, and it also makes the messages difficult to change.
 error strings in a resource file, and takes the resource ID number of
 the string to print, assumed to be a resource of type 'STR ' (note the
 space at the end). It works conditionally in the same way as
-`ABORT\"`. For instance,
+`ABORT"`. For instance,
 
 `find not ?error -13`
 
@@ -582,14 +571,14 @@ messages and their numbers, type
 
 If you want to add a new message, do it this way:
 
-`&lt;msg number&gt; " the text of your message" addMsg`
+`<msg number> " the text of your message" addMsg`
 
 If you want to change an existing message, you can't just use
 `AddMsg` as above or you'll get an error --- this is
 just as a safety check. You have to remove the existing message first,
 thus:
 
-`&lt;msg number&gt; removeMsg`
+`<msg number> removeMsg`
 
 If adding your own messages, please use numbers above
 `200`, so as not to clash with future error messages we
@@ -603,8 +592,7 @@ messages. Whenever one of the error words executes, it checks that
 Mops.rsrc is open. Of course, you must have Mops.rsrc within the folder
 Mops &fnof;, or Mops won't be able to find it.
 
-Assertions
-----------
+## Assertions
 
 Assertions are provided by a number of programming languages, and are a
 very useful way of catching bugs. Assertions allow you, during
@@ -613,12 +601,12 @@ at key places.
 
 Mops assertions must come within definitions. You use them like this:
 
-`ASSERT{ &lt;something that evaluates to a flag&gt;  }`
+`ASSERT{ <something that evaluates to a flag>  }`
 
 If `ASSERTIONS?` is true, this will give error
 `216` ('assertion failed') if the evaluated
 flag is false. If `ASSERTIONS?` is false, nothing will
-happen &ndash; the code between `ASSERT{` and
+happen -- the code between `ASSERT{` and
 `}` is skipped.
 
 `ASSERTIONS?` can be defined and redefined however and
@@ -635,36 +623,35 @@ constant with value `false`, no code will even be
 compiled for the assertion test. You can use this for code that you know
 works, so that there's no performance penalty whatever.
 
-Inline Definitions {#inline_definitions}
-------------------
+## Inline Definitions
 
 You may specify that a definition or method is to be compiled inline
 whenever it is used. This allows faster execution. The syntax is:
 
-`<nowiki>`\
-`: XXX inline{ &lt;some code&gt;} ;`\
-`</nowiki>`
+```mops
+: XXX inline{ <some code>} ;
+```
 
-The code `&lt;some code&gt;` is stored as a string, and
+The code `<some code>` is stored as a string, and
 whenever `xxx` is compiled into a definition, the string
 is compiled using `EVALUATE`. We actually store the
-source text for `&lt;some code&gt;` as a string, and
+source text for `<some code>` as a string, and
 `EVALUATE` it. This can give very good compiled code due
 to our optimization, which is why we took this approach. This syntax is
 really equivalent to
 
-`<nowiki>`\
-`: XXX " &lt;some code&gt;" evaluate ; immediate`\
-`</nowiki>`
+```mops
+: XXX " <some code>" evaluate ; immediate
+```
 
 but the syntax is probably clearer. It also has advantages when used in
 methods. The syntax for an inline method is as you would expect:
 
-`<nowiki>`\
+```mops
 `:m YYY:`\
-`       inline{ &lt;some code&gt;}`\
+`       inline{ <some code>}`\
 `;m`\
-`</nowiki>`
+```
 
 We assume that inline code chunks will be fairly short, and are to be
 optimized for speed. Therefore, when compiling the inline code (on an
@@ -676,13 +663,3 @@ the method. Thus making a method inline saves significant time at the
 cost of a little space. The file Struct has many methods which use
 inline code, so if you look there you will see plenty of examples of how
 to do it.
-
-------------------------------------------------------------------------
-
-  ------------------------------------------- ----------------------------------- -----------------------------------------
-  [Reference 11](Reference_11)     [Reference](Reference)   [Reference 13](Reference_13)
-  [Documentation](Documentation)                                       
-  ------------------------------------------- ----------------------------------- -----------------------------------------
-
-[Category:Manual](Category:Manual)
-[Category:Reference](Category:Reference)

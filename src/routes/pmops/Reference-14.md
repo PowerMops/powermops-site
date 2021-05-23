@@ -1,4 +1,4 @@
-Technical Section {#technical_section}
+Technical Section
 =================
 
 This chapter is intended for hackers, or people who want to understand
@@ -8,7 +8,7 @@ section, but if you run into some obscure problem which defies analysis,
 or if you're writing a lot of assembly code definitions, you might find
 something useful here.
 
-Mops Runtime Environment - 68k {#mops_runtime_environment___68k}
+Mops Runtime Environment - 68k
 ------------------------------
 
 In compiling code to reference the dictionary, we have the problem that
@@ -61,7 +61,7 @@ So to summarize the register usage:
 `A6     data stack pointer`\
 `A7     return stack pointer`
 
-Runtime Environment - PowerPC {#runtime_environment___powerpc}
+Runtime Environment - PowerPC
 -----------------------------
 
 The PowerPC has many more registers than the 68k --- 32 integer
@@ -160,7 +160,7 @@ So, here is the register usage:
 `r30    ditto`\
 `r31    ditto`
 
-Dictionary Header Format {#dictionary_header_format}
+Dictionary Header Format
 ------------------------
 
 We use an 8-way threaded structure, for speed in lookup. To decide which
@@ -183,7 +183,7 @@ On the PowerPC, for colon definitions, we use two extra flag bytes after
 the handler code. Then comes the first instruction of the definition,
 which must be 4-byte aligned.
 
-Compilation and Optimization {#compilation_and_optimization}
+Compilation and Optimization
 ----------------------------
 
 This section was originally written for 68k Mops, but many of the same
@@ -266,11 +266,11 @@ improved much more than this.
 Another optimization involves conditionals. If, for example, we have the
 code
 
-`aConst IF &lt;some code&gt; ELSE &lt;some more code&gt; THEN`
+`aConst IF <some code> ELSE <some more code> THEN`
 
 where the conditional is testing a constant, the condition will be
-evaluated at compile time, and either `&lt;some code&gt;`
-or `&lt;some more code&gt;` will be compiled, but not
+evaluated at compile time, and either `<some code>`
+or `<some more code>` will be compiled, but not
 both. We therefore have a conditional compilation capability, without
 introducing any new syntax at all.
 
@@ -279,7 +279,7 @@ reasonably efficient, so that compilation speed does not appear to have
 been degraded significantly at all. It is certainly much faster than
 Neon.
 
-Object Format {#object_format}
+Object Format
 -------------
 
 Here is our format for normal objects (remember that ivars declared
@@ -333,7 +333,7 @@ negative number as the "number of elements", and always
 fail. I don't normally resort to clever tricks like this, but
 efficiency considerations were paramount here.
 
-68k CODE resources {#k_code_resources}
+68k CODE resources
 ------------------
 
 In the original Neon implementation, the CODE 0 resource was the jump
@@ -378,7 +378,7 @@ the size of the jump table. This limit has now been removed by Apple
 with its new "32-bit everything" addressing scheme, but in
 Mops we never had the problem anyway.
 
-Relocatable Address Format {#relocatable_address_format}
+Relocatable Address Format
 --------------------------
 
 This section is included for information only, and to help debugging. A
@@ -440,10 +440,10 @@ a higher rate of error detection. If an erroneous 4-byte value is used
 as a relocatable address, its probablilty of having a high byte of zero
 would be greater than for most other values, I would expect.
 
-Improving the Performance of Late Binding {#improving_the_performance_of_late_binding}
+Improving the Performance of Late Binding
 -----------------------------------------
 
-### BIND\_WITH (68k Mops only) {#bind_with_68k_mops_only}
+### BIND\_WITH (68k Mops only)
 
 There are situations where you may want to do a late bind in a loop, but
 where you know that the binding will actually be the same each time
@@ -451,14 +451,14 @@ around. We have provided a means by which you can do the binding before
 entering the loop, and then use the resulting method address in the loop
 with almost the same speed as early binding. The syntax is
 
-`BIND_WITH ( ^obj -- &lt;selector&gt; ^obj-modified cfa )`
+`BIND_WITH ( ^obj -- <selector> ^obj-modified cfa )`
 
 If `saveCfa` and `\^obj-mod` are values or
 local variables, the usage of this word is:
 
 `(get object's address) BIND_WITH someSelector:`\
 \
-`-&gt; saveCfa  -&gt; ^obj-mod`\
+`-> saveCfa  -> ^obj-mod`\
 \
 `(in the loop) ^obj-mod saveCfa EX-METHOD`
 
@@ -474,7 +474,7 @@ above code, you shouldn't go wrong.
 disadvantage of using late binding. See the file Struct for some more
 examples, in the `(Col)` class.
 
-### Late Bind Cache (PowerMops only) {#late_bind_cache_powermops_only}
+### Late Bind Cache (PowerMops only)
 
 This is transparent to users --- it gets used automatically, without
 you having to change your code in any way. It saves the binding
@@ -484,7 +484,7 @@ loops, where it counts. If a late-bound call matches an entry in the
 cache, the overhead is reduced from around 500 machine instructions to
 about 150.
 
-Implementation of References {#implementation_of_references}
+Implementation of References
 ----------------------------
 
 The most important point regarding our implementation of references is
@@ -524,13 +524,13 @@ roughly halves the number of instructions needed for a vtable bind.
 When a reference is set to point to a new object, the necessary
 information is extracted from the object header. If the object is in the
 heap, a reference count at the beginning of the heap block is
-incremented. When `release&gt;` is done on a reference
+incremented. When `release>` is done on a reference
 and it was pointing to a heap object, the reference count in the heap
 block is decremented. If the reference count becomes zero, we know that
 there are no references pointing to the block, so it can be deleted.
 
 Before a heap block is actually deleted, any references in the block
-must be found, and the `release&gt;` operation done on
+must be found, and the `release>` operation done on
 each of these. The reason should be fairly obvious --- since these
 references are about to go out of existence, we know we're finished
 with them! This may in turn lead to the deletion of other heap blocks.
@@ -539,7 +539,7 @@ For more detailed information on the format of references and also for
 all the details of our heap block format, please see the comments near
 the end of the source file cg1 (in the folder PPC Source).
 
-### Garbage Collection {#garbage_collection}
+### Garbage Collection
 
 Reference counting will pick up most situations where heap blocks need
 to be deleted, but not all. Circular references will not be picked up.
@@ -585,5 +585,5 @@ want to do this.
   [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- -----------------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Reference](Category:Reference)
+
+

@@ -1,7 +1,7 @@
 Events
 ======
 
-About this chapter {#about_this_chapter}
+About this chapter
 ------------------
 
 This chapter describes the Mops classes and words that manage Macintosh
@@ -24,12 +24,12 @@ will be installed for each event at runtime. See also relevant sections
 [EventLoop](Reference_9#Waiting_for_Events)) of Reference
 part.
 
-  rowspan=4 style=\"border: thin \#aaa solid\" \| [Inside Macintosh](http://developer.apple.com/documentation/macos8/mac8.html)   [Event Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-28.html)
+  rowspan=4 style="border: thin \#aaa solid" \| [Inside Macintosh](http://developer.apple.com/documentation/macos8/mac8.html)   [Event Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-28.html)
   ------------------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------
   [Window Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-188.html)                                         
   [Menu Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-89.html)                                            
   [Control Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-297.html)                                        
-  rowspan=3 style=\"border: thin \#aaa solid\" \| Mops:                                                                           [Windows](Lesson_20)
+  rowspan=3 style="border: thin \#aaa solid" \| Mops:                                                                           [Windows](Lesson_20)
   [Menus](Lesson_21)                                                                                                   
   [Controls](Lesson_20#Controls)                                                                                       
 
@@ -41,7 +41,7 @@ part.
 
   : Source files
 
-Using events {#using_events}
+Using events
 ------------
 
 Class Event is the core of Mops's event management. It instantiates a
@@ -77,24 +77,24 @@ Macintosh events are assigned a contiguous series of type codes:
 
   Code   &nbsp;   Description
   ------ -------- ---------------------------------------------------------
-  0      \*       Null event - used to provide background processing
+  0      *       Null event - used to provide background processing
   1               Mouse down - button was depressed
-  2      \*       Mouse up - button was released
+  2      *       Mouse up - button was released
   3               Key down - key was depressed
-  4      \*       Key up - key was released
+  4      *       Key up - key was released
   5               AutoKey - key is being held down
   6               Update - a window must redraw a portion of its contents
   7               Disk - a disk was inserted in a drive
   8               Activate - a window became active or inactive
-  10     \*       Network - an AppleBus event occurred
-  11     \*       IODriver - a device driver event occurred
-  12     \*       user-definable events
+  10     *       Network - an AppleBus event occurred
+  11     *       IODriver - a device driver event occurred
+  12     *       user-definable events
   13              
   14              
   15              OS events, such as Suspend and Resume
   23              High-level events, including AppleEvents
 
-Events marked with an asterisk (\*) are events for which Mops executes
+Events marked with an asterisk (*) are events for which Mops executes
 its null-event code rather than code specific to the type of event. If
 your application assigns significance to these event types, you will
 have to install your own action word in the cell of fEvent corresponding
@@ -117,7 +117,7 @@ In the source file Dialog+ there is a matching word +MODELESS which
 installs the event handling that is required if there is a modeless
 dialog active.)
 
-Listening to events {#listening_to_events}
+Listening to events
 -------------------
 
 The chief means by which you can cause Mops to listen to the event queue
@@ -149,10 +149,10 @@ appropriate handler each time. While less familiar to most of us, this
 architecture will probably result in a simpler application in the long
 run.
 
-Specific event handling {#specific_event_handling}
+Specific event handling
 -----------------------
 
-Null events (all event types with the \* above) can be used to execute
+Null events (all event types with the * above) can be used to execute
 the Idle: method for the front window. The programmer should use a
 window's Idle: method to perform any background processing that is
 required for that particular window (such as call TEIdle in a text edit
@@ -314,5 +314,5 @@ and whether a double-click has occurred.
   &nbsp;                          [Documentation](Documentation)   
   ------------------------------- ------------------------------------------- ---------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Classes](Category:Classes)
+
+

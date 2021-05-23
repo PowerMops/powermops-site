@@ -1,30 +1,34 @@
-Installing an Application {#installing_an_application}
+Installing an Application
 -------------------------
 
 In this lesson we will install our Curves program as a doubleclickable
 application.
 
 First, load GrDemo as we described in [Lesson 19](Lesson_19).
-But this time, don't start it up. \<blockquote\> **Note for Mac OS X
-10.4 users**: To avoid a QuickDraw trouble Tiger users may need to
-modify grDemo source code a little in case of running Mach-O PowerMops.
-In file 'grDemo' you can find the definition of method
-`NEW:` of class `GRWIND` (line 170). In
-the definition of the method, insert a line
+But this time, don't start it up.
 
-`<pre>$ 40000000 OR   \ use QD on Tiger</pre>`
-
-between lines '`RR tAddr tLen docWind`' and
-'`true false`'.\<br\> That is, the last part of the
-method will look like following: \<pre\>
-
-`RR tAddr tLen  docWind    \ initial rect, title, window type`\
-`$ 40000000 OR     \ use QD on Tiger`\
-`true false                \ visible, no close box`\
-`dView                     \ the main view`\
-`new: super             \ create the window!</pre>`
-
-Then save and (re)load the file. \</blockquote\>
+> **Note for Mac OS X 10.4 users**: To avoid a QuickDraw trouble Tiger users may need to
+> modify grDemo source code a little in case of running Mach-O PowerMops.
+> In file 'grDemo' you can find the definition of method
+> `NEW:` of class `GRWIND` (line 170). In
+> the definition of the method, insert a line
+> 
+> `$ 40000000 OR   \ use QD on Tiger`
+> 
+> between lines '`RR tAddr tLen docWind`' and
+> '`true false`'.
+> 
+> That is, the last part of the method will look like following: 
+> 
+> ```mops
+> `RR tAddr tLen  docWind    \ initial rect, title, window type
+> `$ 40000000 OR     \ use QD on Tiger
+> `true false                \ visible, no close box
+> `dView                     \ the main view
+> `new: super             \ create the window!
+> ```
+>  
+> Then save and (re)load the file.
 
 Either type `install` or select Install\... from the
 Utilities menu. Either way, this dialog box will appear:
@@ -142,7 +146,7 @@ Mops trying to give a Mops style error message and stack dump.
 
 Now to continue with the dialog box. Leave 'Include fWind' and 'fWind
 visible' unchecked. These refer to a simple window for keyboard input
-and text output which can be used for \"quick and dirty\" applications.
+and text output which can be used for "quick and dirty" applications.
 This is actually the window used by the basic nucleus before the rest of
 the Mops system is loaded. Curves makes no use of this window, since it
 has its own, so by leaving these boxes unchecked, we are telling Install
@@ -175,13 +179,13 @@ the generic 'application' icon but otherwise it is finished. You can
 doubleclick it and run it.\<br /\>We will discuss icons later in part
 II, chapter 5.
 
-Where To Go From Here {#where_to_go_from_here}
----------------------
+## Where To Go From Here
 
 You've already had quite an exposure to Mops and object oriented
 programming. You've seen how Mops interacts with the Macintosh Toolbox
-to simplify the way your programs communicate with the Mac.\<br /\> Now,
-it's time for you to start experimenting with programs of your own.
+to simplify the way your programs communicate with the Mac.
+
+Now, it's time for you to start experimenting with programs of your own.
 Several chapters in Part II should point you in the right direction with
 details of the finer points of Mops programming on the Macintosh.
 
@@ -190,22 +194,16 @@ predefined classes and the words in the Mops dictionary. While there is
 more to it than a casual reading will ever reveal, you should spend some
 time studying the methods of the predefined classes as detailed in Part
 III of this manual to discover what building blocks are available to
-you.\<br /\> You should also browse through the Mops Index and Glossary
+you.
+
+You should also browse through the Mops Index and Glossary
 in Part IV, where you'll likely discover many built-in words that give
 you ideas about the operations you can specify for methods.
 
 A vast amount of reference material is available in this manual and in
 the various Mops files. The best way to make use of it all is to start
 defining some classes on your own and experiment sending messages to the
-objects you create.\<br /\> Just as with a spoken language, the more you
-practice with Mops the faster You'll be comfortable with it.
+objects you create.
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- --------
-  [Lesson 21](Lesson_21)           [Tutorial](Tutorial)   &nbsp;
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- --------
-
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)
+Just as with a spoken language, the more you practice with Mops the
+faster You'll be comfortable with it.

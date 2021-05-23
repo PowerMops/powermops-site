@@ -35,13 +35,13 @@ News
 2018-12-29: iMops 2.22 distribution was revised. (Previous distribution seemed broken)
 
 
-2017-7-10: iMops 2.21 released \-- Interruption into \"Echo during Load\" by Space key was made possible. Some bugs were fixed [Download Page](http://sourceforge.net/projects/powermops/files/iMops/)
+2017-7-10: iMops 2.21 released \-- Interruption into "Echo during Load" by Space key was made possible. Some bugs were fixed [Download Page](http://sourceforge.net/projects/powermops/files/iMops/)
 
 
 2016-11-12: iMops 2.2 released \-- A maintenance release but now iMops is a developer-signed application. [Download Page](http://sourceforge.net/projects/powermops/files/iMops/)
 
 
-2016-05-05: iMops 2.11 released \-- A maintenance release. Few bugs were fixed. Details are in a file \"What's new\". [Download Page](http://sourceforge.net/projects/powermops/files/iMops/)
+2016-05-05: iMops 2.11 released \-- A maintenance release. Few bugs were fixed. Details are in a file "What's new". [Download Page](http://sourceforge.net/projects/powermops/files/iMops/)
 
 
 2015-08-01: iMops 2.1 released \-- some bugs have been fixed and new STRING+ class source file included. [Download Page](http://sourceforge.net/projects/powermops/files/iMops/)

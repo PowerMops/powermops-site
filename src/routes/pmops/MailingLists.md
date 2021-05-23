@@ -1,7 +1,8 @@
+# Mailing Lists
+
 There are two mailing lists related to the PowerMops project:
 
-PowerMops-USERS {#powermops_users}
----------------
+## PowerMops-USERS
 
 The
 [Powermops-USERS](http://lists.sourceforge.net/lists/listinfo/powermops-users)
@@ -13,8 +14,7 @@ To see the collection of prior postings to the list, visit the
 [PowerMops-USERS
 Archives](http://sourceforge.net/mailarchive/forum.php?forum_name=powermops-users).
 
-PowerMops-BETA {#powermops_beta}
---------------
+## PowerMops-BETA
 
 The
 [Powermops-BETA](http://lists.sourceforge.net/lists/listinfo/powermops-beta)

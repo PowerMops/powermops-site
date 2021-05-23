@@ -1,17 +1,17 @@
-Objects and Their Messages {#objects_and_their_messages}
+Objects and Their Messages
 ==========================
 
 Now we come to creating an object of class `Rect` and
 sending messages to that object so it can select the methods to execute.
 To create an object of class `Rect`, the syntax is simply
 the name of the class followed by the name you want to assign to the
-object. For an object named \"`Box1`\" of class
+object. For an object named "`Box1`" of class
 `Rect`, the statement would be:
 
 `Rect Box1`
 
 That's all there is to it! By creating this object, you have added a
-new Mops word, \"`Box1`\" to the dictionary in memory.
+new Mops word, "`Box1`" to the dictionary in memory.
 Recalling our definition of `Rect` from the previous
 lesson, you can visualize the object in memory to look like:
 
@@ -31,13 +31,13 @@ course. Some operations don't require any numbers be passed to them.
 
 The second part, the selector, is actually the name of the method
 containing the operation you want the object to perform. In other words,
-the object \"selects\" which method of its class is to be put to work;
+the object "selects" which method of its class is to be put to work;
 the object matches the message's selector with the method in the
 object's class (or up the superclass hierarchy if there is no match in
 the immediate class).
 
 The last part of a message, the receiver, must be the name of an object.
-It is the \"thing\" on which you want to perform the operation specified
+It is the "thing" on which you want to perform the operation specified
 by the selector. In the accountant metaphor used in the preceding
 lessons, the receiver is the name of the accountant who is to prepare
 the returns.
@@ -55,7 +55,7 @@ for `TopLeft` and `BotRight` in the
 places two sets of two parameters into an object's data cells.
 
 If, at some future time, you create a new object of class
-`Rect`, called \"`Box5`\",
+`Rect`, called "`Box5`",
 `Box5`'s data cells would be empty at first. A separate
 `PUT:` message would have to be sent to
 `Box5` to place `Box5`'s coordinates in
@@ -77,7 +77,7 @@ same class. That's where a message receiver called
 `SELF` comes in handy. With the new method
 (`DISP:`) the class looks like this:
 
-`<nowiki>`\
+```mops
 `:class  RECT  super{ object }`\
 `record`\
 `{      point     TopLeft`\
@@ -91,7 +91,7 @@ same class. That's where a message receiver called
 `:m DISP:       put: self  draw: self  ;m`
 
 `;class`\
-`</nowiki>`
+```
 
 The `DISP:` method contains the messages, '`put:
 self`' and '`draw: self`'. The '`put:
@@ -140,7 +140,7 @@ the Mops window and `ww`, then type and execute
 and your `Rect` instance (`Box1`) should
 appear in the window `ww`.
 
-\[\#Summary Summary\] {#summary_summary}
+\[\#Summary Summary\]
 ---------------------
 
 Before taking one more step, let's summarize. Creating a Mops program
@@ -182,5 +182,5 @@ one further extension to the example above.
   [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- ---------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)
+
+

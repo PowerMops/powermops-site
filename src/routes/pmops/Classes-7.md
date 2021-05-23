@@ -1,16 +1,16 @@
 Menus
 =====
 
-About this chapter {#about_this_chapter}
+About this chapter
 ------------------
 
 This chapter describes the Mops classes and words that allow you to
 build your application's menus.
 
-  rowspan=2 style=\"border:thin solid \#aaa\" \| Inside Macintosh:                       [Event Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-28.html)
+  rowspan=2 style="border:thin solid \#aaa" \| Inside Macintosh:                       [Event Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-28.html)
   -------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------
   [Menu Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-89.html)   
-  style=\"border:thin solid \#aaa\" \| Mops:                                             [ Events ](Classes_4)
+  style="border:thin solid \#aaa" \| Mops:                                             [ Events ](Classes_4)
 
   : Recommended reading
 
@@ -21,7 +21,7 @@ build your application's menus.
 
   : Source files
 
-Using Menus {#using_menus}
+Using Menus
 -----------
 
 Mops menus integrate the Toolbox concept of a menu within an object that
@@ -391,5 +391,5 @@ build and draw the menu bar via messages sent by the menu text loader.
   &nbsp;                                       [Documentation](Documentation)   
   -------------------------------------------- ------------------------------------------- -----------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Classes](Category:Classes)
+
+

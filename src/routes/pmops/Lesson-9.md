@@ -1,4 +1,4 @@
-Predefined Classes {#predefined_classes}
+Predefined Classes
 ==================
 
 Mops comes with a large number of predefined classes that provide you
@@ -29,7 +29,7 @@ Mops.
 
 You will soon want to begin scanning through the source code of the
 predefined classes. While much of the code is already compiled in the
-\"`PowerMops`\" application file, all the Mops source
+"`PowerMops`" application file, all the Mops source
 code is supplied in the folders 'Mops source' and 'Mops &fnof;'. You
 can view and print the source code files using QuickEdit, or another
 text editor of your choice. Eventually, you may find it helpful to print
@@ -49,10 +49,10 @@ way you and the computer communicate with each other.
 
 The second group, called Toolbox classes, are those that make the
 connection between the programmer/user and the graphic elements of the
-Mac operating system. \"Graphic elements\" is a broad category that
+Mac operating system. "Graphic elements" is a broad category that
 includes such things as menus, windows, text input, mouse manipulation,
 and program control via the mouse or keyboard. The Toolbox classes are
-the highly visible, \"show biz\" classes of Mops.
+the highly visible, "show biz" classes of Mops.
 
 Most of the predefined classes in both categories are subclasses of a
 kind of master superclass, called class `Object` (which
@@ -65,7 +65,7 @@ you won't go wrong. Class `Object` is predefined in
 Mops, in the Mops source file '`qpClass`'. It has very
 primitive functionality, and no instance variables.
 
-Data Structure Classes {#data_structure_classes}
+Data Structure Classes
 ----------------------
 
 Among the most used predefined classes are several that are grouped into
@@ -87,7 +87,7 @@ were, in turn, used as components for a rectangle object.
 The classes to the left of the vertical line in this digram are called
 scalar classes because they reserve a fixed amount of memory space for
 each instance of their class (just like a ruler marks a fixed area
-according to its \"scale\"). An integer object (`Int`),
+according to its "scale"). An integer object (`Int`),
 for example, always has two bytes reserved for data (whether or not the
 bytes contain any meaningful data when an integer object is created).
 
@@ -113,7 +113,7 @@ considerations that we will discuss later.
 You'll also notice that the class `Ordered-col` has two
 lines leading to it; this is because it has two superclasses, that is,
 it uses multiple inheritance. The class `(col)` defines
-some methods that all \"collection\" type classes need, regardless of
+some methods that all "collection" type classes need, regardless of
 the size of their elements. Then the `Array` superclass
 determines that the class Ordered-col has 4-byte elements.
 
@@ -122,14 +122,14 @@ have any objects of its own. It is just a convenient way of defining a
 group of classes where each class that inherits from
 `(col)` will automatically have a number of methods in
 common. Rather than repeat the definitions of these methods in each
-class definition, we \"split them off'\" into a single superclass in
+class definition, we "split them off'" into a single superclass in
 which they can be defined just once. We call this kind of superclass a
 generic superclass The class `Longword` is another
 example of a generic superclass. It is useful for defining methods
 common to the classes `Var` and `Handle`,
 but it doesn't have any objects of its own.
 
-Other Predefined Classes {#other_predefined_classes}
+Other Predefined Classes
 ------------------------
 
 Another group of classes that gets a workout is the one that links you
@@ -141,7 +141,7 @@ superclasses from which they were derived:
 
 Other graphics-oriented classes (not shown in this diagram) include
 those that help you create windows, menu bars, and menus, plus a set of
-classes called controls (\"`zCtl`\" in 'Toolbox
+classes called controls ("`zCtl`" in 'Toolbox
 classes') that handle reactions to clicking the mouse on buttons and
 scroll bars.
 
@@ -159,5 +159,5 @@ reference sections very often once you have completed this tutorial.
   [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- -----------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)
+
+

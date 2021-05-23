@@ -1,9 +1,9 @@
-Classes and Objects {#classes_and_objects}
+Classes and Objects
 ===================
 
 Building a Mops program is largely a process of defining classes of
 objects --- classes which are the 'framework' and objects which
-are the \"movers and doers\". In this chapter, we provide you with
+are the "movers and doers". In this chapter, we provide you with
 details of the inner workings of classes and their components, with
 special emphasis on instance variables and methods. We'll also discuss
 several Mops words that may be particularly useful in building your own
@@ -12,7 +12,7 @@ be successful at building classes, but you should at least survey the
 information. It may come in handy later, as your programming skills
 grow.
 
-Planning Your Subclasses {#planning_your_subclasses}
+Planning Your Subclasses
 ------------------------
 
 Mops comes with many predefined classes --- building blocks, which
@@ -23,7 +23,7 @@ own subclasses of existing classes. Your program's unique operations
 and flavor will be the result of the behaviors you define in your
 sub-classes.
 
-The Class Hierarchy {#the_class_hierarchy}
+The Class Hierarchy
 -------------------
 
 Determining the relationship between a new class and existing ones is an
@@ -66,7 +66,7 @@ Mops fashion, we provide an out for this problem: as we saw in [Lesson
 19](Lesson_19#Positioning_Views) of the Tutorial, when
 referring to a method of a superclass, we use the syntax
 `aMethod: super`. We can be more specific and use
-`aMethod: super&gt; aSuperClass`, where
+`aMethod: super> aSuperClass`, where
 `aSuperClass` is the one containing the method we want;
 this overrides the normal left-to-right search.
 
@@ -83,7 +83,7 @@ For a good example of the use of multiple inheritance to simplify code,
 look at the class `Ordered-Col` in file Struct, and its
 associated classes.
 
-Choosing Between ivars and Objects {#choosing_between_ivars_and_objects}
+Choosing Between ivars and Objects
 ----------------------------------
 
 In addition to designing the class inheritance of your application, you
@@ -110,7 +110,7 @@ or ivars). Keep to a minimum the number of messages that are to be sent
 between objects. This minimizes inter-object coupling, makes objects
 more independent, and makes your application more maintainable.
 
-When to Use ivars {#when_to_use_ivars}
+When to Use ivars
 -----------------
 
 But there are times when it makes sense to define instance variables, as
@@ -135,18 +135,18 @@ ability to create an optimal design. The best design is one in which
 inter-object communication is minimal and well-defined, reflecting
 clearly the structure of the problem being solved.
 
-Defining a Class {#defining_a_class}
+Defining a Class
 ----------------
 
 Now, let's take a closer look at the mechanics of building a new class.
 A class definition has the following skeletal structure:
 
-`<nowiki>`\
+```mops
 `:class  ClassName  super{ super1 ... superN } [ n indexed ] [ large ]`\
 `       [ instance variable names ] `\
 `       [ method definitions ] `\
 `;class`\
-`</nowiki>`
+```
 
 In the above example, the brackets indicate optional sections of a class
 definition. If you build a class with one superclass that omits all of
@@ -207,14 +207,14 @@ this structure with 4 Int ivars (each 2 bytes wide), using the
 `68k\_record {\...}` syntax, knowing that the 2 bytes of
 data for each Int will be adjacent to one another.
 
-### For Advanced Mops Programmers {#for_advanced_mops_programmers}
+### For Advanced Mops Programmers
 
 Indexed ivars also have, in addition to the Mops info, a 6-byte indexed
 header. The data in the indexed header consists of the number of indexed
 elements and the length (in bytes) of each element. This data is used
 for **range checking**.
 
-### Ivars as Toolbox Data Structures {#ivars_as_toolbox_data_structures}
+### Ivars as Toolbox Data Structures
 
 As you may have noticed in the sample applications in the tutorial,
 instance variables are very often used as representations of the data
@@ -262,13 +262,13 @@ return zero (the length of an `Object`). Note also that
 `bArray` --- it creates one named field, not an array
 of bytes.
 
-### How ivars are Linked {#how_ivars_are_linked}
+### How ivars are Linked
 
   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------
   This table shows the format of an instance variable dictionary entry. It bears some similarity to a standard Mops dictionary entry, except that the ivar name is converted to a hashed value (a compacted form automatically derived from a complex math algorithm). All of the ivar entries for a given class form a linked list back to the root of the ivar chain (see the left column of [Figure 2-1](#fig2-1)). This root is the pseudo-ivar, `SUPER` (`SELF` and `SUPER` exist as instance variables in class `META` --- the superclass of the all-encompassing class OBJECT). The **message compiler** detects references to these two special ivars, and begins the method search in a place appropriate for each. Therefore, when a new class is being defined, the \^class field of `SUPER` is patched (directed) to the new class' superclass, and that of SELF to the new class itself. In this way, the search for a given method automatically begins in the proper place for `SELF` and `SUPER` references.   Figure 2-2---Instance Variable Fields\<br /\> ![](IVarFields.png "fig:IVarFields.png")
   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------
 
-### Potential ivar Errors {#potential_ivar_errors}
+### Potential ivar Errors
 
 There is an **extremely** small possibility that you could get an ivar
 redefinition error when loading a new class, even if the names of the
@@ -284,10 +284,10 @@ After all of the instance variables are declared, you must write the
 methods for the new class. A method definition takes the form (here
 brackets denote optional sections):
 
-`<nowiki>`\
+```mops
 `:m SELECTOR: [ { named args \ local vars -- results } ] `\
 `       [ method code ]  ;m`\
-`</nowiki>`
+```
 
 A valid selector name (any alphanumerics ending in a colon) must follow
 the `:m` (separated by at least one space). The selector
@@ -302,7 +302,7 @@ by simply using the name of the method being defined with
 receiver in a redefined method if you want to call the original method
 in the superclass.
 
-### Special Mops Words for Primitive Methods {#special_mops_words_for_primitive_methods}
+### Special Mops Words for Primitive Methods
 
 You will find that the methods that you write for classes at the ends of
 long superclass chains consist primarily of messages to ivars or
@@ -319,7 +319,7 @@ to the class' data area. An example of this kind of object is class
 data directly. Several Mops words described below will come in handy for
 writing primitive methods like this.
 
-### \^BASE and \^ELEM {#base_and_elem}
+### \^BASE and \^ELEM
 
 You can use `\^BASE` (pointer to the base address of the
 current object) from within any method to place the **base address** of
@@ -334,9 +334,9 @@ area, and then perform some kind of fetch or store operation at that
 address. The get: method for class LongWord, for instance, could have
 been defined in this manner:
 
-`<nowiki>`\
+```mops
 `:m GET: ^base @ ;m`\
-`</nowiki>`
+```
 
 which fetches the longword (32 bits wide) at the object's data area.
 For a `LongWord` this is the entire data area, defined as
@@ -381,5 +381,5 @@ leave the width of an object's indexed elements on the stack.
   [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- ---------------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Reference](Category:Reference)
+
+

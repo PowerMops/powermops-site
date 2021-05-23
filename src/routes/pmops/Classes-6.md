@@ -1,7 +1,7 @@
-Views and Controls {#views_and_controls}
+Views and Controls
 ==================
 
-About this chapter {#about_this_chapter}
+About this chapter
 ------------------
 
 This chapter describes views, which are also used by MacApp, TCL,
@@ -43,7 +43,7 @@ class, is now a subclass of View.
 
   : Source files
 
-Using Views {#using_views}
+Using Views
 -----------
 
 A view must have an owning window. A view has an associated rectangular
@@ -66,7 +66,7 @@ specify the size and position of a view by setting the bounds and
 justification for the four sides. Please see that Tutorial lesson for a
 full rundown of the various options you have.
 
-Clicks on views {#clicks_on_views}
+Clicks on views
 ---------------
 
 The way we used to handle clicks in earlier versions of Mops, was that
@@ -109,7 +109,7 @@ on its children, you can now simply override VIEW\_FOR\_CLICK?: Thus:
 `   THEN`\
 `;m`
 
-Using Controls {#using_controls}
+Using Controls
 --------------
 
 Mops defines a generic Control class, which is a subclass of View, and
@@ -173,7 +173,7 @@ We have also provided a subclass of View named Scroller, which provides
 for a vertical and horizontal scroll bar along the edges of the view,
 with action vectors already defined for you.
 
-Creating control objects {#creating_control_objects}
+Creating control objects
 ------------------------
 
 Defining a control object requires three steps. First, instantiate the
@@ -184,7 +184,7 @@ object with a phrase like:
 You should then initialize the newly created object to assign it a
 position and a title. For example:
 
-`100 250 &quot; Save&quot; init: saveBtn<br>`\
+`100 250 " Save" init: saveBtn<br>`\
 `' doSave actions: saveBtn`
 
 Here we define saveBtn as a Button, specify that its top left corner
@@ -213,7 +213,7 @@ control puts its address into the value. This allows you to write very
 general action words that can be assigned to several different control
 objects simultaneously.
 
-Design issues {#design_issues}
+Design issues
 -------------
 
 Because late-bound messages must be sent to controls and windows, these
@@ -329,7 +329,7 @@ window.
   update:
   clear:
   view positioning
-  bounds&gt;viewRect:
+  bounds>viewRect:
   childrenMoved:
   moved:
   runtime control
@@ -364,7 +364,7 @@ window.
 ------------------------------------------------------------------------
 
 Control is a generic superclass for controls. In Carbon PowerMops, the
-name is changed to be \"RootCtl\".
+name is changed to be "RootCtl".
 
 +-----------------------------+---------------------------------------+
 | Superclass                  | View                                  |
@@ -458,7 +458,7 @@ the control is 20. This may be overridden in subclasses as necessary.
 
 **Error messages** - None
 
-### Button, RadioButton, CheckBox {#button_radiobutton_checkbox}
+### Button, RadioButton, CheckBox
 
 ------------------------------------------------------------------------
 
@@ -489,7 +489,7 @@ the right kind of control.
 
 **Error messages** - None
 
-### Vscroll, Hscroll {#vscroll_hscroll}
+### Vscroll, Hscroll
 
 ------------------------------------------------------------------------
 
@@ -649,11 +649,11 @@ than ints for the coordinates.
   Hscroll:
   putPanRect:
   addview:
-  &gt;Hunit:
-  &gt;Vunit:
-  &gt;Hrange:
-  &gt;Vrange:
-  &gt;gaps:
+  >Hunit:
+  >Vunit:
+  >Hrange:
+  >Vrange:
+  >gaps:
   initialization
   classinit:
   runtime control
@@ -755,16 +755,16 @@ following clases on PowerMops.
   handle:
   size:
   getSelect:
-  getSelect&amp;lock:
+  getSelect&lock:
   getText:
-  getText&amp;Lock:
+  getText&Lock:
   selStart:
   selEnd:
   getLine:
   lineEnd:
   wrapit:
   \<nowiki\>NoWrap:\</nowiki\>
-  &gt;hState:
+  >hState:
   editing
   ?scroll:
   setSelect:
@@ -782,10 +782,10 @@ following clases on PowerMops.
   paste:
   clear:
   clearAll:
-  &gt;font:
-  &gt;fontSize:
-  &gt;color:
-  &gt;style:
+  >font:
+  >fontSize:
+  >color:
+  >style:
   -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   : Methods
@@ -847,5 +847,5 @@ We'll therefore omit a full listing.
   &nbsp;                             [Documentation](Documentation)   
   ---------------------------------- ------------------------------------------- --------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Classes](Category:Classes)
+
+

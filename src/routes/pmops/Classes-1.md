@@ -359,7 +359,7 @@ DicAddr.
   ----------------
   get:
   put:
-  -&gt;:
+  ->:
   clear:
   initialization
   classinit:
@@ -428,7 +428,7 @@ Provides storage for 16-bit quantities---signed (Int) and unsigned
   -----------
   get:
   put:
-  -&gt;:
+  ->:
   clear:
   int:
   +:
@@ -472,7 +472,7 @@ Provides storage for 8-bit quantities---signed (Byte) and unsigned
   -----------
   get:
   put:
-  -&gt;:
+  ->:
   clear:
   display
   print:
@@ -546,14 +546,14 @@ blocks of heap.
   getState:
   setState:
   moveHi:
-  -&gt;:
+  ->:
 
   : Methods
 
 **Error messages** - **"Set handle size failed"**
 
 Non-0 return from memory manager on a SetHSize system call, probably
-resulting from a setSize: or -&gt;: call with insufficient memory
+resulting from a setSize: or ->: call with insufficient memory
 available.
 
 ### ObjHandle
@@ -827,7 +827,7 @@ below).
 |                             | ------------------------------------- |
 |                             |   Int                                 |
 |                             |      current   The number of the elem |
-|                             | ent currently &quot;switched in&quot; |
+|                             | ent currently "switched in" |
 +-----------------------------+---------------------------------------+
 | Indexed data                | Any width---the actual width is   |
 |                             | determined by the other class(es)     |
@@ -972,7 +972,7 @@ which frequently need to be looked at in sequence. At present the main
 function of Sequence is to implement the each: method, which makes it
 very simple to deal with each element. The usage is
 
-`BEGIN each: &lt;obj&gt; WHILE &lt;do something to the element&gt;  REPEAT`
+`BEGIN each: <obj> WHILE <do something to the element>  REPEAT`
 
 Sequence can be multiply inherited with any class which implements the
 first?: and next: methods. The actual implementation details are quite
@@ -1243,5 +1243,5 @@ wrong, or the correct resource file isn't open.
   [Documentation](Documentation)                                   
   ------------------------------------------- ------------------------------- ---------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Classes](Category:Classes)
+
+

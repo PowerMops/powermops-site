@@ -1,4 +1,4 @@
-Modifying a Program {#modifying_a_program}
+Modifying a Program
 ===================
 
 We're going to add another class. This one, however, will be a subclass
@@ -22,8 +22,8 @@ a class `Point` instance variable, or ivar.
 Since a rounded rectangle has so much in common with an ordinary
 rectangle (i.e., objects created by class `Rect`), the
 logical approach would be a subclass of class `Rect`
-called, say, class \"`RndRect`\". It needs only the one
-additional ivar which we will name \"`Ovalsize`\". By
+called, say, class "`RndRect`". It needs only the one
+additional ivar which we will name "`Ovalsize`". By
 virtue of its inheritance from class `Rect` then, an
 object of class `RndRect` will have a total of three
 ivars: `TopLeft`, `BotRight`, and
@@ -45,7 +45,7 @@ rectangle coordinate points `TopLeft` and
 Finally, the subclass `RndRect` needs a
 `DRAW:` method to act on the values stored in an object
 created from its own class. In this particular `DRAW:`
-method, `\^BASE` retrieves the \"base\" *address* of the
+method, `\^BASE` retrieves the "base" *address* of the
 current object, i.e. the address of the beginning of the object in
 memory. In this case, it is the address of the rectangle coordinates
 (which if you recall from a previous lesson, are stored as a record in
@@ -59,7 +59,7 @@ the screen.
 
 The subclass definition looks like this:
 
-`<nowiki>`\
+```mops
 `:class  RNDRECT  super{ rect }`\
 `       point     Ovalsize`
 
@@ -70,7 +70,7 @@ The subclass definition looks like this:
 `:m DISP:       put: self  draw: self  ;m`
 
 `;class`\
-`</nowiki>`
+```
 
 That `DISP:` method definition we use in our class is not
 redundant with the definition used in the superclass.
@@ -79,17 +79,13 @@ object. When `SELF` was used in our class' superclass,
 it returned the address for `Rect`. In our class, it
 returns the address of `RndRect`.
 
-\<blockquote\>
-
-Warning: If we did not redefine `DISP:` as we did,
-invoking a `DISP:` message on any instance of
-`RndRect` would have used `Rect`'s
-definition for `DISP:`, which in turn would have called
-`Rect`'s `PUT:` and
-`DRAW:` methods (and not the new methods we defined in
-the subclass `RndRect`).
-
-`</blockquote>`
+> Warning: If we did not redefine `DISP:` as we did,
+> invoking a `DISP:` message on any instance of
+> `RndRect` would have used `Rect`'s
+> definition for `DISP:`, which in turn would have called
+> `Rect`'s `PUT:` and
+> `DRAW:` methods (and not the new methods we defined in
+> the subclass `RndRect`).
 
 Once the class is defined, it is now ready for the creation of an
 object:
@@ -125,5 +121,5 @@ Next, you'll be introduced to the powerful building blocks of Mops: the
   [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- ---------------------------------
 
-[Category:Manual](Category:Manual)
-[Category:Tutorial](Category:Tutorial)
+
+
