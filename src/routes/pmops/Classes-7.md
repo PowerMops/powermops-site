@@ -5,12 +5,12 @@ About this chapter {#about_this_chapter}
 ------------------
 
 This chapter describes the Mops classes and words that allow you to
-build your application\'s menus.
+build your application's menus.
 
   rowspan=2 style=\"border:thin solid \#aaa\" \| Inside Macintosh:                       [Event Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-28.html)
   -------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------
   [Menu Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-89.html)   
-  style=\"border:thin solid \#aaa\" \| Mops:                                             [ Events ](Classes_4 "wikilink")
+  style=\"border:thin solid \#aaa\" \| Mops:                                             [ Events ](Classes_4)
 
   : Recommended reading
 
@@ -53,7 +53,7 @@ them an xt, in your menu (you can just use NULL).
 
 Then, in ResEdit, you create menu resources for your menus. This is
 quite easy to do. You will need to assign a resource ID for your menus
-in ResEdit&mdash;it is quite satisfactory to give the Apple menu ID 1,
+in ResEdit---it is quite satisfactory to give the Apple menu ID 1,
 the Edit menu ID 2 and so on. Then, when you initialize each menu object
 in Mops with the init: method, you will pass the corresponding resource
 ID, along with an xt list giving the word to be executed corresponding
@@ -74,12 +74,12 @@ number N in the xt list. The Toolbox automatically highlights (turns
 black) any menu title for which an item is chosen, and the normal:
 method can be used to unhighlight any menu. Class Menu automatically
 does a normal: after a handler returns, but some never return if they do
-a BECOME or an ABORT. Class Menu\'s enableItem: and disableItem: methods
+a BECOME or an ABORT. Class Menu's enableItem: and disableItem: methods
 are useful during activate events, when you should ensure that only
 those menu items are enabled that are appropriate for the current window
 and the current state. If you want to enable or disable an entire menu,
 use enable: and disable:. To enable or disable the entire menu bar, use
-MBar\'s enable: and disable: methods. Finally, check: and unCheck: (in
+MBar's enable: and disable: methods. Finally, check: and unCheck: (in
 Menu) control the display of a checkmark next to an item.
 
 Mops defines a single instance of class MBar, called menuBar. Because
@@ -116,7 +116,7 @@ executed when that item is chosen by the user.
 |                              |   int                                |
 |                              |     resID   Resource ID of this menu |
 |                              |   var     Mhndl                      |
-|                              |   Handle to the menu\'s heap storage |
+|                              |   Handle to the menu's heap storage |
 +------------------------------+--------------------------------------+
 | Indexed data                 | 4-byte cells (must be xts of valid   |
 |                              | Mops words)                          |
@@ -163,8 +163,8 @@ executed when that item is chosen by the user.
 
   : Methods
 
-**Error messages** \-- **&ldquo;You must send me a new: message
-first&rdquo;**
+**Error messages** \-- **"You must send me a new: message
+first"**
 
 An operation was attempted before the menu was created with the Toolbox.
 
@@ -199,7 +199,7 @@ the menu with all the DAs/Apple Menu items at getNew: time.
 |                              |   Apple menu usable by any applicati |
 |                              | on. The first item executes AboutVec |
 |                              | , a vector which can be set to your  |
-|                              | &lsquo;About\...&rsquo; handler word |
+|                              | 'About\...' handler word |
 +------------------------------+--------------------------------------+
 
   Inherits:   Menu, X-Array, Array, Indexed-Obj, Object
@@ -211,8 +211,8 @@ the menu with all the DAs/Apple Menu items at getNew: time.
 
   : Methods
 
-**Error messages** - **&ldquo;You must send me a new: message
-first&rdquo;**
+**Error messages** - **"You must send me a new: message
+first"**
 
 An operation was attempted before the menu was created with the Toolbox.
 
@@ -238,8 +238,8 @@ first calls SystemEdit so any active DA gets a go at it.
   -----------
   exec:
 
-**Error messages** - **&ldquo;You must send me a new: message
-first&rdquo;**
+**Error messages** - **"You must send me a new: message
+first"**
 
 An operation was attempted before the menu was created with the Toolbox.
 
@@ -251,7 +251,7 @@ Class PopupMenu provides support for popUp menus in dialogs. (If you
 need one somewhere else, you will have to define a subclass with
 different init: and normal: methods.) The sequence for setting up a
 popup menu is first to initialize the menu and dialog objects via init:
-methods&mdash;this may be done at compile time. At run time, send
+methods---this may be done at compile time. At run time, send
 getnew: to the dialog and menu, then send a link: to the menu, passing
 the address of the dialog object. See the example code at the end of the
 file PopupMenu. The handling of popup menus is notoriously tricky, but
@@ -323,8 +323,8 @@ At present, 68k Mops only.
 
   : Methods
 
-**Error messages** - **&ldquo;You must send me a new: message
-first&rdquo;**
+**Error messages** - **"You must send me a new: message
+first"**
 
 An operation was attempted before the menu was created with the Toolbox.
 
@@ -387,9 +387,9 @@ build and draw the menu bar via messages sent by the menu text loader.
 ------------------------------------------------------------------------
 
   -------------------------------------------- ------------------------------------------- -----------------------------------
-  [Views and Controls](Classes_6 "wikilink")   [Classes](Classes "wikilink")               [ Graphics](Classes_8 "wikilink")
-  &nbsp;                                       [Documentation](Documentation "wikilink")   
+  [Views and Controls](Classes_6)   [Classes](Classes)               [ Graphics](Classes_8)
+  &nbsp;                                       [Documentation](Documentation)   
   -------------------------------------------- ------------------------------------------- -----------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Classes](Category:Classes "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Classes](Category:Classes)

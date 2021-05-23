@@ -17,7 +17,7 @@ Module Guidelines {#module_guidelines}
 
 Certain guidelines must be observed when dividing your application into
 modules. Exported names are taken to be executable words. Therefore you
-mustn\'t export other things such as objects or Values. If you need to
+mustn't export other things such as objects or Values. If you need to
 export an object, you will need to define a word in the module which
 gets the address of the object (just naming it will do that), then
 export that word name. You can then use late binding to send a message
@@ -27,7 +27,7 @@ You may export class names. Thus, you can define a class in a module,
 include the class name in the imports list, and instantiate objects of
 that class anywhere. In fact in the Mops system itself, we handle
 windows, menus and dialogs this way. All the methods of the class are in
-effect exported along with the class name; you don\'t have to take any
+effect exported along with the class name; you don't have to take any
 special action, apart from putting the class name in the imports list,
 and taking care with action handlers (see below). Whenever you send a
 message to an exported class, the module will be invoked automatically.
@@ -41,16 +41,16 @@ the class in the main dictionary. Where exported classes are most useful
 is for those classes that depend heavily on Toolbox calls for most of
 their methods (such as windows, menus and dialogs). Toolbox calls are
 generally much slower than Mops module invocations, so the extra time
-penalty of putting the class into a module won\'t be significant.
+penalty of putting the class into a module won't be significant.
 
 In Mops you can enter modules only through the exported words (otherwise
-a machine base address register will not be set correctly, and you\'ll
+a machine base address register will not be set correctly, and you'll
 crash). Therefore a module should not store the address of one of its
 internal words in a vector in the main dictionary. Even if the module is
 locked in memory, you would not be able to execute this vector. We have
-included a check on stores to vectors, that a module address isn\'t
+included a check on stores to vectors, that a module address isn't
 being stored outside the module, so as to give an error message if this
-is attempted. This check can be turned off, but don\'t do it unless you
+is attempted. This check can be turned off, but don't do it unless you
 are absolutely sure you know what you are doing!
 
 How to Use Modules {#how_to_use_modules}
@@ -68,14 +68,14 @@ purge them, query their status etc.
     resident portion of the application, and has the following
     format:\<pre\>FROM MyMod IMPORT{ word1 word2 word3 }\</pre\>This
     statement declares a module, MyMod, from which will be imported
-    three definitions, \<code\>word1\</code\>, \<code\>word2\</code\>
-    and \<code\>word3\</code\>. These two names will exist only in the
+    three definitions, `word1`, `word2`
+    and `word3`. These two names will exist only in the
     disk image of the module until one of them is referenced, at which
     time the entire module will be loaded into the heap. On the disk,
     the binary image of the module will have the name MyMod.bin (68k
     Mops) or MyMod.pbin (PowerMops).
 2.  Write the source code for the module in a separate file, called
-    whatever is the name of your module, followed by \'.txt\'. Thus in
+    whatever is the name of your module, followed by '.txt'. Thus in
     the above example the source file would be called MyMod.txt.
 3.  The module must be compiled and saved in its binary format before it
     will be available to callers. To compile a module, you must send a
@@ -84,7 +84,7 @@ purge them, query their status etc.
     appear stating that the module has been saved. You must have room in
     your dictionary to load the module source file.\<br\>When we compile
     a module, we temporarily hide all of the main dictionary above the
-    module object itself. This means you don\'t have to worry about what
+    module object itself. This means you don't have to worry about what
     you might have loaded in the dictionary when you want to recompile a
     module.
 
@@ -95,10 +95,10 @@ calls. Do it thus:
 `lock: MyMod`
 
 You will also need to lock the module if you get the address of
-somewhere in the module &mdash; an object, say &mdash; and need to use
-the address again later. If the module isn\'t locked, it may move in the
+somewhere in the module --- an object, say --- and need to use
+the address again later. If the module isn't locked, it may move in the
 heap in the meantime or be removed altogether, so that the address
-won\'t be valid any longer. When you are finished with the module,
+won't be valid any longer. When you are finished with the module,
 remember to unlock it thus:
 
 `unlock: MyMod`
@@ -116,8 +116,8 @@ you can send the message
 `keep: MyMod`
 
 This will flag a module as needing to be kept in memory. Unlike the
-situation with \<code\>lock:\</code\>, the module may be moved within
-the heap by the Memory Manager, if it isn\'t actually being executed. To
+situation with `lock:`, the module may be moved within
+the heap by the Memory Manager, if it isn't actually being executed. To
 undo a keep:, send
 
 `drop: MyMod`
@@ -133,9 +133,9 @@ any time before calling install. Do it like this:
 ------------------------------------------------------------------------
 
   ------------------------------------------- ----------------------------------- ---------------------------------------
-  [Reference 7](Reference_7 "wikilink")       [Reference](Reference "wikilink")   [Reference 9](Reference_9 "wikilink")
-  [Documentation](Documentation "wikilink")                                       
+  [Reference 7](Reference_7)       [Reference](Reference)   [Reference 9](Reference_9)
+  [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- ---------------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Reference](Category:Reference "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Reference](Category:Reference)

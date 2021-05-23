@@ -16,10 +16,10 @@ between.
 The manual is divided into these major parts:
 
   ---------- ----------------------------------- --------------------------------- ----------- --
-             PART I                              [Overview](Overview "wikilink")   1 Chapter   
-  PART II    [Tutorial](Tutorial "wikilink")     21 Lessons                                    
-  PART III   [Reference](Reference "wikilink")   14 Chapters                                   
-  PART IV    [Classes](Classes "wikilink")       12 Chapters                                   
+             PART I                              [Overview](Overview)   1 Chapter   
+  PART II    [Tutorial](Tutorial)     21 Lessons                                    
+  PART III   [Reference](Reference)   14 Chapters                                   
+  PART IV    [Classes](Classes)       12 Chapters                                   
   ---------- ----------------------------------- --------------------------------- ----------- --
 
 **PART I; Tutorial**\<br /\> The Introduction is a section is for
@@ -48,7 +48,7 @@ Tutorial.
 the most used reference sections once you begin writing Mops programs.
 It contains details about the parts of the Mops language that have
 already been written for you to help you communicate your program ideas
-to the Macintosh\'s unique way of doing things. Each chapter is devoted
+to the Macintosh's unique way of doing things. Each chapter is devoted
 to a category of predefined classes, and begins with a general
 discussion about the class. You should be familiar with the content of
 Part III before writing programs.
@@ -62,8 +62,8 @@ Developing standalone applications {#developing_standalone_applications}
 ----------------------------------
 
 Mops can be used to produce stand-alone doubleclickable applications,
-whose users won\'t need to concern themselves with what language the
-application was written in. These users won\'t have or need access to
+whose users won't need to concern themselves with what language the
+application was written in. These users won't have or need access to
 the Mops dictionary and interpreter. Instructions for this procedure are
 given in the Tutorial.
 
@@ -78,7 +78,7 @@ find several folders containing Mops files. They are:
     -   An image of a Mops dictionary with many of the predefined
         classes already loaded (Mops.dic).
 -   QuickEdit &\#131;\<br /\> Files in this folder are for Doug
-    Hoffman\'s QuickEdit programming editor.
+    Hoffman's QuickEdit programming editor.
 -   Mops source\<br /\> All the Mops source code. There are various
     other folders inside here, as follows:
     -   More classes\<br /\> Source files for a number of other
@@ -91,7 +91,7 @@ find several folders containing Mops files. They are:
     -   Asm source\<br /\> Source code for the Mops 68k assembler.
     -   Demo folder\<br /\> Source files for demonstration programs used
         in the tutorial.
--   Mops manual\<br /\> Uhm. That\'s where the documentation you are
+-   Mops manual\<br /\> Uhm. That's where the documentation you are
     reading is stored.
 
 Most of the source code files in System, Toolbox, and Demo folders are
@@ -113,7 +113,7 @@ In the Tutorial, we present many examples of things you should type into
 the computer.&nbsp; To differentiate the characters you type from the
 characters that the computer generates on the screen, we \<span
 class=\"TYPE\"\>stylize\</span\> those characters you type. The
-computer\'s prompt and other responses are printed in regular monospace
+computer's prompt and other responses are printed in regular monospace
 type.
 
 In both the Tutorial and the chapters in Part II, whenever we introduce
@@ -126,7 +126,7 @@ You will also find many cases in the manual and in the Mops source code
 of Mops words being capitalized in what may seem odd places, such as in
 the middle of a word like bArray. While this style of capitalization is
 common among experienced programmers for the sake of ease of reading,
-rest assured that you won\'t have to master any scheme of capitalization
+rest assured that you won't have to master any scheme of capitalization
 in learning Mops. Mops itself is **case insensitive**, which means that
 you can type a word in all lower case, all upper case, or any
 combination thereof, and Mops will recognize it as the same word. As you
@@ -136,7 +136,7 @@ set will make more sense to you.
 **Special note to experienced Forth and Smalltalk programmers:**\<br /\>
 Mops is based on Forth, and its object-oriented features owe a lot to
 Smalltalk. Experienced programmers in either Smalltalk or Forth should
-take care not to jump to any conclusions regarding Mops\' behavior on
+take care not to jump to any conclusions regarding Mops' behavior on
 the basis of previous experience, and to read carefully through the
 tutorial.
 
@@ -158,19 +158,19 @@ release was completed in 2003 by
 of the material were updated to reflect the advent of OS X, and this
 will be ongoing, however as a web site the versioning seems irrelevant
 and so this manual has no version numbers but rather an *Updated on*
-entry in this page\'s title bar.
+entry in this page's title bar.
 
 Mops
 ----
 
-The name Mops could well be an acronym for *Mike\'s Object oriented
+The name Mops could well be an acronym for *Mike's Object oriented
 Programming System* but since Mike feels the computing world has enough
 acronyms already, he has taken pity on us. Hence we spell Mops as Mops,
 not MOPS.
 
-Mike\'s hope is that over a period of time Mops users will, by sharing
+Mike's hope is that over a period of time Mops users will, by sharing
 their developments, contribute to the ongoing Mops effort. As a one-man,
-very part time operation, Mike can\'t hope to singlehandedly compete
+very part time operation, Mike can't hope to singlehandedly compete
 with all the commercial outfits producing gargantuan bells and whistles
 encumbered development systems for the Mac, and would be happy to
 concentrate on the low-level implementation of the Mops nucleus and
@@ -189,4 +189,4 @@ documentation to the [PowerMops
 Users](http://lists.sourceforge.net/lists/listinfo/powermops-users)
 mailing list.
 
-[Category:Manual](Category:Manual "wikilink")
+[Category:Manual](Category:Manual)

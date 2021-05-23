@@ -1,8 +1,6 @@
-Basic Data Structure
-====================
+# Basic Data Structure
 
-About this chapter
-------------------
+## About this chapter
 
 This chapter describes the Mops classes and words providing you with the
 fundamental structures that are necessary for programming in Mops. Most
@@ -25,8 +23,7 @@ Mops.
 
   : Source files
 
-Using the basic data structures
--------------------------------
+## Using the basic data structures
 
 This chapter will discuss the primitive classes that Mops provides as
 building blocks out of which you can assemble the data structures
@@ -47,8 +44,7 @@ be covered here include:
   Ptr         (Col)         
   ----------- ------------- -------------
 
-Using Class Object and Bytes
-----------------------------
+## Using Class Object and Bytes
 
 The root of all classes is class Object. It has no data, but does have a
 set of behaviors that are generally applicable to any object, regardless
@@ -58,30 +54,28 @@ properties that all objects should have. Addr: returns the base address
 of an object. (However you can normally just name an object without
 sending it an explicit message, and this has the same effect of causing
 its address to be pushed. The only exception is the Large\_obj\_array
-class.) Other methods in Object provide a hex dump of an object\'s data
-and access to an object\'s class pointer.
+class.) Other methods in Object provide a hex dump of an object's data
+and access to an object's class pointer.
 
 Bytes is not really a class, but rather is a Mops word that enables you
 to allocate a certain number of bytes as an instance variable within a
 class definition. Bytes is chiefly useful when mapping parts of Toolbox
 data structures that only need to be allocated but not accessed. Bytes
-actually creates an ivar of class Object, so you can use Object\'s
+actually creates an ivar of class Object, so you can use Object's
 methods, such as Addr:, on an ivar created with Bytes. As an example,
 class Window uses Bytes to allocate portions of the window record that
-Mops doesn\'t need direct access to. Remember, however, that Bytes is
-not an indexed type like barray&mdash;it\'s an Object. If you send it a
-length: message you\'ll always get zero, which is the length of
-Object&mdash;this surely won\'t be what you want!
+Mops doesn't need direct access to. Remember, however, that Bytes is
+not an indexed type like barray---it's an Object. If you send it a
+length: message you'll always get zero, which is the length of
+Object---this surely won't be what you want!
 
-Using the scalar classes
-------------------------
+## Using the scalar classes
 
 Scalar classes represent non-indexed objects which hold simple integer
 or pointer data. A Byte, Int or Var can hold an 8,16, or 32-bit signed
 integer respectively.
 
-Using the array classes
------------------------
+## Using the array classes
 
 There are three basic array classes in Mops - bArray, wArray and Array,
 having 1, 2 and 4-byte indexed cells. We have defined a basic set of
@@ -95,8 +89,8 @@ This class defines some general methods which are independent of the
 indexed width. These are \^Elem:, which returns the address of an
 indexed cell of any width, using a runtime lookup, Limit:, which tells
 you the maximum number of elements allocated to an object; Width:, which
-tells you the width of an object\'s indexed cells; ClearX:, which sets
-all of an array\'s cells to 0; and IXAddr:, which leaves the address of
+tells you the width of an object's indexed cells; ClearX:, which sets
+all of an array's cells to 0; and IXAddr:, which leaves the address of
 the 0th indexed cell.
 
 There is also a group of methods that must be redefined for each array
@@ -116,8 +110,8 @@ cannot.
 We have defined several classes which make it easy to handle groups of
 objects. By multiply inheriting Obj\_array with any other class, you
 create an array of objects of that class. You then use the select:
-method to make one of those objects &lsquo;current&rsquo;, and can then
-access the &lsquo;current&rsquo; object exactly as if it were a normal
+method to make one of those objects 'current', and can then
+access the 'current' object exactly as if it were a normal
 object, i.e. not part an array at all.
 
 Class X-Array adds to the basic Array the ability to execute one of its
@@ -129,21 +123,23 @@ Null so the object will behave gracefully if you fail to initialize it
 in your application. Use X-Array whenever you need to execute one of a
 group of Mops words based on a series of contiguous indices.
 
-HandleList is an extremely useful class in Mops. It\'s used for sets of
-heap-based objects, accessed through ObjHandles. HandleList doesn\'t
+HandleList is an extremely useful class in Mops. It's used for sets of
+heap-based objects, accessed through ObjHandles. HandleList doesn't
 inherit from Obj\_Array, but uses the same idea of a select: method to
-make a particular one of its ObjHandles &lsquo;current&rsquo;. Any
-number of objects can be in a HandleList&mdash;the only limitation is
+make a particular one of its ObjHandles 'current'. Any
+number of objects can be in a HandleList---the only limitation is
 the amount of memory available.
 
-Here\'s an example of how a HandleList could be used to implement a set
+Here's an example of how a HandleList could be used to implement a set
 of four windows, accessible by index:
 
-`HandleList Windows`\
-`: CreateWindows`\
-`4 0 DO  ['] window newObj: windows  LOOP ;`\
-`\ Resize window at index 2:`\
-`2 select: windows  300 100 size: [ obj: windows ]`\
+```mops
+HandleList Windows
+: CreateWindows
+4 0 DO  ['] window newObj: windows  LOOP ;
+\ Resize window at index 2:
+2 select: windows  300 100 size: [ obj: windows ]
+```
 
 Notice how, once we have used select: to choose which ObjHandle in the
 HandleList we are referring to, we can then send other methods to the
@@ -167,11 +163,10 @@ releases the heap block pointed to by the handle (that is, the object
 itself). Thus, by simply sending release: to a HandleList, we are
 releasing all the heap storage it owns. Incidentally, if you want to
 just release one of the handles in a HandleList, use select: followed by
-releaseObj:&mdash;this is the reason we have defined releaseObj:
+releaseObj:---this is the reason we have defined releaseObj:
 separately from release:.
 
-Using Collections
------------------
+## Using Collections
 
 Class Ordered-Col is another important class in Mops. It is implemented
 by multiply inheriting the (Col) class with one of the array classes. It
@@ -184,24 +179,23 @@ in the dictionary (or the heap). O-C uses this as a maximum up to which
 its variable-length list will grow via the Add: method. The advantage of
 an O-C is that you can add values to the end of the list without
 maintaining the index yourself, only the sequence in which to add. You
-might want to utilize the O-C\'s properties only while initializing the
+might want to utilize the O-C's properties only while initializing the
 object, after which it is simply used as an Array. WordCol is an
 Ordered-Col with 16-bit cells rather than 32-bit.
 
-Persistent objects
-------------------
+## Persistent objects
 
-&ldquo;Persistent Objects&rdquo; are objects that can stick around after
+"Persistent Objects" are objects that can stick around after
 your program quits, and be accessed again the next time your program
 runs.
 
-This of course means that when they\'re not being used, they must live
+This of course means that when they're not being used, they must live
 in a file somewhere. In implementing persistent objects, then, we need
 to be able to streamline the process of writing an object out to a file
 and reading it back.
 
 Now it should be clear from this, that one of the key features of
-persistent objects is that these objects can be serialized&mdash;that
+persistent objects is that these objects can be serialized---that
 is, no matter what their structure, they can be converted to a stream of
 bytes suitable for writing to a file or being read back. This is why the
 concept of persistent objects is always linked to the problem of how to
@@ -210,14 +204,14 @@ serialize an object.
 Our approach to serialization is straightforward, and has two parts to
 it.
 
-1.  We generalize the idea of a file slightly, and say that any class
+1. We generalize the idea of a file slightly, and say that any class
     that supports file-style READ: and WRITE: methods, is supporting the
-    &lsquo;stream&rsquo; methods. This idea is really the same as an
-    interface&mdash;we could say that READ: and WRITE: are part of the
-    stream interface. Although Mops doesn\'t have a formalized interface
-    scheme in its syntax, the idea is really the same&mdash;it\'s just
+    'stream' methods. This idea is really the same as an
+    interface---we could say that READ: and WRITE: are part of the
+    stream interface. Although Mops doesn't have a formalized interface
+    scheme in its syntax, the idea is really the same---it's just
     informal in Mops.
-2.  We assume that each object knows how to serialize itself. The
+2. We assume that each object knows how to serialize itself. The
     serialization methods are SEND: and BRING:. These both take one
     parameter, the address of a stream object. SEND: is expected to send
     late-bound WRITE: messages to the stream, to write out the bytes of
@@ -229,7 +223,7 @@ it.
 We provide these methods in all the standard Mops classes. Class Object
 has the most basic implementation, and just writes and reads the local
 ivars and indexed area. This will work for simple objects (those that
-don\'t have other data outside these local areas).
+don't have other data outside these local areas).
 
 We write the non-indexed and indexed data separately, to make these
 operations less sensitive to platform-related alignment questions. On
@@ -242,26 +236,26 @@ needed.
 
 As Handle objects have data outside the local area, class Handle needs a
 separate SEND: and BRING:. If you look at the source file Struct,
-you\'ll see that we transfer the length, then the bytes in the handle.
-There is no local ivar data except the Handle itself, which doesn\'t
-need to be saved or restored&mdash;the data stored in the Handle is what
+you'll see that we transfer the length, then the bytes in the handle.
+There is no local ivar data except the Handle itself, which doesn't
+need to be saved or restored---the data stored in the Handle is what
 matters.
 
 For the class ObjHandle, we could just inherit from Handle, which would
 mean our object gets saved as an undifferentiated string of bytes. This
-wouldn\'t be good, since we have to assume that the object knows how to
+wouldn't be good, since we have to assume that the object knows how to
 send itself properly. So we send the name of the class as characters,
 then send SEND: to the object itself. At BRING: time, we look up the
 classname, create a new object, then send BRING: to it.
 
-A nice thing about this scheme is that if the object doesn\'t contain
+A nice thing about this scheme is that if the object doesn't contain
 any addresses, it can be reconstituted after a Mops recompilation, and
 often even over a platform change.
 
 In class HandleList, we first send 2 bytes with the number of items,
 then SELECT: each item and send SEND: to it. We use a special 2-byte
 marker between each of these objects we send to the stream, so that
-BRING: can check that we haven\'t got out of sync.
+BRING: can check that we haven't got out of sync.
 
 These implementations of SEND: and BRING: in the basic Mops classes may
 well cover the majority of your needs. If your classes need something
@@ -270,29 +264,29 @@ do.
 
 There is a final step to the implementation of persistent objects. Once
 an object implements SEND: and BRING: correctly, we have to link it to a
-file. We have provided a file &lsquo;Container&rsquo; in the &ldquo;More
-Classes&rdquo; folder which shows how this might be done. Class
+file. We have provided a file 'Container' in the "More
+Classes" folder which shows how this might be done. Class
 Container is a subclass of File, and has an INIT: method in which you
 pass in the address of an object. Then when you pass OPEN: and SAVE:
 messages to the Container, the Container sends BRING: and SEND: messages
 respectively, to the object.
 
-The fact that we only link one object to the Container doesn\'t mean
+The fact that we only link one object to the Container doesn't mean
 that the number of objects in the Container is in any way limited, since
 the object can be a HandleList which can be a collection of an arbitrary
-number of objects from arbitary classes. We\'ve seen already that
+number of objects from arbitary classes. We've seen already that
 HandleList implements SEND: and BRING: properly (in a way that accounts
 for the objects in the list being of arbitrary classes).
 
 So, after you have sent OPEN: to a Container, all the objects in the
 container will have been read into memory. And when you send SAVE:, they
-are all written out to the file. If you don\'t want all your objects to
+are all written out to the file. If you don't want all your objects to
 be in memory at the same time, you can use several containers.
 
 This scheme is very flexible, and will probably be sufficient for most
 needs.
 
-Classes
+## Classes
 -------
 
 ### Object
@@ -311,19 +305,19 @@ superclass chain ultimately traces back to Object.
   System objects       None
 
   --------------------------- --------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  class:                      ( \-- addr )                Returns a pointer to the object\'s class
-  .id                         ( \-- )                     Types the object\'s name
-  .class                      ( \-- )                     Types the name of the object\'s class
-  addr:                       ( \-- addr )                Returns the base address of an object\'s data
-  length:                     nowrap \| ( \-- \#bytes )   Returns the length of the object\'s ivar data area
-  copyto:                     ( \^obj \-- )               \^obj is a pointer to another object. This method copies that object\'s ivar data to this object. Be careful using this method as no check is done that the objects are of the same class. However this method can be very useful in some situations
+  class:                      ( \-- addr )                Returns a pointer to the object's class
+  .id                         ( \-- )                     Types the object's name
+  .class                      ( \-- )                     Types the name of the object's class
+  addr:                       ( \-- addr )                Returns the base address of an object's data
+  length:                     nowrap \| ( \-- \#bytes )   Returns the length of the object's ivar data area
+  copyto:                     ( \^obj \-- )               \^obj is a pointer to another object. This method copies that object's ivar data to this object. Be careful using this method as no check is done that the objects are of the same class. However this method can be very useful in some situations
   classinit:                  ( \-- )                     This a very special method. Whenever an object is created, Mops sends it a classinit: message so that it will initialize itself to reasonable values, or whatever the programmer desires all objects of that class to do when created. This method corresponds to a constructor method in C++. In class Object, it is a do-nothing method, allowing any subclass to override it as appropriate. By convention, init: is used for explicit programmatic initialization and customization thereafter,and new: is used to set up the toolbox-interface portion of toolbox objects (such as making a window known to the Macintosh window manager)
   release:                    ( \-- )                     This method does nothing in class Object itself. However, in general you should send release: to an object before you FORGET it or deallocate its memory. release: will cause an object to release any heap memory it has allocated and do any other cleaning up which may be necessary. This method corresponds to a destructor method in C++
   dump:                       ( \-- addr )                Dumps the dictionary entry for the object in a hex format
-  print:                      ( \-- addr )                Dumps the dictionary entry for the object in a hex format. This provides a default print: method for objects that don\'t have a more sophisticated form of displaying their data
+  print:                      ( \-- addr )                Dumps the dictionary entry for the object in a hex format. This provides a default print: method for objects that don't have a more sophisticated form of displaying their data
   persistence/serialization                               
-  send:                       ( \^obj \-- )               Sends a write: message to the passed-in object, to write out this object\'s data as a stream of bytes
-  bring:                      ( \^obj \-- )               Sends a read: message to the passed-in object, to read in this object\'s data as a stream of bytes
+  send:                       ( \^obj \-- )               Sends a write: message to the passed-in object, to write out this object's data as a stream of bytes
+  bring:                      ( \^obj \-- )               Sends a read: message to the passed-in object, to read in this object's data as a stream of bytes
   --------------------------- --------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   : Methods
@@ -406,7 +400,7 @@ Var provides storage for 32-bit numeric quantities
 
 ------------------------------------------------------------------------
 
-Provides storage for 16-bit quantities&mdash;signed (Int) and unsigned
+Provides storage for 16-bit quantities---signed (Int) and unsigned
 (Uint ).
 
 +--------------------+-----------------------------------------------+
@@ -450,7 +444,7 @@ Provides storage for 16-bit quantities&mdash;signed (Int) and unsigned
 
 ------------------------------------------------------------------------
 
-Provides storage for 8-bit quantities&mdash;signed (Byte) and unsigned
+Provides storage for 8-bit quantities---signed (Byte) and unsigned
 (Ubyte).
 
 +--------------------+----------------------------------------------+
@@ -556,7 +550,7 @@ blocks of heap.
 
   : Methods
 
-**Error messages** - **&ldquo;Set handle size failed&rdquo;**
+**Error messages** - **"Set handle size failed"**
 
 Non-0 return from memory manager on a SetHSize system call, probably
 resulting from a setSize: or -&gt;: call with insufficient memory
@@ -625,8 +619,8 @@ moved.
 
   : Methods
 
-**Error messages** - **&ldquo;new: on a pointer couldn\'t get enough
-heap&rdquo;**
+**Error messages** - **"new: on a pointer couldn't get enough
+heap"**
 
 ### DicAddr
 
@@ -635,7 +629,7 @@ heap&rdquo;**
 Dicaddr is used for storing the address of a location within the
 dictionary. If the dictionary is saved and reloaded in a subsequent run,
 the address will still be valid. This is accomplished by storing the
-address in a relocatable format. Don\'t depend on details of this
+address in a relocatable format. Don't depend on details of this
 format, in case it changes.
 
   Superclass                    Longword
@@ -657,8 +651,8 @@ format, in case it changes.
 
   : Methods
 
-**Error messages** - **&ldquo;you can\'t store a module address outside
-the module&rdquo;**
+**Error messages** - **"you can't store a module address outside
+the module"**
 
 You attempted to put: the address of a location in a module, into a
 DicAddr located outside the module. This is illegal, since the module
@@ -696,8 +690,8 @@ get: method.
 
   : Methods
 
-**Error messages** - **&ldquo;you can\'t store a module address outside
-the module&rdquo;**
+**Error messages** - **"you can't store a module address outside
+the module"**
 
 See DicAddr.
 
@@ -730,7 +724,7 @@ general indexed methods, which apply regardless of indexed width.
 
   : Methods
 
-**Error messages** - **&ldquo;Index or value out of range&rdquo;**
+**Error messages** - **"Index or value out of range"**
 
 One of the methods taking an index found the index to be out of range
 for this array.
@@ -763,7 +757,7 @@ predefined in Mops.
 
   : Methods
 
-**Error messages** - **&ldquo;Index or value out of range&rdquo;**
+**Error messages** - **"Index or value out of range"**
 
 As for Indexed-Obj.
 
@@ -797,7 +791,7 @@ of Mops words.
 
   : Methods
 
-**Error messages** - **&ldquo;Wrong number of xts in list&rdquo;**
+**Error messages** - **"Wrong number of xts in list"**
 
 For put:, the value N did not match the number of indexed elements for
 this object.
@@ -811,11 +805,11 @@ array of objects of a given class. Just define a new class which
 multiply Inherits: from the given class (or classes) and Obj\_array
 (which must come last). This will add an indexed section to each object
 of the new class, with elements wide enough to contain objects of the
-original class(es). Then select: &ldquo;switches in&rdquo; the selected
-element to be the &lsquo;current&rsquo; element, and all the normal
+original class(es). Then select: "switches in" the selected
+element to be the 'current' element, and all the normal
 methods of the class(es) can then be used. If your base class is long
-(longer than about 32 bytes), you\'ll probably get better performance by
-using the variant [Large\_Obj\_Array](#Large_Obj_Array "wikilink") (see
+(longer than about 32 bytes), you'll probably get better performance by
+using the variant [Large\_Obj\_Array](#Large_Obj_Array) (see
 below).
 
 +-----------------------------+---------------------------------------+
@@ -835,7 +829,7 @@ below).
 |                             |      current   The number of the elem |
 |                             | ent currently &quot;switched in&quot; |
 +-----------------------------+---------------------------------------+
-| Indexed data                | Any width&mdash;the actual width is   |
+| Indexed data                | Any width---the actual width is   |
 |                             | determined by the other class(es)     |
 +-----------------------------+---------------------------------------+
 | System objects              | None                                  |
@@ -851,7 +845,7 @@ below).
 
   : Metrhods
 
-**Error messages** - **&ldquo;Index or value out of range&rdquo;**
+**Error messages** - **"Index or value out of range"**
 
 An out-of-range index value was used for select:.
 
@@ -860,8 +854,8 @@ An out-of-range index value was used for select:.
 ------------------------------------------------------------------------
 
 This is a variant of Obj\_array which is intended to behave identically.
-It\'s a performance optimization for Obj\_arrays whose elements are
-large&mdash;longer than 32 bytes or so.
+It's a performance optimization for Obj\_arrays whose elements are
+large---longer than 32 bytes or so.
 
 Sending select: to an Obj\_array selects an element which will receive
 subsequent messages. This works by actually copying the element out of
@@ -869,26 +863,26 @@ the indexed area of the object, into the non-indexed part at the front.
 This works well for small elements, since selection is quite quick, and
 sending messages to the selected element is identical in every way to
 sending a message to a simple object. Where performance can start to bog
-down, however, is if the elements are very large&mdash;in the PowerPC
+down, however, is if the elements are very large---in the PowerPC
 code generator I was using Obj\_array for the sets of descriptors
 describing each machine register, and each descriptor is over 100 bytes
 long. I discovered that the code generator was spending half its time in
-\<code\>select:\</code\>, moving all those bytes around.
+`select:`, moving all those bytes around.
 
-So this led to Large\_obj\_array. This class doesn\'t move any of the
+So this led to Large\_obj\_array. This class doesn't move any of the
 elements in the indexed area, but keeps an offset which points to the
 currently selected element. Whenever you send a message to one of these
 objects, the offset is added. This step only takes two machine
 instructions, so operations on these objects are only very slightly
 slower. But select: is very fast.
 
-You should be able to use Large\_obj\_array anywhere you\'re using
+You should be able to use Large\_obj\_array anywhere you're using
 Obj\_array, without changing any other code.
 
-**Warning:** There is one &lsquo;gotcha&rsquo;&mdash;if you just want
+**Warning:** There is one 'gotcha'---if you just want
 the address of the currently selected element, you have to use the addr:
-method&mdash;you can\'t just use the object\'s name, as you normally can
-with objects. If you just use the name, you\'ll get the address of the
+method---you can't just use the object's name, as you normally can
+with objects. If you just use the name, you'll get the address of the
 start of the object, not the currently selected element.
 
 ### (Col), Ordered-Col, wordCol, byteCol
@@ -939,8 +933,8 @@ collections respectively. All methods are identical to (Col)
 
   Error messages                       
   ------------------------------------ ----------------------------------------------------
-  **&ldquo;My list is empty&rdquo;**   A remove: or last: was attempted on an empty list.
-  **&ldquo;My list is full&rdquo;**    An add: was attempted with size=limit.
+  **"My list is empty"**   A remove: or last: was attempted on an empty list.
+  **"My list is full"**    An add: was attempted with size=limit.
 
 ### X-Col
 
@@ -1076,7 +1070,7 @@ end, and probably not removed at all, or not very often.
   releaseObj:
   removeObj:
   release:
-  The next methods treat the list as a stack. This is used by fileList. In the method descriptions, we\'ll refer to this as the &lsquo;stack&rsquo; (within inverted commas) to distinguish it from the data stack.
+  The next methods treat the list as a stack. This is used by fileList. In the method descriptions, we'll refer to this as the 'stack' (within inverted commas) to distinguish it from the data stack.
   top:
   drop:
   pushNewObj:
@@ -1218,7 +1212,7 @@ Resource implements Macintosh Resources.
 |                             | ------------------------------------- |
 |                             |   Var     Type   4-byte code f        |
 |                             | or the resource type of this resource |
-|                             |   Int     ID     The resource\'s ID   |
+|                             |   Int     ID     The resource's ID   |
 +-----------------------------+---------------------------------------+
 | Indexed data                | None                                  |
 +-----------------------------+---------------------------------------+
@@ -1236,18 +1230,18 @@ Resource implements Macintosh Resources.
 
   : Methods
 
-**Error messages** - **&ldquo;We couldn\'t find this resource&rdquo;**
+**Error messages** - **"We couldn't find this resource"**
 
 A call to getnew: resulted in the Mac system not being able to locate a
 resource with the current type and ID. Possibly the type or ID are
-wrong, or the correct resource file isn\'t open.
+wrong, or the correct resource file isn't open.
 
 ------------------------------------------------------------------------
 
   ------------------------------------------- ------------------------------- ---------------------------------
-  &nbsp;                                      [Classes](Classes "wikilink")   [Strings](Classes_2 "wikilink")
-  [Documentation](Documentation "wikilink")                                   
+  &nbsp;                                      [Classes](Classes)   [Strings](Classes_2)
+  [Documentation](Documentation)                                   
   ------------------------------------------- ------------------------------- ---------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Classes](Category:Classes "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Classes](Category:Classes)

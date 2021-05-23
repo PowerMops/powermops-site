@@ -1,12 +1,12 @@
 Fixed-Point Arithmetic {#fixed_point_arithmetic}
 ======================
 
-The version of Mops that you\'ve been using in this tutorial utilizes
+The version of Mops that you've been using in this tutorial utilizes
 fixed-point arithmetic (also called integer arithmetic) instead of
 floating-point arithmetic. The primary difference between the two is
 that fixed-point arithmetic functions only with integers. You had a hint
 of that when you started experimenting with division in [ Lesson
-3](Lesson_3#Arithmetic_Operators "wikilink")\<nowiki\>: the answer on
+3](Lesson_3#Arithmetic_Operators)\<nowiki\>: the answer on
 the stack was either an integer quotient or a quotient-plus-remainder
 (both of which were integers). Floating point arithmetic, on the other
 hand, allows you to enter numbers with digits to the right of the
@@ -51,15 +51,15 @@ Two of the most used scalars are those that are actually special-case
 combinations of familiar arithmetic operations:
 
   ---------------------------------------------- ------------------------------------------------------------------------------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \<code\>\<nowiki\>\*/\</nowiki\>\</code\>      class=\"STACK\" nowrap \| \<code\>( n1 n2 n3 \-- result )\</code\>             Multiplies &lsquo;\<code\>n1\</code\>&rsquo; times &lsquo;\<code\>n2\</code\>&rsquo; and then divides that result by &lsquo;\<code\>n3\</code\>&rsquo;, leaving the final result on the stack.
-  \<code\>\<nowiki\>\*/MOD\</nowiki\>\</code\>   class=\"STACK\" nowrap \| \<code\>( n1 n2 n3 \-- remainder result )\</code\>   Same as \<code\>\<nowiki\>\*/\</nowiki\>\</code\> but leaves both the result and the remainder on the stack.
+  `\<nowiki\>\*/\</nowiki\>`      class=\"STACK\" nowrap \| `( n1 n2 n3 \-- result )`             Multiplies '`n1`' times '`n2`' and then divides that result by '`n3`', leaving the final result on the stack.
+  `\<nowiki\>\*/MOD\</nowiki\>`   class=\"STACK\" nowrap \| `( n1 n2 n3 \-- remainder result )`   Same as `\<nowiki\>\*/\</nowiki\>` but leaves both the result and the remainder on the stack.
   ---------------------------------------------- ------------------------------------------------------------------------------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Notice carefully the order of the items on the stack and how they are
 treated by the arithmetic operations, because they are not as you would
 expect in a regular combination of Mops arithmetic operations. But the
 order allows you to better visualize the process by changing the
-algebraic infix notation of a problem to Mops\' postfix notation. For
+algebraic infix notation of a problem to Mops' postfix notation. For
 example, to multiply 100 times the fraction two-thirds, the
 paper-and-pencil equation
 
@@ -70,9 +70,9 @@ then becomes
 `100 2 3 */`
 
 Similar operations can be used to work with percentages. Simply put a
-100 in place of the &lsquo;\<code\>n3\</code\>&rsquo; in the description
+100 in place of the '`n3`' in the description
 above and the percentage figure in place of
-&lsquo;\<code\>n2\</code\>&rsquo;.
+'`n2`'.
 
 Decimal, Hex, and Binary Arithmetic {#decimal_hex_and_binary_arithmetic}
 -----------------------------------
@@ -96,7 +96,7 @@ of the decimal 24.
 The binary numbering system, at the other extreme, has only two digits,
 a zero and a one. This system may not seem very useful in light of
 decimal and hexadecimal systems, but as you get further into the
-programming with the Mac, You\'ll find times when binary math is
+programming with the Mac, You'll find times when binary math is
 absolutely essential for ease of designing elements such as cursors,
 text fonts, and icons.
 
@@ -142,14 +142,14 @@ is actually stored as:
 `0000 0000 0000 0000 0000 0000 0000 1010`
 
 If you were to calculate how many numbers you could describe within a
-thirty-two bit binary number, it would come out to 4294967296, that\'s
-over four-billion. Plenty big for just about every job you\'ll put your
+thirty-two bit binary number, it would come out to 4294967296, that's
+over four-billion. Plenty big for just about every job you'll put your
 Mac to.
 
 \<blockquote\>
 
-Note: You\'ve probably noticed that we space out binary numbers in
-groups of four bits. In a computer\'s memory, bits are stored
+Note: You've probably noticed that we space out binary numbers in
+groups of four bits. In a computer's memory, bits are stored
 consecutively, one after the other, but we use this convention to
 improve readability. For example, is 10000010110001000000 the same
 number as 10000101100001000000? When you group them in fours, it would
@@ -158,7 +158,7 @@ be easy to see without hesitating or getting cross-eyed that they are
 
 `</blockquote>`
 
-But, that\'s four-billion *positive* numbers. How do you work with
+But, that's four-billion *positive* numbers. How do you work with
 negative numbers?
 
 Signed and Unsigned Numbers {#signed_and_unsigned_numbers}
@@ -187,14 +187,14 @@ To understand this process, imagine that you are using a tape recorder
 that has a digital tape counter that counts in binary. If you set the
 counter to 0000 0000 and start to rewind the tape, the first thing that
 shows up on the counter is 1111 1111, which is actually -1 with respect
-to zero. But if you were to fast-forward the tape, the counter\'s
+to zero. But if you were to fast-forward the tape, the counter's
 maximum number would also be 1111 1111. That high number would
 correspond to the four-billion number of an unsigned number. But as a
 signed number, 1111 1111 represents the start of counting backwards from
 zero, that is, -1.
 
 For some hands-on experience with this concept, consider first that the
-\<code\>.\</code\> (dot) command you learned in the early sections of
+`.` (dot) command you learned in the early sections of
 this manual was actually a command to display the signed number
 equivalent of the number on the stack. That means that it can display
 numbers only within the plus-or-minus two-billion range. Prove it now by
@@ -206,15 +206,15 @@ the stack display will show:
 
 which is a signed number equivalent, a negative number near one-billion.
 
-Conversely, let\'s enter a -1 (a signed number) onto the stack. This
+Conversely, let's enter a -1 (a signed number) onto the stack. This
 time, however, you want to display it as an unsigned number. To do this,
-you use the word \<code\>U.\</code\>, which first converts the number to
+you use the word `U.`, which first converts the number to
 an unsigned number and then types it to the screen.
 
   ------------------------ ------------------------------------------------------------------ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \<code\>U.\</code\>      class=\"STACK\" nowrap \| \<code\>( n \-- )\</code\>               Prints the number on the top of the stack to the screen as an unsigned, single-precision number.
-  \<code\>U&lt;\</code\>   class=\"STACK\" npwrap \| \<code\>( u1 u2 \-- boolean )\</code\>   Compares two unsigned single-precision numbers. If \'\<code\>u1\</code\>\' is less than \'\<code\>u2\</code\>\', then leaves TRUE on the stack; otherwise, leaves FALSE.
-  \<code\>U&gt;\</code\>   class=\"STACK\" nowrap \| \<code\>( u1 u2 \-- boolean )\</code\>   Compares two unsigned single-precision numbers. If \'\<code\>u1\</code\>\' is greater than \'\<code\>u2\</code\>\', then leaves TRUE on the stack; otherwise, leaves FALSE.
+  `U.`      class=\"STACK\" nowrap \| `( n \-- )`               Prints the number on the top of the stack to the screen as an unsigned, single-precision number.
+  `U&lt;`   class=\"STACK\" npwrap \| `( u1 u2 \-- boolean )`   Compares two unsigned single-precision numbers. If '`u1`' is less than '`u2`', then leaves TRUE on the stack; otherwise, leaves FALSE.
+  `U&gt;`   class=\"STACK\" nowrap \| `( u1 u2 \-- boolean )`   Compares two unsigned single-precision numbers. If '`u1`' is greater than '`u2`', then leaves TRUE on the stack; otherwise, leaves FALSE.
   ------------------------ ------------------------------------------------------------------ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Try this sequence and watch what happens:
@@ -223,12 +223,12 @@ Try this sequence and watch what happens:
 `4294967295 `
 
 Just to reinforce the difference, now try the same example with -1 using
-\<code\>.\</code\> instead of \<code\>U.\</code\>.
+`.` instead of `U.`.
 
 One Last Set of Numbers; ASCII {#one_last_set_of_numbers_ascii}
 ------------------------------
 
-You\'ve already had a preview of a set of numbers called ASCII codes.
+You've already had a preview of a set of numbers called ASCII codes.
 These are numbers that were assigned by an industry standards group to
 every number, letter, and symbol on the computer keyboard, plus many
 control codes that computers use to communicate with each other and with
@@ -242,7 +242,7 @@ over telephone lines and even network connections.
 Note: Actually, Mops itself supports Unicode, which is a vastly larger
 standard that encompasses many languages around the world, as well as
 formal rules for encoding, manipulating, and displaying those languages.
-The good news is that you won\'t generally need to be aware of this
+The good news is that you won't generally need to be aware of this
 difference, since all the characters in the ASCII standard have been
 included as a subset of the of the Unicode standard. In this manual,
 consider our use of the term ASCII to be synonymous with that subset of
@@ -251,38 +251,38 @@ set.
 
 `</blockquote>`
 
-When you press the letter \'a\' on the keyboard, the computer recognizes
+When you press the letter 'a' on the keyboard, the computer recognizes
 the character only as the number 97 (decimal). Because each letter and
 symbol has a unique number, it is possible to make comparisons of a key
 pressed and manipulate characters on the screen with the many number
-crunching tools you\'ve already learned. If you know, for example, that
+crunching tools you've already learned. If you know, for example, that
 all capital letters of the alphabet are numbered from 65 to 90, it is
-possible to create a \<code\>DO\</code\>\...\<code\>LOOP\</code\> that
+possible to create a `DO`\...`LOOP` that
 instantly prints those letters on the screen:
 
 `<nowiki>`\
 `: ALPHABET  91 65 DO  i emit cr  LOOP ;`\
 `</nowiki>`
 
-\<code\>EMIT\</code\> is a Mops word that displays on the screen the
+`EMIT` is a Mops word that displays on the screen the
 character that is referenced by its ASCII number. If you want to put a
 particular ASCII character value on the stack, you can use the Mops word
-\<code\>&amp;\</code\> (\"ampersand\"). Try typing:
+`&amp;` (\"ampersand\"). Try typing:
 
 `<code>&amp; c . cr</code>`\
 `99`
 
-and you\'ll see that the stack display shows 99, which is the ASCII
-value for \'c\'. Other Mops words that might go along with
-\<code\>EMIT\</code\> and \<code\>&amp;\</code\> are:
+and you'll see that the stack display shows 99, which is the ASCII
+value for 'c'. Other Mops words that might go along with
+`EMIT` and `&amp;` are:
 
   ------------------------- ------------------------------------------------------ --------------------------------------------------------------------------------------
-  \<code\>EMIT\</code\>     class=\"STACK\" nowrap \| \<code\>( n \-- )\</code\>   Displays the character referenced by ASCII number, &lsquo;\<code\>n\</code\>&rsquo;.
-  \<code\>SPACE\</code\>    class=\"STACK\" nowrap \| \<code\>( \-- )\</code\>     Displays a blank space on the screen.
-  \<code\>SPACES\</code\>   class=\"STACK\" nowrap \| \<code\>( n \-- )\</code\>   Displays &lsquo;\<code\>n\</code\>&rsquo; blank spaces on the screen.
+  `EMIT`     class=\"STACK\" nowrap \| `( n \-- )`   Displays the character referenced by ASCII number, '`n`'.
+  `SPACE`    class=\"STACK\" nowrap \| `( \-- )`     Displays a blank space on the screen.
+  `SPACES`   class=\"STACK\" nowrap \| `( n \-- )`   Displays '`n`' blank spaces on the screen.
   ------------------------- ------------------------------------------------------ --------------------------------------------------------------------------------------
 
-Here\'s a use of \<code\>SPACES\</code\> in a modified alphabet
+Here's a use of `SPACES` in a modified alphabet
 definition to demonstrate its power:
 
 `<nowiki>`\
@@ -296,9 +296,9 @@ handy when you need to convert upper to lower cases or vice versa.
 ------------------------------------------------------------------------
 
   ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 13](Lesson_13 "wikilink")           [Tutorial](Tutorial "wikilink")   [Lesson 15](Lesson_15 "wikilink")
-  [Documentation](Documentation "wikilink")                                     
+  [Lesson 13](Lesson_13)           [Tutorial](Tutorial)   [Lesson 15](Lesson_15)
+  [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- -----------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Tutorial](Category:Tutorial "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Tutorial](Category:Tutorial)

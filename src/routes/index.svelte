@@ -1,13 +1,19 @@
 <main>
     <section>
+        <h1>Mops</h1>
+        <p>A full featured, stand-alone development
+        environment for programming the Macintosh written by <em>Mike Hore</em>.
+        Inspired by Smalltalk and the commercial language Neon,
+        Mops is based on Forth with extended object-oriented features
+        such as multiple inheritance, early and late binding,
+        persistent objects, and garbage collection.</p>
+    </section>
+    <section>
         <aside>
             <h3>Powermops</h3>
-            <p><em>Where it all started.</em> A full featured, stand-alone development
-                environment for programming the Macintosh written by <em>Mike Hore</em>.
-                Inspired by Smalltalk and the commercial language Neon,
-                Mops is based on Forth with extended object-oriented features
-                such as multiple inheritance, early and late binding,
-                persistent objects, and garbage collection.</p>
+            <p><em>Where it all started.</em> A complete development system
+                for PowerPC-based Macs.  (And up until version 4.0.4,
+                Motorola 680x0 Macs!)</p>
             <ul>
                 <li><a href="/pmops/OpenMeFirst">Open Me First</a></li>
                 <li><a href="/pmops/Documentation">Documentation</a></li>
@@ -27,7 +33,7 @@
         <aside>
             <h3>aMops</h3>
             <p><em>Here be dragons.</em> Mike's latest work includes an
-            all new code generator.</p>
+            all new code generator for the ARM family of processors.</p>
             <ul>
                 <li>Manual</li>
                 <li><a href="https://sourceforge.net/projects/powermops/files/aMops-CG/">Download</a></li>

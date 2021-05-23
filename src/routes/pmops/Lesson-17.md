@@ -2,12 +2,12 @@ Building a Turtle Graphics Program {#building_a_turtle_graphics_program}
 ==================================
 
 Now we can look at a graphics program, called Turtle. It defines a
-number of complex graphics curves and a way we\'ll be able to create a
-mini-Logo language out of several definitions in the program. We\'ll
+number of complex graphics curves and a way we'll be able to create a
+mini-Logo language out of several definitions in the program. We'll
 also have some more opportunity to use Toolbox calls. The source file is
-called \'Turtle\', and is in \'Demo folder\'.
+called 'Turtle', and is in 'Demo folder'.
 
-Here\'s the whole thing first. We\'ll then go through it in detail.
+Here's the whole thing first. We'll then go through it in detail.
 
 `<nowiki>`\
 `\ Turtle Graphics Objects for Demo`
@@ -153,7 +153,7 @@ Here\'s the whole thing first. We\'ll then go through it in detail.
 `60 4 size: Anna`\
 `</nowiki>`
 
-We\'ll now look at this program in detail.
+We'll now look at this program in detail.
 
 `need sin`
 
@@ -169,7 +169,7 @@ follow will be in decimal.
 This ensures that all numbers to follow will be in decimal, just in case
 a different number base was current before. Incidentally, you can place
 different portions of your program in differ-ent number bases, but you
-may have less difficulty remem-bering what number base you\'re in if you
+may have less difficulty remem-bering what number base you're in if you
 stay in decimal and precede any hex number with a dollar sign and a
 space (e.g., \$ AE9F).
 
@@ -179,29 +179,29 @@ space (e.g., \$ AE9F).
 `syscall LineTo`
 
 GetPenState, SetPenState, Line and LineTo are Mac Toolbox calls. We
-don\'t want to include information about every possible Toolbox call in
+don't want to include information about every possible Toolbox call in
 your Mops program, since there are so many, but we do need information
-about the ones you actually use. The word \'syscall\' tells the Mops
+about the ones you actually use. The word 'syscall' tells the Mops
 system that you are going to be using the Toolbox calls whose name you
-put after \'syscall\', and includes the information that Mops needs to
+put after 'syscall', and includes the information that Mops needs to
 compile the calls correctly.
 
 Here are the important things you need to know about syscall:
 
-1.  You have to use syscall for any Toolbox call you\'re going to make,
+1.  You have to use syscall for any Toolbox call you're going to make,
     you have to do it outside any definition, and before any definition
-    in which you do the call. It doesn\'t matter if you use syscall
-    several times over for the one call &mdash; in different source
-    files, say &mdash; subsequent ones will be ignored. In fact, three
+    in which you do the call. It doesn't matter if you use syscall
+    several times over for the one call --- in different source
+    files, say --- subsequent ones will be ignored. In fact, three
     of these syscalls are already defined in the QD (QuickDraw) file.
-    However by putting them all here, there\'s no penalty, and if we
+    However by putting them all here, there's no penalty, and if we
     ever change QD the code here will still work.
 2.  The names following syscall are **case sensitive**, this is the one
     place in Mops where case matters. This is forced on us by the way
     Apple handles its Toolbox calls on PowerMacs. So for example, if we
-    had put\<br\> \<code\>syscall getpenstate\</code\>\<br\>above, we
+    had put\<br\> `syscall getpenstate`\<br\>above, we
     would have received a compile-time error message telling us that
-    Mops couldn\'t find the name.
+    Mops couldn't find the name.
 3.  Not all Toolbox routines mentioned in Inside Macintosh are
     accessible to Mops. This is because some of them are not actually
     built into the MacOS, but are provided by MPW, CodeWarrior, or other
@@ -227,7 +227,7 @@ different.
 This is the beginning of the definition of a major class for this
 program, the one that defines the characteristics of a pen that draws on
 the Mac screen. We should point out that by defining a drawing pen in
-Mops\' object-oriented environment, you can have more than one pen
+Mops' object-oriented environment, you can have more than one pen
 drawing object in a given section of the screen (e.g., a window). The
 Mac Toolbox on its own does not give you this power. Consider it an
 added bonus of using an object-oriented language such as Mops. As you
@@ -239,11 +239,11 @@ As the comment indicates, the first five instance variables are the
 components of a Macintosh Toolbox data structure, a PenState. This is
 the structure required by the calls GetPenState and SetPenState, just as
 FrameRect required a Rect ([lesson
-5](Lesson_5#Defining_a_Class "wikilink")). For details on what the
-PenState variables are, Inside Macintosh\'s Quickdraw chapter is the
+5](Lesson_5#Defining_a_Class)). For details on what the
+PenState variables are, Inside Macintosh's Quickdraw chapter is the
 best source. There you learn that a PenState contains four variables,
 called pnLoc (a coordinate point), pnSize (a coordinate point indicating
-the number of pixels wide and high &mdash; from coordinate 0,0 &mdash;
+the number of pixels wide and high --- from coordinate 0,0 ---
 the pen is), pnMode (an integer), and pnPat (an 8-byte representation of
 the pen pattern discussed fully in Inside Macintosh). Corresponding
 variables are set up in this class so that any object created from this
@@ -252,7 +252,7 @@ right order.
 
 Since this is a Toolbox structure, we have to declare it as a
 68k\_record, as we discussed in [lesson
-5](Lesson_5#Defining_a_Class "wikilink"). Ivars declared within records
+5](Lesson_5#Defining_a_Class). Ivars declared within records
 have no extra Mops housekeeping information between them, and this is
 what Toolbox structures require.
 
@@ -280,20 +280,20 @@ list as you find need for them while defining methods.
 These two methods will be used frequently whenever an object of this
 class draws something on the screen. The first, GET:, copies the values
 of the Pen State variables from the Macintosh Toolbox to the ivars of an
-object. It\'s like taking a snapshot of the parameters at a given
+object. It's like taking a snapshot of the parameters at a given
 moment. Thus, after you move the pen to point x,y, a GET: saves the
-PenState conditions in an object\'s memory space. Later, when it comes
+PenState conditions in an object's memory space. Later, when it comes
 time to pick up where you left off, you can SET: the parameters, which
-copies them from the object\'s memory to the Toolbox.
+copies them from the object's memory to the Toolbox.
 
-With the PenState variables saved within an object\'s \'private data,\'
+With the PenState variables saved within an object's 'private data,'
 other objects can use the same Toolbox routines without destroy in the
 parameters of the first object. For example, if you tell the Toolbox to
 position the class Pen object named Scripto1 at coordinate 1,1, and then
-save those coordinates in Scripto1\'s data area, you are then free to
+save those coordinates in Scripto1's data area, you are then free to
 instruct the Toolbox to position Scripto2 at 100,120, without affecting
 the data in Scripto1. Later, when you need to work with Scripto1, the
-SET: command reminds the Toolbox where Scripto1\'s position was the last
+SET: command reminds the Toolbox where Scripto1's position was the last
 time.
 
 `<nowiki>`\
@@ -304,7 +304,7 @@ time.
 
 The next twelve methods are responsible for manipulating the parameters
 that affect any object of this class. For example, TURN: increments the
-angle value stored in an object\'s Direction ivar (+: Direction) by the
+angle value stored in an object's Direction ivar (+: Direction) by the
 number of degrees passed to it in a message, like
 
 `30 turn: Scripto1`
@@ -314,7 +314,7 @@ lesson. These correctly handle degree values of greater than 359
 degrees, or less than 0 degrees. For this reason, TURN: does not concern
 itself with whether the new Direction is in the range 0 - 359 degrees.
 
-UP: (line 35) simply places a 90 in the data cell of an object\'s
+UP: (line 35) simply places a 90 in the data cell of an object's
 Direction ivar. This is consistent with the notation of the last chapter
 where the up position is 90 degrees. This will be used in a positioning
 message later to reset the orientation of objects drawn with a pen
@@ -325,7 +325,7 @@ Quick-Draw procedure, as noted in **Inside Macintosh**, draws a line
 from the current pen location (the one set in the Toolbox by the set:
 self operation) to the coordinate specified in the two parameters. As
 soon as the drawing is completed, the new pen state is saved in the
-object\'s memory (get: self).
+object's memory (get: self).
 
 The MOVE: method present another kind of line drawing. This time the
 location of the destination point is determined by the length (in
@@ -338,15 +338,15 @@ That means that Sin must be loaded into Mops **before** Turtle. The
 statement need Sin on line 3 ensures this.
 
 The operations in MOVE: should now be familiar to you. The current pen
-state is copied from the object\'s ivar to the Toolbox. Then the sine of
-the current direction (the object\'s Direction ivar is the source of the
+state is copied from the object's ivar to the Toolbox. Then the sine of
+the current direction (the object's Direction ivar is the source of the
 information) is multiplied by the distance in pixels, and then divided
-by 10,000 (remember, sin\'s values have been multiplied by 10,000 for
+by 10,000 (remember, sin's values have been multiplied by 10,000 for
 ease of handling) to obtain the x-coordinate for the destination point
 (which remains on the stack). The y-coordinate is calculated by the
 operations in line 37. Finally, the two coordinates are packed into one
 cell and sent to the QuickDraw routine, Line, which draws the new line.
-After the drawing is completed, the pen state is saved in the object\'s
+After the drawing is completed, the pen state is saved in the object's
 memory (get: self).
 
 The next four methods, GOTO:, CENTER:, HOME:, and SIZE: should be
@@ -364,7 +364,7 @@ parameters (mode, size, and location) by way of a single message. All
 parameters must be sent with the message, even if only one of them is to
 be changed.
 
-The method PUTRANGE: places values into an object\'s ivar slots that
+The method PUTRANGE: places values into an object's ivar slots that
 will be used as parameters for some fancy graphics later in the program.
 The names stand for a change (delta) in degrees, a change in length, and
 an initial length.
@@ -377,7 +377,7 @@ figures themselves.
 Then comes the now familiar CLASSINIT: method is performed when an
 object of this class is created. It first saves a copy of the current
 pen state parameters (the ones the Toolbox starts up with) from the
-Toolbox into an object\'s first five ivars (get: self). Finally, the
+Toolbox into an object's first five ivars (get: self). Finally, the
 maxReps ivar for the object is set to 200.
 
 `<nowiki>`\
@@ -393,7 +393,7 @@ maxReps ivar for the object is set to 200.
 
 These three methods are largely Mops versions of math calculations for
 three types of graphics images: spirals, dragon curves, and Lissajous
-(pronounced *Lih-sah-zhoo*) figures. It\'s not important for our
+(pronounced *Lih-sah-zhoo*) figures. It's not important for our
 discussion here to understand the inner workings of these graphic
 routines. You can, of course, trace the processes yourself, if you like.
 
@@ -414,13 +414,13 @@ moves the pen to the center of the current drawing window.
 `get: initLen -&gt; dist get: deltaLen -&gt; delta`
 
 Dist and delta are given values by first fetching values from two of the
-object\'s ivars, initLen and deltaLen, and then storing the values in
+object's ivars, initLen and deltaLen, and then storing the values in
 their respective local variables (via -&gt; operations).
 
 `get: deltaDeg -&gt; degrees 0 -&gt; reps`
 
 Here the third local variable, degrees, gets its value after the
-deltaDeg ivar value is fetched from the object\'s memory. Reps is
+deltaDeg ivar value is fetched from the object's memory. Reps is
 initialized to zero, and will be used as a counter to compare to
 maxReps. Once these local variables have values stored in them, they can
 be used throughout that method for whatever calculations are desired, as
@@ -439,7 +439,7 @@ familiar value names in your operations.
 
 This means, of course, that the program will have to load values into
 initLen, deltaLen, and deltaDeg before a SPIRAL: selector message can be
-sent. But that\'s why PUTRANGE: was defined earlier.
+sent. But that's why PUTRANGE: was defined earlier.
 
 `<nowiki>`\
 `;class`\
@@ -496,9 +496,9 @@ the limit of the loop.
 
 SIZE: is redefined for this subclass. It takes two parameters: the
 length of each side and the number of sides for the polygon. GET: Self
-copies the current pen state into an object\'s PenState ivars when you
+copies the current pen state into an object's PenState ivars when you
 specify the size of a new Poly object (SIZE: will be the first selector
-You\'ll send to a new poly object, and it needs the PenState variables
+You'll send to a new poly object, and it needs the PenState variables
 in its ivars right away). The size parameters are stored in their
 respective instance variables, Sides and Length. This method also
 positions an object to the home position (as defined by the HOME: method
@@ -548,14 +548,14 @@ Experimenting With Turtle {#experimenting_with_turtle}
 -------------------------
 
 Now that you have an understanding of the inner workings of the Turtle
-program, it\'s time to play around with it. We\'ll start you off with
+program, it's time to play around with it. We'll start you off with
 some ideas of things you can do by creating some objects, defining new
 Mops words, defining new subclasses and even modifying the existing
 methods to do some tricks. The more you play with Mops, the quicker you
 will become comfortable with all its powers.
 
 First, you must load the file Turtle. Load it by either selecting the
-Load command from the File menu, or typing the \'slash-slash\' command,
+Load command from the File menu, or typing the 'slash-slash' command,
 as in
 
 `// turtle`
@@ -569,19 +569,19 @@ has been put in the global value WARNINGS?
 
 Normally this value is set to FALSE, so warnings are not displayed.
 
-\<blockquote\> Note: A value \'WARNINGS?\' was gone in PowerMops.
+\<blockquote\> Note: A value 'WARNINGS?' was gone in PowerMops.
 \</blockquote\>
 
 Once the files are loaded, you might want to see what Lissajous figures
 are. Use the Bic pen object as your drawing device. If you look closely
-at the methods definition for LJ:, You\'ll see that it needs values in
+at the methods definition for LJ:, You'll see that it needs values in
 several ivars of Bic for it to function: initLen, deltaLen, deltaDeg,
 and homeLoc (it also needs maxReps, but that value is set at 200 by
-CLASSINIT:). For convenience sake, define a Mops word, \'lj,\' that a)
+CLASSINIT:). For convenience sake, define a Mops word, 'lj,' that a)
 takes three input parameters and assigns them to the first three ivars
 (an operation that is performed by method PUTRANGE:), b) puts the
 homeLocation in the center of the screen (performed by method CENTER:),
-and c) draws the Lissajous figures (method LJ:). Here\'s one way to do
+and c) draws the Lissajous figures (method LJ:). Here's one way to do
 it:
 
 `<nowiki>`\
@@ -592,10 +592,10 @@ it:
 
 Try typing in various three integer combinations (e.g., 9 11 301 lj )
 and watch the variety of curves that are drawn. Try 2 2 2 lj, and
-You\'ll notice that the cursor prints on the screen at the last instant
+You'll notice that the cursor prints on the screen at the last instant
 before the cr brings the prompt over to the left margin. To eliminate
 this, you need to turn off the cursor with the Mops word
-\<code\>-curs\</code\> (the opposite, \<code\>+curs\</code\>, turns the
+`-curs` (the opposite, `+curs`, turns the
 cursor back on).
 
 Now, define a new word that turns the cursor off before doing the
@@ -622,18 +622,18 @@ Bic to change its maxReps ivar.
 
 `1000 putmax: bic`
 
-Now Let\'s experiment with the Anna object. Right now, it is a square of
+Now Let's experiment with the Anna object. Right now, it is a square of
 60 pixels on a side. Put the coordinates for the center of the screen in
-Anna\'s homeLoc ivar by sending a message with the CENTER: selector:
+Anna's homeLoc ivar by sending a message with the CENTER: selector:
 
 `250 160 center: Anna`
 
-Now, move Anna\'s PnLoc to the center with this message:
+Now, move Anna's PnLoc to the center with this message:
 
 `home: Anna`
 
 Draw Anna. The square appears on the screen. Now clear the screen
-(\<code\>CLS\</code\>) and resize Anna so the object has 8 sides, each
+(`CLS`) and resize Anna so the object has 8 sides, each
 20 pixels long and draw the object:
 
 `20 8 size: Anna`\
@@ -653,9 +653,9 @@ messed things up. Therefore, define a Mops word that:
 ------------------------------------------------------------------------
 
   ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 16](Lesson_16 "wikilink")           [Tutorial](Tutorial "wikilink")   [Lesson 18](Lesson_18 "wikilink")
-  [Documentation](Documentation "wikilink")                                     
+  [Lesson 16](Lesson_16)           [Tutorial](Tutorial)   [Lesson 18](Lesson_18)
+  [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- -----------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Tutorial](Category:Tutorial "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Tutorial](Category:Tutorial)

@@ -38,8 +38,8 @@ instance, when you request that a source file be loaded, Mops creates a
 new File object, gives it a filename, opens it, and interprets from the
 file rather than from the keyboard. The Toolbox supports two basic means
 of File specification and access, the so-called High Level routines,
-which all start \'FS\' or \'FSp\', and the Low Level routines, which all
-start \'PB\' or \'PBH\'. Class File uses the latter type of call, partly
+which all start 'FS' or 'FSp', and the Low Level routines, which all
+start 'PB' or 'PBH'. Class File uses the latter type of call, partly
 because they are supported in all versions of the MacOS from 6 onwards,
 and partly for the flexibility they give. These routines communicate
 with the Toolbox through a block of parameters, and class File has, as
@@ -64,7 +64,7 @@ must first create an object of class File, give it a name, and open it:
 `&quot; someFilename&quot; name: myFile`\
 `open: myFile abort&quot; open failed&quot;`
 
-The Name: message first clears the parameter block so that fields won\'t
+The Name: message first clears the parameter block so that fields won't
 be left over from a previous open. (This implies that you must set
 information other than the file name, like setVref:, after sending the
 Name: message.) When you open the file, a unique IORefNum is assigned to
@@ -77,13 +77,13 @@ it means that an error occurred during the I/O. You should check for EOF
 Because File objects are almost 150 bytes in length, it is useful to be
 able to allocate them dynamically rather than have them locked into a
 static dictionary. Class FileList, which is a subclass of HandleList,
-provides this function by maintaining a &lsquo;stack&rsquo; of handles
+provides this function by maintaining a 'stack' of handles
 to file objects in the heap. Mops has a single 6-element object of class
 FileList, called LoadFile, that it uses internally to provide a nested
 load facility. You can request that LoadFile allocate a new temporary
 File with the message pushNew: LoadFile. The objPtr Topfile is
 maintained to always point to the last File object allocated, which is
-the &lsquo;top&rsquo; of the file stack. Thus, you can use phrases like:
+the 'top' of the file stack. Thus, you can use phrases like:
 
 `open: topfile`\
 `myBuf 100 read: topfile`
@@ -94,11 +94,11 @@ must close it and remove it from the file stack:
 `drop: loadFile`
 
 Drop: automatically ensures that topFile is closed, but if you need to
-see the &lsquo;close&rsquo; return code you will want to issue close:
+see the 'close' return code you will want to issue close:
 topfile before drop: loadfile.
 
 The Clear: method in FileList closes and removes any currently allocated
-files in the list, and is called by Mops\'s default Abort routine.
+files in the list, and is called by Mops's default Abort routine.
 
 There is a word, LOADTOP, which will open topfile, then invoke the Mops
 interpreter to interpret from that file rather than the keyboard, then
@@ -112,7 +112,7 @@ Standard File Package {#standard_file_package}
 
 The StdGet: and StdPut: methods give easy access to the Macintosh
 Standard File Package. This code is called by most applications when the
-user needs to select a file to open, or a &ldquo;Save As&rdquo; name.
+user needs to select a file to open, or a "Save As" name.
 StdGet: and StdPut: set up and execute the various calls to the package
 manager. StdGet: calls SFGetFile, which displays the familiar scrollable
 list of files to open within a rectangle, and returns with a boolean on
@@ -121,8 +121,8 @@ file or hit the Cancel button. If the boolean is true, your file object
 will have been set up with the parameters obtained by SFGetFile.
 
 StdPut: is used when you need to get a name from the user for a Save.
-You need to provide two strings&mdash;the first is a prompt, such as
-&ldquo;Save file as:&rdquo;, and the second is the default filename that
+You need to provide two strings---the first is a prompt, such as
+"Save file as:", and the second is the default filename that
 will appear within the text edit item of the dialog. The user is free to
 edit the text, and the method will return if the user hits Save, Cancel
 or the Return key. Again, a boolean is returned and if it is true, your
@@ -136,7 +136,7 @@ be included in the list of files to select. For instance,
 `'type TEXT 1 stdGet: topfile`
 
 causes the Standard File Package to include only files of type
-&lsquo;TEXT&rsquo; in its list, (the 1 indicates the number of types
+'TEXT' in its list, (the 1 indicates the number of types
 specified). If you want all file types to be shown, do it thus:
 
 `-1 stdGet: topfile`
@@ -146,7 +146,7 @@ chosen file. They are identical in function to sending Name: &amp;
 SetVref: to the file object. You must subsequently send a Create:,
 CreateNew:, Open: or OpenReadOnly: before you can access the file. The
 difference between Create: and CreateNew: is that the former will reuse
-a file if it already exists, which has the advantage that the file\'s
+a file if it already exists, which has the advantage that the file's
 icon stays where it was (useful if you are saving the same file over and
 over). The latter always creates a new file, so the file creation date
 is always correct.
@@ -191,14 +191,14 @@ pathlist in an ordinary text file. The format is, for example,
 Each line specifies the exact string which will in turn be prepended to
 the unqualified filename in the file object in an attempt to find the
 file on the disk. Note however, that whatever you specify in the
-pathlist, the first folder searched will be the &ldquo;default
-folder&rdquo;, which is the folder from which the application started
+pathlist, the first folder searched will be the "default
+folder", which is the folder from which the application started
 up, (the folder in which the Mops nucleus resides until the application
-is &lsquo;installed&rsquo;). If the file isn\'t found in the default
+is 'installed'). If the file isn't found in the default
 folder, the path specified in the top line of the pathlist file will be
 used, then the second, and so on, until either the file is found or the
-list is exhausted. If the file still isn\'t found, a &ldquo;file not
-found&rdquo; error will be returned.
+list is exhausted. If the file still isn't found, a "file not
+found" error will be returned.
 
 In this example all the paths start with two colons. This says to step
 out of the folder in which the application resides then step down into
@@ -219,7 +219,7 @@ Open: never needs to know the particular paths which are being searched.
 
 You may disable the use of any pathlist by setting the value use\_paths?
 false. This is the initial default in installed applications. When you
-call getPaths, this value is set true, so you don\'t need to do it
+call getPaths, this value is set true, so you don't need to do it
 yourself.
 
 Classes
@@ -344,17 +344,17 @@ by using a FileList.
 
   : Methods
 
-**Error messages** - None &mdash; return codes from File Manager
+**Error messages** - None --- return codes from File Manager
 
 ### Container
 
 ------------------------------------------------------------------------
 
 Container is a subclass of File, that provides support for persistent
-objects. Note that isn\'t necessarily the only way that this support
+objects. Note that isn't necessarily the only way that this support
 could be done.
 
-You link an object to a Container by passing in the object\'s address to
+You link an object to a Container by passing in the object's address to
 the Init: method of Container. Then subsequently, when you send Save: to
 the Container, the object is serialized and written out to the file, and
 the file is closed. When you send Open: the file is opened and the
@@ -375,7 +375,7 @@ of objects from arbitary classes.
 |                              |   --------- -------- --------------  |
 |                              | ------------------------------------ |
 |                              |   dicaddr   \^obj    po              |
-|                              | inter to the object we\'re linked to |
+|                              | inter to the object we're linked to |
 |                              |   bool      setup?   true once th    |
 |                              | e file has been opened at least once |
 +------------------------------+--------------------------------------+
@@ -388,9 +388,9 @@ of objects from arbitary classes.
   ----------- --------------
 
   ------- -------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  init:   ( \^obj \-- )                                      Must be called before you use the continer. The passed-in object is the one you\'re linking to
-  open:   ( \-- )                                            Opens the file, as for Open: in class File. Then sends Bring: to the object, with the container\'s address, so that the object will read in its bytes from the file and reconstitute itself in memory. Finally the file is closed
-  save:   nowrap \| ( typ crtr addr1 len1 addr2 len2 \-- )   If save: hasn\'t been called before, calls the Standard Put file routine using the passed-in parameters, as for StdPut: in class File. If save: has been called before, the boolean setup? will be true, and we assume all the file info is valid, and just send Open: super. Then after that, we send Send: to the object so that it will serialize itself and write its bytes to the file. Finally the file is closed
+  init:   ( \^obj \-- )                                      Must be called before you use the continer. The passed-in object is the one you're linking to
+  open:   ( \-- )                                            Opens the file, as for Open: in class File. Then sends Bring: to the object, with the container's address, so that the object will read in its bytes from the file and reconstitute itself in memory. Finally the file is closed
+  save:   nowrap \| ( typ crtr addr1 len1 addr2 len2 \-- )   If save: hasn't been called before, calls the Standard Put file routine using the passed-in parameters, as for StdPut: in class File. If save: has been called before, the boolean setup? will be true, and we assume all the file info is valid, and just send Open: super. Then after that, we send Send: to the object so that it will serialize itself and write its bytes to the file. Finally the file is closed
   ------- -------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   : Methods
@@ -444,15 +444,15 @@ stack.
 
   ------------------------------------
   **Error messages**
-  **&ldquo;My list is empty&rdquo;**
+  **"My list is empty"**
   ------------------------------------
 
 ------------------------------------------------------------------------
 
   ---------------------------------- ------------------------------------------- --------------------------------
-  [ Strings](Classes_2 "wikilink")   [Classes](Classes "wikilink")               [Events](Classes_4 "wikilink")
-  &nbsp;                             [Documentation](Documentation "wikilink")   
+  [ Strings](Classes_2)   [Classes](Classes)               [Events](Classes_4)
+  &nbsp;                             [Documentation](Documentation)   
   ---------------------------------- ------------------------------------------- --------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Classes](Category:Classes "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Classes](Category:Classes)

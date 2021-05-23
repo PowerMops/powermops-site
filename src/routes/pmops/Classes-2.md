@@ -4,9 +4,9 @@ Strings
 About this chapter {#about_this_chapter}
 ------------------
 
-This chapter describes Mops\' string-handling classes. Strings are
+This chapter describes Mops' string-handling classes. Strings are
 objects that contain variable-length sequences of text, with methods for
-deletion, insertion etc. Mops\' powerful string handling facility
+deletion, insertion etc. Mops' powerful string handling facility
 provides an excellent base on which you can build various text-based
 utilities.
 
@@ -14,7 +14,7 @@ utilities.
   [Inside Macintosh](http://developer.apple.com/documentation/macos8/mac8.htm)
   [Text Utilities](http://developer.apple.com/documentation/mac/Text/Text-279.html)
   [Toolbox Utilities](http://developer.apple.com/documentation/mac/Text/Text-592.html)
-  **Mops:** [ Using Strings](Reference_6 "wikilink")
+  **Mops:** [ Using Strings](Reference_6)
   --------------------------------------------------------------------------------------
 
   : Recommended reading
@@ -32,24 +32,24 @@ Using strings {#using_strings}
 
 Mops strings are implemented as relocatable blocks of heap that can
 expand and contract as their contents change. A string object itself
-contains a handle to the heap block that contains the string\'s data. It
+contains a handle to the heap block that contains the string's data. It
 also contains three other ivars which we will describe below.
 
 Strings can be useful for a wide variety of programming needs. They can
 serve as file buffers, staging areas for text to be printed on the
 screen, dictionaries, or vehicles for parsing user input. You should
 consider using strings for any run of bytes whose length and/or contents
-are likely to change in the course of your program\'s execution. Strings
+are likely to change in the course of your program's execution. Strings
 are not restricted to ASCII text, although that will probably be their
 most common use. Note, however, that text constants can more efficiently
 be implemented as SCONs or string literals (see II.5 for more
 information).
 
 Using strings is somewhat like using files, in that you must open the
-string before you use it and close it when you\'re through. This is done
+string before you use it and close it when you're through. This is done
 by sending a New: message to each string before you use it, to allocate
-the string\'s heap storage, and then sending a Release: message when you
-no longer need the string. Release: is actually inherited from String\'s
+the string's heap storage, and then sending a Release: message when you
+no longer need the string. Release: is actually inherited from String's
 superclass, Handle, and calls the Toolbox routine DisposeHandle.
 
 There are two classes of strings in Mops. String supports basic string
@@ -72,9 +72,9 @@ deeper understanding of what characteristics it contributes to Mops
 string handling.
 
 Strings have a current size, which is the same as the length of the
-relocatable block of heap containing the string\'s data. Strings also
+relocatable block of heap containing the string's data. Strings also
 have two offets into the string data, called POS and LIM. POS marks the
-&lsquo;current&rsquo; position, and LIM the &lsquo;current&rsquo; end.
+'current' position, and LIM the 'current' end.
 Most string operations operate on the substring delimited by POS and
 LIM, which we call the active part of the string, rather than the whole
 string. We also keep the size of the string (the real size, that is) in
@@ -84,7 +84,7 @@ Communicating with other objects {#communicating_with_other_objects}
 --------------------------------
 
 While most of the method descriptions below should be self-explanatory,
-several are worth additional comment. One group of String+\'s methods
+several are worth additional comment. One group of String+'s methods
 takes the address of another String or String+ object as one of its
 parameters, and accesses the active part of this second string.
 
@@ -96,7 +96,7 @@ actually read. Doing things this way is very convenient, especially as
 the file data is left in a String+ object, and is therefore subject to
 all of the various manipulations that String+ can perform.
 
-Finally, String+\'s Draw: method accepts a Rect object and a
+Finally, String+'s Draw: method accepts a Rect object and a
 justification parameter, and draws the contents of the string as
 justified text within the box specified by the rectangle.
 
@@ -122,7 +122,7 @@ Classes
 We first define a class (trtbl) which is needed to define the table
 mapping lower case letters to upper case. This table is then used by
 some of the methods in the Trtbl class proper. However this is just an
-implementation convenience &mdash; these classes really should be
+implementation convenience --- these classes really should be
 thought of as one class, so we put all the methods together here.
 
 +-----------------------------+---------------------------------------+
@@ -321,16 +321,16 @@ by available memory.
 +----------------------------------------------------------------------+
 | The stream methods read: and write: are meant to look the same for   |
 | both strings and files (and for anything else we might think of      |
-| later). By late binding to an object that supports these, we don\'t  |
+| later). By late binding to an object that supports these, we don't  |
 | have to know or care exactly what it is. The object gives us bytes   |
 | or accepts bytes, and tells us whether it was successful, and        |
-| that\'s all we have to worry about.                                  |
+| that's all we have to worry about.                                  |
 |                                                                      |
 | For read:, we only use the active part of the string. We update POS  |
 | by the number of bytes transferred. If we transfer the number asked  |
-| for, we return a &lsquo;no error&rsquo; code of zero, otherwise -1.  |
-| (We don\'t use true and false so as to behave the same way as        |
-| files). write: is basically the same as add:. There\'s no way this   |
+| for, we return a 'no error' code of zero, otherwise -1.  |
+| (We don't use true and false so as to behave the same way as        |
+| files). write: is basically the same as add:. There's no way this   |
 | can fail unless we run out of memory, so we always return zero       |
 +----------------------------------------------------------------------+
 | read:                                                                |
@@ -348,10 +348,10 @@ by available memory.
 
   -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   **Error messages**
-  **&ldquo;String pointer(s) out of bounds&rdquo;**
-  Pos was found to be greater than Lim, or either was negative or greater than the size of the string. Pos and Lim are also displayed when this message is given. We check for this error condition whenever we access the actual characters of the string. Operations such as &gt;pos: don\'t perform the check &mdash; this is for speed, and also because when we are doing manipulations on Pos and Lim we don\'t want to put any restriction on intermediate values.
-  **&ldquo;Can\'t do that on a string copy&rdquo;**
-  You attempted to insert, delete, or change the size of a string object which was flagged as a &lsquo;copy&rsquo;. See above under copyto:.
+  **"String pointer(s) out of bounds"**
+  Pos was found to be greater than Lim, or either was negative or greater than the size of the string. Pos and Lim are also displayed when this message is given. We check for this error condition whenever we access the actual characters of the string. Operations such as &gt;pos: don't perform the check --- this is for speed, and also because when we are doing manipulations on Pos and Lim we don't want to put any restriction on intermediate values.
+  **"Can't do that on a string copy"**
+  You attempted to insert, delete, or change the size of a string object which was flagged as a 'copy'. See above under copyto:.
   -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### String+ {#string_1}
@@ -361,7 +361,7 @@ by available memory.
 String+ adds many useful methods to String. Note that in PowerMops, some
 of the methods listed here are actually defined in class String, since
 we needed them at that stage for the PowerPC code generator, but this
-shouldn\'t affect your source code at all
+shouldn't affect your source code at all
 
   Superclass                    String
   ----------------------------- -------------------
@@ -439,9 +439,9 @@ shouldn\'t affect your source code at all
 ------------------------------------------------------------------------
 
   ----------------------------------------------- ------------------------------- -------------------------------
-  [Basic Data Structures](Classes_1 "wikilink")   [Classes](Classes "wikilink")   [Files](Classes_3 "wikilink")
-  [Documentation](Documentation "wikilink")                                       
+  [Basic Data Structures](Classes_1)   [Classes](Classes)   [Files](Classes_3)
+  [Documentation](Documentation)                                       
   ----------------------------------------------- ------------------------------- -------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Classes](Category:Classes "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Classes](Category:Classes)

@@ -12,7 +12,7 @@ manageable pieces, an important programming concept and technique.
 
 The first definition exercise will be to define a new word that takes
 care of the symbols in a simple addition problem. The new word is
-\"\<code\>ADD\</code\>\", although you could choose any word not already
+\"`ADD`\", although you could choose any word not already
 in the Mops dictionary.
 
 \<blockquote\>
@@ -20,7 +20,7 @@ in the Mops dictionary.
 Note: Actually, there is nothing stopping you from defining words
 (including classes) with names that already exist in the Mops
 dictionary. In fact, you may have discovered that Mops will not complain
-if you do this! While this is an intentional part of Mops\' design, it
+if you do this! While this is an intentional part of Mops' design, it
 is generally not a good idea to redefine words already in the dictionary
 unless you have a good idea of what you are trying to accomplish.
 
@@ -29,12 +29,12 @@ unless you have a good idea of what you are trying to accomplish.
 The safest way to check that the name of a new word you want to define
 is not already in the dictionary, is to issue the \"tick\" command with
 the name you want to test for. In Mops, as in most Forths, a tick is an
-apostrophe (\'). By typing apostrophe, space, and the name of the word
-you\'re testing for, Mops searches the dictionary for an occurrence of
+apostrophe ('). By typing apostrophe, space, and the name of the word
+you're testing for, Mops searches the dictionary for an occurrence of
 that word. If the word is in the dictionary, tick will leave a number on
-the stack, which is the location in memory of the word\'s definition.
+the stack, which is the location in memory of the word's definition.
 But if the word is not in the dictionary, the message undefined word
-appears on the screen, which in this case means you\'re in the clear to
+appears on the screen, which in this case means you're in the clear to
 define a word with that name.
 
 `<code>' window .</code>`\
@@ -52,11 +52,11 @@ sequence of values and/or commands to be performed when you use that new
 word, and then a final semicolon (\<nowiki\>;\</nowiki\>), indicating
 the end of your new definition. This kind of Mops definition is called,
 aptly enough, a colon definition. (Note that
-\<code\>\<nowiki\>:CLASS\</nowiki\>\</code\> and
-\<code\>\<nowiki\>:M\</nowiki\>\</code\> are other, more special purpose
+`\<nowiki\>:CLASS\</nowiki\>` and
+`\<nowiki\>:M\</nowiki\>` are other, more special purpose
 defining words.)
 
-Here\'s an example that defines the new word, \<code\>ADD\</code\>,
+Here's an example that defines the new word, `ADD`,
 which will perform the addition of two numbers on the stack, display the
 results, and move the Mops prompt to the left margin of the next line.
 (We include the stack comment here for completeness and as an example of
@@ -67,7 +67,7 @@ must be terminated by the ENTER key:
 `: ADD  ( n1 n2 --  )  + . cr ;`\
 `</nowiki>`
 
-The \<code\>+\</code\> operation expects to find two numbers on the
+The `+` operation expects to find two numbers on the
 stack, so to use your new word you would type two numbers (which go onto
 the stack) and then the new word:
 
@@ -94,7 +94,7 @@ return stack. In that other place, if it has to go yet somewhere else,
 it pushes the new address on to the return stack as well. This is how
 words or methods can call other words or methods which can in turn do
 the same, down to a great depth. And by using a second stack, all these
-return addresses on the return stack don\'t interfere with items on the
+return addresses on the return stack don't interfere with items on the
 parameter stack.
 
 \<blockquote\>
@@ -106,11 +106,11 @@ stack, so we will not cover how to do this in this Tutorial.
 
 `</blockquote>`
 
-Normally you won\'t need to worry about what\'s going on with the return
-stack, but when there is an error however, it\'s usually very useful to
+Normally you won't need to worry about what's going on with the return
+stack, but when there is an error however, it's usually very useful to
 know what the program was executing when the error occurred. Mops will
 try to help you do this, however, by reporting errors as we saw in the
-error message above. Let\'s look at it again:
+error message above. Let's look at it again:
 
 `<code>' twindow .</code>`\
 `&nbsp;`\
@@ -125,8 +125,8 @@ shows the program statement that produced the error. The third line uses
 a caret (\^) to indicate where in the program statement (shown on the
 second line) that Mops discovered the error. The fourth line cites the
 object (and its class) where the error occurred, which in this case is
-object \<code\>TW\</code\> (located in the source file
-\<code\>zFrontEnd\</code\> in \'System source\'), which is part of the
+object `TW` (located in the source file
+`zFrontEnd` in 'System source'), which is part of the
 interpretive behaviors of the Mops window.
 
 We cannot display the name of the method that the error occurred because
@@ -140,12 +140,12 @@ Named Input Parameters {#named_input_parameters}
 Mops can make things a little easier for you by reducing concern about
 the order in which data are stored on, and recalled from, the parameter
 stack. Whenever you define a new Mops word, Mops lets you assign names
-to the parameters that are passed to it. After that, you needn\'t worry
+to the parameters that are passed to it. After that, you needn't worry
 about the stack or the order of the data. When you need a datum for an
 operation, simply refer to it by the name you have assigned to it.
 
 As an example, we will use the multiply-then-divide problem described in
-[ Lesson 3](Lesson_3#Mastering_Postfix_Notation "wikilink"). If you
+[ Lesson 3](Lesson_3#Mastering_Postfix_Notation). If you
 recall, the operation was presented as:
 
 `<nowiki>`\
@@ -168,7 +168,7 @@ parameters:
 The magic of named input parameters takes place inside the braces ({ and
 }, also called curly brackets). The syntax is deliberately similar to a
 stack comment, because it is in fact a kind of stack description. So in
-this case, whenever the word \<code\>FORMULA\</code\> is executed, like
+this case, whenever the word `FORMULA` is executed, like
 this:
 
 `<code>40 5 12 50 formula .</code>`\
@@ -181,8 +181,8 @@ put on the stack**. Once that happens, their order is no longer
 important. Their names are used to fill in the values in the
 calculation.
 
-But note that the &lsquo;\<code\>solution\</code\>&rsquo; parameter is
-actually a comment &mdash; anything between the \-- and the } is treated
+But note that the '`solution`' parameter is
+actually a comment --- anything between the \-- and the } is treated
 as a comment. You should use this comment area to indicate what your
 definition leaves on the stack, exactly as in a normal stack comment.
 
@@ -209,31 +209,31 @@ formula would be:
 `            a  +    .  cr  ;`\
 `</nowiki>`
 
-The \"arrow\" (gazinta) operation, \<code\>-&gt;\</code\>, stores the
+The \"arrow\" (gazinta) operation, `-&gt;`, stores the
 value currently on the stack (the result of a-squared) into the named
-parameter, \<code\>a\</code\>. This overwrites the original value in
-\<code\>a\</code\>, which came from the stack in the opening instant of
-this definition\'s execution. Near the end of execution,
-\<code\>a\</code\> is recalled to be added to the results of
-\<code\>b\</code\> times \<code\>b\</code\>. To solve the same formula
+parameter, `a`. This overwrites the original value in
+`a`, which came from the stack in the opening instant of
+this definition's execution. Near the end of execution,
+`a` is recalled to be added to the results of
+`b` times `b`. To solve the same formula
 without named input parameters would require several stack manipulations
 that sometimes trip up even the experts.
 
 Incidentally, there are other operations you can perform on a number
 stored as a named input parameter. You can add a number to what is
 there, or subtract a number from what is there, with the
-\<code\>++&gt;\</code\> and \<code\>\--&gt;\</code\> operations. For
+`++&gt;` and `\--&gt;` operations. For
 example, doing
 
 `10 ++&gt; denom`
 
 inside a colon definition adds ten to a value stored in a a hypothetical
-named input parameter named \<code\>denom\</code\>.
+named input parameter named `denom`.
 
 Local Variables {#local_variables}
 ---------------
 
-While we\'re at it, we\'ll also introduce you to a similar concept,
+While we're at it, we'll also introduce you to a similar concept,
 called local variables. They too, appear inside curly brackets within a
 colon definition, but instead let you assign names to intermediate
 results that can occur inside such a definition. Local variables are
@@ -254,13 +254,13 @@ The word definition would be:
 `            num  den  /  ;`\
 `</nowiki>`
 
-In this example, \<code\>a\</code\>, \<code\>b\</code\>, and
-\<code\>c\</code\> in the curly brackets are named input parameters that
+In this example, `a`, `b`, and
+`c` in the curly brackets are named input parameters that
 take on the values on the stack. Names *after* the backslash (\\) but
 *before* the \"\--\"), are local variables that will be called into
 action within the definition. In the example, the numerator and
 denominator are calculated separately and stored
-(\<code\>-&gt;\</code\>) in their respective local variables. Then, the
+(`-&gt;`) in their respective local variables. Then, the
 local variables are recalled in the proper order for the division
 operation to produce the result.
 
@@ -275,9 +275,9 @@ beginning of a definition.
 ------------------------------------------------------------------------
 
   ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 9](Lesson_9 "wikilink")             [Tutorial](Tutorial "wikilink")   [Lesson 11](Lesson_11 "wikilink")
-  [Documentation](Documentation "wikilink")                                     
+  [Lesson 9](Lesson_9)             [Tutorial](Tutorial)   [Lesson 11](Lesson_11)
+  [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- -----------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Tutorial](Category:Tutorial "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Tutorial](Category:Tutorial)

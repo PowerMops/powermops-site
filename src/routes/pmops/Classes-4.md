@@ -20,8 +20,8 @@ Carbon. Classes described in this chapter are still defined in Carbon
 PowerMops. However the role of Event class object is now quite
 different. In Carbon, Event handler should be a callback routine that
 will be installed for each event at runtime. See also relevant sections
-([Callback](Reference_7#Callback_Routines "wikilink"),
-[EventLoop](Reference_9#Waiting_for_Events "wikilink")) of Reference
+([Callback](Reference_7#Callback_Routines),
+[EventLoop](Reference_9#Waiting_for_Events)) of Reference
 part.
 
   rowspan=4 style=\"border: thin \#aaa solid\" \| [Inside Macintosh](http://developer.apple.com/documentation/macos8/mac8.html)   [Event Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-28.html)
@@ -29,9 +29,9 @@ part.
   [Window Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-188.html)                                         
   [Menu Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-89.html)                                            
   [Control Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-297.html)                                        
-  rowspan=3 style=\"border: thin \#aaa solid\" \| Mops:                                                                           [Windows](Lesson_20 "wikilink")
-  [Menus](Lesson_21 "wikilink")                                                                                                   
-  [Controls](Lesson_20#Controls "wikilink")                                                                                       
+  rowspan=3 style=\"border: thin \#aaa solid\" \| Mops:                                                                           [Windows](Lesson_20)
+  [Menus](Lesson_21)                                                                                                   
+  [Controls](Lesson_20#Controls)                                                                                       
 
   : Recommended reading
 
@@ -44,14 +44,14 @@ part.
 Using events {#using_events}
 ------------
 
-Class Event is the core of Mops\'s event management. It instantiates a
-single object, fEvent, which resides in the nucleus portion of Mops\'s
+Class Event is the core of Mops's event management. It instantiates a
+single object, fEvent, which resides in the nucleus portion of Mops's
 dictionary. FEvent is functionally an X-Array of 24 elements, each of
 which contains the xt of a Mops word corresponding to a particular event
 type. The Macintosh OS maintains a first-in first-out queue of events
 received from various I/O devices, and the application can request that
 the next event be accepted from the queue at any time. If no
-&lsquo;real&rsquo; events are outstanding, the Macintosh returns to the
+'real' events are outstanding, the Macintosh returns to the
 application with a Null event, which is simply a statement that nothing
 else happened so that the application can continue with its processing.
 
@@ -67,10 +67,10 @@ example, each window in an application might take a unique action when
 the user clicks the mouse in its content region. Mops simply sends a
 late-bound Content: message to the front window when a content click
 occurs, which results in the specific content method being executed that
-is appropriate for the window\'s class. Late binding allows Mops\' event
+is appropriate for the window's class. Late binding allows Mops' event
 management to be completely general and open-ended, because the
 programmer can always build more specific event responses into Window
-and Control subclasses. Mops\' basic Window and Control classes provide
+and Control subclasses. Mops' basic Window and Control classes provide
 general behavior that will be acceptable for many situations.
 
 Macintosh events are assigned a contiguous series of type codes:
@@ -98,12 +98,12 @@ Events marked with an asterisk (\*) are events for which Mops executes
 its null-event code rather than code specific to the type of event. If
 your application assigns significance to these event types, you will
 have to install your own action word in the cell of fEvent corresponding
-to the event\'s type. You might also need to change fEvent\'s mask with
+to the event's type. You might also need to change fEvent's mask with
 the set: method to accommodate event types that are currently masked
 out.
 
 Class Event contains a set of named ivars that allocate a Toolbox event
-record. Event\'s sole object, fEvent, passes its base address to the
+record. Event's sole object, fEvent, passes its base address to the
 Event Manager as the event record to use for all Mops events. FEvent
 also contains 24 indexed cells, for the event types described above.
 Each of these cells contains the xt of a word that handles the specific
@@ -128,14 +128,14 @@ occurs. Other events are managed as they come, triggering menu choices,
 window activation or updating, and control selections. To the original
 caller of KEY, all of this activity is invisible, because it will not
 resume execution until a keystroke is received. Thus, the caller of KEY
-enters a sort of &ldquo;suspended animation&rdquo; while the Macintosh
+enters a sort of "suspended animation" while the Macintosh
 handles non-keystroke events. This serves to separate the bulk of event
 management from the traditional, keystroke-oriented parts of your
 application, and was designed to simplify Macintosh program-ming for
 those used to more conventional systems.
 
 As pointed out in [Reference
-12](Reference_12#Clearing_Nested_Stacks_-_Become "wikilink"), you might
+12](Reference_12#Clearing_Nested_Stacks_-_Become), you might
 need to use the Mops word BECOME if you nest calls to KEY within several
 layers of code, because a menu or control choice could cause a new
 portion of the application to begin executing, and ultimately cause the
@@ -154,7 +154,7 @@ Specific event handling {#specific_event_handling}
 
 Null events (all event types with the \* above) can be used to execute
 the Idle: method for the front window. The programmer should use a
-window\'s Idle: method to perform any background processing that is
+window's Idle: method to perform any background processing that is
 required for that particular window (such as call TEIdle in a text edit
 window). The Idle: method should execute quickly so as not to bog down
 the responsiveness of the system to input.
@@ -164,15 +164,15 @@ occurred in (from FindWindow - see IM Window Manager). Of the seven
 possible regions, only two are of real concern to the programmer,
 because Mops can take appropriate action for the others. If the mouse is
 clicked in a close box, the window executes whatever action word you
-have installed in the window\'s CLOSE vector, just as a content region
-click will execute the window\'s CONTENT vector. The Actions: method
-allows you to customize these two aspects of a window\'s mouse click
+have installed in the window's CLOSE vector, just as a content region
+click will execute the window's CONTENT vector. The Actions: method
+allows you to customize these two aspects of a window's mouse click
 handling. You might also have to redefine the Grow: method for your
 windows if they require resizing of controls or other unique behavior;
 Grow: is executed in response to a grow-region click.
 
 The Key-down handler fetches the value of the key entered from the event
-record\'s Message field, first checking to see if the Command key was
+record's Message field, first checking to see if the Command key was
 held down simultaneously. If so, the Menu Manager is called to process a
 potential key-equivalent menu choice. Key equivalents are thus managed
 automatically by Mops, requiring only that you specify the key
@@ -186,8 +186,8 @@ window object, causing it to redraw its contents.
 The Disk-inserted handler takes the normal default action, which is to
 check if the system has already mounted the disk, which it will have
 attempted to do. If the mount was unsuccessful, the handler calls the
-system routine DIBadMount to display the usual error message &ldquo;This
-disk is unreadable&rdquo;. If you provide your own handler, put its xt
+system routine DIBadMount to display the usual error message "This
+disk is unreadable". If you provide your own handler, put its xt
 in cell 7 of fEvent to process disk-inserted events.
 
 The Activate handler determines whether the event is an Activate or
@@ -213,7 +213,7 @@ a Mops word for each type of event received.
 |                             |   ------- ------ -------------------  |
 |                             | ------------------------------------- |
 |                             |   int     what   The named ivars c    |
-|                             | omprise an eventRecord &mdash; see IM |
+|                             | omprise an eventRecord --- see IM |
 |                             |   var     msg                         |
 |                             |   Var     time                        |
 |                             |   var     loc                         |
@@ -262,7 +262,7 @@ a Mops word for each type of event received.
 ------------------------------------------------------------------------
 
 Mouse integrates various Toolbox calls, providing easy access to the
-mouse\'s position in local coordinates, the state of the mouse button,
+mouse's position in local coordinates, the state of the mouse button,
 and whether a double-click has occurred.
 
 +-----------------------------+---------------------------------------+
@@ -310,9 +310,9 @@ and whether a double-click has occurred.
 &nbsp;
 
   ------------------------------- ------------------------------------------- ---------------------------------
-  [Files](Classes_3 "wikilink")   [Classes](Classes "wikilink")               [Windows](Classes_5 "wikilink")
-  &nbsp;                          [Documentation](Documentation "wikilink")   
+  [Files](Classes_3)   [Classes](Classes)               [Windows](Classes_5)
+  &nbsp;                          [Documentation](Documentation)   
   ------------------------------- ------------------------------------------- ---------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Classes](Category:Classes "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Classes](Category:Classes)

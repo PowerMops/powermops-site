@@ -10,39 +10,39 @@ condition is *true*, then you do something accordingly. If the condition
 is *false*, then you carry on with your normal operation as if nothing
 had happened.
 
-This \<code\>IF\</code\>\...\<code\>THEN\</code\> decision construction
+This `IF`\...`THEN` decision construction
 is precisely what goes on inside the computer when your program needs to
-test for a specific condition &mdash; like whether a number is odd or
+test for a specific condition --- like whether a number is odd or
 even or whether the program user typed in the correct answer, etc.
 
 In Mops (as in other Forths) the
-\<code\>IF\</code\>\...\<code\>THEN\</code\> decision process is a bit
+`IF`\...`THEN` decision process is a bit
 different from some other languages you may know, largely because of the
 stack orientation. The formal description of the
-\<code\>IF\</code\>\...\<code\>THEN\</code\> construction is as follows:
+`IF`\...`THEN` construction is as follows:
 
   -------------------------------- ---------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \<code\>IF xx THEN zz\</code\>   \<code\>( n \-- )\</code\>   If &lsquo;\<code\>n\</code\>&rsquo; is non-zero (true), statement \<var\>xx\</var\> is executed, followed by statement \<var\>zz\</var\>\<nowiki\>;\</nowiki\> if &lsquo;\<code\>n\</code\>&rsquo; is zero (false) the program continues with statement \<var\>zz\</var\>.
+  `IF xx THEN zz`   `( n \-- )`   If '`n`' is non-zero (true), statement \<var\>xx\</var\> is executed, followed by statement \<var\>zz\</var\>\<nowiki\>;\</nowiki\> if '`n`' is zero (false) the program continues with statement \<var\>zz\</var\>.
   -------------------------------- ---------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-The \<code\>IF\</code\> part of the Mops decision process takes a number
+The `IF` part of the Mops decision process takes a number
 off of the stack and tests it to see if it is a non-zero (i.e., any
 number but zero). If the number on the stack is indeed non-zero, it
-performs the operation(s) immediately following \<code\>IF\</code\>.
+performs the operation(s) immediately following `IF`.
 Execution then proceeds to perform operations written after
-\<code\>THEN\</code\>. However, if the \<code\>IF\</code\> statement
+`THEN`. However, if the `IF` statement
 encounters a zero on the stack, it ignores all operations between
-\<code\>IF\</code\> and \<code\>THEN\</code\> and only performs
-operation written after the \<code\>THEN\</code\> statement. In Mops the
-\"\<code\>THEN\</code\>\" means to proceed with the program after the
+`IF` and `THEN` and only performs
+operation written after the `THEN` statement. In Mops the
+\"`THEN`\" means to proceed with the program after the
 test, as in first do this, *then* do that.
 
-You won\'t be able to experiment with the
-\<code\>IF\</code\>\...\<code\>THEN\</code\> construction as easily as
-the operations you learned so far. That\'s because this construction
+You won't be able to experiment with the
+`IF`\...`THEN` construction as easily as
+the operations you learned so far. That's because this construction
 must be compiled as part of a colon or method definition before it will
-run on Mops. For this example, we\'ll put the code for the
-\<code\>IF\</code\>\...\<code\>THEN\</code\> statement inside a colon
+run on Mops. For this example, we'll put the code for the
+`IF`\...`THEN` statement inside a colon
 definition and compile it before we can run it. Type the following:
 
 `<nowiki>`\
@@ -51,13 +51,13 @@ definition and compile it before we can run it. Type the following:
 `       THEN  cr ;`\
 `</nowiki>`
 
-This defines \<code\>TEST\</code\> as a word that performs a check on
+This defines `TEST` as a word that performs a check on
 the top number on the stack. If the number is non-zero, then the
 statement to that effect shows on the screen. If the top of the stack
 contains a zero, then the statement does not appear. Try it by placing
 various numbers (including zero and negative numbers) on the stack and
-typing \<code\>TEST\</code\>. (Remember that an empty stack contains no
-numbers, and the \<code\>IF\</code\> operation will cause a stack
+typing `TEST`. (Remember that an empty stack contains no
+numbers, and the `IF` operation will cause a stack
 underflow error message to appear if there are no numbers to test. A
 zero, on the other hand, is indeed a number, and occupies space on the
 stack.)
@@ -70,28 +70,28 @@ possible alternatives before proceeding. Take, for example, one of the
 most difficult decisions: getting up for work in the morning. After the
 alarm has gone off, and you lie in bed deciding whether you should
 really get going or grab another half hour, your mind is testing certain
-conditions. \<code\>IF\</code\> you get up now, \<code\>THEN\</code\>
-you\'ll be on time for work, or \<code\>ELSE\</code\> you\'ll risk
-losing your job. \<code\>IF\</code\> you get up now,
-\<code\>THEN\</code\> you can get all the hot water, or
-\<code\>ELSE\</code\> you\'ll have to rush through the shower to get the
+conditions. `IF` you get up now, `THEN`
+you'll be on time for work, or `ELSE` you'll risk
+losing your job. `IF` you get up now,
+`THEN` you can get all the hot water, or
+`ELSE` you'll have to rush through the shower to get the
 few drops that are left after the rest of the family has showered.
 
 This kind of decision construction has been included in Mops. Its formal
 description is:
 
   ----------------------- -------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \<code\>ELSE\</code\>   \<code\>( \-- )\</code\>   If &lsquo;\<code\>n\</code\>&rsquo; is non-zero (true), \<var\>xx\</var\> statement is executed, followed by \<var\>zz\</var\>\<nowiki\>; if &lsquo;\</nowiki\>\<code\>n\</code\>&rsquo; is zero (false), \<var\>yy\</var\> is executed, followed by \<var\>zz\</var\>.
+  `ELSE`   `( \-- )`   If '`n`' is non-zero (true), \<var\>xx\</var\> statement is executed, followed by \<var\>zz\</var\>\<nowiki\>; if '\</nowiki\>`n`' is zero (false), \<var\>yy\</var\> is executed, followed by \<var\>zz\</var\>.
   ----------------------- -------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-If its meaning isn\'t already clear to you, it is used like this:
+If its meaning isn't already clear to you, it is used like this:
 
 `IF  <var>xx</var>  ELSE  <var>yy</var>  THEN  <var>zz</var>`
 
-As with the \<code\>IF\</code\>\...\<code\>THEN\</code\> construction,
+As with the `IF`\...`THEN` construction,
 this decision process looks first to see if the number on the top of the
 stack is non-zero before it makes any decision. Now redefine
-\<code\>TEST\</code\> so it takes into account the \<code\>ELSE\</code\>
+`TEST` so it takes into account the `ELSE`
 provision.
 
 `<nowiki>`\
@@ -112,11 +112,11 @@ Place three numbers (1, 0, and 3) on the stack and perform three tests:
 `<code>test</code>`\
 `Non-zero number on stack.`
 
-Remember that the \<code\>IF\</code\> operation takes the top number off
-the stack when it performs its check, just like most of Mops\'
+Remember that the `IF` operation takes the top number off
+the stack when it performs its check, just like most of Mops'
 operations. If you will need the number that is removed by
-\<code\>IF\</code\> for a subsequent operation, then execute
-\<code\>DUP\</code\> before \<code\>IF\</code\>, or better still,
+`IF` for a subsequent operation, then execute
+`DUP` before `IF`, or better still,
 convert your definition to use named input parameters or local variables
 to preserve the value for later calculation.
 
@@ -124,13 +124,13 @@ Truths, Falsehoods, and Comparisons {#truths_falsehoods_and_comparisons}
 -----------------------------------
 
 You may be wondering how the
-\<code\>IF\</code\>\...\<code\>THEN\</code\> construction can be useful
+`IF`\...`THEN` construction can be useful
 if it can only determine whether or not the number on the stack is zero.
 You might think that this kind of test would be rather limiting in light
 of the \"real-world\" decisions that a program may have to make, such as
 whether two integers are equal to each other, whether one is larger than
 the other, or whether a number is positive or negative. Actually, the
-\<code\>IF\</code\>\...\<code\>THEN\</code\> construction frequently
+`IF`\...`THEN` construction frequently
 operates at the tail end of a fuller decision procedure that makes the
 real-world decisions possible. The first part of the procedure consists
 of one or more comparison operators whose results are either a zero or
@@ -140,20 +140,20 @@ To simplify the zero and nonzero terminology, Mops adheres to a
 programming language convention revolving around the terms TRUE and
 FALSE. These are also Mops words, and represent the values that appear
 in the stack as a result of the comparison operations.
-\<code\>FALSE\</code\> represents a zero in the stack;
-\<code\>TRUE\</code\> represents any non-zero number in the stack,
-including negative numbers. The Mops word \<code\>TRUE\</code\> returns
+`FALSE` represents a zero in the stack;
+`TRUE` represents any non-zero number in the stack,
+including negative numbers. The Mops word `TRUE` returns
 a non-zero number, that is, it returns a number which is all ones (in
-binary). As we\'ll see a bit later, this corresponds to the value -1.
+binary). As we'll see a bit later, this corresponds to the value -1.
 
 Type these words now:
 
 `true false`
 
-You\'ll see from the stack display that \<code\>FALSE\</code\> is the
-same as (zero), and \<code\>TRUE\</code\> is -1.
+You'll see from the stack display that `FALSE` is the
+same as (zero), and `TRUE` is -1.
 
-Since these words &mdash; or rather the numbers they represent &mdash;
+Since these words --- or rather the numbers they represent ---
 are actually symbolic of a condition that has just been tested, they are
 sometimes referred to as flags. Flags in programs are something like
 markers planted in key places that symbolize a certain condition. A
@@ -161,12 +161,12 @@ markers planted in key places that symbolize a certain condition. A
 \"false\" flag signifies that a zero is on the stack. (Another term that
 is used is boolean&\#148;this really means the same as \"flag\".)
 
-To help ingrain this difference between \<code\>TRUE\</code\> and
-\<code\>FALSE\</code\> n your mind, redefine \<code\>test\</code\> yet
+To help ingrain this difference between `TRUE` and
+`FALSE` n your mind, redefine `test` yet
 again so that it reinforces the way the
-\<code\>IF\</code\>\...\<code\>THEN\</code\>\...\<code\>ELSE\</code\>
-construction responds to \<code\>TRUE\</code\> and
-\<code\>FALSE\</code\> flags existing in the stack.
+`IF`\...`THEN`\...`ELSE`
+construction responds to `TRUE` and
+`FALSE` flags existing in the stack.
 
 `<nowiki>`\
 `: TEST`\
@@ -191,29 +191,29 @@ test four times:
 `True!`
 
 Below is a list of comparison operations that test the values of one or
-more numbers on the stack and leave either \<code\>TRUE\</code\> or
-\<code\>FALSE\</code\> flags on the stack. It is operations like these
+more numbers on the stack and leave either `TRUE` or
+`FALSE` flags on the stack. It is operations like these
 that you would perform on real-world integers before performing decision
 operations like
-\<code\>IF\</code\>\...\<code\>THEN\</code\>\...\<code\>ELSE\</code\>. A
+`IF`\...`THEN`\...`ELSE`. A
 new term appears in the stack notations below:
-&lsquo;\<code\>boolean\</code\>&rsquo;. This means that the result is
-either \<code\>TRUE\</code\> or \<code\>FALSE\</code\> flag on the
+'`boolean`'. This means that the result is
+either `TRUE` or `FALSE` flag on the
 stack. (The term boolean is named after George Boole, who developed a
-logic system based on \<code\>TRUE\</code\> and \<code\>FALSE\</code\>
+logic system based on `TRUE` and `FALSE`
 values.)
 
   ---------------------------- ---------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \<code\>0&lt;\</code\>       \<code\>( n \-- boolean )\</code\>       Leaves a \<code\>TRUE\</code\> flag on the stack if &lsquo;\<code\>n\</code\>&rsquo; is less than zero, otherwise leaves a \<code\>FALSE\</code\> flag.
-  \<code\>0=\</code\>          \<code\>( n \-- boolean )\</code\>       Leaves a \<code\>TRUE\</code\> flag on the stack if &lsquo;\<code\>n\</code\>&rsquo; equals zero, otherwise leaves a \<code\>FALSE\</code\> flag.
-  \<code\>0&lt;&gt;\</code\>   \<code\>( n \-- boolean )\</code\>       Leaves a \<code\>TRUE\</code\> flag on the stack if &lsquo;\<code\>n\</code\>&rsquo; does not equal zero, otherwise leaves a \<code\>FALSE\</code\> flag.
-  \<code\>0&gt;\</code\>       \<code\>( n \-- boolean )\</code\>       Leaves a \<code\>TRUE\</code\> flag on the stack if &\#152;\<code\>n\</code\>\' is greater than zero, otherwise leaves a \<code\>FALSE\</code\> flag.
-  \<code\>&lt;\</code\>        \<code\>( n1 n2 \-- boolean )\</code\>   Leaves a \<code\>TRUE\</code\> flag on the stack if &lsquo;\<code\>n1\</code\>&rsquo; is less than &lsquo;\<code\>n2\</code\>&rsquo;, otherwise leaves a \<code\>FALSE\</code\> flag.
-  \<code\>&lt;=\</code\>       \<code\>( n1 n2 \-- boolean )\</code\>   Leaves a \<code\>TRUE\</code\> flag on the stack if &lsquo;\<code\>n1\</code\>&rsquo; is less than or equal to &lsquo;\<code\>n2\</code\>&rsquo;, otherwise leaves a \<code\>FALSE\</code\> flag.
-  &lt;&gt;                     \<code\>( n1 n2 \-- boolean )\</code\>   Leaves a \<code\>TRUE\</code\> flag on the stack if &lsquo;\<code\>n1\</code\>&rsquo; does not equal &lsquo;\<code\>n2\</code\>&rsquo;, otherwise leaves a \<code\>FALSE\</code\> flag.
-  \<code\>=\</code\>           \<code\>( n1 n2 \-- boolean )\</code\>   Leaves a \<code\>TRUE\</code\> flag on the stack if &lsquo;\<code\>n1\</code\>&rsquo; equals &lsquo;\<code\>n2\</code\>&rsquo;, otherwise leaves a \<code\>FALSE\</code\> flag.
-  \<code\>&gt;\</code\>        \<code\>( n1 n2 \-- boolean )\</code\>   Leaves a \<code\>TRUE\</code\> flag on the stack if &lsquo;\<code\>n1\</code\>&rsquo; is greater than &lsquo;\<code\>n2\</code\>&rsquo;, otherwise leaves a \<code\>FALSE\</code\> flag.
-  \<code\>&gt;=\</code\>       \<code\>( n1 n2 \-- boolean )\</code\>   Leaves a \<code\>TRUE\</code\> flag on the stack if &lsquo;\<code\>n1\</code\>&rsquo; is greater than or equal to &lsquo;\<code\>n2\</code\>&rsquo;, otherwise leaves a \<code\>FALSE\</code\> flag.
+  `0&lt;`       `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if '`n`' is less than zero, otherwise leaves a `FALSE` flag.
+  `0=`          `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if '`n`' equals zero, otherwise leaves a `FALSE` flag.
+  `0&lt;&gt;`   `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if '`n`' does not equal zero, otherwise leaves a `FALSE` flag.
+  `0&gt;`       `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if &\#152;`n`' is greater than zero, otherwise leaves a `FALSE` flag.
+  `&lt;`        `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' is less than '`n2`', otherwise leaves a `FALSE` flag.
+  `&lt;=`       `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' is less than or equal to '`n2`', otherwise leaves a `FALSE` flag.
+  &lt;&gt;                     `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' does not equal '`n2`', otherwise leaves a `FALSE` flag.
+  `=`           `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' equals '`n2`', otherwise leaves a `FALSE` flag.
+  `&gt;`        `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' is greater than '`n2`', otherwise leaves a `FALSE` flag.
+  `&gt;=`       `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' is greater than or equal to '`n2`', otherwise leaves a `FALSE` flag.
   ---------------------------- ---------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 All the math in these comparison operations should be familiar to you.
@@ -221,8 +221,8 @@ Remember that these operations, like the simple arithmetic ones, are set
 up in postfix notation. To remember which order to put numbers on the
 stack, simply reconstruct in your mind how the formula would look in
 algebraic notation. For example, to find out if
-&lsquo;\<code\>n1\</code\>&rsquo; is greater than
-&lsquo;\<code\>n2\</code\>&rsquo;, the algebraic test would be:
+'`n1`' is greater than
+'`n2`', the algebraic test would be:
 
 `<var>n1</var> &gt; <var>n2</var>`
 
@@ -232,25 +232,25 @@ In Mops, you simply move the operation sign to the right:
 
 But in this case, Mops is testing the validity of the statement. The
 numbers are taken from the stack when they are tested. If the statement
-is true, then a \<code\>TRUE\</code\> flag goes to the stack; otherwise,
-a \<code\>FALSE\</code\> flag goes there. Then an
-\<code\>IF\</code\>&brvbar;\<code\>THEN\</code\> or
-\<code\>IF\</code\>\...\<code\>THEN\</code\>\...\<code\>ELSE\</code\>
+is true, then a `TRUE` flag goes to the stack; otherwise,
+a `FALSE` flag goes there. Then an
+`IF`&brvbar;`THEN` or
+`IF`\...`THEN`\...`ELSE`
 decision can be made on the number(s) in question.
 
 Nested Decisions {#nested_decisions}
 ----------------
 
 It is also possible to have more than one
-\<code\>IF\</code\>\...\<code\>THEN\</code\>\...\<code\>ELSE\</code\>
+`IF`\...`THEN`\...`ELSE`
 decision working at one time within a single definition. To accomplish
 this, you place
-\<code\>IF\</code\>\...\<code\>THEN\</code\>\...\<code\>ELSE\</code\>
+`IF`\...`THEN`\...`ELSE`
 inside one another. For example, you can set up a series of decision
 operations that will examine a number in the stack, test it for several
 conditions, and then announce on the screen what condition that number
-meets. To do this, you\'ll nest several
-\<code\>IF\</code\>\...\<code\>THEN\</code\> statements inside one
+meets. To do this, you'll nest several
+`IF`\...`THEN` statements inside one
 another:
 
 `<nowiki>`\
@@ -263,36 +263,36 @@ another:
 `       THEN  ." zero." cr ;`\
 `</nowiki>`
 
-\<code\>IFTEST\</code\> is defined to check whether a number is
+`IFTEST` is defined to check whether a number is
 positive, negative, or zero. Enter a number in the stack and then
-perform an \<code\>IFTEST\</code\> on it. Try positive and negative
+perform an `IFTEST` on it. Try positive and negative
 numbers, as well as zero.
 
 In the definition, the number is assigned to a named input parameter
-(&lsquo;\<code\>n\</code\>&rsquo;) to preserve the value in case it is
-tested by both \<code\>IF\</code\> statements; the first
-\<code\>IF\</code\> removes the number from the stack, which otherwise
-would leave nothing for the second \<code\>IF\</code\> to test. The
+('`n`') to preserve the value in case it is
+tested by both `IF` statements; the first
+`IF` removes the number from the stack, which otherwise
+would leave nothing for the second `IF` to test. The
 number is then tested whether it is less than zero. If so, less than
 zero. is displayed (because the program jumps ahead to the second
-\<code\>THEN\</code\>). If the number is not negative, it is next
+`THEN`). If the number is not negative, it is next
 compared to see if it is greater than zero in the second, nested
-\<code\>IF\</code\>\...\<code\>THEN\</code\> construction. If the number
-is greater than zero, then the \<code\>TRUE\</code\> flag is noted by
-the second \<code\>IF\</code\> statement, and greater than zero. is
+`IF`\...`THEN` construction. If the number
+is greater than zero, then the `TRUE` flag is noted by
+the second `IF` statement, and greater than zero. is
 displayed. If the number (which has already proven to be not less than
 zero) is not greater than zero, then it must be zero, and only zero. is
 displayed on the screen.
 
 The key point to remember when nesting
-\<code\>IF\</code\>\...\<code\>THEN\</code\> constructions is that every
-\<code\>IF\</code\> must have a corresponding \<code\>THEN\</code\>
+`IF`\...`THEN` constructions is that every
+`IF` must have a corresponding `THEN`
 somewhere in the same colon definition. They are nested much in the same
 way that parenthetical delimiters in math formulas are nested:
 
 `( a / ( a - ( b * c ) ) + c )`
 
-So, each \<code\>THEN\</code\> matches the \<code\>IF\</code\> with
+So, each `THEN` matches the `IF` with
 which it is lined up. Formatting your code this way,
 
 `IF  <var>xx</var>`\
@@ -303,8 +303,8 @@ which it is lined up. Formatting your code this way,
 `       THEN  <var>qq</var>`\
 `THEN  <var>yy</var>`
 
-with corresponding \<code\>IF\</code\>s, \<code\>ELSE\</code\>s and
-\<code\>THEN\</code\>s lining up, is a good idea for readability, not to
+with corresponding `IF`s, `ELSE`s and
+`THEN`s lining up, is a good idea for readability, not to
 mention subsequent debugging should you run into a snag.
 
 Logical Operators {#logical_operators}
@@ -314,32 +314,32 @@ There will probably be occasions in your future programs in which you
 will have performed two comparison operations, and the resulting flags
 from those operations will be sitting on top of the stack. How the
 program proceeds from there depends on the state of those two flags. If
-one flag is \<code\>TRUE\</code\> and the other \<code\>FALSE\</code\>,
+one flag is `TRUE` and the other `FALSE`,
 they may meet the prerequisite that only one of the comparisons needs to
 be true for a certain operation to take place (e.g.,
-&lsquo;\<code\>n1\</code\>&rsquo; is less than
-&lsquo;\<code\>n2\</code\>&rsquo;, but &lsquo;\<code\>n1\</code\>&rsquo;
+'`n1`' is less than
+'`n2`', but '`n1`'
 is not less than zero). Conversely, you may need both flags to be
-\<code\>TRUE\</code\> for a certain operation to take place
-(&lsquo;\<code\>n1\</code\>&rsquo; is both less than
-&lsquo;\<code\>n2\</code\>&rsquo; *and* less than zero). In these
-special cases, you can use the logical operators, \<code\>AND\</code\>
-and \<code\>OR\</code\>\<nowiki\>:\</nowiki\>
+`TRUE` for a certain operation to take place
+('`n1`' is both less than
+'`n2`' *and* less than zero). In these
+special cases, you can use the logical operators, `AND`
+and `OR`\<nowiki\>:\</nowiki\>
 
   ---------------------- ----------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------
-  \<code\>AND\</code\>   \<code\>( n1 n2 \-- n3 )\</code\>   Performs a bit-wise AND of &lsquo;\<code\>n1\</code\>&rsquo; and &lsquo;\<code\>n2\</code\>&rsquo; and leaves the result on the stack.
-  \<code\>OR\</code\>    \<code\>( n1 n2 \-- n3 )\</code\>   Performs a bit-wise OR of &lsquo;\<code\>n1\</code\>&rsquo; and &lsquo;\<code\>n2\</code\>&rsquo; and leaves the result on the stack.
+  `AND`   `( n1 n2 \-- n3 )`   Performs a bit-wise AND of '`n1`' and '`n2`' and leaves the result on the stack.
+  `OR`    `( n1 n2 \-- n3 )`   Performs a bit-wise OR of '`n1`' and '`n2`' and leaves the result on the stack.
   ---------------------- ----------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------
 
 Both of these operations look at the binary makeup of two numbers and
-produce a result. For \<code\>AND\</code\>, the result will have a 1 in
+produce a result. For `AND`, the result will have a 1 in
 each position where both the first *and* the second numbers have a 1.
-For \<code\>OR\</code\>, the result will have a 1 in each position where
+For `OR`, the result will have a 1 in each position where
 either the first *or* the second numbers (or both numbers) have a
-\<code\>1\</code\>.
+`1`.
 
-For example, let\'s what happens when we \<code\>AND\</code\> and
-\<code\>OR\</code\> the numbers 1 and 3\<nowiki\>:\</nowiki\>
+For example, let's what happens when we `AND` and
+`OR` the numbers 1 and 3\<nowiki\>:\</nowiki\>
 
 `<code>1 3 and . cr</code>`\
 `1`
@@ -347,7 +347,7 @@ For example, let\'s what happens when we \<code\>AND\</code\> and
 `<code>1 3 or . cr</code>`\
 `3`
 
-Remember that \<code\>AND\</code\> and \<code\>OR\</code\> perform these
+Remember that `AND` and `OR` perform these
 operations on the *binary* equivalents of the integers 1 and 3. The
 binary form of 1 is
 
@@ -357,47 +357,47 @@ and the binary form of 3 is
 
 `0011`
 
-When we perform an \<code\>AND\</code\> on these numbers, the result is:
+When we perform an `AND` on these numbers, the result is:
 
 `0001`
 
-because the \<code\>AND\</code\> operation returns a 1 (TRUE) for the
+because the `AND` operation returns a 1 (TRUE) for the
 rightmost column of bits in these binary numbers because both bits are 1
 (TRUE).
 
-For the same two numbers, when we perform an \<code\>OR\</code\>
-operation (instead of an \<code\>AND\</code\>), the result is:
+For the same two numbers, when we perform an `OR`
+operation (instead of an `AND`), the result is:
 
 `0011`
 
-because the \<code\>OR\</code\> operation above returns a 1 for the two
+because the `OR` operation above returns a 1 for the two
 rightmost column of bits in the binary numbers because one or both bits
 in each column are 1.
 
 \<blockquote\>
 
-The names for these operations, \<code\>AND\</code\> and
-\<code\>OR\</code\>, are sometimes used as verbs, as in I want to AND 1
+The names for these operations, `AND` and
+`OR`, are sometimes used as verbs, as in I want to AND 1
 and 3.
 
 `</blockquote>`
 
 There is one last logical operator you should know about, the word
-\<code\>XOR\</code\> (pronounced \"exclusive-or\"). Here is the formal
+`XOR` (pronounced \"exclusive-or\"). Here is the formal
 description:
 
   ---------------------- ----------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------
-  \<code\>XOR\</code\>   \<code\>( n1 n2 \-- n3 )\</code\>   Performs a bit-wise XOR of &lsquo;\<code\>n1\</code\>&rsquo; and &lsquo;\<code\>n2\</code\>&rsquo; and leaves the result on the stack.
+  `XOR`   `( n1 n2 \-- n3 )`   Performs a bit-wise XOR of '`n1`' and '`n2`' and leaves the result on the stack.
   ---------------------- ----------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------
 
 As you can see, you use it exactly like you would use
-\<code\>AND\</code\> or \<code\>OR\</code\>. Try this:
+`AND` or `OR`. Try this:
 
 `<code>1 3 xor . cr</code>`\
 `2`
 
-However, unlike a \"normal\" \<code\>OR\</code\> operation (sometimes
-referred to as \"inclusive-or\"), the \<code\>XOR\</code\> operation
+However, unlike a \"normal\" `OR` operation (sometimes
+referred to as \"inclusive-or\"), the `XOR` operation
 returns (FALSE) where both respective bit columns in each number are 1
 (TRUE). (In other words, we can have one or the other, but not *both*.)
 
@@ -407,12 +407,12 @@ This is the binary form of our answer, 2\<nowiki\>:\</nowiki\>
 
 In the second rightmost column, only one of our two integers was 1
 (TRUE), so the answer in that column is 1 (TRUE), just like a \"normal\"
-\<code\>OR\</code\>. However, the rightmost bit column of our answer is
+`OR`. However, the rightmost bit column of our answer is
 (FALSE) because the rightmost columns of both of our two integers (1 and
-3) is 1 (TRUE), *unlike* a \"normal\" \<code\>OR\</code\>.
+3) is 1 (TRUE), *unlike* a \"normal\" `OR`.
 
-Experiment a little bit with \<code\>AND\</code\>, \<code\>OR\</code\>,
-and \<code\>XOR\</code\> in this fashion. Remember that these operations
+Experiment a little bit with `AND`, `OR`,
+and `XOR` in this fashion. Remember that these operations
 are working on the binary equivalent of the decimal numbers you type
 into the stack. If you have difficulty understanding an answer, try
 working out the problem on paper by converting each number to binary and
@@ -423,21 +423,21 @@ operations correctly for you at all times.
 The CASE Decision {#the_case_decision}
 -----------------
 
-It\'s not uncommon to have an instance in a program in which the next
+It's not uncommon to have an instance in a program in which the next
 step could be one of several possibilities, depending on the actual
-number on the stack &mdash; not just whether it\'s TRUE (non-zero) or
+number on the stack --- not just whether it's TRUE (non-zero) or
 FALSE (zero). For example, a program may ask you to type a number from
 zero to nine. For most of the numbers, the subsequent step is the same,
 but for numbers 2, 6, and 7, the outcome is different. In other words,
 if it is the case of a 2 on the stack, then a unique operation takes
 place. Sure, you could run a series of comparison operations and nested
-\<code\>IF\</code\>\...\<code\>THEN\</code\> constructions on the number
+`IF`\...`THEN` constructions on the number
 to narrow it down (e.g., testing if the number is not less than two nor
-greater than two), but that gets cumbersome when you\'re testing for
+greater than two), but that gets cumbersome when you're testing for
 many numbers.
 
-Mops\' shortcut for this multiple-decision making is the
-\<code\>CASE\</code\> structure. Using the example above, you could
+Mops' shortcut for this multiple-decision making is the
+`CASE` structure. Using the example above, you could
 define a word like this:
 
 `<nowiki>`\
@@ -451,37 +451,37 @@ define a word like this:
 `</nowiki>`
 
 This word takes the number on the stack and checks whether it is a
-\<code\>CASE\</code\> OF 2, 6, or 7. If a particular
-\<code\>CASE\</code\> is valid, then the branch executes statements
-until it encounters an \<code\>ENDOF\</code\> delimiter. At that point,
-execution jumps to \<code\>ENDCASE\</code\>, ignoring all other
-statements within the \<code\>CASE\</code\> construct. If none of the
+`CASE` OF 2, 6, or 7. If a particular
+`CASE` is valid, then the branch executes statements
+until it encounters an `ENDOF` delimiter. At that point,
+execution jumps to `ENDCASE`, ignoring all other
+statements within the `CASE` construct. If none of the
 cases are valid, then execution continues toward the
-\<code\>ENDCASE\</code\> delimiter.
+`ENDCASE` delimiter.
 
-If a statement is inserted before \<code\>ENDCASE\</code\> (like
-&lsquo;\<code\>.\" OTHER\"\</code\>&rsquo; in the example), then it is
+If a statement is inserted before `ENDCASE` (like
+'`.\" OTHER\"`' in the example), then it is
 executed whenever the test of all cases fail. This statement is known as
-the default statement, since it\'s the statementwhich gets executed by
+the default statement, since it's the statementwhich gets executed by
 default if nothing else does.
 
 \<blockquote\>
 
-Note: The \<code\>CASE\</code\> test retains the test value on the
-stack, and it is dropped at the end by the \<code\>ENDCASE\</code\>. In
+Note: The `CASE` test retains the test value on the
+stack, and it is dropped at the end by the `ENDCASE`. In
 the default statement, particularly, you might want to make use of the
-test value. But if you\'re going to use it (take it off the stack),
-remember to \<code\>DUP\</code\> it first (or just put a dummy value on
-the stack) to be dropped by the \<code\>ENDCASE\</code\>.
+test value. But if you're going to use it (take it off the stack),
+remember to `DUP` it first (or just put a dummy value on
+the stack) to be dropped by the `ENDCASE`.
 
 `</blockquote>`
 
 ------------------------------------------------------------------------
 
   ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 11](Lesson_11 "wikilink")           [Tutorial](Tutorial "wikilink")   [Lesson 13](Lesson_13 "wikilink")
-  [Documentation](Documentation "wikilink")                                     
+  [Lesson 11](Lesson_11)           [Tutorial](Tutorial)   [Lesson 13](Lesson_13)
+  [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- -----------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Tutorial](Category:Tutorial "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Tutorial](Category:Tutorial)

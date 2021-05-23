@@ -41,7 +41,7 @@ News
 2016-11-12: iMops 2.2 released \-- A maintenance release but now iMops is a developer-signed application. [Download Page](http://sourceforge.net/projects/powermops/files/iMops/)
 
 
-2016-05-05: iMops 2.11 released \-- A maintenance release. Few bugs were fixed. Details are in a file \"What\'s new\". [Download Page](http://sourceforge.net/projects/powermops/files/iMops/)
+2016-05-05: iMops 2.11 released \-- A maintenance release. Few bugs were fixed. Details are in a file \"What's new\". [Download Page](http://sourceforge.net/projects/powermops/files/iMops/)
 
 
 2015-08-01: iMops 2.1 released \-- some bugs have been fixed and new STRING+ class source file included. [Download Page](http://sourceforge.net/projects/powermops/files/iMops/)
@@ -65,4 +65,4 @@ News
 2007-07-07 : [PowerMops 6.1](http://sourceforge.net/project/showfiles.php?group_id=152075&package_id=168230&release_id=521463) has been released! Dozens of bug fixes.
 
 
-2006-06-23 : PowerMops 6.0 has been released. Check out the latest release notes in the [Open Me First](OpenMeFirst "wikilink") document or go directly to the [download page](https://sourceforge.net/projects/powermops/files/) to fetch your complete copy.
+2006-06-23 : PowerMops 6.0 has been released. Check out the latest release notes in the [Open Me First](OpenMeFirst) document or go directly to the [download page](https://sourceforge.net/projects/powermops/files/) to fetch your complete copy.

@@ -12,10 +12,10 @@ from the SourceForge project page.
 
 You can browse the manual online:
 
-- [Overview](Overview "wikilink")
-- [Tutorial](Tutorial "wikilink")
-- [Reference](Reference "wikilink")
-- [Classes](Classes "wikilink")
+- [Overview](Overview)
+- [Tutorial](Tutorial)
+- [Reference](Reference)
+- [Classes](Classes)
 
 ## FAQ
 

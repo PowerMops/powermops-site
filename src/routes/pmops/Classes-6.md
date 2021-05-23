@@ -10,13 +10,13 @@ PowerPlant, the Newton, and most other OOP development systems for GUI
 rectangular area within a window within which drawing may take place.
 For those familiar with MacApp or TCL, there is a small difference in
 that in those systems a window is itself a view. In Mops, a window
-isn\'t a view, but contains a view or views.
+isn't a view, but contains a view or views.
 
-Our basic Window class doesn\'t support views at all; for this you will
+Our basic Window class doesn't support views at all; for this you will
 need the Window+ class. Although you may draw directly in a Window via
-its Draw handler, we are now trying to discourage this. We don\'t even
+its Draw handler, we are now trying to discourage this. We don't even
 guarantee that in future windows will continue to have their own Draw
-handlers&mdash;in fact they probably won\'t!
+handlers---in fact they probably won't!
 
 You should now use a view within a Window+, and draw either by
 overriding the DRAW: method for the view, or by using its draw handler.
@@ -29,7 +29,7 @@ Class Control, which in earlier versions of Mops was an independent
 class, is now a subclass of View.
 
   ------- ---------------------------------
-  Mops:   [Windows](Classes_5 "wikilink")
+  Mops:   [Windows](Classes_5)
   ------- ---------------------------------
 
   : Recommended reading
@@ -75,7 +75,7 @@ Window+ calling CLICK: on its contView, and each view calling it on all
 its children), until one returned true to say that it had handled the
 click.
 
-This scheme wasn\'t always flexible enough&mdash;for example, we might
+This scheme wasn't always flexible enough---for example, we might
 have a view which wants to take control of all clicks on it, even if the
 click was on a child view. But by the time the view found out that the
 click was in fact on a child view, the child view had already handled
@@ -94,7 +94,7 @@ view that wants to handle the click, so Window+ then calls CLICK: on
 this view. And note from this that CLICK: no longer returns a result.
 
 So, if your particular view receives a CLICK: message, you know that
-your view was really clicked&mdash;you don\'t have to test anything.
+your view was really clicked---you don't have to test anything.
 
 In the situation I mentioned above, where a view wants to handle clicks
 on its children, you can now simply override VIEW\_FOR\_CLICK?: Thus:
@@ -114,20 +114,20 @@ Using Controls {#using_controls}
 
 Mops defines a generic Control class, which is a subclass of View, and
 then has subclasses for the different kinds of standard
-control&mdash;Button, Checkbox, RadioButton, Vscroll and Hscroll.
+control---Button, Checkbox, RadioButton, Vscroll and Hscroll.
 
 Since a control is a view, in order to use controls within your
 application, you must use a Window+ or a subclass of Window+, since
 these are necessary to support views.
 
 As is the case with other Toolbox objects (such as Windows) control
-objects have a dual identity. Part of the control\'s data is maintained
+objects have a dual identity. Part of the control's data is maintained
 by the Toolbox on the heap, and can be accessed by the application via a
 handle. If you were writing in a conventional language, such as C or
 Pascal, you would consider the handle to be the control, and you would
-have to build a lot of structure into your code to support the user\'s
+have to build a lot of structure into your code to support the user's
 selection of the various parts of the control. Mops, on the other hand,
-combines the control\'s Toolbox related data with its own View related
+combines the control's Toolbox related data with its own View related
 data to comprise a single object that contains all it needs to know
 about managing the various actions that can occur. You need only
 instantiate and initialize the object properly, and it takes care of the
@@ -191,8 +191,8 @@ Here we define saveBtn as a Button, specify that its top left corner
 will be be at coordinates (100, 250) relative to the view that it will
 appear in, and give it a title. Then we set doSave as its action word.
 DoSave will be executed if the user releases the mouse button while the
-mouse is within saveBtn\'s control rectangle. Finally, when the program
-executes, we must use addView: to add the control to its parent view\'s
+mouse is within saveBtn's control rectangle. Finally, when the program
+executes, we must use addView: to add the control to its parent view's
 list of child views. Then when we fire up the window with new: or
 getNew:, the control will automatically receive a new: message which
 will cause it to create a Toolbox Control record on the heap and draw
@@ -200,7 +200,7 @@ itself.
 
 Control action words often need a way to determine which control they
 have been dispatched from. For example, a common action taken in scroll
-bar arrows is to get the control\'s value, add some increment to it, and
+bar arrows is to get the control's value, add some increment to it, and
 put the new value in the control. This could be done in the following
 manner:
 
@@ -208,7 +208,7 @@ manner:
 
 In this example, the word thisCtl is actually a Value that Mops provides
 as a simple way for a control action word to derive its owning control
-object. thisCtl contains the control object\'s address as any click on a
+object. thisCtl contains the control object's address as any click on a
 control puts its address into the value. This allows you to write very
 general action words that can be assigned to several different control
 objects simultaneously.
@@ -221,7 +221,7 @@ objects cannot be defined as nor-mal named ivars, because to do so would
 fail to provide a class pointer for the runtime method lookup. If you
 wish to make a control or window an ivar, you will need to define a
 subclass with the General attribute, then use that class. However you
-don\'t need to do this with Vscroll or Hscroll, since these have already
+don't need to do this with Vscroll or Hscroll, since these have already
 been defined as General.
 
 Late binding is necessary because there are cases in which the Toolbox
@@ -237,7 +237,7 @@ Dialogs
 -------
 
 Mops implements controls in dialogs differently than in normal windows.
-Since dialogs rely heavily upon resource definitions and don\'t usually
+Since dialogs rely heavily upon resource definitions and don't usually
 occasion much interaction with the items themselves other than getting
 or setting values, Mops does not build dialog control items as objects,
 but rather accesses them through methods in the Dialog class itself.
@@ -333,7 +333,7 @@ window.
   childrenMoved:
   moved:
   runtime control
-  Note that addview: must be called at run time, since a view\'s address is passed in. new: is called at run time, once this view\'s parent view already exists. However, new: is normally called automatically, when new: is sent to the owning Window+ object. The Window+ calls new: on its contView, and everything continues from there, since new: on a view calls new: on all its child views
+  Note that addview: must be called at run time, since a view's address is passed in. new: is called at run time, once this view's parent view already exists. However, new: is normally called automatically, when new: is sent to the owning Window+ object. The Window+ calls new: on its contView, and everything continues from there, since new: on a view calls new: on all its child views
   setJust:
   setBounds:
   measureFrom:
@@ -382,14 +382,14 @@ name is changed to be \"RootCtl\".
 |                             |   int        procID     The           |
 |                             | control definition ID for the Toolbox |
 |                             |   int                                 |
-|                             | resID      The control\'s resource ID |
+|                             | resID      The control's resource ID |
 |                             |   handle     Ct                       |
 |                             | lHndl    Handle to the control record |
 |                             |                                       |
 |                             |  int        myValue    Contains a cop |
 |                             | y of the numeric value of the control |
 |                             |   int        titl                     |
-|                             | eLen   Length of the control\'s title |
+|                             | eLen   Length of the control's title |
 |                             |   32 byt                              |
 |                             | es   title      The text of the title |
 +-----------------------------+---------------------------------------+
@@ -435,7 +435,7 @@ name is changed to be \"RootCtl\".
 ------------------------------------------------------------------------
 
 TitledCtl just adds a convenient init: method for setting up a control
-with a title, where the width of the control\'s rect is determined by
+with a title, where the width of the control's rect is determined by
 what the title is. We assume the font will be Chicago and the height of
 the control is 20. This may be overridden in subclasses as necessary.
 
@@ -572,8 +572,8 @@ Scroller. MainView is an instance of a one-off class, Mview. This class
 has a rectangle, PanRect, which normally ought to enclose all the child
 views of the Mview. The usual scenario is that PanRect is larger than
 the viewRect, and scrolling amounts to shifting the child views (and
-PanRect) around within the viewRect&mdash;which, from another point of
-view, can be thought of as &lsquo;panning&rsquo; the viewRect over the
+PanRect) around within the viewRect---which, from another point of
+view, can be thought of as 'panning' the viewRect over the
 PanRect area. Mview has appropriate methods for returning the distances
 by which PanRect falls outside the viewRect area, so that the parent
 Scroller can set the scroll bar values appropriately. One unusual thing
@@ -586,12 +586,12 @@ addView: super as we do for the scroll bars (see the new: method).
 Another approach we could have taken to implementing MainView would have
 been as a pointer, with late binding. That way MainView could have been
 any view subclass. That would have been more flexible, but possibly
-overkill for what we usually want to do&mdash;it would have required a
+overkill for what we usually want to do---it would have required a
 more complex setting-up process, with the MainView address having to be
 passed in after new: has been done. But if you need the extra
 flexibility, feel free to clone Scroller and make the changes!
 
-PanRect can obviously be very big, so we don\'t implement it as a
+PanRect can obviously be very big, so we don't implement it as a
 regular rect, but define a new class, BigRect, which uses vars rather
 than ints for the coordinates.
 
@@ -616,7 +616,7 @@ than ints for the coordinates.
 |                             |   bool      hscroll?                  |
 |                             |       True if h scroll bar to be used |
 |                             |   bool      usePan                    |
-|                             | Rect?   True if we\'re to use PanRect |
+|                             | Rect?   True if we're to use PanRect |
 |                             |   var       H                         |
 |                             | pan          Horizontal panning range |
 |                             |   var                                 |
@@ -697,11 +697,11 @@ supported, including (of course) scrolling. The main part of the Mops
 window (excluding the stack display) is a TEScroller. The TextEdit
 record is handled via an ivar theTE, which is an instance of the class
 TextEdit. Class TextEdit is probably not much use in isolation, (it
-would normally be used via this TEScroller class), so we won\'t document
+would normally be used via this TEScroller class), so we won't document
 it in detail here in the manual. However the source code (in file
 TextEdit) should be reasonably self-explanatory.
 
-In Carbon, TextEdit is &lsquo;deprecated&rsquo; and some of the
+In Carbon, TextEdit is 'deprecated' and some of the
 functionalities may not work. So you should use MLTEView instead of
 following clases on PowerMops.
 
@@ -734,11 +734,11 @@ following clases on PowerMops.
 |                             |   bool       s                        |
 |                             | croll\_on\_insert?   Do we auto-scrol |
 |                             | l on insert: or \$insert: ? You can s |
-|                             | et this false if you\'re inserting a  |
+|                             | et this false if you're inserting a  |
 |                             | large amount of text, and you want to |
 |                             |  be able to read it while the inserti |
 |                             | on is still going on, without it scro |
-|                             | lling away from where you\'re reading |
+|                             | lling away from where you're reading |
 |                             |   by                                  |
 |                             | te       mouse\_was\_here?     &nbsp; |
 +-----------------------------+---------------------------------------+
@@ -749,7 +749,7 @@ following clases on PowerMops.
   ----------- ------------------------
 
   -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  **Note:** Many of the methods are just overridden versions of the methods of the superclass Scroller, where there is an additional action to perform to the TextEdit object, but where the behavior of the method is really the same. We won\'t list these individually, but concentrate on the methods that are new in this class.
+  **Note:** Many of the methods are just overridden versions of the methods of the superclass Scroller, where there is an additional action to perform to the TextEdit object, but where the behavior of the method is really the same. We won't list these individually, but concentrate on the methods that are new in this class.
   accessing
   textHandle:
   handle:
@@ -796,9 +796,9 @@ following clases on PowerMops.
 
 styled\_TEScroller is a subclass of TEScroller, whose only variation is
 that the flag is set in the TextEdit record which makes it
-&lsquo;styled&rsquo;. This means that the text can have multiple fonts,
+'styled'. This means that the text can have multiple fonts,
 styles, etc. When the font, etc. is changed, only the selected text is
-changed (or, if there\'s no selection, the change applies to whatever
+changed (or, if there's no selection, the change applies to whatever
 text is subsequently typed).
 
   Superclass                    TEScroller
@@ -819,7 +819,7 @@ text is subsequently typed).
 TEView is a simple non-scrolling TextEdit view. It has some code lifted
 from TEScroller, but is much simpler. The methods are basically the same
 as in TEScroller, except that the scrolling-related methods are missing.
-We\'ll therefore omit a full listing.
+We'll therefore omit a full listing.
 
 +-----------------------------+------------------------------------+
 | Superclass                  | View                               |
@@ -843,9 +843,9 @@ We\'ll therefore omit a full listing.
 ------------------------------------------------------------------------
 
   ---------------------------------- ------------------------------------------- --------------------------------
-  [ Windows](Classes_5 "wikilink")   [Classes](Classes "wikilink")               [ Menus](Classes_7 "wikilink")
-  &nbsp;                             [Documentation](Documentation "wikilink")   
+  [ Windows](Classes_5)   [Classes](Classes)               [ Menus](Classes_7)
+  &nbsp;                             [Documentation](Documentation)   
   ---------------------------------- ------------------------------------------- --------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Classes](Category:Classes "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Classes](Category:Classes)

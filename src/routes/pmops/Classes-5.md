@@ -5,10 +5,10 @@ About this chapter {#about_this_chapter}
 ------------------
 
 This chapter describes the Mops classes and words that manage windows
-for the application. Mops\'s window classes take away much of the burden
+for the application. Mops's window classes take away much of the burden
 of window management, providing the basis upon which you can build more
 detailed behavior. Standard Macintosh window behavior, such as dragging,
-growing and updating, is handled automatically by Mops\'s Window and
+growing and updating, is handled automatically by Mops's Window and
 Window+ classes, freeing you to solve application-level problems instead
 of constantly having to rewrite system-level code for window management.
 
@@ -17,11 +17,11 @@ of constantly having to rewrite system-level code for window management.
   [Window Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-188.html)                                         
   [QuickDraw](http://developer.apple.com/documentation/mac/QuickDraw/QuickDraw-9.html)                                            
   [Control Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-297.html)                                        
-  rowspan=\"5\" style=\"border: thin \#aaa solid\" \| Mops                                                                        [Window](Lesson_20.html "wikilink")
-  [Controls](Lesson_20#Controls "wikilink")                                                                                       
-  [QuickDraw](Classes_8 "wikilink")                                                                                               
-  [Toolbox Views](Reference_3 "wikilink")                                                                                         
-  [Resources](Reference_12#Resources "wikilink")                                                                                  
+  rowspan=\"5\" style=\"border: thin \#aaa solid\" \| Mops                                                                        [Window](Lesson_20.html)
+  [Controls](Lesson_20#Controls)                                                                                       
+  [QuickDraw](Classes_8)                                                                                               
+  [Toolbox Views](Reference_3)                                                                                         
+  [Resources](Reference_12#Resources)                                                                                  
   ------------------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------
 
   : Recommended reading
@@ -42,7 +42,7 @@ the distributed Mops.dic image, provides basic behavior necessary for
 all windows, but does not include any management of views (or controls,
 which are a view subclass). Another class, Window+, adds the behavior
 necessary for windows with views. Unless your application is a
-particularly &ldquo;quick and dirty&rdquo; one, which just needs an
+particularly "quick and dirty" one, which just needs an
 extremely simple text-only output along the style of a dumb terminal, we
 recommend you use the Window+ class. Lessons 18 and 19 of the Tutorial
 have already given an introduction to views, and how these interact with
@@ -58,11 +58,11 @@ identity in that part of the object is known only to Mops, while another
 part is known both to Mops and to the Toolbox. From the point of view of
 the Toolbox (and conventional languages like Pascal or C), a window is
 completely described by a window record. A Mops window object packages
-the window record data within the larger context of the object\'s
+the window record data within the larger context of the object's
 private data, adding ivars to support the additional level of management
 that a Window object provides. The result is that the programmer is
 confronted with a much simpler model using objects, because all of the
-&lsquo;boilerplate&rsquo; kinds of behavior, such as dragging, growing,
+'boilerplate' kinds of behavior, such as dragging, growing,
 closing, updating and activation are handled within the window object
 itself rather than being thrown in with the application code. That is
 how Mops is able to simplify the logical model of the Toolbox and
@@ -86,30 +86,30 @@ Mops and the Toolbox. There are many cases in which Mops must determine
 which window is involved in event processing by calling the Toolbox,
 which will return a pointer to the window record. If the window record
 were not part of the object, Mops would have to somehow derive the
-address of the object\'s data from the window record. As it is, the
-window record is synonymous with the object\'s base address, making
+address of the object's data from the window record. As it is, the
+window record is synonymous with the object's base address, making
 communication with the Toolbox much simpler. Other Mops objects, such as
 Controls, do not have this luxury, and must take extra steps to derive
 the object address.
 
 Window objects add to the window record data a group of instance
-variables that keep track of the window\'s drag and grow
+variables that keep track of the window's drag and grow
 characteristics, a boolean that tells whether the window is currently
-&lsquo;alive&rsquo; with respect to the Toolbox, and a set of action
-&lsquo;hooks&rsquo; that allow you to customize a window\'s behavior
+'alive' with respect to the Toolbox, and a set of action
+'hooks' that allow you to customize a window's behavior
 without necessarily having to create a subclass. These action vectors
 hold the xts of Mops words to execute when the window is involved in a
 content click, an update event, an activate event, or selection of the
 close box. The ClassInit: method of Window initializes the vectors to
 the xt of NULL, except for the activate vector, which is set to the xt
-of CLS (&lsquo;clear screen&rsquo;, which erases the viewing area of the
+of CLS ('clear screen', which erases the viewing area of the
 window).
 
 For the Window+ class, which you should normally be using, you should
 leave the click handler and the update handler set to NULL (which they
 will be initially anyway), since clicks and drawing are handled through
 our view mechanism. You may, however, have a good reason to customize
-the activate or close handlers&mdash;for example, you may need to change
+the activate or close handlers---for example, you may need to change
 menu items depending on which windows are open or in front.
 
 Creating windows {#creating_windows}
@@ -130,9 +130,9 @@ Close vector is executed when the use clicks the Close box. Typically,
 you will use both of these hooks to adjust items in your menus.
 
 The Draw vector is called when the window receives an update event,
-which is the Toolbox\'s way of telling the window to redraw itself. Note
+which is the Toolbox's way of telling the window to redraw itself. Note
 however that drawing should now be done through our view mechanism, and
-not by setting the window\'s draw handler. At the moment we are really
+not by setting the window's draw handler. At the moment we are really
 only maintaining a draw handler for backward compatibility, and it will
 probably disappear in future.
 
@@ -142,11 +142,11 @@ other things, calls DRAW: on the contView, which causes DRAW: to be sent
 to all the views.
 
 Lastly, the Content vector is called when the user clicks the mouse in
-the window\'s content region. Here again, you should now normally handle
-content clicks through the view mechanism&mdash;the click handler may
+the window's content region. Here again, you should now normally handle
+content clicks through the view mechanism---the click handler may
 also disappear in future.
 
-You can also set the window\'s drag and grow characteristics at compile
+You can also set the window's drag and grow characteristics at compile
 time, if the ClassInit: defaults do not suit your needs. Each requires a
 boolean on the top of the stack reflecting whether the window is
 growable or draggable, and the four coordinates of a rectangle
@@ -166,7 +166,7 @@ methods, you can just pass any four dummy values.
 When your application executes, you must send a New: message to the
 window to cause it to become active with the Toolbox and to draw itself
 on the screen. New: requires a rectangle holding the dimensions of the
-window\'s frame, a title, a procID for the window type, and booleans
+window's frame, a title, a procID for the window type, and booleans
 reflecting whether the window should be visible when created and whether
 it should have a close box. For instance:
 
@@ -175,10 +175,10 @@ it should have a close box. For instance:
 
 would create a new document window using the dimensions stored in
 tempRect that would be visible and have a close box. If you would rather
-define your window\'s characteristics using resources, you can call the
+define your window's characteristics using resources, you can call the
 GetNew: method to open the window using a template from a resource file.
 
-To get a feel for how Mops\' window objects can be used, it is most
+To get a feel for how Mops' window objects can be used, it is most
 instructive to look at an existing application, such as grDemo. Lessons
 18, 19 and 20 of the Tutorial deal with grDemo, and lessons 18 and 19 in
 particular give a good introduction to the View and Window+ classes.
@@ -195,7 +195,7 @@ Classes
 ------------------------------------------------------------------------
 
 Window is the basic class of windows without controls. As for PowerMops,
-see also [Reference 11](Reference_11 "wikilink") (at present).
+see also [Reference 11](Reference_11) (at present).
 
 +-----------------------------+---------------------------------------+
 | Superclass                  | GrafPort                              |
@@ -224,10 +224,10 @@ see also [Reference 11](Reference_11 "wikilink") (at present).
 |                             | rectangle defining the content region |
 |                             |   rect                                |
 |                             |   growRect                      Conta |
-|                             | ins the window\'s current grow limits |
+|                             | ins the window's current grow limits |
 |                             |   rect                                |
 |                             |   dragRect                      Conta |
-|                             | ins the window\'s current drag limits |
+|                             | ins the window's current drag limits |
 |                             |   bool       growFlg                  |
 |                             |        True if the window is growable |
 |                             |   bool       dragFlg                  |
@@ -243,22 +243,22 @@ see also [Reference 11](Reference_11 "wikilink") (at present).
 |                             |      True if this is a color grafPort |
 |                             |   x-add                               |
 |                             | r     Idle                          T |
-|                             | he window\'s idle event action vector |
+|                             | he window's idle event action vector |
 |                             |   x-addr                              |
 |                             | Deact                         The win |
-|                             | dow\'s deactivate event action vector |
+|                             | dow's deactivate event action vector |
 |                             |   x-addr                              |
 |                             |    Content                       The  |
-|                             | window\'s content click action vector |
+|                             | window's content click action vector |
 |                             |   x-addr                              |
 |                             |     Draw                          The |
-|                             |  window\'s update event action vector |
+|                             |  window's update event action vector |
 |                             |   x-addr                              |
 |                             |   Enact                         The w |
-|                             | indow\'s activate event action vector |
+|                             | indow's activate event action vector |
 |                             |   x-ad                                |
 |                             | dr     Close                          |
-|                             | The window\'s close box action vector |
+|                             | The window's close box action vector |
 |                             |   int        ResID                    |
 |                             |          Resource id for GetNewWindow |
 |                             |   bool       Cl                       |
@@ -362,7 +362,7 @@ to be very basic indeed, you should use this class.
 |                             | ------------------------------------- |
 |                             | ------------------------------------- |
 |                             |   ptr     \^contView   Pointer to t   |
-|                             | he ContView&mdash; the view consistin |
+|                             | he ContView--- the view consistin |
 |                             | g of the whole contents of the window |
 |                             |   bool    zoomFlg                     |
 |                             | True if this window is to be zoomable |
@@ -402,9 +402,9 @@ to be very basic indeed, you should use this class.
 ------------------------------------------------------------------------
 
   -------------------------------- ------------------------------------------- ----------------------------------------------
-  [Events](Classes_4 "wikilink")   [Classes](Classes "wikilink")               [ Views and Controles](Classes_6 "wikilink")
-  &nbsp;                           [Documentation](Documentation "wikilink")   
+  [Events](Classes_4)   [Classes](Classes)               [ Views and Controles](Classes_6)
+  &nbsp;                           [Documentation](Documentation)   
   -------------------------------- ------------------------------------------- ----------------------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Classes](Category:Classes "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Classes](Category:Classes)

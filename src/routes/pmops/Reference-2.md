@@ -2,12 +2,12 @@ Classes and Objects {#classes_and_objects}
 ===================
 
 Building a Mops program is largely a process of defining classes of
-objects &mdash; classes which are the \'framework\' and objects which
+objects --- classes which are the 'framework' and objects which
 are the \"movers and doers\". In this chapter, we provide you with
 details of the inner workings of classes and their components, with
-special emphasis on instance variables and methods. We\'ll also discuss
+special emphasis on instance variables and methods. We'll also discuss
 several Mops words that may be particularly useful in building your own
-class definitions. You won\'t need to know everything in this chapter to
+class definitions. You won't need to know everything in this chapter to
 be successful at building classes, but you should at least survey the
 information. It may come in handy later, as your programming skills
 grow.
@@ -15,11 +15,11 @@ grow.
 Planning Your Subclasses {#planning_your_subclasses}
 ------------------------
 
-Mops comes with many predefined classes &mdash; building blocks, which
+Mops comes with many predefined classes --- building blocks, which
 have been designed to be as general as possible. Your application will
 probably require more specific behavior than the predefined classes are
 capable of, in which case you will want to define one or more of your
-own subclasses of existing classes. Your program\'s unique operations
+own subclasses of existing classes. Your program's unique operations
 and flavor will be the result of the behaviors you define in your
 sub-classes.
 
@@ -36,7 +36,7 @@ but it can never redefine the original ones. Therefore, a new class
 should be defined as a subclass of another *only* if the instance
 variables of the superclass are needed for objects of the new subclass.
 If you find that an object of a subclass is not using many of the
-superclass\' ivars, then the subclass should probably be a subclass of a
+superclass' ivars, then the subclass should probably be a subclass of a
 different class.
 
 Methods, on the other hand, can be redefined in subclasses without
@@ -47,40 +47,40 @@ more methods a subclass inherits, the more compact the code will be.
 
 Multiple inheritance can be a powerful technique if used judiciously. If
 overdone it can cause unnecessary complexity, but used wisely it can
-simplify things considerably. Let\'s say a class
-\<code\>MyClass\</code\> has three superclasses, \<code\>sup1\</code\>,
-\<code\>sup2\</code\> and \<code\>sup3\</code\>. In an object of
-\<code\>MyClass\</code\>, the ivars corresponding to
-\<code\>sup1\</code\> will come first, then those of
-\<code\>sup2\</code\>, then those of \<code\>sup3\</code\>. In typical
-Forth laid back manner, we don\'t check for any clashes in method names
+simplify things considerably. Let's say a class
+`MyClass` has three superclasses, `sup1`,
+`sup2` and `sup3`. In an object of
+`MyClass`, the ivars corresponding to
+`sup1` will come first, then those of
+`sup2`, then those of `sup3`. In typical
+Forth laid back manner, we don't check for any clashes in method names
 in the superclasses. When we look up a method name in
-\<code\>MyClass\</code\>, we look at the methods declared in
-\<code\>MyClass\</code\> itself first, then in \<code\>sup1\</code\>,
-then in \<code\>sup2\</code\>, then in \<code\>sup3\</code\>. If, say,
+`MyClass`, we look at the methods declared in
+`MyClass` itself first, then in `sup1`,
+then in `sup2`, then in `sup3`. If, say,
 that particular method name had been declared in both
-\<code\>sup2\</code\> and \<code\>sup3\</code\>, the one in
-\<code\>sup2\</code\> will be used, and the one in \<code\>sup3\</code\>
-will never be accessible within \<code\>MyClass\</code\>. In typical
+`sup2` and `sup3`, the one in
+`sup2` will be used, and the one in `sup3`
+will never be accessible within `MyClass`. In typical
 Mops fashion, we provide an out for this problem: as we saw in [Lesson
-19](Lesson_19#Positioning_Views "wikilink") of the Tutorial, when
+19](Lesson_19#Positioning_Views) of the Tutorial, when
 referring to a method of a superclass, we use the syntax
-\<code\>aMethod: super\</code\>. We can be more specific and use
-\<code\>aMethod: super&gt; aSuperClass\</code\>, where
-\<code\>aSuperClass\</code\> is the one containing the method we want;
+`aMethod: super`. We can be more specific and use
+`aMethod: super&gt; aSuperClass`, where
+`aSuperClass` is the one containing the method we want;
 this overrides the normal left-to-right search.
 
-If more than one of \<code\>MyClass\</code\> and any of the superclasses
+If more than one of `MyClass` and any of the superclasses
 is indexed, we do a check that the specified indexed widths are the
-same. We give an error if this condition isn\'t met.
+same. We give an error if this condition isn't met.
 
-Of course this isn\'t the only possible approach we could have taken to
+Of course this isn't the only possible approach we could have taken to
 multiple inheritance. For example we could have had the ivar regions
 overlay rather than concatenate. We could do this as an option later, if
 anyone wants it.
 
 For a good example of the use of multiple inheritance to simplify code,
-look at the class \<code\>Ordered-Col\</code\> in file Struct, and its
+look at the class `Ordered-Col` in file Struct, and its
 associated classes.
 
 Choosing Between ivars and Objects {#choosing_between_ivars_and_objects}
@@ -90,8 +90,8 @@ In addition to designing the class inheritance of your application, you
 will have to decide what should be an instance variable and what should
 be a public object. Because an instance variable is invisible to objects
 other than its owning object, any communication between an ivar and
-other objects must be passed explicitly through the ivar\'s owning
-object. If you find yourself creating numerous &\#152;passthrough\'
+other objects must be passed explicitly through the ivar's owning
+object. If you find yourself creating numerous &\#152;passthrough'
 methods that are only there to provide access to a single instance
 variable, you should reconsider your design. It probably indicates that
 the instance variable should more appropriately be a a public ivar (see
@@ -138,7 +138,7 @@ clearly the structure of the problem being solved.
 Defining a Class {#defining_a_class}
 ----------------
 
-Now, let\'s take a closer look at the mechanics of building a new class.
+Now, let's take a closer look at the mechanics of building a new class.
 A class definition has the following skeletal structure:
 
 `<nowiki>`\
@@ -168,19 +168,19 @@ If you include the word LARGE in your class definition, you are saying
 that this is an indexed class, and its objects may have more than 32k
 indexed elements. Indexing operations on LARGE classes will use 32-bit
 arithmetic, which will slow accesses very slightly (on 68000-based
-machines only &mdash; Plus, Classic, SE). No bounds checking is done,
+machines only --- Plus, Classic, SE). No bounds checking is done,
 since the CHK machine instruction, which we use for bounds checking,
-uses only 16-bit index values. For these reasons, don\'t use LARGE
+uses only 16-bit index values. For these reasons, don't use LARGE
 unless you really have to.
 
 Note that you can declare as LARGE a subclass of an indexed class which
-isn\'t LARGE. But this isn\'t really a good idea. Any methods inherited
-from the superclass won\'t know that the class is LARGE, so if they try
-to access the indexed area they won\'t do it properly. For example, they
+isn't LARGE. But this isn't really a good idea. Any methods inherited
+from the superclass won't know that the class is LARGE, so if they try
+to access the indexed area they won't do it properly. For example, they
 will execute a CHK instruction, checking the low 16 bits of the index
-against the low 16 bits of the limit! This for sure won\'t be what you
-want. So in this kind of situation, you had better know what you\'re
-doing, and only inherit methods which don\'t access the indexed area.
+against the low 16 bits of the limit! This for sure won't be what you
+want. So in this kind of situation, you had better know what you're
+doing, and only inherit methods which don't access the indexed area.
 
 Ivars
 -----
@@ -191,20 +191,20 @@ which are simply statements of the form:
 `[ # of elements ] ClassName ivarName`
 
   --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  ClassName here is the class that defines the characteristics of the ivar. Each ivar declaration statement creates an entry in the private **instance variable dictionary** of the class currently being defined. The entry for each ivar contains fields for the header, data, and a pointer to the class specified by the ivar\'s ClassName. An instance variable definition is really just a **template** for the private data of the object. When an object is created, the object\'s data area is assembled (i.e., memory space is reserved) according to the specifications in the template.   ![](IVars.png "fig:IVars.png")\<br /\> Figure 2-1&mdash;Instance Variables and Objects   Notice that the \'object\' in the diagram has some \'Mops info\' at the start &mdash; as we mentioned in [Lesson 5](Lesson_5#Defining_a_Class "wikilink") of the Tutorial, Mops objects have 8 bytes of extra information at the start. Part of this extra information is a pointer to the class of the object, as we show in the diagram. (We\'ll give the full details of this extra information in the technical section later).\<br /\> Then comes the first ivar, so this is the start of the actual data area of the object.
+  ClassName here is the class that defines the characteristics of the ivar. Each ivar declaration statement creates an entry in the private **instance variable dictionary** of the class currently being defined. The entry for each ivar contains fields for the header, data, and a pointer to the class specified by the ivar's ClassName. An instance variable definition is really just a **template** for the private data of the object. When an object is created, the object's data area is assembled (i.e., memory space is reserved) according to the specifications in the template.   ![](IVars.png "fig:IVars.png")\<br /\> Figure 2-1---Instance Variables and Objects   Notice that the 'object' in the diagram has some 'Mops info' at the start --- as we mentioned in [Lesson 5](Lesson_5#Defining_a_Class) of the Tutorial, Mops objects have 8 bytes of extra information at the start. Part of this extra information is a pointer to the class of the object, as we show in the diagram. (We'll give the full details of this extra information in the technical section later).\<br /\> Then comes the first ivar, so this is the start of the actual data area of the object.
   --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Instance variables are also objects. The main difference (other than the
 private/public distinction) is that they can be declared as part of a
-\'record\', and in this case their \'Mops information\' is omitted, as
+'record', and in this case their 'Mops information' is omitted, as
 we discussed in Lesson 5.
 
 In a practical example, a Toolbox Rectangle is stored as 4 consecutive
 2-byte integers (the x and y coordinates for the
-\<code\>TopLeft\</code\> and \<code\>BottomRight\</code\> corners). To
+`TopLeft` and `BottomRight` corners). To
 pass these parameters to the Mac Toolbox, it is most convenient to map
 this structure with 4 Int ivars (each 2 bytes wide), using the
-\<code\>68k\_record {\...}\</code\> syntax, knowing that the 2 bytes of
+`68k\_record {\...}` syntax, knowing that the 2 bytes of
 data for each Int will be adjacent to one another.
 
 ### For Advanced Mops Programmers {#for_advanced_mops_programmers}
@@ -225,20 +225,20 @@ The Toolbox structure might only be a subset of the entire body of data
 in the object, as it is in the case of class Window.
 
 In defining a new class that calls a Toolbox routine, you will often
-need to map the layout of the class\'s data structure to mirror a
+need to map the layout of the class's data structure to mirror a
 Toolbox data structure (Toolbox data structures are listed at the end of
 each section of [Inside
 Macintosh](http://developer.apple.com/documentation/index.html)). To map
 the data such that the Toolbox will be able to use it properly, define
 all of the Boolean fields as Byte ivars, Integer or Char fields as Int
 ivars, and all Long (32-bit) Handle or Pointer fields as Var ivars, and
-remember to use \<code\>68k\_record {\...}\</code\> around the whole
+remember to use `68k\_record {\...}` around the whole
 group of ivars.
 
 If there is a section of the data record that you will not need named
 access to (e.g. data that never changes in the course of a program, but
-must be in the object\'s data structure for the Toolbox call), you can
-save ivar dictionary space by using the \<code\>BYTES\</code\>
+must be in the object's data structure for the Toolbox call), you can
+save ivar dictionary space by using the `BYTES`
 pseudo-class to allocate a string of bytes with a single name. For
 instance, the following ivar declaration:
 
@@ -246,26 +246,26 @@ instance, the following ivar declaration:
 `20     bytes   junk`\
 `var    v2`
 
-builds a data area that has two 4-byte \<code\>Var\</code\>s,
-\<code\>v1\</code\> and \<code\>v2\</code\>, with 20 bytes of data,
-called \<code\>junk\</code\>, between them. The Toolbox will use this
+builds a data area that has two 4-byte `Var`s,
+`v1` and `v2`, with 20 bytes of data,
+called `junk`, between them. The Toolbox will use this
 area, but the object will never need to access it directly. This is more
 space efficient than assigning individual names to a lot of little
-fields &mdash; names that will never be used because the data placed
-there never is used by Mops. \<code\>BYTES\</code\> actually builds an
-ivar entry of class \<code\>Object\</code\> and then reserves a data
+fields --- names that will never be used because the data placed
+there never is used by Mops. `BYTES` actually builds an
+ivar entry of class `Object` and then reserves a data
 length equal to the number that you declare. This means that, if
-necessary, you can get its address with the addr: method. But don\'t
-send it a \<code\>length:\</code\> message, since this will always
-return zero (the length of an \<code\>Object\</code\>). Note also that
-\<code\>BYTES\</code\> is **not** an indexed data type like
-\<code\>bArray\</code\> &mdash; it creates one named field, not an array
+necessary, you can get its address with the addr: method. But don't
+send it a `length:` message, since this will always
+return zero (the length of an `Object`). Note also that
+`BYTES` is **not** an indexed data type like
+`bArray` --- it creates one named field, not an array
 of bytes.
 
 ### How ivars are Linked {#how_ivars_are_linked}
 
   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------
-  This table shows the format of an instance variable dictionary entry. It bears some similarity to a standard Mops dictionary entry, except that the ivar name is converted to a hashed value (a compacted form automatically derived from a complex math algorithm). All of the ivar entries for a given class form a linked list back to the root of the ivar chain (see the left column of [Figure 2-1](#fig2-1 "wikilink")). This root is the pseudo-ivar, \<code\>SUPER\</code\> (\<code\>SELF\</code\> and \<code\>SUPER\</code\> exist as instance variables in class \<code\>META\</code\> &mdash; the superclass of the all-encompassing class OBJECT). The **message compiler** detects references to these two special ivars, and begins the method search in a place appropriate for each. Therefore, when a new class is being defined, the \^class field of \<code\>SUPER\</code\> is patched (directed) to the new class\' superclass, and that of SELF to the new class itself. In this way, the search for a given method automatically begins in the proper place for \<code\>SELF\</code\> and \<code\>SUPER\</code\> references.   Figure 2-2&mdash;Instance Variable Fields\<br /\> ![](IVarFields.png "fig:IVarFields.png")
+  This table shows the format of an instance variable dictionary entry. It bears some similarity to a standard Mops dictionary entry, except that the ivar name is converted to a hashed value (a compacted form automatically derived from a complex math algorithm). All of the ivar entries for a given class form a linked list back to the root of the ivar chain (see the left column of [Figure 2-1](#fig2-1)). This root is the pseudo-ivar, `SUPER` (`SELF` and `SUPER` exist as instance variables in class `META` --- the superclass of the all-encompassing class OBJECT). The **message compiler** detects references to these two special ivars, and begins the method search in a place appropriate for each. Therefore, when a new class is being defined, the \^class field of `SUPER` is patched (directed) to the new class' superclass, and that of SELF to the new class itself. In this way, the search for a given method automatically begins in the proper place for `SELF` and `SUPER` references.   Figure 2-2---Instance Variable Fields\<br /\> ![](IVarFields.png "fig:IVarFields.png")
   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------
 
 ### Potential ivar Errors {#potential_ivar_errors}
@@ -290,15 +290,15 @@ brackets denote optional sections):
 `</nowiki>`
 
 A valid selector name (any alphanumerics ending in a colon) must follow
-the \<code\>:m\</code\> (separated by at least one space). The selector
-becomes the name of the new method in the dictionary. A class\' method
+the `:m` (separated by at least one space). The selector
+becomes the name of the new method in the dictionary. A class' method
 has access to all public objects, to all instance variables of its own
 class and all of its superclasses up the chain, and to
-\<code\>SELF\</code\> and \<code\>SUPER\</code\>. A method can use any
+`SELF` and `SUPER`. A method can use any
 previous methods already defined in the current class, and can recurse
 by simply using the name of the method being defined with
-\<code\>SELF\</code\> as the receiver. Be sure to use
-\<code\>SUPER\</code\> rather than \<code\>SELF\</code\> as the message
+`SELF` as the receiver. Be sure to use
+`SUPER` rather than `SELF` as the message
 receiver in a redefined method if you want to call the original method
 in the superclass.
 
@@ -306,25 +306,25 @@ in the superclass.
 
 You will find that the methods that you write for classes at the ends of
 long superclass chains consist primarily of messages to ivars or
-\<code\>Self\</code\>, instead of a lot of Mops words or primitive
+`Self`, instead of a lot of Mops words or primitive
 operations. You can see an example of this in the predefined class,
-\<code\>Ordered-Col\</code\> (see Basic Data Structures in Part III),
+`Ordered-Col` (see Basic Data Structures in Part III),
 which has several superclasses.
 
-But you may find it necessary from time to time &mdash; especially after
-you\'ve gained some experience defining simpler classes &mdash; to
+But you may find it necessary from time to time --- especially after
+you've gained some experience defining simpler classes --- to
 define a new class that uses primitive methods involving direct access
-to the class\' data area. An example of this kind of object is class
-\<code\>Var\</code\> in the Struct source file, which manipulates its
+to the class' data area. An example of this kind of object is class
+`Var` in the Struct source file, which manipulates its
 data directly. Several Mops words described below will come in handy for
 writing primitive methods like this.
 
 ### \^BASE and \^ELEM {#base_and_elem}
 
-You can use \<code\>\^BASE\</code\> (pointer to the base address of the
+You can use `\^BASE` (pointer to the base address of the
 current object) from within any method to place the **base address** of
-the current object onto the stack. Note that \<code\>\^BASE\</code\>
-leaves the same address as the phrase \<code\>Addr: self\</code\>, or
+the current object onto the stack. Note that `\^BASE`
+leaves the same address as the phrase `Addr: self`, or
 that left by using the name of the object in another word or method.
 This address points to the data field of the object, which also happens
 to be the beginning of its named ivar data area.
@@ -338,10 +338,10 @@ been defined in this manner:
 `:m GET: ^base @ ;m`\
 `</nowiki>`
 
-which fetches the longword (32 bits wide) at the object\'s data area.
-For a \<code\>LongWord\</code\> this is the entire data area, defined as
+which fetches the longword (32 bits wide) at the object's data area.
+For a `LongWord` this is the entire data area, defined as
 a single ivar: 4 Bytes Data. The actual definition of
-\<code\>get:\</code\> in class \<code\>LongWord\</code\> is somewhat
+`get:` in class `LongWord` is somewhat
 different, since it compiles inline code for speed.
 
 Because a primitive method will often be the code that gets executed
@@ -350,36 +350,36 @@ as possible. Mops has very fast code operations for its most often used
 primitive methods.
 
 Indexed classes, for example, have an extensive set of primitives for
-their most often-used operations. \<code\>LIMIT\</code\> returns the
+their most often-used operations. `LIMIT` returns the
 maximum number of cells allocated to an indexed object. After the phrase
-&ldquo; \<code\>3 array a1\</code\> &rdquo; (creating an indexed object,
-\<code\>a1\</code\>, of class array, with 3 data cells), executing
-\<code\>LIMIT\</code\> within one of \<code\>A1\</code\>\'s methods
-would produce 3 on the stack. \<code\>\^ELEM\</code\> (pronounced
-&ldquo;pointer-to-element&rdquo;) expects an index on the stack to begin
+" `3 array a1` " (creating an indexed object,
+`a1`, of class array, with 3 data cells), executing
+`LIMIT` within one of `A1`'s methods
+would produce 3 on the stack. `\^ELEM` (pronounced
+"pointer-to-element") expects an index on the stack to begin
 with, and leaves on the stack the address of the corresponding indexed
 element; it will invoke an error routine if the class is not indexed.
-(Incidentally, \<code\>\^ELEM\</code\> performs **range checking** to
+(Incidentally, `\^ELEM` performs **range checking** to
 make sure the index on the stack is within the range of the index.)
-Another fast primitive, \<code\>IDXBASE\</code\>, leaves a pointer to
+Another fast primitive, `IDXBASE`, leaves a pointer to
 the 0th (i.e., the first element) element of an indexed object or ivar
-(equivalent to &ldquo; \<code\>0 \^ELEM\</code\> &rdquo; ).
+(equivalent to " `0 \^ELEM` " ).
 
 Other optimized primitives you should be aware of are those that access
-1, 2, and 4-byte arrays. Instead of using \<code\>\^ELEM\</code\>, it is
-faster to use \<code\>\^ELEM1\</code\> for 1-byte elements,
-\<code\>\^ELEM2\</code\> for 2-byte elements, or
-\<code\>\^ELEM4\</code\> for 4-byte elements.
+1, 2, and 4-byte arrays. Instead of using `\^ELEM`, it is
+faster to use `\^ELEM1` for 1-byte elements,
+`\^ELEM2` for 2-byte elements, or
+`\^ELEM4` for 4-byte elements.
 
-Finally, the message &ldquo; \<code\>width: self\</code\> &rdquo; will
-leave the width of an object\'s indexed elements on the stack.
+Finally, the message " `width: self` " will
+leave the width of an object's indexed elements on the stack.
 
 ------------------------------------------------------------------------
 
   ------------------------------------------- ----------------------------------- ---------------------------------------
-  [Reference 1](Reference_1 "wikilink")       [Reference](Reference "wikilink")   [Reference 3](Reference_3 "wikilink")
-  [Documentation](Documentation "wikilink")                                       
+  [Reference 1](Reference_1)       [Reference](Reference)   [Reference 3](Reference_3)
+  [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- ---------------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Reference](Category:Reference "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Reference](Category:Reference)

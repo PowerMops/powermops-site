@@ -3,7 +3,7 @@ Inside the grDemo {#inside_the_grdemo}
 
 Before we begin to explain the inner workings of the graphics
 demonstration program (grDemo), you should be familiar with its basic
-operation. First, print out the listing for the \'grDemo\' source file,
+operation. First, print out the listing for the 'grDemo' source file,
 which is located in the Demo folder. You will need to follow along with
 the source code listing to understand the discussions in this lesson. It
 will also be helpful if you have handy a printout of the following
@@ -12,16 +12,16 @@ files: windowMod.txt, window+, ctl, view, scroller and QD.
 Next, load and run grDemo to gain an understanding about what it does.
 
 To load grDemo into Mops dictionary, double-click Mops.dic or PowerMops
-icon to load Mops dictionaly into memory. Then select \'Load\...\' from
+icon to load Mops dictionaly into memory. Then select 'Load\...' from
 the File menu. When the dialog box appears, select grDemo and open it.
 This file contains Need commands for the files it needs, and these will
-be loaded automatically. As each file loads, You\'ll see a message
+be loaded automatically. As each file loads, You'll see a message
 telling you what is being loaded. When all the files are loaded (the
 File title on the menubar reverts to black on white, and the Mops prompt
-appears), type \<code\>go\</code\>.
+appears), type `go`.
 
   ------------------------------------------------------------ ------------------------------------------ -----------------------------------------------------------------------------------------------
-  Now the program (which we\'ll call \'Curves\') will begin.   ![](CurvesWindow.png "CurvesWindow.png")   Experiment by moving the scroll bars and selecting different routines from the Graphics menu.
+  Now the program (which we'll call 'Curves') will begin.   ![](CurvesWindow.png "CurvesWindow.png")   Experiment by moving the scroll bars and selecting different routines from the Graphics menu.
   ------------------------------------------------------------ ------------------------------------------ -----------------------------------------------------------------------------------------------
 
 As we explain various parts of this program in these final lessons, we
@@ -48,14 +48,14 @@ yourself these two basic questions:
 -   What will be displayed on the screen?
 
 The first question relates more to the inner workings of the program,
-and the second to the \'human interface\' aspects. Of course these two
+and the second to the 'human interface' aspects. Of course these two
 questions are interrelated, but it is often helpful at the start to look
 at them separately.
 
 In the case of our demo program, the question of the inner working is
 already largely answered, since we will be using the routines we have
 developed in the last few lessons. The interface question remains,
-however, and a lot of work needs to be done here. You\'ll find, however,
+however, and a lot of work needs to be done here. You'll find, however,
 that Mops has already taken care of most of the messy details.
 
 Views
@@ -67,7 +67,7 @@ is a rectangular area within a window, which displays something. A
 window is not itself a view, but a window contains one special view
 which covers the whole of its area except its title bar. This view is
 called the **ContView** of the window (since it covers the whole of the
-window\'s **contents**). Everything else which displays in a window must
+window's **contents**). Everything else which displays in a window must
 display in a view.
 
 Class View has a number of features which make it quite easy to set the
@@ -77,12 +77,12 @@ clicked or need to be drawn.
 Views are hierarchical. That is, views can (and usually do) belong
 inside other views. We call a view containing another view a **parent**
 view, and the view it contains its **child** view. If you have done any
-Newton programming, you\'ll be familiar with this terminology. In fact,
-you\'ll be pleased to know that many of the Mops view features will look
+Newton programming, you'll be familiar with this terminology. In fact,
+you'll be pleased to know that many of the Mops view features will look
 rather familiar.
 
   ------------------------------------------------------------------------ ------------------------------------------ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Let\'s look again at the Curves window to identify the views controls.   ![](CurvesWindow.png "CurvesWindow.png")   This window has a pane in which the graphics are drawn &mdash; clearly this will be a view. There are also the three scroll bars and the digital displays beneath each one. The scroll bars will be views, and the digital displays will also be views.
+  Let's look again at the Curves window to identify the views controls.   ![](CurvesWindow.png "CurvesWindow.png")   This window has a pane in which the graphics are drawn --- clearly this will be a view. There are also the three scroll bars and the digital displays beneath each one. The scroll bars will be views, and the digital displays will also be views.
   ------------------------------------------------------------------------ ------------------------------------------ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Positioning Views {#positioning_views}
@@ -95,26 +95,26 @@ things so the scroll bars go somewhere else in the window. The simplest
 way to do this is to create some more views. If both a scroll bar and
 its digital display are child views of one parent, it becomes easy to
 move them together. So what we do in the Demo program, is to define
-three \'indicator\' views, where each indicator has a scroll bar and a
+three 'indicator' views, where each indicator has a scroll bar and a
 digital display as its children.
 
-There is one more view, and this is the contView for the window &mdash;
-the view which covers the whole of the window\'s area.
+There is one more view, and this is the contView for the window ---
+the view which covers the whole of the window's area.
 
 Thus we have 11 views in all. The contView is at the top level. Then the
 graphic pane and the three indicators are at the next level&\#148;these
 are the children of the contView. Then each of the three indicators has
-two children &mdash; a scroll bar and a digital display.
+two children --- a scroll bar and a digital display.
 
 The position and size of a view is defined in terms of its bounding
-rectangle, its viewRect. However in a program you won\'t normally set
+rectangle, its viewRect. However in a program you won't normally set
 the viewRect directly (although you can if you have to). Normally you
-will specify the four sides of this rectangle relative to the view\'s
+will specify the four sides of this rectangle relative to the view's
 parent or siblings, with a range of options, which can be independently
 set for the four sides.
 
-The measurement option for each side is called its \'justification\',
-and the corresponding number the \'bound\'. There are four justification
+The measurement option for each side is called its 'justification',
+and the corresponding number the 'bound'. There are four justification
 values and four bounds for each view. If a parent view moves or is
 resized, normally its child views are also moved/resized according to
 their bounds and justifications.
@@ -123,7 +123,7 @@ Again, this scheme will be familiar to Newton programmers. So will most
 of the justification options we provide, although we do have a few
 extras. One such extra is that we have four justification values for
 each view, one for each side, instead of just two (for horizontal and
-vertical) &mdash; this reflects the fact that views are more likely to
+vertical) --- this reflects the fact that views are more likely to
 be resized while a program is running, on a Mac than on a Newton.
 
 Here are the possible justification values (defined as constants):
@@ -133,7 +133,7 @@ Here are the possible justification values (defined as constants):
   parLeft        parent left                                                                                                 the bound is measured from the left edge of the parent                                                                         
   parRight       parent right                                                                                                the bound is measured from the right edge of the parent                                                                        
   parCenter      parent center                                                                                               the bound is measured from the center of the parent                                                                            
-  parProp        parent proportional                                                                                         the \'bound\' is a value out of 10000, expressing a proportional distance across the width of the parent.                      
+  parProp        parent proportional                                                                                         the 'bound' is a value out of 10000, expressing a proportional distance across the width of the parent.                      
   parTop         parent top                                                                                                  the bound is measured from the top of the parent                                                                               
   parBottom      parent bottom                                                                                               the bound is measured from the bottom of the parent                                                                            
   &nbsp;         ( Note that parCenter and parProp can also be used in the vertical direction, with the obvious meanings.)                                                                                                                                  
@@ -141,20 +141,20 @@ Here are the possible justification values (defined as constants):
   sibRight       sibling right                                                                                               the bound is measured from the right of the previous sibling                                                                   
   sibTop         sibling Top                                                                                                 the bound is measured from the top of the previous sibling                                                                     
   sibBottom      sibling bottom                                                                                              the bound is measured from the bottom of the previous sibling                                                                  
-  myLeft         my left                                                                                                     (right bound only) &mdash; this is measured from the left of this view, so we are directly specifying the width of the view    
-  myTop          my top                                                                                                      (bottom bound only) &mdash; this is measured from the top of this view, so we are directly specifying the height of the view   
+  myLeft         my left                                                                                                     (right bound only) --- this is measured from the left of this view, so we are directly specifying the width of the view    
+  myTop          my top                                                                                                      (bottom bound only) --- this is measured from the top of this view, so we are directly specifying the height of the view   
 
 The default values are parLeft and parTop, which simply means that the
-child view\'s bounds are relative to the top left corner of its parent.
+child view's bounds are relative to the top left corner of its parent.
 
 This scheme may look complicated, but is really quite easy to use. In
 most situations the bounds and justification values can be set up for a
 view at compile time (via the setJust: and setBounds: messages), and
-your program won\'t need to take any other action &mdash; the view will
+your program won't need to take any other action --- the view will
 keep moving itself automatically to the right position whenever the
 parent view moves
 
-Let\'s look at how we\'ve set up these quantities for the views in our
+Let's look at how we've set up these quantities for the views in our
 grDemo application. Look at the CLASSINIT: method in class Indicator:
 
 `<nowiki>`\
@@ -190,7 +190,7 @@ will have a fixed height of 16 pixels and always be right at the bottom
 of the Indicator, so we set both top and bottom justification to
 parBottom, with the bounds (-16, 0).
 
-If you try resizing the demo window, you\'ll see the results of these
+If you try resizing the demo window, you'll see the results of these
 settings. The vertical scroll bars will stretch or shrink according to
 the height of the window, while the readout boxes will remain at the
 same size.
@@ -216,8 +216,8 @@ difficult to change your design in various ways even after much of the
 program is written. This is one of the benefits of object-oriented
 programming.
 
-Since we declared these views in the dictionary, we don\'t need to set
-them up in grWind\'s CLASSINIT: method, and can simply set them up
+Since we declared these views in the dictionary, we don't need to set
+them up in grWind's CLASSINIT: method, and can simply set them up
 directly at compile time. If you look at the lines where we do this, you
 should be able to work out how we these views are positioned. We also
 give some alternative code, commented out. If you use these lines
@@ -245,10 +245,10 @@ the view is at (0,0). In Mac terminology, this is called setting the
     and to draw the readout boxes.
 
 Look at the DRAW: method for class Readout now. Note how we exploit the
-fact that tempRect is set to the view\'s boundary, in local coordinates
+fact that tempRect is set to the view's boundary, in local coordinates
 (which are in effect at this point). Here we erase the previous number
 that was being displayed and draw the box around the view. Next, the
-\'cursor\' where the digits are to be placed is positioned three pixels
+'cursor' where the digits are to be placed is positioned three pixels
 across and 10 pixels down from the top left corner of the rectangle.
 
 Now the new digits are printed in a field of 3 digits. First we set the
@@ -280,12 +280,12 @@ one would use the ID number 3, which is always Geneva.
 
 Now look at the DRAW: method for class Indicator. It gets the current
 value from the vertical scroll bar, then sends that to the Readout view
-via Readout\'s PUT: method. Finally it calls (DRAW): super which does
-whatever its superclass needs to do for drawing. As we\'ll see later, we
-don\'t use DRAW: super here, because of the other automatic actions such
+via Readout's PUT: method. Finally it calls (DRAW): super which does
+whatever its superclass needs to do for drawing. As we'll see later, we
+don't use DRAW: super here, because of the other automatic actions such
 as setting the clip which are done by DRAW:. These actions have already
-been done for this view, and don\'t need to be done again. And note that
-one of the things that we don\'t need to do again is to call DRAW: on
+been done for this view, and don't need to be done again. And note that
+one of the things that we don't need to do again is to call DRAW: on
 the Readout view, since the Readout is a child view, and it will get a
 DRAW: automatically.
 
@@ -297,16 +297,16 @@ make the appropriate system call.
 The NEW: method in class Indicator is called at run time, when the
 window containing the view is opened. Here we need to set up which are
 the child views of this view. This is done with the ADDVIEW: method. We
-can\'t do this at compile time, since we have to pass in the address of
-the child view we\'re adding, and this might be different in different
+can't do this at compile time, since we have to pass in the address of
+the child view we're adding, and this might be different in different
 Mops runs.
 
 ------------------------------------------------------------------------
 
   ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 18](Lesson_18 "wikilink")           [Tutorial](Tutorial "wikilink")   [Lesson 20](Lesson_20 "wikilink")
-  [Documentation](Documentation "wikilink")                                     
+  [Lesson 18](Lesson_18)           [Tutorial](Tutorial)   [Lesson 20](Lesson_20)
+  [Documentation](Documentation)                                     
   ------------------------------------------- --------------------------------- -----------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Tutorial](Category:Tutorial "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Tutorial](Category:Tutorial)

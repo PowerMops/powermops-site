@@ -1,24 +1,24 @@
 Object Creation and Message Syntax {#object_creation_and_message_syntax}
 ==================================
 
-\'Instantiation\', or the instantiation of a class, is used in this
+'Instantiation', or the instantiation of a class, is used in this
 manual to mean the creation of an object instance without regard to how
 that creation is achieved. For instantiation to occur the instance must
 be associated with a class, must be sized if the class is indexed, and
 must be named unless created at runtime as dynamic and nameless. Objects
 range in complexity from simple BYTEs and INTs through the
-&ldquo;toolbox objects&rdquo; such as windows and views that participate
+"toolbox objects" such as windows and views that participate
 in Mac Toolbox operations. Mops provides several language elements
 designed to cope with this range of complexity in an economical way.
 
 Message syntax is very uniform unless you need to explicity control the
 binding of a message, that is, the association of a message with a
 specific method definition. In the simple case no uncertainty about the
-receiver\'s class exists and the binding occurs at compile time (early
+receiver's class exists and the binding occurs at compile time (early
 binding), but in other cases it must be achieved at runtime (late
 binding). The choice between the two, and the attendant tradeoffs, is
 dictated by overall program design as discussed in the following
-chapter, &ldquo;More About Objects&rdquo;. Complete syntax for
+chapter, "More About Objects". Complete syntax for
 early-bound messages is given below, and some differences are commented
 on.
 
@@ -67,10 +67,10 @@ unlikely that the need to do so would arise.
 
 ### Special-case TEMP Declarations {#special_case_temp_declarations}
 
-The \<code\>TEMP{ \... }\</code\> declaration \'envelops\', or takes a
+The `TEMP{ \... }` declaration 'envelops', or takes a
 list of data-object declarations and declares them to be temporary
 within the scope of a word definition or a local section (see
-&ldquo;Miscellaneous Topics&rdquo;, Part 2). Its effect within a
+"Miscellaneous Topics", Part 2). Its effect within a
 definition is to make the objects local in scope as well as temporary.
 An additional effect is to allow an elementary data object to be
 instantiated in a register, or in a vector register if a Vector
@@ -79,9 +79,9 @@ memory area on the return stack. The TEMP declaration syntax is
 
 `TEMP{ [ REGISTER ] obj-declaration [ [ REGISTER ] obj-declaration ... ] }`
 
-The optional form \<code\>TEMP { \... }\</code\> (with white space
-characters after the \<code\>TEMP\</code\>) is equivalent to
-\<code\>TEMP{ \... }\</code\> . A syntax example:
+The optional form `TEMP { \... }` (with white space
+characters after the `TEMP`) is equivalent to
+`TEMP{ \... }` . A syntax example:
 
 `Temp{                  Var          AVARIABLE`\
 `       register        Uint         AUINTEGER`\
@@ -95,15 +95,15 @@ characters after the \<code\>TEMP\</code\>) is equivalent to
 Nameless dynamic objects, that is, heap-based objects of variable
 lifetime, are accessed either individually by a handle or by index into
 a collection of such objects (mediated by implicit handles). You declare
-either an \<code\>ObjHandle\</code\> or \<code\>HandleList\</code\>
+either an `ObjHandle` or `HandleList`
 object and then send the appropriate object-creation message to either.
 The name of the creation method in either case is
-\<code\>NEWOBJ:\</code\> and the class of the desired instance is passed
+`NEWOBJ:` and the class of the desired instance is passed
 on the stack (as an xt). Examples:
 
 Note that the deferred tick of the class name gives the method the
 needed class information, and that in the case of a
-\<code\>handleList\</code\> the \<code\>newObj:\</code\> message may
+`handleList` the `newObj:` message may
 appear within a DO loop that instantiates some required number of
 same-class instances.
 
@@ -130,8 +130,8 @@ same-class instances.
 Many interactions with the Mac Toolbox are quite complex and so are the
 Mops predefined classes and corresponding objects that deal with them.
 This is particularly true of objects of the classes (or subclasses) that
-facilitate windowing, e.g., \<code\>WINDOW\</code\>,
-\<code\>WINDOW+\</code\>, and \<code\>VIEW\</code\> plus a few others
+facilitate windowing, e.g., `WINDOW`,
+`WINDOW+`, and `VIEW` plus a few others
 (Chapters 5, 6, and 9 of Part III). Window objects specifically might be
 said to lead two lives in that, while they are normal Mops object in
 most respects, some portion of their data area is shared between Mops
@@ -143,21 +143,21 @@ View they all have one or more methods that result in a toolbox call.
 Like other objects a toolbox-class object can be created at compile time
 by declaration, as is shown in most examples. When necessary one or more
 or more can also be created dynamically using either of the
-\<code\>newObj:\</code\> messages discussed above. The one thing that is
+`newObj:` messages discussed above. The one thing that is
 different about most classes of toolbox object is that they must be sent
-a \<code\>NEW:\</code\> or \<code\>GETNEW:\</code\> message to become
+a `NEW:` or `GETNEW:` message to become
 effective. While these mesages may superficially look like
 object-creation messages they are not but serve to make the existent
-object known to, or \'alive in\', the Mac toolbox.
+object known to, or 'alive in', the Mac toolbox.
 
-Much of the necessary \<code\>NEW:\</code\> messaging is performed by
+Much of the necessary `NEW:` messaging is performed by
 Mops automatically and transparently via the class hierarchy. To take a
-common example, when the user\'s code sends a \<code\>NEW:\</code\> to
-an object of class \<code\>Window+\</code\> (or user-declared subclass
-thereof), the receiver\'s default action is to \'call\'
-\<code\>NEW:\</code\> on its contained view which in turn does the same
+common example, when the user's code sends a `NEW:` to
+an object of class `Window+` (or user-declared subclass
+thereof), the receiver's default action is to 'call'
+`NEW:` on its contained view which in turn does the same
 on any child views, and so on down the line. (Similar default behavior
-is defined for other messages as well, such as \<code\>DRAW:\</code\>)
+is defined for other messages as well, such as `DRAW:`)
 Thus, not only is the user insulated from system calls and all the
 attendant details, but also much inter-object messaging is made as
 transparent as possible.
@@ -178,10 +178,10 @@ where:
     object created at runtime in non-relocatable memory
 -   SELF \<br /\> implies the sending object as receiver, with message
     lookup
--   SUPER\<br /\> beginning in the sender\'s own class (i.e., last
+-   SUPER\<br /\> beginning in the sender's own class (i.e., last
     defined method) implies the sending object as receiver, but with
-    message lookup beginning in the sender\'s superclass (bypassing any
-    message override in the sender\'s class).
+    message lookup beginning in the sender's superclass (bypassing any
+    message override in the sender's class).
 
 Although the syntax diagram above may look complex, it results in just a
 few simple forms. All messages conforming to that syntax are subject to
@@ -198,23 +198,23 @@ for Mops objects and messages. Some examples are:
 
 Sometimes late binding is necessary, however, typically for dynamic
 objects or program-design reasons as described in the next chapter. In
-this case square brackets, i.e., \<code\>\[ \]\</code\>, usually appear
+this case square brackets, i.e., `\[ \]`, usually appear
 in the message surrounding the identity of the receiver, which might be
 given by a runtime expression. Also, the receiver may be given by an
-object handle. Forms such as &ldquo;\<code\>selector
-\*\*\</code\>&rdquo; and &ldquo;\<code\>selector \[\]\</code\>&rdquo;
-are possible, as well as &rdquo;\<code\>selector
-\[SELF\]\</code\>&rdquo;
+object handle. Forms such as "`selector
+\*\*`" and "`selector \[\]`"
+are possible, as well as "`selector
+\[SELF\]`"
 
 The possible forms of late-bound messages are described in detail in the
-&ldquo;Early Vs. Late Binding&rdquo; section of the following chapter.
+"Early Vs. Late Binding" section of the following chapter.
 
 ------------------------------------------------------------------------
 
   ------------------------------------------- ----------------------------------- ---------------------------------------
-  [Reference 2](Reference_2 "wikilink")       [Reference](Reference "wikilink")   [Reference 4](Reference_4 "wikilink")
-  [Documentation](Documentation "wikilink")                                       
+  [Reference 2](Reference_2)       [Reference](Reference)   [Reference 4](Reference_4)
+  [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- ---------------------------------------
 
-[Category:Manual](Category:Manual "wikilink")
-[Category:Reference](Category:Reference "wikilink")
+[Category:Manual](Category:Manual)
+[Category:Reference](Category:Reference)

@@ -76,7 +76,7 @@ Documentation](http://developer.apple.com/documentation/Carbon/Reference/Window_
 Even plain windows are relatively complex objects inside the Macintosh
 Toolbox. To give you an idea of their complexity, look at the long list
 of instance variables in the predefined class, Window (in the file
-WindowMod.txt in the folder 'Module source\').\<br /\> Among the items
+WindowMod.txt in the folder 'Module source').\<br /\> Among the items
 you can control --- and sometimes **must** control --- in a
 window are:
 
@@ -189,15 +189,15 @@ values are always one. (We will discuss controls in more detail
 shortly).
 
 In the next three lines of code, the text of the message that appears on
-the screen in response to the 'About Curves\' menu items is assigned to
+the screen in response to the 'About Curves' menu items is assigned to
 two string constants, AB1 and AB2. Following that come three program
 lines that define what is to happen when that selection is made. It
 selects the font Times in 14-point (Times has font number 20), positions
-the cursor at point 28,40, and 'types\' the two strings on the screen.
+the cursor at point 28,40, and 'types' the two strings on the screen.
 It then calls the word `WaitClick`, which will just wait
 for the user to click the mouse or type a key. Then it sends an
 `UPDATE:` message to `dWind` to cause it
-to redraw itself, erasing the text we 'typed\'.
+to redraw itself, erasing the text we 'typed'.
 
 Next, both the pen `Bic` and the polygon
 `Anna` are told where the center point of the graphics
@@ -211,15 +211,15 @@ where the origin will be whenever `dPane` receives a
 In the Macintosh environment, a control is a screen object that responds
 to interaction from the mouse in such a way that the mouse causes either
 instant action or a change in function for a later operation. A good
-example of the 'instant action\' kind of control is the elevator knob
+example of the 'instant action' kind of control is the elevator knob
 on the volume control in the Sound Control Panel. By adjusting the knob
 with the mouse, you immediately adjust the volume of the sound played by
-the Mac through its speaker.\<br /\> Likewise, when you click an 'OK\'
+the Mac through its speaker.\<br /\> Likewise, when you click an 'OK'
 button in a dialog box, you are working with a control for immediate
-action. A 'delayed action\' control would be something like the check
+action. A 'delayed action' control would be something like the check
 box inside a Get Info dialog window that locks or unlocks documents for
 dragging to the trash. When you click the mouse pointer in an empty box,
-an 'X\' fills in the box, and the document is locked, but no particular
+an 'X' fills in the box, and the document is locked, but no particular
 action occurs in response. Click the pointer again, and the X
 disappears, so you can go ahead and trash the document.
 
