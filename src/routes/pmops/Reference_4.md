@@ -117,8 +117,10 @@ thing.
 You can cause late binding to occur in a particular message with a very
 simple modification of your source:
 
-`get: myint         \ early binding`\
-`get: [ myint ]     \ late binding`
+```mops
+get: myint         \\ early binding
+get: [ myint ]     \\ late binding
+```
 
 In the first example, Mops would determine at compile time the class of
 the object `myInt`, and in the second example this
@@ -129,32 +131,42 @@ code sequence that generates an address of a valid object at runtime.
 This can be a single Mops word, a sequence of words, messages to other
 objects, or anything else. Some examples:
 
-**`(A)`**` get: [ dup ]                      \ message receiver is the object whose address `\
-`                               \ was duplicated on the data stack`
-
-**`(B)`**` get: [ i at: myArray ]            \ receiver is the object whose address is`\
-`                               \ at element i in myArray`
-
-**`(C)`**` 0 value theObject         \ create a Value to hold an object address`\
-`    myInt -> theObject              \ place the address of myInt in theObject `\
-`    get: [ theObject ]         \ receiver is myInt via theObject`
-
-**`(D)`**` get: [ ]                  \ receiver is object whose addr is top`\
-`                               \ of stack`
+```mops
+get: [ dup ]    \\ message receiver is the object whose address
+                \\ was duplicated on the data stack
+```
+```mops
+get: [ i at: myArray ]     \\ receiver is the object whose address is
+                           \\ at element i in myArray
+```
+```mops
+0 value theObject          \\ create a Value to hold an object address
+myInt -> theObject         \\ place the address of myInt in theObject
+get: [ theObject ]         \\ receiver is myInt via theObject
+```
+```mops
+get: [ ]                   \\ receiver is object whose addr is top
+                           \\ of stack
+```
 
 Since the normal use of brackets in Forth is to turn compilation off and
 on, this particular interpretation of brackets only applies immediately
 after a selector, and the regular Forth interpretation applies
-otherwise.\<br /\> To help avoid (or maybe to add to) confusion, we have
+otherwise.
+
+To help avoid (or maybe to add to) confusion, we have
 added two more ways to specify a late bind
 
-`method: **`\
-`method: []`
+```mops
+method: **
+method: []
+```
 
 to bind to whatever is on the top of the stack at run time.
-`method: \[\]` is really the same as `method: \[
-\]` with a space between the brackets.\<br /\> You will
-frequently find that it is useful to late bind to `Self`.
+`method: []` is really the same as `method: []` with a space
+between the brackets.
+
+You will frequently find that it is useful to late bind to `Self`.
 This is particularly so with multiple inheritance. For an example, see
 the `(Col)` class in the file 'Struct' or 'pStruct'.
 `(Col)` knows it will be implementing subclasses multiply
@@ -168,10 +180,12 @@ to make this operation look neater, e.g
 
 Thus the following are all equivalent:
 
-`aMethod: [self]`\
-`aMethod: [ self ]`\
-`self aMethod: **`\
-`^base aMethod: **`
+```mops
+aMethod: [self]
+aMethod: [ self ]
+self aMethod: **
+^base aMethod: **
+```
 
 You can take your pick. But in the case of late binding to
 `Self`, I think the first one looks the best. Note that,
@@ -188,7 +202,8 @@ applications, you will find yourself using the power of late binding
 more and more. The following are some situations in which late binding
 is particularly useful:
 
-1. **Forward referencing**\<br /\> You may find it convenient to create
+1. **Forward referencing**  
+    You may find it convenient to create
     code that sends messages to an object that won't be defined until
     later in the source code. For instance, two classes may need to send
     messages to each other, meaning that one of them will have to be
@@ -197,12 +212,13 @@ is particularly useful:
     actual address of an object at runtime, and compiling late-bound
     messages using the `Value` rather than an object, as
     in example C above.
-2. **Passing objects as arguments**\<br /\> Frequently, you will find
+2. **Passing objects as arguments**  
+    Frequently, you will find
     it useful to pass an object as an argument to a Mops word or method.
     For instance, the following word computes the difference in the
-    areas enclosed by two rectangles: \<br /\>`: ?netArea { rect1
-    rect2 \-- netArea } size: \[ rect1 \] * size: \[ rect2 \] * -
-    ;`In this example, two named input parameters,
+    areas enclosed by two rectangles:  
+    `: ?netArea { rect1 rect2 -- netArea } size: [ rect1 ] * size: [ rect2 ] * - ; `  
+    In this example, two named input parameters,
     `rect1` and `rect2` are the addresses
     of objects `rect1` and `rect2`, and
     are used as receivers of `size:` messages. This
@@ -210,8 +226,8 @@ is particularly useful:
     if a Value were used. The `size:` method is looked up
     and executed at runtime, yielding the dimensions of the rectangle.
     The area calculation proceeds easily with that information.
-3. **Algorithmic determination of message receivers**\<br /\> Because
-    you can use any code sequence that results in an object address
+3. **Algorithmic determination of message receivers**  
+    Because you can use any code sequence that results in an object address
     between the brackets of a late-bound method call, you can
     algorithmically determine which object will be the receiver of a
     given message. This allows you to traverse a list of objects,
@@ -234,7 +250,8 @@ is particularly useful:
     actual receiver of the late-bound message. By changing the contents
     of the `Vect`, you can substitute a new algorithm to
     generate the object address.
-4. *' Dynamic (heap-based) Objects*'\<br /\> A very important use of
+4. **Dynamic (heap-based) Objects**  
+    A very important use of
     late binding is for communicating with dynamic objects, but they are
     a subject that needs a section all of their own.
 
@@ -248,10 +265,10 @@ means of implementing dynamic objects.
 Because references represent a fundamental new Mops feature, there are
 many places in the manual which will eventually need to mention them.
 This however has not happened yet, so most of the information you will
-need to use references effectively is here in this section.\<br /\>
+need to use references effectively is here in this section.
+
 Anyplace you declare an object, you can now put the word **ref** in
-front. So, for example, let's say you have a `View`
-object
+front. So, for example, let's say you have a `View` object
 
 `view myView`
 
@@ -261,7 +278,7 @@ you can instead make it a reference:
 
 Before you can send messages to it, you need to set it to point to an
 actual view object. You can do this in two different ways, using one of
-two prefix operators, **->** and **new>**
+two prefix operators, `->` and `new>`
 
 ### Prefix Operator ->
 
@@ -277,13 +294,13 @@ or, equivalently
 `addr: someView -> myView`
 
 of course you can determine the source object's address in any way you
-like. Any arbitrary computation can precede the ->. The actual
+like. Any arbitrary computation can precede the `->`. The actual
 assignment is done by an internal Mops word which does a check that the
 address you use is the address of an object of the appropriate class,
 and will give you an error if it's not.
 
-There is only one restriction on using ->. The object must not be an
-ivar within a `record{&\#133;}`. This is because such
+There is only one restriction on using `->`. The object must not be an
+ivar within a `record{...}`. This is because such
 objects don't have a header, which prevents Mops performing the above
 class determination, along with other housekeeping operations associated
 with references. If you attempt to assign the address of such an object
@@ -294,7 +311,7 @@ is.)
 ### Prefix Operator new>
 
 If you want to create a new view object in the heap and set myView to
-point to it, use the **new>** prefix:
+point to it, use the `new>` prefix:
 
 `new> myView`
 
@@ -308,17 +325,17 @@ send messages to it exactly as if it were a normal view.
 Note carefully that we clearly distinguish in the syntax if we are
 sending a message to the object, or performing some operation on the
 reference itself (as opposed to the referenced object). Any **message**
-goes to the **object**, while the **prefix** operators -> and new>
+goes to the **object**, while the **prefix** operators `->` and `new>`
 are operations on the **reference**, and don't affect the object in any
 way.
 
 ### Prefix Operator release>
 
 This is the prefix operator that you use when you are finished with a
-reference. Now it is important to realize that release> does **not**
+reference. Now it is important to realize that `release>` does **not**
 cause a heap object to be deleted. What it does is simply reset a
 reference to point nowhere (by setting it to the nil pointer value
-`nilP`). Think of release> as releasing the link
+`nilP`). Think of `release>` as releasing the link
 between a reference and an object.
 
 So when does a heap object get deleted? Simply when it doesn't have any
@@ -344,10 +361,10 @@ release> is ignored.
 When Mops detects that a heap object has no more references pointing to
 it, it first sends a release: message to the object (so that the object
 gets a chance to free any heap blocks that it might have allocated for
-itself), then it performs a release> on any references in the object,
+itself), then it performs a `release>` on any references in the object,
 then finally the heap block is deleted
 
-If you are already a Mops user, you&\#146;ll be able to see that using
+If you are already a Mops user, you'll be able to see that using
 references should make certain classes of application --- those that
 involve complex dynamic data structures --- much simpler to handle
 than they were before. But we're not finished with references yet.
@@ -383,14 +400,12 @@ You can also specify early binding through a reference, if you declare
 `ref <class> <name> no_subclasses`
 
 For this kind of reference, you will get an error if you try to assign
-an object whose class doesn't match exactly. You can&\#146;t have an
-object whose class is a subclass of the reference&\#146;s class. But the
+an object whose class doesn't match exactly. You can't have an
+object whose class is a subclass of the reference's class. But the
 advantage is that since Mops knows the class at compile time, it can
 compile early binding code for messages. This can give you some extra
 speed if you know that the reference will always point to an object of
 exactly a specific class.
-
-&nbsp;
 
 So far references are only implemented for PowerMops. For 68k Mops, you
 can continue to use object pointers (see below), although they lack a
@@ -431,21 +446,23 @@ object won't be unceremoniously moved while we are doing things with
 it. Remember to `unlock: anObjHdl` when finished. So,
 using the above example, you can access the object thus:
 
-`mssg1: [ get: anObjHdl ]`\
-`       ...`\
-`       unlock: anObjHdl`
+```mops
+mssg1: [ get: anObjHdl ]
+       ...
+       unlock: anObjHdl
+```
 
-When you are completely finished with the object, send `release:
-anObjHdl`. This will automatically cause a late-bound
+When you are completely finished with the object, send
+`release: anObjHdl`. This will automatically cause a late-bound
 `Release:` to be sent to the object itself, before its
 storage is released, in case it has some heap storage of its own. Be
 careful not to send `release: anObjHdl` if the heap
 object has already been disposed of, as will happen with a dynamically
 created Window that has been closed by a click on the close box. The
 **object** no longer exists, although the space it occupied is still
-allocated. You dispose of that with `anObjHdl release:
-class\_as> handle` (see below) which uses the release method
-of the superclass Handle.
+allocated. You dispose of that with
+`anObjHdl release: class_as> handle` (see below) which uses the
+release method of the superclass Handle.
 
 If you know that a dynamic object has one particular class, you can
 avoid the time penalty of late binding to it, as we'll now see.
@@ -456,7 +473,7 @@ avoid the time penalty of late binding to it, as we'll now see.
 
 As we saw above, in PowerMops you may declare a reference to an object
 in which you specify that messages to the object will use early binding,
-by using the word **no\_subclasses**.
+by using the word **no_subclasses**.
 
 `ref <class> <name> no_subclasses`
 
@@ -479,13 +496,15 @@ the pointer points to, with early binding (since we know the class at
 compile time). An object pointer is a 'low-level' entity, rather like
 a `Value`. The syntax for object pointers is:
 
-`objPtr anObjPtr  class_is theClass`\
-`               ...`\
-\
-`( get obj addr to the stack ) -> anObjPtr`\
-`               ...`\
-\
-`aMethod: anObjPtr`
+```mops
+objPtr anObjPtr  class_is theClass
+`               ...
+
+( get obj addr to the stack ) -> anObjPtr
+               ...
+
+aMethod: anObjPtr
+```
 
 Occasionally, the desired class for an object pointer may not be defined
 at the time the object pointer needs to be defined. In this case, use
@@ -501,12 +520,12 @@ This, of course, must precede any code which sends a message to
 `anObjPtr`. See the file Dialog+ for some examples
 --- there I had to implement methods manipulating a chain of
 pointers to objects of the same class as was being defined. For this
-purpose I put the `set\_to\_class` line straight after
+purpose I put the `set_to_class` line straight after
 the `:class` line, but before the ivars and methods. This
 is quite allowable.
 
 Note that the address you store in an `objPtr` must be an
-**object** address. If you use ' (tick) or \['\] on an object in the
+**object** address. If you use ' (tick) or ['] on an object in the
 dictionary, you will get the cfa of the object, which isn't the same.
 As we saw earlier, an object has a pointer to its class at the start (it
 has some other information there as well). To get the object address,
@@ -515,11 +534,13 @@ object without any selector. Alternatively, if you already have the cfa
 of the object, use the word `>OBJ` to convert it to
 the object address. So, either of the following will work:
 
-`anObj -> anObjPtr`\
-\
-`' anObj >obj -> anObjPtr`
+```mops
+anObj -> anObjPtr
 
-### class\_as>
+' anObj >obj -> anObjPtr
+```
+
+### class_as>
 
 There's a way to force an early bind to an object, without having to
 set up a reference or an `objPtr`. The disadvantage is
@@ -573,13 +594,15 @@ ivars.
 
 They're declared like this:
 
-`class myClass super{ mySuper }`\
-`       var     oneVar`\
-`static`\
-`{      var     someVar`\
-`       int     someInt`\
-`}`\
-`       var anotherVar`
+```mops
+class myClass super{ mySuper }
+       var     oneVar
+static
+{      var     someVar
+       int     someInt
+}
+       var anotherVar
+```
 
 In this example, `someVar` and `someInt`
 are static, `oneVar` and `anotherVar` are
@@ -591,13 +614,15 @@ matter what object you are in, and similarly for
 Public ivars can be accessed from outside the class. They're declared
 this way:
 
-`class myClass super{ mySuper }`\
-`public`\
-`       var     aVar`\
-`       int     anInt`\
-`end_public`\
-`       var anotherVar`\
-`       int     anotherInt`
+```mops
+class myClass super{ mySuper }
+public
+       var     aVar
+       int     anInt
+end_public
+       var anotherVar
+       int anotherInt
+```
 
 They're accessed from outside the class via this syntax:
 
@@ -617,7 +642,7 @@ already have for methods. The default is for ivars to be private, and
 methods to be public. You can now use `PUBLIC` or
 `PRIVATE` anywhere in the ivar list or method
 declarations of a class to change this default. You can use
-`END\_PUBLIC` or `END\_PRIVATE` to restore
+`END_PUBLIC` or `END_PRIVATE` to restore
 the default.
 
 If you combine these two new features, you can get a 'public static'
@@ -625,4 +650,3 @@ ivar. To access this from outside the class, you can't use the above
 syntax since there's no object to refer to. So the syntax is:
 
 `msg: ivar> aStaticIvar IN_CLASS myClass`
-
