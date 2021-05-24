@@ -1,3 +1,11 @@
+---
+title: Reference 3
+---
+<style>
+dt {
+    font-weight: bold;
+}
+</style>
 # Object Creation and Message Syntax
 
 'Instantiation', or the instantiation of a class, is used in this
@@ -41,17 +49,19 @@ scalar and array classes differ only in the array-size value that
 specifies the number of indexed elements the object is to have. Some
 examples are:
 
-`       Var             MAXTEMP`\
-`       Uint            MASK_1`\
-`       Handle          BUFFER4`\
-`32     wArray          GAME_STATE`\
-`6      X-Array         IOERR_VECTS`\
-`       HandleList      HEAP_OBJS`\
-`       String+         LOGDATA`\
-`       File            INITIALVALS`\
-`       Float           BIGNUMB`\
-`16     fArray          BIGNUMBS`\
-`       SWord_vector    VECTORVALUE`
+```mops
+       Var             MAXTEMP
+       Uint            MASK_1
+       Handle          BUFFER4
+32     wArray          GAME_STATE
+6      X-Array         IOERR_VECTS
+       HandleList      HEAP_OBJS
+       String+         LOGDATA
+       File            INITIALVALS
+       Float           BIGNUMB
+16     fArray          BIGNUMBS
+       SWord_vector    VECTORVALUE
+```
 
 > NOTE: Though constant and value definitions look much
 > like array-object declarations, they are not objects but simply
@@ -81,12 +91,14 @@ The optional form `TEMP { \... }` (with white space
 characters after the `TEMP`) is equivalent to
 `TEMP{ \... }` . A syntax example:
 
-`Temp{                  Var          AVARIABLE`\
-`       register        Uint         AUINTEGER`\
-`       9               bArray       ABARRAY`\
-`       register        Float        AFPVARIABLE`\
-`       register        Word_vector  AVECTVARIABLE`\
-`}`
+```mops
+Temp{                  Var          AVARIABLE
+       register        Uint         AUINTEGER
+       9               bArray       ABARRAY
+       register        Float        AFPVARIABLE
+       register        Word_vector  AVECTVARIABLE
+}
+```
 
 ### Creation-Method Instantiation
 
@@ -105,23 +117,27 @@ needed class information, and that in the case of a
 appear within a DO loop that instantiates some required number of
 same-class instances.
 
-`(1)    objHandle   SHORTLIFE_OBJ               \ Declaration of handle for object`\
-`       ['] Fugit  newObj: SHORTLIFE_OBJ        \ Creation of Fugit-subclass `\
-`                                               \ instance`
+```mops
+(1)    objHandle   SHORTLIFE_OBJ               \ Declaration of handle for object
+       ['] Fugit  newObj: SHORTLIFE_OBJ        \ Creation of Fugit-subclass
+                                               \ instance
+```
 
-`(2)    handleList   BUNCH_OF_OBJS              \ Declaration of a list of implicit`\
-`                                               \ handles`\
-\
-`       ['] Lotsa  newObj: BUNCH_OF_OBJS        \ Creation of one object with `\
-`                                               \ implicit handle`\
-`            &middot;&middot;&middot;`\
-\
-`       ['] Lotsa  newObj: BUNCH_OF_OBJS        \ Creation of another object in the `\
-`                                               \ same list.`\
-`            &middot;&middot;&middot;`\
-\
-`       ['] Oddball newObj:  BUNCH_OF_OBJS      \ Creation of an object of a `\
-`                                               \ differing class`
+```mops
+(2)    handleList   BUNCH_OF_OBJS              \ Declaration of a list of implicit
+                                               \ handles
+
+       ['] Lotsa  newObj: BUNCH_OF_OBJS        \ Creation of one object with
+                                               \ implicit handle
+            ...
+
+       ['] Lotsa  newObj: BUNCH_OF_OBJS        \ Creation of another object in the
+                                               \ same list.
+            ...
+
+       ['] Oddball newObj:  BUNCH_OF_OBJS      \ Creation of an object of a
+                                               \ differing class
+```
 
 ### The Mops Toolbox Classes
 
@@ -168,51 +184,44 @@ The basic form of a message to an object is:
 
 where:
 
--   stack-item \...\<br /\> implies any sequence of required message
-    parameters
--   selector\<br /\> is the name of method to be executed
--   object-name\<br /\> is the name of the receiver
--   objPtr-name\<br /\> is the name of the object pointer to a receiver
-    object created at runtime in non-relocatable memory
--   SELF \<br /\> implies the sending object as receiver, with message
-    lookup
--   SUPER\<br /\> beginning in the sender's own class (i.e., last
+<dl>
+<dt>stack-item<dt>
+<dd>implies any sequence of required message parameters</dd>
+<dt>selector</dt><dd>is the name of method to be executed</dd>
+<dt>object-name</dt><dd>is the name of the receiver</dd>
+<dt>objPtr-name</dt><dd>is the name of the object pointer to a receiver
+    object created at runtime in non-relocatable memory</dd>
+<dt>SELF </dt><dd>implies the sending object as receiver, with message
+    lookup</dd>
+<dt>SUPER</dt><dd>beginning in the sender's own class (i.e., last
     defined method) implies the sending object as receiver, but with
     message lookup beginning in the sender's superclass (bypassing any
-    message override in the sender's class).
+    message override in the sender's class).</dd>
+</dl>
 
 Although the syntax diagram above may look complex, it results in just a
 few simple forms. All messages conforming to that syntax are subject to
 early binding, i.e., complete resolution at compile time, the standard
 for Mops objects and messages. Some examples are:
 
-`" A Window Title"  new:     MyWind2`\
-`         elemIdx   at:      stateArray`\
-`                   update:  theScreen`\
-`         winMsg    Writer:  self`\
-`                   clear:   self`\
-`                   moved:   super`\
-`                   where:   theMouse`
+```mops
+" A Window Title"  new:     MyWind2
+         elemIdx   at:      stateArray
+                   update:  theScreen
+         winMsg    Writer:  self
+                   clear:   self
+                   moved:   super
+                   where:   theMouse
+```
 
 Sometimes late binding is necessary, however, typically for dynamic
 objects or program-design reasons as described in the next chapter. In
-this case square brackets, i.e., `\[ \]`, usually appear
+this case square brackets, i.e., `[ ]`, usually appear
 in the message surrounding the identity of the receiver, which might be
 given by a runtime expression. Also, the receiver may be given by an
-object handle. Forms such as "`selector
-**`" and "`selector \[\]`"
-are possible, as well as "`selector
-\[SELF\]`"
+object handle. Forms such as `selector **` and `selector []`
+are possible, as well as `selector [SELF]`
 
 The possible forms of late-bound messages are described in detail in the
 "Early Vs. Late Binding" section of the following chapter.
-
-------------------------------------------------------------------------
-
-  ------------------------------------------- ----------------------------------- ---------------------------------------
-  [Reference 2](Reference_2)       [Reference](Reference)   [Reference 4](Reference_4)
-  [Documentation](Documentation)                                       
-  ------------------------------------------- ----------------------------------- ---------------------------------------
-
-
 

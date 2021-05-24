@@ -1,5 +1,4 @@
-Classes and Objects
-===================
+# Classes and Objects
 
 Building a Mops program is largely a process of defining classes of
 objects --- classes which are the 'framework' and objects which
@@ -12,8 +11,7 @@ be successful at building classes, but you should at least survey the
 information. It may come in handy later, as your programming skills
 grow.
 
-Planning Your Subclasses
-------------------------
+## Planning Your Subclasses
 
 Mops comes with many predefined classes --- building blocks, which
 have been designed to be as general as possible. Your application will
@@ -23,8 +21,7 @@ own subclasses of existing classes. Your program's unique operations
 and flavor will be the result of the behaviors you define in your
 sub-classes.
 
-The Class Hierarchy
--------------------
+## The Class Hierarchy
 
 Determining the relationship between a new class and existing ones is an
 important step in designing a Mops program. The relationship should be
@@ -83,15 +80,14 @@ For a good example of the use of multiple inheritance to simplify code,
 look at the class `Ordered-Col` in file Struct, and its
 associated classes.
 
-Choosing Between ivars and Objects
-----------------------------------
+## Choosing Between ivars and Objects
 
 In addition to designing the class inheritance of your application, you
 will have to decide what should be an instance variable and what should
 be a public object. Because an instance variable is invisible to objects
 other than its owning object, any communication between an ivar and
 other objects must be passed explicitly through the ivar's owning
-object. If you find yourself creating numerous &\#152;passthrough'
+object. If you find yourself creating numerous 'passthrough'
 methods that are only there to provide access to a single instance
 variable, you should reconsider your design. It probably indicates that
 the instance variable should more appropriately be a a public ivar (see
@@ -110,15 +106,14 @@ or ivars). Keep to a minimum the number of messages that are to be sent
 between objects. This minimizes inter-object coupling, makes objects
 more independent, and makes your application more maintainable.
 
-When to Use ivars
------------------
+## When to Use ivars
 
 But there are times when it makes sense to define instance variables, as
 we originally tried in grDemo. For example, whenever you find that one
 object communicates frequently with only one other object, it is likely
 that one of those objects should be an instance variable of the other.
 The same holds true when you find it necessary to create objects in
-pairs (or other multiples)&\#148;instead of creating two similar
+pairs (or other multiples) instead of creating two similar
 objects, consider creating a third object that consists of two instance
 variables. If the window in grDemo had been intended as a
 general-purpose class instead of a one-time application, it would have
@@ -135,17 +130,16 @@ ability to create an optimal design. The best design is one in which
 inter-object communication is minimal and well-defined, reflecting
 clearly the structure of the problem being solved.
 
-Defining a Class
-----------------
+## Defining a Class
 
 Now, let's take a closer look at the mechanics of building a new class.
 A class definition has the following skeletal structure:
 
 ```mops
-`:class  ClassName  super{ super1 ... superN } [ n indexed ] [ large ]`\
-`       [ instance variable names ] `\
-`       [ method definitions ] `\
-`;class`\
+:class  ClassName  super{ super1 ... superN } [ n indexed ] [ large ]
+       [ instance variable names ] 
+       [ method definitions ] 
+;class
 ```
 
 In the above example, the brackets indicate optional sections of a class
@@ -182,17 +176,20 @@ against the low 16 bits of the limit! This for sure won't be what you
 want. So in this kind of situation, you had better know what you're
 doing, and only inherit methods which don't access the indexed area.
 
-Ivars
------
+## Ivars
 
 Next in a class definition come the instance variable declarations,
 which are simply statements of the form:
 
 `[ # of elements ] ClassName ivarName`
 
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  ClassName here is the class that defines the characteristics of the ivar. Each ivar declaration statement creates an entry in the private **instance variable dictionary** of the class currently being defined. The entry for each ivar contains fields for the header, data, and a pointer to the class specified by the ivar's ClassName. An instance variable definition is really just a **template** for the private data of the object. When an object is created, the object's data area is assembled (i.e., memory space is reserved) according to the specifications in the template.   ![](IVars.png "fig:IVars.png")\<br /\> Figure 2-1---Instance Variables and Objects   Notice that the 'object' in the diagram has some 'Mops info' at the start --- as we mentioned in [Lesson 5](Lesson_5#Defining_a_Class) of the Tutorial, Mops objects have 8 bytes of extra information at the start. Part of this extra information is a pointer to the class of the object, as we show in the diagram. (We'll give the full details of this extra information in the technical section later).\<br /\> Then comes the first ivar, so this is the start of the actual data area of the object.
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ClassName here is the class that defines the characteristics of the ivar. Each ivar declaration statement creates an entry in the private **instance variable dictionary** of the class currently being defined. The entry for each ivar contains fields for the header, data, and a pointer to the class specified by the ivar's ClassName. An instance variable definition is really just a **template** for the private data of the object. When an object is created, the object's data area is assembled (i.e., memory space is reserved) according to the specifications in the template.
+
+  ![](IVars.png "fig:IVars.png")
+
+  Figure 2-1---Instance Variables and Objects   Notice that the 'object' in the diagram has some 'Mops info' at the start --- as we mentioned in [Lesson 5](Lesson_5#Defining_a_Class) of the Tutorial, Mops objects have 8 bytes of extra information at the start. Part of this extra information is a pointer to the class of the object, as we show in the diagram. (We'll give the full details of this extra information in the technical section later).
+  
+Then comes the first ivar, so this is the start of the actual data area of the object.
 
 Instance variables are also objects. The main difference (other than the
 private/public distinction) is that they can be declared as part of a
@@ -204,7 +201,7 @@ In a practical example, a Toolbox Rectangle is stored as 4 consecutive
 `TopLeft` and `BottomRight` corners). To
 pass these parameters to the Mac Toolbox, it is most convenient to map
 this structure with 4 Int ivars (each 2 bytes wide), using the
-`68k\_record {\...}` syntax, knowing that the 2 bytes of
+`68k_record {...}` syntax, knowing that the 2 bytes of
 data for each Int will be adjacent to one another.
 
 ### For Advanced Mops Programmers
@@ -232,7 +229,7 @@ Macintosh](http://developer.apple.com/documentation/index.html)). To map
 the data such that the Toolbox will be able to use it properly, define
 all of the Boolean fields as Byte ivars, Integer or Char fields as Int
 ivars, and all Long (32-bit) Handle or Pointer fields as Var ivars, and
-remember to use `68k\_record {\...}` around the whole
+remember to use `68k_record {...}` around the whole
 group of ivars.
 
 If there is a section of the data record that you will not need named
@@ -242,9 +239,11 @@ save ivar dictionary space by using the `BYTES`
 pseudo-class to allocate a string of bytes with a single name. For
 instance, the following ivar declaration:
 
-`var    v1 `\
-`20     bytes   junk`\
-`var    v2`
+```mops
+var    v1
+20     bytes   junk
+var    v2
+```
 
 builds a data area that has two 4-byte `Var`s,
 `v1` and `v2`, with 20 bytes of data,
@@ -264,9 +263,11 @@ of bytes.
 
 ### How ivars are Linked
 
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------
-  This table shows the format of an instance variable dictionary entry. It bears some similarity to a standard Mops dictionary entry, except that the ivar name is converted to a hashed value (a compacted form automatically derived from a complex math algorithm). All of the ivar entries for a given class form a linked list back to the root of the ivar chain (see the left column of [Figure 2-1](#fig2-1)). This root is the pseudo-ivar, `SUPER` (`SELF` and `SUPER` exist as instance variables in class `META` --- the superclass of the all-encompassing class OBJECT). The **message compiler** detects references to these two special ivars, and begins the method search in a place appropriate for each. Therefore, when a new class is being defined, the \^class field of `SUPER` is patched (directed) to the new class' superclass, and that of SELF to the new class itself. In this way, the search for a given method automatically begins in the proper place for `SELF` and `SUPER` references.   Figure 2-2---Instance Variable Fields\<br /\> ![](IVarFields.png "fig:IVarFields.png")
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------
+  This table shows the format of an instance variable dictionary entry. It bears some similarity to a standard Mops dictionary entry, except that the ivar name is converted to a hashed value (a compacted form automatically derived from a complex math algorithm). All of the ivar entries for a given class form a linked list back to the root of the ivar chain (see the left column of [Figure 2-1](#fig2-1)). This root is the pseudo-ivar, `SUPER` (`SELF` and `SUPER` exist as instance variables in class `META` --- the superclass of the all-encompassing class OBJECT). The **message compiler** detects references to these two special ivars, and begins the method search in a place appropriate for each. Therefore, when a new class is being defined, the ^class field of `SUPER` is patched (directed) to the new class' superclass, and that of SELF to the new class itself. In this way, the search for a given method automatically begins in the proper place for `SELF` and `SUPER` references.
+  
+![](IVarFields.png "fig:IVarFields.png")
+
+Figure 2-2---Instance Variable Fields
 
 ### Potential ivar Errors
 
@@ -277,16 +278,15 @@ hashed, two different names could conceivably generate the same hash
 value. This situation should be extremely rare, since we use a 4-byte
 hash value. But if it arises, try a different name for one of the ivars.
 
-Methods
--------
+## Methods
 
 After all of the instance variables are declared, you must write the
 methods for the new class. A method definition takes the form (here
 brackets denote optional sections):
 
 ```mops
-`:m SELECTOR: [ { named args \ local vars -- results } ] `\
-`       [ method code ]  ;m`\
+:m SELECTOR: [ { named args \ local vars -- results } ] 
+       [ method code ]  ;m
 ```
 
 A valid selector name (any alphanumerics ending in a colon) must follow
@@ -319,11 +319,11 @@ to the class' data area. An example of this kind of object is class
 data directly. Several Mops words described below will come in handy for
 writing primitive methods like this.
 
-### \^BASE and \^ELEM
+### ^BASE and ^ELEM
 
-You can use `\^BASE` (pointer to the base address of the
+You can use `^BASE` (pointer to the base address of the
 current object) from within any method to place the **base address** of
-the current object onto the stack. Note that `\^BASE`
+the current object onto the stack. Note that `^BASE`
 leaves the same address as the phrase `Addr: self`, or
 that left by using the name of the object in another word or method.
 This address points to the data field of the object, which also happens
@@ -335,7 +335,7 @@ address. The get: method for class LongWord, for instance, could have
 been defined in this manner:
 
 ```mops
-`:m GET: ^base @ ;m`\
+:m GET: ^base @ ;m
 ```
 
 which fetches the longword (32 bits wide) at the object's data area.
@@ -355,31 +355,21 @@ maximum number of cells allocated to an indexed object. After the phrase
 " `3 array a1` " (creating an indexed object,
 `a1`, of class array, with 3 data cells), executing
 `LIMIT` within one of `A1`'s methods
-would produce 3 on the stack. `\^ELEM` (pronounced
+would produce 3 on the stack. `^ELEM` (pronounced
 "pointer-to-element") expects an index on the stack to begin
 with, and leaves on the stack the address of the corresponding indexed
 element; it will invoke an error routine if the class is not indexed.
-(Incidentally, `\^ELEM` performs **range checking** to
+(Incidentally, `^ELEM` performs **range checking** to
 make sure the index on the stack is within the range of the index.)
 Another fast primitive, `IDXBASE`, leaves a pointer to
 the 0th (i.e., the first element) element of an indexed object or ivar
-(equivalent to " `0 \^ELEM` " ).
+(equivalent to " `0 ^ELEM` " ).
 
 Other optimized primitives you should be aware of are those that access
-1, 2, and 4-byte arrays. Instead of using `\^ELEM`, it is
-faster to use `\^ELEM1` for 1-byte elements,
-`\^ELEM2` for 2-byte elements, or
-`\^ELEM4` for 4-byte elements.
+1, 2, and 4-byte arrays. Instead of using `^ELEM`, it is
+faster to use `^ELEM1` for 1-byte elements,
+`^ELEM2` for 2-byte elements, or
+`^ELEM4` for 4-byte elements.
 
 Finally, the message " `width: self` " will
 leave the width of an object's indexed elements on the stack.
-
-------------------------------------------------------------------------
-
-  ------------------------------------------- ----------------------------------- ---------------------------------------
-  [Reference 1](Reference_1)       [Reference](Reference)   [Reference 3](Reference_3)
-  [Documentation](Documentation)                                       
-  ------------------------------------------- ----------------------------------- ---------------------------------------
-
-
-
