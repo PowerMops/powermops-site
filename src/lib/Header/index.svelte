@@ -10,7 +10,7 @@
 		</div>
 		<div>
 			<h1>Mops</h1>
-			<h2>Powermops, iMops, aMops</h2>
+			<h2>aMops, iMops, Powermops</h2>
 		</div>
 	</div>
 

@@ -13,15 +13,12 @@
     </section>
     <section>
         <aside>
-            <h3>Powermops</h3>
-            <p><em>Where it all started.</em> A complete development system
-                for PowerPC-based Macs.  (And up until version 4.0.4,
-                Motorola 680x0 Macs!)</p>
+            <h3>aMops</h3>
+            <p><em>Here be dragons.</em> Mike's latest work includes an
+            all new code generator for the ARM family of processors.</p>
             <ul>
-                <li><a href="/pmops/OpenMeFirst">Open Me First</a></li>
-                <li><a href="/pmops/Documentation">Documentation</a></li>
-                <li><a href="/pmops/FAQ">FAQ</a></li>
-                <li><a href="https://sourceforge.net/projects/powermops/files/PowerMops/">Download</a></li>
+                <li>Manual</li>
+                <li><a href="https://sourceforge.net/projects/powermops/files/aMops-CG/">Download</a></li>
             </ul>
         </aside>
         <aside>
@@ -38,17 +35,21 @@
             </ul>
         </aside>
         <aside>
-            <h3>aMops</h3>
-            <p><em>Here be dragons.</em> Mike's latest work includes an
-            all new code generator for the ARM family of processors.</p>
+            <h3>Powermops</h3>
+            <p><em>Where it all started.</em> A complete development system
+                for PowerPC-based Macs.  (And up until version 4.0.4,
+                Motorola 680x0 Macs!)</p>
             <ul>
-                <li>Manual</li>
-                <li><a href="https://sourceforge.net/projects/powermops/files/aMops-CG/">Download</a></li>
+                <li><a href="/pmops/OpenMeFirst">Open Me First</a></li>
+                <li><a href="/pmops/Documentation">Documentation</a></li>
+                <li><a href="/pmops/FAQ">FAQ</a></li>
+                <li><a href="https://sourceforge.net/projects/powermops/files/PowerMops/">Download</a></li>
             </ul>
         </aside>
         <aside>
             <h3>MAX</h3>
-            <p><em>Mike's Architecture:</em> Floating point and runtime.</p>
+            <p><em>Mike's ArXitecture:</em> Floating point and capabilities-based 
+                runtime.</p>
             <ul>
                 <li>Manual</li>
                 <li><a href="https://sourceforge.net/projects/powermops/files/MAX/">Download</a></li>
