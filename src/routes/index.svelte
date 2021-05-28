@@ -2,19 +2,21 @@
   import News from './News.md';
 </script>
 <main>
-    <section>
         <h1>Mops</h1>
         <p>A full featured, stand-alone development
         environment for programming the Macintosh written by <em>Mike Hore</em>.
-        Inspired by Smalltalk and the commercial language
-        [Neon](https://wiki.c2.com/?NeonLanguage),
-        Mops is based on Forth with extended object-oriented features
+        Inspired by <a href="https://en.wikipedia.org/wiki/Smalltalk">Smalltalk</a>
+        and the commercial language
+        <a href="https://wiki.c2.com/?NeonLanguage">Neon</a>,
+        Mops is based on
+        <a href="https://en.wikipedia.org/wiki/Forth_(programming_language)">Forth</a>
+        with extended object-oriented features
         such as multiple inheritance, early and late binding,
-        persistent objects, and garbage collection.</p>
+        persistent objects, and garbage collection.
+        &nbsp;&nbsp;<a href="/About">More...</a></p>
         <p>With over 30 years of development and use, the Mops
             family is battle-tested.
         </p>
-    </section>
     <section>
         <aside>
             <h3>aMops</h3>
@@ -27,8 +29,7 @@
         </aside>
         <aside>
             <h3>iMops</h3>
-            <p><em>Fast forward a few years,</em> and a new version with x86 code generation
-                was developed.</p>
+            <p>The <em>current</em> version with x86 code generation.</p>
             <ul>
                 <li>Manual<ul>
                     <li><a href="http://s.powermops.org/imops/internals.pdf">Internals</a><small>&nbsp;PDF</small></li>
@@ -62,15 +63,11 @@
     </section>
     <hr>
     <section id="more">
-        <header>
-            <h2>Go Deeper!</h2>
-        </header>
-
+        <h2>Go Deeper!</h2>
         <ul>
-            <li><a href="/About">About</a></li>
-            <li>Latest <a href="/News">news</a></li>
-        <li>The best way to connect with the community is through the
-           <a href="https://sourceforge.net/p/powermops/mailman/powermops-users/">mailing list</a>.</li>
+            <li><a href="/News">Latest news</a></li>
+            <li>The best way to connect with the community is through the
+            <a href="https://sourceforge.net/p/powermops/mailman/powermops-users/">mailing list</a>.</li>
         </ul>
     </section>
 </main>
