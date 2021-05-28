@@ -1,6 +1,6 @@
 {
   "name": "Powermops-site",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Web site for Powermops, iMops, aMops (using SvelteKit)",
   "repository": "github:PowerMops/powermops-site",
   "license": "CC-BY-4.0",

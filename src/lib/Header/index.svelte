@@ -21,6 +21,7 @@
 		<nav>
 			<ul>
 				<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/">Home</a></li>
+				<li class:active={false}><a href="http://wiki.powermops.org/">Powermops wiki</a></li>
 				<li class:active={false}><a href="https://SourceForge.net/projects/powermops/">SourceForge</a></li>
 			</ul>
 		</nav>

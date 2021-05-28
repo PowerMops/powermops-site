@@ -1,13 +1,17 @@
+<script>
+  import News from './News.md';
+</script>
 <main>
     <section>
         <h1>Mops</h1>
         <p>A full featured, stand-alone development
         environment for programming the Macintosh written by <em>Mike Hore</em>.
-        Inspired by Smalltalk and the commercial language Neon,
+        Inspired by Smalltalk and the commercial language
+        [Neon](https://wiki.c2.com/?NeonLanguage),
         Mops is based on Forth with extended object-oriented features
         such as multiple inheritance, early and late binding,
         persistent objects, and garbage collection.</p>
-        <p>With over 20 years of development and use, the Mops
+        <p>With over 30 years of development and use, the Mops
             family is battle-tested.
         </p>
     </section>
@@ -63,6 +67,7 @@
         </header>
 
         <ul>
+            <li>Latest <a href="/News">news</a>.</li>
         <li>The best way to connect with the community is through the
            <a href="https://sourceforge.net/p/powermops/mailman/powermops-users/">mailing list</a>.</li>
         </ul>
