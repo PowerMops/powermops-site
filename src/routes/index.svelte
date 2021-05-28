@@ -67,7 +67,8 @@
         </header>
 
         <ul>
-            <li>Latest <a href="/News">news</a>.</li>
+            <li><a href="/About">About</a></li>
+            <li>Latest <a href="/News">news</a></li>
         <li>The best way to connect with the community is through the
            <a href="https://sourceforge.net/p/powermops/mailman/powermops-users/">mailing list</a>.</li>
         </ul>
