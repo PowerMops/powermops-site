@@ -10,7 +10,13 @@
 		</div>
 		<div>
 			<h1>Mops</h1>
+			{#if ($page.path).startsWith('/pmops/')}
+			<h2>Powermops</h2>
+			{:else if ($page.path).startsWith('/amops/')}
+			<h2>aMops</h2>
+			{:else}
 			<h2>aMops, iMops, Powermops</h2>
+			{/if}
 		</div>
 	</div>
 
