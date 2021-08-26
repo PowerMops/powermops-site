@@ -1,6 +1,9 @@
 # News
 
-- 2021-05-26: aMops Code Generator 2.0 released [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
+- 2021-08-25: aMops Code Generator 2.3 released [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
+- 2021-08-04: aMops Code Generator 2.2 released
+- 2021-06-22: aMops Code Generator 2.1 released
+- 2021-05-26: aMops Code Generator 2.0 released
 - 2021-03-18: aMops Code Generator 1.5 released
 - 2021-03-02: aMops Code Generator 1.5 released
 - 2021-01-26: aMops Code Generator 1.4 released
