@@ -1,35 +1,13 @@
 {
-  "name": "Powermops-site",
-  "version": "1.0.0",
-  "description": "Web site for Powermops, iMops, aMops (using SvelteKit)",
-  "repository": "github:PowerMops/powermops-site",
-  "license": "CC-BY-4.0",
+  "name": "@powermops/powermops-site",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
-    "preview": "svelte-kit preview",
-    "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-    "format": "prettier --write --plugin-search-dir=. ."
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build"
   },
   "devDependencies": {
-    "@sveltejs/adapter-netlify": "^1.0.0-next.14",
-    "@sveltejs/kit": "next",
-    "eslint": "^7.22.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-svelte3": "^3.2.0",
-    "mdsvex": "^0.9.0",
-    "prettier": "~2.2.1",
-    "prettier-plugin-svelte": "^2.2.0",
-    "rehype-autolink-headings": "^5.0.1",
-    "rehype-slug": "^4.0.1",
-    "remark-abbr": "^1.4.1",
-    "remark-github": "^10.0.1",
-    "svelte": "^3.34.0"
-  },
-  "type": "module",
-  "dependencies": {
-    "@fontsource/fira-mono": "^4.2.2",
-    "@lukeed/uuid": "^2.0.0",
-    "cookie": "^0.4.1"
+    "astro": "^0.19.4"
   }
 }
