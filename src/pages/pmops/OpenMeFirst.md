@@ -13,7 +13,7 @@ this version of PowerMops.
 
 This file is not a tutorial on Forth or programming. Nor is it a
 tutorial on Object Oriented Programming. These in-depth topics are
-covered in the [full manual](/pmops/Documentation).
+covered in the [full manual](/pmops/Overview).
 
 Don't worry if you make a typing mistake that deletes some of the text
 from this file. You can always start over by reopening the 'Open Me
