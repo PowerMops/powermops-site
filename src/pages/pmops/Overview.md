@@ -17,7 +17,7 @@ The manual is divided into these major parts:
 
 | | | |
 |:---      | :--------------------- | ----------: |
-| PART I   | [Overview](Overview)   |  1 Chapter  |
+| PART I   | **Overview** (this document)   |  1 Chapter  |
 | PART II  | [Tutorial](Tutorial)   | 21 Lessons  |
 | PART III | [Reference](Reference) | 14 Chapters |
 | PART IV  | [Classes](Classes)     | 12 Chapters |

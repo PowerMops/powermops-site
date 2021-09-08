@@ -16,10 +16,10 @@ from the SourceForge project page.
 
 You can browse the manual online:
 
-- [Overview](Overview)
-- [Tutorial](Tutorial)
-- [Reference](Reference)
-- [Classes](Classes)
+- [Overview](/pmops/Overview)
+- [Tutorial](/pmops/Tutorial)
+- [Reference](/pmops/Reference)
+- [Classes](/pmops/Classes)
 
 ## FAQ
 
