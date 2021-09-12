@@ -10,9 +10,9 @@ export const sidebar = [
   {
     text: 'Powermops', link: 'pmops',
     children: [
-      { text: 'Open Me First', link: 'pmops/OpenMeFirst' },
-      { text: 'Manual', link: 'pmops/Overview' },
-      { text: 'FAQ', link: 'pmops/FAQ' },
+      { text: 'Open Me First', link: 'pmops/openmefirst' },
+      { text: 'Manual', link: 'pmops/overview' },
+      { text: 'FAQ', link: 'pmops/faq' },
       { text: 'Wiki', link: 'http://wiki.powermops.org/' },
       { text: 'SourceForge', link: 'https://sourceforge.net/projects/powermops/' },
     ],

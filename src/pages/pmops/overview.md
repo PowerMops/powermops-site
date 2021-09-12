@@ -18,9 +18,9 @@ The manual is divided into these major parts:
 | | | |
 |:---      | :--------------------- | ----------: |
 | PART I   | **Overview** (this document)   |  1 Chapter  |
-| PART II  | [Tutorial](Tutorial)   | 21 Lessons  |
-| PART III | [Reference](Reference) | 14 Chapters |
-| PART IV  | [Classes](Classes)     | 12 Chapters |
+| PART II  | [Tutorial](tutorial)   | 21 Lessons  |
+| PART III | [Reference](reference) | 14 Chapters |
+| PART IV  | [Classes](classes)     | 12 Chapters |
 
 ## Tutorial
 
@@ -77,15 +77,12 @@ given in the Tutorial.
 Once you have installed the Mops system as described above, you will
 find several folders containing Mops files. They are:
 
-- Mops &\#131;  
-  Essential files including:
+- **Mops 𝑓** &nbsp;&nbsp;  Essential files including:
   - The Mops kernel (Mops).
   - An image of a Mops dictionary with many of the predefined
     classes already loaded (Mops.dic).
-- QuickEdit &\#131;  
-  Files in this folder are for Doug Hoffman's QuickEdit programming editor.
-- Mops source  
-  All the Mops source code. There are various
+- **QuickEdit 𝑓**&nbsp;&nbsp; Files in this folder are for Doug Hoffman's QuickEdit programming editor.
+- **Mops source** &nbsp;&nbsp; All the Mops source code. There are various
   other folders inside here, as follows:
   - More classes  
     Source files for a number of other (possibly) useful classes.
@@ -99,8 +96,7 @@ find several folders containing Mops files. They are:
       Source code for the Mops 68k assembler.
     - Demo folder  
       Source files for demonstration programs used in the tutorial.
--   Mops manual  
-    Uhm. That's where the documentation you are
+-   **Mops manual** &nbsp;&nbsp; Uhm. That's where the documentation you are
     reading is stored.
 
 Most of the source code files in System, Toolbox, and Demo folders are
@@ -160,8 +156,7 @@ enhancements. It is also in the public domain.
 
 Many portions of this manual were pulled directly from the Mops 4
 manual, released in September 2000 in MS Word format. The original HTML
-release was completed in 2003 by
-[Gnarlodious.](http://Gnarlodious.com)
+release was completed in 2003 by Gnarlodious.
 
 At that time some parts
 of the material were updated to reflect the advent of OS X, and this
@@ -185,14 +180,15 @@ concentrate on the low-level implementation of the Mops nucleus and
 basic system code.
 
   Mops implemented by:    Michael Hore
+  
   Able assistance from:   Doug Hoffman, Nao Sacrada, Greg Haverkamp, Xan Gregg
                           
   Documentation:          Mike Hore, Ed Williams, Nao Sacrada, Arthur W. Green
-  HTML:                   [Gnarlodious](http://Gnarlodious.com), Arthur W. Green, Jim Tittsler
+
+  HTML:                   Gnarlodious, Arthur W. Green, Jim Tittsler
 
 Please direct corrections, suggestions and criticism regarding this
 documentation to the [PowerMops
 Users](http://lists.sourceforge.net/lists/listinfo/powermops-users)
 mailing list.
-
 
