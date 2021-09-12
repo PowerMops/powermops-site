@@ -13,7 +13,7 @@ this version of PowerMops.
 
 This file is not a tutorial on Forth or programming. Nor is it a
 tutorial on Object Oriented Programming. These in-depth topics are
-covered in the [full manual](/pmops/Overview).
+covered in the [full manual](/pmops/overview).
 
 Don't worry if you make a typing mistake that deletes some of the text
 from this file. You can always start over by reopening the 'Open Me
@@ -270,15 +270,14 @@ As always, I hope you enjoy Mops/PowerMops!
 
 ------------------------------------------------------------------------
 
-`Mike Hore        email:          mike_hore@aapt.net.au`
-
-` Mops web page:            <`[`http://www.powermops.org>`](http://www.powermops.org%3E)`;`
-` SourceForge project page: <`[`http://sourceforge.net/projects/powermops/>`](http://sourceforge.net/projects/powermops/%3E)`;`
-`           `
-`Darwin, Northern Territory, Australia.     Right about here ->   _*-_|`
-`                                                               /      `
-`                                                               _.--._/`
-`                                                                     v`
+|                 |                                       |
+|:----------------|---------------------------------------|
+|Mike Hore        | email:          mike_hore@aapt.net.au |
+|                 |                                       |
+|Mops web page:   | [http://www.powermops.org](http://www.powermops.org/) |
+|SourceForge project page: | [http://sourceforge.net/projects/powermops](http://sourceforge.net/projects/powermops/) |
+|                 |                                       |           `
+|Darwin, Northern Territory, Australia. |  |
 
 ## Mops 6.0 RELEASE NOTES
 
@@ -324,7 +323,8 @@ are added:
 
 zVar       64-bit version of Var.
 uVar       Unsigned 32-bit version of Var.
-``
+```
+
 The shifts `<<` `>>` and `a>>` work on full stack cells, and so are
 64-bit operations in these versions. If you need a specifically 32-bit
 shift, use `h<<` `h>>` and `ha>>` ("h" for half-length). These
@@ -395,31 +395,22 @@ job.
 Here's a summary, then the details, where needed, are below.
 
 -   Under OSX, you can now directly call routines which are part
-
 of Cocoa and written in Objective-C.
-
 -   The Navigation Manager support has been updated. See below for
-
 the documentation.
-
 -   Menus have been updated for the new NIB-based Carbon API.
 -   New syntactic features -- cascaded messages and right arrow
-
 syntax.
-
 -   A new value, OSX? which is true if we're running under OSX.
 -   A new operator LEADING_ZEROS has been added.
 -   A code generation problem has been fixed, in which you could
-
 get an internal dump caused by register allocation running out of
 registers, in compiling complicated code with many conditionals.
 
 -   You can now late-bind in interpretation mode -- this had
-
 inadvertently been unimplemented!
 
 -   Class Window now has a new public ivar, windowClass. This
-
 is set to kDocumentWindowClass at classinit: time, and is used to set
 the window class at new: time. You can use it to set the window class to
 whatever you like before you do new:.
@@ -439,15 +430,17 @@ You set up Objective-C calls this way. If you are familiar with the
 syntax for calling shared libraries and know some Objective-C, this
 should be quite intuitive.
 
-`need  CocoaCalls    load the file you need`
+```mops
+need  CocoaCalls    load the file you need
 
-`@class  myClass         declares a class`
+@class  myClass         declares a class
 
-`+M method1withparm1|parm2|parm3 { parm1 parm2 %parm3 -- result }`
-`                    declares a class method.`
-`                    Parameters are specified exactly as for shared libraries.`
++M method1withparm1|parm2|parm3 { parm1 parm2 %parm3 -- result }
+                    declares a class method.`
+                    Parameters are specified exactly as for shared libraries.`
 
-`-M method2 { ... }  declares an instance method.`
+-M method2 { ... }  declares an instance method.
+```
 
 The method names are the same as the methods you want to call, except
 that you put "|" in place of ":" in the Objective-C method name,
@@ -509,7 +502,7 @@ up the content of the passed structure on return. That is quite parallel
 to a C function to return a structure, the description of which is on a
 tip page in Art's "Mops on the Web" site.
 
-In CocoaCalls, the pointer of the structure is distinguished by "*"
+In CocoaCalls, the pointer of the structure is distinguished by "\*"
 at the top of the parameter name in the declaration. For example, if an
 instance method "getFrameRect:" is prototyped as
 
@@ -835,7 +828,6 @@ see what changes have been made.
 The changes in Mops 5.5 were:
 
 -   -   Under OSX, you can now call frameworks exactly as you call
-
 shared libraries. The syntax is exactly parallel:
 
 `FRAMEWORK <someFramework>`
@@ -861,9 +853,8 @@ Nao also contributed this code. He found that many QuickTime calls were
 crashing under OSX, and that using direct Mach-O calls avoided the
 problem.
 
--   -   ASSERT{ now has an enhancement:
-
-ASSERT{ blah blah.... }" blah didn't work!!"
+-   -   `ASSERT{` now has an enhancement:
+`ASSERT{ blah blah.... }"` blah didn't work!!"
 
 If the assertion fails, the message in the quotes gets printed before
 the error dump. You can put whatever you like there. This makes it easy
@@ -1111,4 +1102,5 @@ web site.
 
 As always, I hope you enjoy Mops!
 
-`—-  Mike Hore.`
+-  *Mike Hore*
+
