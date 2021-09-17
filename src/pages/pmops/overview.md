@@ -18,9 +18,9 @@ The manual is divided into these major parts:
 | | | |
 |:---      | :--------------------- | ----------: |
 | PART I   | **Overview** (this document)   |  1 Chapter  |
-| PART II  | [Tutorial](tutorial)   | 21 Lessons  |
-| PART III | [Reference](reference) | 14 Chapters |
-| PART IV  | [Classes](classes)     | 12 Chapters |
+| PART II  | [Tutorial](/pmops/tutorial)   | 21 Lessons  |
+| PART III | [Reference](/pmops/reference) | 14 Chapters |
+| PART IV  | [Classes](/pmops/classes)     | 12 Chapters |
 
 ## Tutorial
 
