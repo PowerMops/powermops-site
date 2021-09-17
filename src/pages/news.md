@@ -30,4 +30,4 @@ layout: ../layouts/Main.astro
 - 2009-10-24 : PowerMops 6.2 has been released -- a few bugs fixed, and a new mechanism for creating arrays and lists of objects.
 - 2009-01-01 : Updated from a unique MediaWiki instance to the SourceForge hosted app.
 - 2007-07-07 : [PowerMops 6.1](http://sourceforge.net/project/showfiles.php?group_id=152075&package_id=168230&release_id=521463) has been released! Dozens of bug fixes.
-- 2006-06-23 : PowerMops 6.0 has been released. Check out the latest release notes in the [Open Me First](pmops/OpenMeFirst) document or go directly to the [Download page](https://sourceforge.net/projects/powermops/files/) to fetch your complete copy.
+- 2006-06-23 : PowerMops 6.0 has been released. Check out the latest release notes in the [Open Me First](/pmops/openmefirst) document or go directly to the [Download page](https://sourceforge.net/projects/powermops/files/) to fetch your complete copy.
