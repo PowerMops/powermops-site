@@ -1,14 +1,14 @@
 export const sidebar = [
   {
     text: 'Introduction',
-    link: '', // No leading slash needed, so this links to the homepage
+    link: '/',
     children: [
       { text: 'About', link: '/about/' },
       { text: 'News', link: '/news/' },
     ],
   },
   {
-    text: 'Powermops', link: 'pmops',
+    text: 'Powermops', link: '/pmops/',
     children: [
       { text: 'Open Me First', link: '/pmops/openmefirst' },
       { text: 'Manual', link: '/pmops/overview' },
