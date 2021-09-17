@@ -2,3 +2,11 @@
   command = "npm run build"
   publish = "dist"
 
+[[redirects]]
+  from = "/index.php*"
+  to = "/"
+
+[[redirects]]
+  from = "/about.html"
+  to = "/"
+
