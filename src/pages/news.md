@@ -3,22 +3,25 @@ title: News
 layout: ../layouts/Main.astro
 ---
 
-- 2021-08-25: aMops Code Generator 2.3 released [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
-- 2021-08-04: aMops Code Generator 2.2 released
-- 2021-06-22: aMops Code Generator 2.1 released
-- 2021-05-26: aMops Code Generator 2.0 released
+- 2021-10-08: aMops Code Generator 2.5 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
+    - It can now completely load itself.
+    - This target-compiled version of the code generator can begin to run under the emulator, up to the point where the big object_array “theNodes” is created in the heap.
+    - There are new features to help in following an emulation trace.
+- 2021-08-25: aMops Code Generator 2.3 
+- 2021-08-04: aMops Code Generator 2.2
+- 2021-06-22: aMops Code Generator 2.1
+- 2021-05-26: aMops Code Generator 2.0
 - 2021-05-25: new **Mops** web site, built in Markdown
-- 2021-03-18: aMops Code Generator 1.5 released
-- 2021-03-02: aMops Code Generator 1.5 released
-- 2021-01-26: aMops Code Generator 1.4 released
-- 2021-01-11: aMops Code Generator 1.3 released
-- 2020-12-12: aMops Code Generator 1.2 released
-- 2020-11-22: aMops Code Generator 1.1 released
-- 2020-10-30: aMops Code Generator 1.0 released
-- 2020-09-11: aMops Code Generator beta 1 released
-- 2020-08-14: aMops Code Generator alpha-3 released
-- 2020-08-07: aMops Code Generator alpha-2 released
-- 2020-07-31: aMops Code Generator alpha-1 released
+- 2021-03-02: aMops Code Generator 1.5
+- 2021-01-26: aMops Code Generator 1.4
+- 2021-01-11: aMops Code Generator 1.3
+- 2020-12-12: aMops Code Generator 1.2
+- 2020-11-22: aMops Code Generator 1.1
+- 2020-10-30: aMops Code Generator 1.0
+- 2020-09-11: aMops Code Generator beta 1
+- 2020-08-14: aMops Code Generator alpha-3
+- 2020-08-07: aMops Code Generator alpha-2
+- 2020-07-31: aMops Code Generator alpha-1
 - 2018-12-29: iMops 2.22 distribution was revised. (Previous distribution seemed broken)
 - 2017-07-10: iMops 2.21 released -- Interruption into "Echo during Load" by Space key was made possible. Some bugs were fixed [Download page](http://sourceforge.net/projects/powermops/files/iMops/)
 - 2016-11-12: iMops 2.2 released -- A maintenance release but now iMops is a developer-signed application. [Download page](http://sourceforge.net/projects/powermops/files/iMops/)
