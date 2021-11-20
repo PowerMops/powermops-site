@@ -3,7 +3,9 @@ title: News
 layout: ../layouts/Main.astro
 ---
 
-- 2021-10-08: aMops Code Generator 2.5 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
+- 2021-11-17: aMops Code Generator 2.6 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
+    - Can compile a definition under emulation, up to the point where it needs to make a new dictionary entry for the new definition.
+- 2021-10-08: aMops Code Generator 2.5
     - It can now completely load itself.
     - This target-compiled version of the code generator can begin to run under the emulator, up to the point where the big object_array “theNodes” is created in the heap.
     - There are new features to help in following an emulation trace.
