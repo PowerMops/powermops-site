@@ -7,7 +7,7 @@ layout: ../layouts/Main.astro
     - Can compile a definition under emulation, up to the point where it needs to make a new dictionary entry for the new definition.
 - 2021-10-08: aMops Code Generator 2.5
     - It can now completely load itself.
-    - This target-compiled version of the code generator can begin to run under the emulator, up to the point where the big object_array “theNodes” is created in the heap.
+    - This target-compiled version of the code generator can begin to run under the emulator, up to the point where the big object_array "theNodes" is created in the heap.
     - There are new features to help in following an emulation trace.
 - 2021-08-25: aMops Code Generator 2.3 
 - 2021-08-04: aMops Code Generator 2.2
