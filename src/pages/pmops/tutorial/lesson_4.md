@@ -1,6 +1,6 @@
 ---
 title: Mops and OOP
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 Armed with a basic knowledge of Mops' stack, you're now ready for an

@@ -1,6 +1,6 @@
 ---
 title: Basic Data Structure
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 ## About this chapter

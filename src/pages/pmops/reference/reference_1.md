@@ -1,6 +1,6 @@
 ---
 title: Mops and QuickEdit
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 ## The Mops Menu Bar

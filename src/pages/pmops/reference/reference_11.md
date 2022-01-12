@@ -1,6 +1,6 @@
 ---
 title: Coding V. 5.1 and Later
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 ## Introduction

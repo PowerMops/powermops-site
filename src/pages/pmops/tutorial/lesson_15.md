@@ -1,6 +1,6 @@
 ---
 title: Global Constants and Values
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 Assigning recognizable names to numbers is a convenient shortcut, as

@@ -1,6 +1,6 @@
 ---
 title: More About Objects
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 ## Binding

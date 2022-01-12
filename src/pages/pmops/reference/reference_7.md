@@ -1,6 +1,6 @@
 ---
 title: Calling the Toolbox
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 Toolbox calls are calls you make to the Macintosh Operating System.

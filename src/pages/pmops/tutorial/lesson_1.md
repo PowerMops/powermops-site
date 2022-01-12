@@ -1,6 +1,6 @@
 ---
 title: Starting Up
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 To start Mops, if the 'Mops &fnof;' folder is not open, double-click

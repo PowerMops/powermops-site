@@ -1,6 +1,6 @@
 ---
 title: Implementing an Application
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 Once you have a blueprint for the class hierarchy of a program, you're

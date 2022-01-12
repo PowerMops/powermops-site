@@ -1,6 +1,6 @@
 ---
 title: The Stack
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 Type the numbers 7, 4, and 1 on one line with a space between them:

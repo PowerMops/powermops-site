@@ -1,6 +1,6 @@
 ---
 title: Lesson 10
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 ## Defining New Words

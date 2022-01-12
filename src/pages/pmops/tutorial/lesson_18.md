@@ -1,6 +1,6 @@
 ---
 title: FAQ
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 Create a Mini-Logo Language
 ---------------------------

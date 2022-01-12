@@ -1,6 +1,6 @@
 ---
 title: Classes and Objects
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 Building a Mops program is largely a process of defining classes of

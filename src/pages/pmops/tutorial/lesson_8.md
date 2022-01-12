@@ -1,6 +1,6 @@
 ---
 title: Introducing QuickEdit
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 

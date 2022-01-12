@@ -1,6 +1,6 @@
 ---
 title: Predefined Classes
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 Mops comes with a large number of predefined classes that provide you

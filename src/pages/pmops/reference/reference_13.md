@@ -1,6 +1,6 @@
 ---
 title: Utility Modules
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 The Mops system contains several modules providing general functions

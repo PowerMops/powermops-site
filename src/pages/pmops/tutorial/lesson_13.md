@@ -1,6 +1,6 @@
 ---
 title: Loops
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 Computer programs frequently need certain operations to be repeated a

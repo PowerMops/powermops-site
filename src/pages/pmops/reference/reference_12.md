@@ -1,6 +1,6 @@
 ---
 title: Miscellaneous Topics
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 ## ANSI Standard

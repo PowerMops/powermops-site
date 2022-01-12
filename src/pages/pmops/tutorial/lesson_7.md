@@ -1,6 +1,6 @@
 ---
 title: Modifying a Program
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 We're going to add another class. This one, however, will be a subclass

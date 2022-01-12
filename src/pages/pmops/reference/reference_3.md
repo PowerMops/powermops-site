@@ -1,6 +1,6 @@
 ---
 title: Object Creation and Message Syntax
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 'Instantiation', or the instantiation of a class, is used in this

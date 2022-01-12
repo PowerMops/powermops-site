@@ -1,6 +1,6 @@
 ---
 title: Technical Section
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 This chapter is intended for hackers, or people who want to understand

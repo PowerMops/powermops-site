@@ -1,6 +1,6 @@
 ---
 title: Powermops
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 ## Introduction

@@ -1,6 +1,6 @@
 ---
 title: Strings in Mops
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 String Types

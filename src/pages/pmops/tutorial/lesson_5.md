@@ -1,6 +1,6 @@
 ---
 title: Mapping Class-Object Relationships
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 An object-oriented language like Mops builds programs around the same

@@ -1,6 +1,6 @@
 ---
 title: Objects and Their Messages
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 Now we come to creating an object of class `Rect` and

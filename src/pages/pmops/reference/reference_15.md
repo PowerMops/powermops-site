@@ -1,6 +1,6 @@
 ---
 title: Assembler and Disassembler
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 The Mops' PowerPC assembler and disassembler were originally written by

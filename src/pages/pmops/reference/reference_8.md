@@ -1,6 +1,6 @@
 ---
 title: Modules
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 Mops provides a facility for creating separately compilable, relocatable

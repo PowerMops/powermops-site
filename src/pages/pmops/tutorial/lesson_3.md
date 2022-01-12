@@ -1,6 +1,6 @@
 ---
 title: Stack Notation
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 Before we go further, you should become acquainted with a special

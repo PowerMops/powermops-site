@@ -1,6 +1,6 @@
 ---
 title: Fixed-Point Arithmetic
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 The version of Mops that you've been using in this tutorial utilizes

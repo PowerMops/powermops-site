@@ -1,6 +1,6 @@
 ---
 title: Memory Organization
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 We will now move on to some of Mops' more advanced capabilities. Some

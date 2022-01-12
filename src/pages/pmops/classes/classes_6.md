@@ -1,6 +1,6 @@
 ---
 title: Views and Controls
-layout: ../../layouts/Main.astro
+layout: ../../../layouts/Main.astro
 ---
 
 
