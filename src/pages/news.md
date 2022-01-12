@@ -3,7 +3,8 @@ title: News
 layout: ../layouts/Main.astro
 ---
 
-- 2021-11-17: aMops Code Generator 2.6 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
+- 2022-01-12: aMops Code Generator 3.0 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
+- 2021-11-17: aMops Code Generator 2.6
     - Can compile a definition under emulation, up to the point where it needs to make a new dictionary entry for the new definition.
 - 2021-10-08: aMops Code Generator 2.5
     - It can now completely load itself.
