@@ -13,6 +13,6 @@ export default {
   buildOptions: {
     site: 'https://www.powermops.org/',
     sitemap: false,
-    pagUrlFormat: 'file',
+    pagUrlFormat: 'directory',
   },
 };
