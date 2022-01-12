@@ -11,20 +11,11 @@ of these correspond to well established data structures that are
 available in most programming languages, but a few of them are unique to
 Mops.
 
-  --------------------------------------------------------------------------------------------------
-  [Inside Macintosh](http://developer.apple.com/documentation/macos8/mac8.html)
-  [Memory Manager](http://developer.apple.com/documentation/mac/Memory/Memory-56.html)
-  [Programming in Assembly Language](http://developer.apple.com/documentation/mac/IAC/IAC-10.html)
-  --------------------------------------------------------------------------------------------------
+### Recommended reading
+*  [Inside Macintosh](http://developer.apple.com/documentation/macos8/mac8.html)
+* [Memory Manager](http://developer.apple.com/documentation/mac/Memory/Memory-56.html)
+*  [Programming in Assembly Language](http://developer.apple.com/documentation/mac/IAC/IAC-10.html)
 
-  : Recommended reading
-
-  -------- ---------
-  Class    qpClass
-  Struct   pStruct
-  -------- ---------
-
-  : Source files
 
 ## Using the basic data structures
 
@@ -35,7 +26,7 @@ instance variables of more complex classes and as general classes from
 which you can derive more specialized subclasses. The classes that will
 be covered here include:
 
-  ----------- ------------- -------------
+```
   Object      DicAddr       Ordered-Col
   Bytes       X-Addr        WordCol
   Int         Indexed-Obj   ByteCol
@@ -45,7 +36,7 @@ be covered here include:
   Handle      X-Array       Dic-Mark
   ObjHandle   Obj\_array    Resource
   Ptr         (Col)         
-  ----------- ------------- -------------
+```
 
 ## Using Class Object and Bytes
 
