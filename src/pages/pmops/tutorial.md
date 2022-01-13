@@ -3,7 +3,7 @@ title: Tutorial
 layout: ../../layouts/Main.astro
 ---
 
-* [Introduction](tutorial)
+* Introduction
   * [Before we begin](#before-we-begin)
   * [Backup](#backup)
   * [Using an editor](#using-an-editor)
