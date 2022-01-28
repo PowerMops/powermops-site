@@ -46,7 +46,7 @@ complicate debugging class definitions!
 
 For example:
 
-```mops
+```shell
 :class foo  super{ object }
 int x
 :m put:  ( n -- )  put: x ;m
@@ -66,7 +66,7 @@ hidden within the object.
 Here is the same definition as before, but with x declared outside of
 the definition for debugging purposes:
 
-```mops
+```shell
 int x
 :class foo  super{ object }
 :m put:  ( n -- )  put: x ;m
@@ -107,7 +107,7 @@ Here are a few "official" ways to look up a word:
 Yet another effective method for finding a word name is wordsWith.
 Execute the following source from within a file...
 
-```mops
+```shell
 need zstring+
 string+ s1
 string+ s2

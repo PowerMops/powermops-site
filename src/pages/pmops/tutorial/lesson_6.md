@@ -79,7 +79,7 @@ same class. That's where a message receiver called
 `SELF` comes in handy. With the new method
 (`DISP:`) the class looks like this:
 
-```mops
+```shell
 `:class  RECT  super{ object }`\
 `record`\
 `{      point     TopLeft`\

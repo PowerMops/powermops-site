@@ -127,7 +127,7 @@ the amount of memory available.
 Here's an example of how a HandleList could be used to implement a set
 of four windows, accessible by index:
 
-```mops
+```shell
 HandleList Windows
 : CreateWindows
 4 0 DO  ['] window newObj: windows  LOOP ;

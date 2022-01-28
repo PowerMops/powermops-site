@@ -5,13 +5,13 @@ layout: ../../../layouts/Main.astro
 
 Type the numbers 7, 4, and 1 on one line with a space between them:
 
-```mops
+```shell
 7 4 1<ENTER>
 ```
 
 After you press ENTER, the stack display should now look like this:
 
-```mops
+```shell
  Stack:  depth 3
  1
  4
@@ -28,7 +28,7 @@ You can see that this principle applies to the Mops stack, since the number 7, w
 
 How can you remove numbers from the stack? One way is to use the Mops word that does the reverse of what you did when you entered a number&#148;it takes a number off the stack, and "types" (or prints) it at position of the flashing cursor in the lower part of the screen. That word is a simple `.` (a period, pronounced "dot"). Try typing this:
 
-```mops
+```shell
 .<ENTER>
  1
 ```
@@ -41,7 +41,7 @@ To bring the Mops prompt to the left margin, where it will be less confusing, si
 
 Now type two periods, with a space in between, and press ENTER.
 
-```mops
+```shell
 . .<ENTER>
 4 7
 ```
@@ -52,13 +52,13 @@ Mops also has a word, `.S` (pronounced "dot-ess"), that displays a list of all n
 
 To see how it works, place the same three numbers that we used before on the stack (don't forget the spaces):
 
-```mops
+```shell
 7 4 1
 ```
 
 And when you type `.S`, your screen will look similar to this:
 
-```mops
+```shell
 .S<ENTER>
 Stack: depth 3 
         1  $     1
@@ -72,7 +72,7 @@ Experiment with the operation of the stack by putting numbers on the stack, view
 
 For example:
 
-```mops
+```shell
 1 10 100<ENTER>
 . . . cr<ENTER>
 100 10 1 
@@ -80,7 +80,7 @@ For example:
 
 If you accidentally issue one more `.` command than you have entries on the stack, Mops will send you a message (along with the alert beep) that the stack is empty. Try it, no harm will occur.
 
-```mops
+```shell
 1 10 100<ENTER>
 . . . . cr<ENTER>
 -1 
@@ -112,7 +112,7 @@ Mops works in very much the same way.
 
 The step-by-step approach to add two numbers would be to put each number on the stack one at a time, and then press the + key as follows:
 
-```mops
+```shell
 7
 2
 +
@@ -127,7 +127,7 @@ You should already understand how the stack counter increments each time you typ
 
 Mops lets you perform all these manipulations in a simpler form as a single line of instructions, as long as there is at least one space between each element. Here's how it looks:
 
-```mops
+```shell
 7 2 + . cr
 9
 ```

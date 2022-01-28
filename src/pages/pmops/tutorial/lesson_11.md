@@ -79,7 +79,7 @@ it must itself be delimited by a space. This space is *not* included as
 part of the string, but the first character after the space is the first
 character of the string (even if it is a space). Here is an example:
 
-```mops
+```shell
 `: HI  ." Hello, this is Mops operating on the Mac."  cr ;`\
 ```
 
@@ -96,7 +96,7 @@ words inside the definitions of new words. Therefore, you could take the
 `HI` word we just defined and incorporate it inside yet
 another Mops definition. For example,
 
-```mops
+```shell
 `: GREETING  hi ." How are you?" cr ;`\
 ```
 
@@ -108,14 +108,14 @@ Now combine your knowledge of arithmetic operations and text strings to
 "humanize" the arithmetic word, `ADD`, from our
 previous lesson. Here's the new definition:
 
-```mops
+```shell
 `: ADD  ( n1 n2 --  )  + ." The sum is: " . cr ;`\
 ```
 
 Or, if `ADD` is still defined from our last lesson (and
 you want to be tricky), we can also do:
 
-```mops
+```shell
 `: ADD  ( n1 n2 --  )  ." The sum is: " add ;`\
 ```
 
@@ -149,7 +149,7 @@ for a subtraction or division. In fact, it could have been used in a
 less elegant definition for the problem cited in [ Lesson
 3](Lesson_3#Mastering_Postfix_Notation)\<nowiki\>:\</nowiki\>
 
-```mops
+```shell
 ` 5 * 12 * 50`\
 `-------------`\
 `     40`\
@@ -164,7 +164,7 @@ operation would be:
 
 The word definition that calculates this would be:
 
-```mops
+```shell
 `: FORMULA3  ( denom num1 num2 num3 -- solution )`\
 `            * * swap / ;`\
 ```
@@ -185,7 +185,7 @@ this:
 Therefore, you could set up a Mops word, `CUBED`, to
 perform the cube calculation:
 
-```mops
+```shell
 `: CUBED  ( n -- )  dup dup * * . cr ;`\
 ```
 

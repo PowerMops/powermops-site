@@ -37,7 +37,7 @@ But if the word is not in the dictionary, the message undefined word
 appears on the screen, which in this case means you're in the clear to
 define a word with that name.
 
-```mops
+```shell
 ' window .
 5241310
 ' twindow .
@@ -64,7 +64,7 @@ results, and move the Mops prompt to the left margin of the next line.
 good practice; you need not type it in.) Recall that each line you type
 must be terminated by the ENTER key:
 
-```mops
+```shell
 : ADD  ( n1 n2 --  )  + . cr ;
 ```
 
@@ -72,7 +72,7 @@ The `+` operation expects to find two numbers on the
 stack, so to use your new word you would type two numbers (which go onto
 the stack) and then the new word:
 
-```mops
+```shell
 2 6 add
 8
 ```
@@ -111,7 +111,7 @@ know what the program was executing when the error occurred. Mops will
 try to help you do this, however, by reporting errors as we saw in the
 error message above. Let's look at it again:
 
-```mops
+```shell
 ' twindow .
 
 Error # -13  undefined word
@@ -148,7 +148,7 @@ As an example, we will use the multiply-then-divide problem described in
 [Lesson 3](Lesson_3). If you
 recall, the operation was presented as:
 
-```mops
+```shell
  5 * 12 * 50
 -------------
      40
@@ -160,7 +160,7 @@ place the denominator on the stack before dividing. See how this is
 simplified in a definition that performs the math with named input
 parameters:
 
-```mops
+```shell
 : FORMULA  { denom n1 n2 n3 -- solution }
            n1 n2 n3 * * denom /  ;
 ```
@@ -170,7 +170,7 @@ stack comment, because it is in fact a kind of stack description. So in
 this case, whenever the word `FORMULA` is executed, like
 this:
 
-```mops
+```shell
 40 5 12 50 formula .
 75
 ```
@@ -203,7 +203,7 @@ hold the result of one square while it calculates the second before it
 can add the two squares. A definition for a word equivalent to this
 formula would be:
 
-```mops
+```shell
 : FORMULA1  { a  b -- solution }
             a  a  *  -> a
             b  b  *
@@ -240,7 +240,7 @@ colon definition, but instead let you assign names to intermediate
 results that can occur inside such a definition. Local variables are
 preceded by a backslash. Take this formula, for instance:
 
-```mops
+```shell
  ( a + b - 3c )
 ----------------
    ( b + 2c )
@@ -248,7 +248,7 @@ preceded by a backslash. Take this formula, for instance:
 
 The word definition would be:
 
-```mops
+```shell
 : FORMULA2  { a  b  c  \  num den -- result }
             a  b  +  3  c  *  -  -> num
             2  c  *  b  +        -> den

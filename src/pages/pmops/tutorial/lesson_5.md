@@ -63,7 +63,7 @@ rectangle can be drawn.
 
 The class definition up to this point looks like this:
 
-```mops
+```shell
 `:class  RECT  super{ object }`\
 `       point     TopLeft`\
 `       point     BotRight`\
@@ -136,7 +136,7 @@ class (located in the "`zQD`" source file in the
 'Toolbox classes' folder). The class definition should look something
 like this:
 
-```mops
+```shell
 `:class  POINT  super{ object }`\
 `record`\
 `{      int     Y       \ Vertical coordinate`\
@@ -163,7 +163,7 @@ Notice too, that we've started adding plain English remarks about the
 code as a way of *documenting* the program. There are three ways of
 specifying comments in Mops:
 
-```mops
+```shell
 `( this kind of comment continues to a )`
 
 `\ This is another comment, which extends to the end of the line`
@@ -193,7 +193,7 @@ the characteristics of class `Int`. Class
 `Int` is defined in the file "`pStruct`"
 in 'PPC source' folder. The search reveals:
 
-```mops
+```shell
 `:class INT     super{ object }`
 
 `       2 bytes data`
@@ -217,7 +217,7 @@ this method definition stores an integer in a special area of memory.
 Going back to the definition of class `Point`, the ninth
 method:
 
-```mops
+```shell
 `:m PUT:                put: Y  put: X   ;m`\
 ```
 
@@ -233,7 +233,7 @@ stack.
 
 Next in the class `Rect` definition come two methods:
 
-```mops
+```shell
 `:class  RECT  super{ object }`\
 `       point     TopLeft`\
 `       point     BotRight`
@@ -293,7 +293,7 @@ extra bytes present. Accordingly we have to have a way of omitting this
 extra information, and we do this with the '`record{ ...
 }`' syntax, as follows:
 
-```mops
+```shell
 `:class  RECT  super{ object }`\
 `record`\
 `{      point     TopLeft`\

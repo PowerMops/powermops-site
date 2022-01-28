@@ -283,7 +283,7 @@ Now, you need to be able to specify which words in your shared library
 you want to be callable from the outside world. These are 'entry
 points' to your library. You declare them like this:
 
-```mops
+```shell
 `:entry  myEntry  { parm1 parm2 %parm3 -- result }`\
 `       <your code> `\
 `;entry`\

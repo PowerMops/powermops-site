@@ -198,7 +198,7 @@ numbers only within the plus-or-minus two-billion range. Prove it now by
 entering three-billion (a 3 and nine zeros) on the stack. Sure enough,
 the stack display will show:
 
-```mops
+```shell
 Stack:  depth 1
 -1294967296
 ```
@@ -254,7 +254,7 @@ all capital letters of the alphabet are numbered from 65 to 90, it is
 possible to create a `DO`\...`LOOP` that
 instantly prints those letters on the screen:
 
-```mops
+```shell
 `: ALPHABET  91 65 DO  i emit cr  LOOP ;`\
 ```
 
@@ -263,7 +263,7 @@ character that is referenced by its ASCII number. If you want to put a
 particular ASCII character value on the stack, you can use the Mops word
 `&` ("ampersand"). Try typing:
 
-```mops
+```shell
 & c . cr
 99
 ```
@@ -281,7 +281,7 @@ value for 'c'. Other Mops words that might go along with
 Here's a use of `SPACES` in a modified alphabet
 definition to demonstrate its power:
 
-```mops
+```shell
 : ALPHABET2  91 65 DO  i dup  64 -  spaces  emit cr  LOOP ;
 ```
 

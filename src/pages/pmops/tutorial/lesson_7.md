@@ -61,7 +61,7 @@ the screen.
 
 The subclass definition looks like this:
 
-```mops
+```shell
 `:class  RNDRECT  super{ rect }`\
 `       point     Ovalsize`
 

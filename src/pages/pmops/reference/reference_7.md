@@ -14,7 +14,7 @@ PowerMops, you *must* use this syntax, since the old syntax (call xxxx)
 isn't supported any more, as indeed it couldn't be on the PowerPC.
 Here's an example of a word to set the cursor:
 
-```mops
+```shell
 `syscall GetCursor              \ Note: these are CASE-SENSITIVE!`\
 `syscall SetCursor`
 
@@ -178,7 +178,7 @@ C:
 
 Mops:
 
-```mops
+```shell
 `syscall InvertRoundRect`
 
 `rect   myRect                  \ declare a rectangle object`
@@ -247,7 +247,7 @@ Here's an example of a callback routine, taken from the class
 
 PowerMops:
 
-```mops
+```shell
 `' NewControlActionUPP  ' DisposeControlActionUPP`\
 `:callback  CtlProc  { ^ctl part# -- }  \ on PPC, callback parms must be named`\
 `   part#  ctlExec`\
@@ -256,7 +256,7 @@ PowerMops:
 
 68k Mops:
 
-```mops
+```shell
 `:proc CtlPROC      \  ( ^ctl int:part# -- )`\
 `   word0  nip  ctlExec`\
 `;proc`\
@@ -326,7 +326,7 @@ call the routine you provide with a pointer the the dialog (32-bit) and
 the number of the item (16-bit) on the stack. Your
 `:PROC` might look like this:
 
-```mops
+```shell
 `:proc mydrawitemproc ( dlgptr w:item -- )`\
 `       i->l                 \ convert 16-bit to 32-bit`\
 `       MyDrawItemWord`\

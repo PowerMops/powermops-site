@@ -215,7 +215,7 @@ If you look at the source code listing for the superclass
 You'll notice that `wArray` is defined as an *indexed
 class*\<nowiki\>:\</nowiki\>
 
-```mops
+```shell
 `:class WARRAY  super{ indexed-obj }  2 indexed`\
 ```
 

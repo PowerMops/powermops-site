@@ -165,7 +165,7 @@ before they can be entered into Mops's postfix, integer arithmetic
 environment. For example, you may find yourself confronted with having
 to include the following formula in a Mops program:
 
-```mops
+```shell
 1.25 * 12 * 50
 ----------------
       10

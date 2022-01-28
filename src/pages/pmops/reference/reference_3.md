@@ -44,7 +44,7 @@ scalar and array classes differ only in the array-size value that
 specifies the number of indexed elements the object is to have. Some
 examples are:
 
-```mops
+```shell
        Var             MAXTEMP
        Uint            MASK_1
        Handle          BUFFER4
@@ -86,7 +86,7 @@ The optional form `TEMP { \... }` (with white space
 characters after the `TEMP`) is equivalent to
 `TEMP{ \... }` . A syntax example:
 
-```mops
+```shell
 Temp{                  Var          AVARIABLE
        register        Uint         AUINTEGER
        9               bArray       ABARRAY
@@ -112,13 +112,13 @@ needed class information, and that in the case of a
 appear within a DO loop that instantiates some required number of
 same-class instances.
 
-```mops
+```shell
 (1)    objHandle   SHORTLIFE_OBJ               \ Declaration of handle for object
        ['] Fugit  newObj: SHORTLIFE_OBJ        \ Creation of Fugit-subclass
                                                \ instance
 ```
 
-```mops
+```shell
 (2)    handleList   BUNCH_OF_OBJS              \ Declaration of a list of implicit
                                                \ handles
 
@@ -199,7 +199,7 @@ few simple forms. All messages conforming to that syntax are subject to
 early binding, i.e., complete resolution at compile time, the standard
 for Mops objects and messages. Some examples are:
 
-```mops
+```shell
 " A Window Title"  new:     MyWind2
          elemIdx   at:      stateArray
                    update:  theScreen

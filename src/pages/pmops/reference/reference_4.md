@@ -120,7 +120,7 @@ thing.
 You can cause late binding to occur in a particular message with a very
 simple modification of your source:
 
-```mops
+```shell
 get: myint         \\ early binding
 get: [ myint ]     \\ late binding
 ```
@@ -134,20 +134,20 @@ code sequence that generates an address of a valid object at runtime.
 This can be a single Mops word, a sequence of words, messages to other
 objects, or anything else. Some examples:
 
-```mops
+```shell
 get: [ dup ]    \\ message receiver is the object whose address
                 \\ was duplicated on the data stack
 ```
-```mops
+```shell
 get: [ i at: myArray ]     \\ receiver is the object whose address is
                            \\ at element i in myArray
 ```
-```mops
+```shell
 0 value theObject          \\ create a Value to hold an object address
 myInt -> theObject         \\ place the address of myInt in theObject
 get: [ theObject ]         \\ receiver is myInt via theObject
 ```
-```mops
+```shell
 get: [ ]                   \\ receiver is object whose addr is top
                            \\ of stack
 ```
@@ -160,7 +160,7 @@ otherwise.
 To help avoid (or maybe to add to) confusion, we have
 added two more ways to specify a late bind
 
-```mops
+```shell
 method: **
 method: []
 ```
@@ -183,7 +183,7 @@ to make this operation look neater, e.g
 
 Thus the following are all equivalent:
 
-```mops
+```shell
 aMethod: [self]
 aMethod: [ self ]
 self aMethod: **
@@ -449,7 +449,7 @@ object won't be unceremoniously moved while we are doing things with
 it. Remember to `unlock: anObjHdl` when finished. So,
 using the above example, you can access the object thus:
 
-```mops
+```shell
 mssg1: [ get: anObjHdl ]
        ...
        unlock: anObjHdl
@@ -499,7 +499,7 @@ the pointer points to, with early binding (since we know the class at
 compile time). An object pointer is a 'low-level' entity, rather like
 a `Value`. The syntax for object pointers is:
 
-```mops
+```shell
 objPtr anObjPtr  class_is theClass
 `               ...
 
@@ -537,7 +537,7 @@ object without any selector. Alternatively, if you already have the cfa
 of the object, use the word `>OBJ` to convert it to
 the object address. So, either of the following will work:
 
-```mops
+```shell
 anObj -> anObjPtr
 
 ' anObj >obj -> anObjPtr
@@ -597,7 +597,7 @@ ivars.
 
 They're declared like this:
 
-```mops
+```shell
 class myClass super{ mySuper }
        var     oneVar
 static
@@ -617,7 +617,7 @@ matter what object you are in, and similarly for
 Public ivars can be accessed from outside the class. They're declared
 this way:
 
-```mops
+```shell
 class myClass super{ mySuper }
 public
        var     aVar

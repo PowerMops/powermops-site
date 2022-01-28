@@ -14,7 +14,7 @@ Assembler colon definitions
 
 You write a code definition thus:
 
-```mops
+```shell
 `:ppc_code  someName`\
 `       </nowiki><var><ppc instructions></var><nowiki>`\
 `;ppc_code`\
@@ -213,7 +213,7 @@ Finally, here's a short example, from the file
 "`pnuc1`" (in 'PPC source'). This is the definition
 of `PICK`.
 
-```mops
+```shell
 `:ppc_code PICK`\
 `       r4      0               cmpi,       \is it 0 pick?`\
 `  eq if,`\

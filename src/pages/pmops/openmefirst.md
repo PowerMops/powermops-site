@@ -38,7 +38,7 @@ the editor! Here's how.
 Place the cursor at the end of the following line and press `<enter>`
 (If your keyboard does not have an enter then press `<shift-return>`).
 
-```mops
+```shell
 cr ." Hello World!"
 ```
 
@@ -50,7 +50,7 @@ how you can easily execute multiple lines of text or just portions of
 text. Try hiliting the following three lines, all three lines at the
 same time, and executing them by pressing `<enter>`:
 
-```mops
+```shell
 cr ." Now is the time"
 cr ." for all good people"
 cr ." to come to the aid of their country."
@@ -81,7 +81,7 @@ command-2. Try doing both now. (You can ignore the momentary flash of
 Now let's try something a little more interesting. Execute the
 following line:
 
-```mops
+```shell
 window w test: w
 ```
 
@@ -92,7 +92,7 @@ Mops very easy and very powerful.
 
 Now execute the following:
 
-```mops
+```shell
 30 50 MoveTo  ." Hello World!"
 ```
 
@@ -162,7 +162,7 @@ when the editor window is set to Console mode:
 
 Place the cursor at the end of the following line and press `<enter>`:
 
-```mops
+```shell
 cr ." Hello World!"
 
 33 45 + .
@@ -307,7 +307,7 @@ handle the 64-bit stack cells.
 
 The following new words and classes are added:
 
-```mops
+```shell
 z@  ( addr -- n )      Fetches 64-bit value at address.
 z!  ( n addr -- )      Stores 64-bit n at address.
 
@@ -430,7 +430,7 @@ You set up Objective-C calls this way. If you are familiar with the
 syntax for calling shared libraries and know some Objective-C, this
 should be quite intuitive.
 
-```mops
+```shell
 need  CocoaCalls    load the file you need
 
 @class  myClass         declares a class

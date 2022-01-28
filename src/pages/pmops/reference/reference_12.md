@@ -61,7 +61,7 @@ objects in all respects, except that they only exist within one
 definition (or local section), and have no storage allocated otherwise.
 The syntax is as in this example:
 
-```mops
+```shell
 `: SomeWord`\
 `temp{  int     anInt`\
 `       var     aVar`\
@@ -255,7 +255,7 @@ An important example of forward referencing is the word
 classes and modules to check the return code from file and other I/O
 operations:
 
-```mops
+```shell
 forward        I/O_ERR         \ ( err# -- )  Call when there's an I/O error.
 
 : OK?          \ ( rc -- )  A useful word to use after an I/O op.
@@ -397,7 +397,7 @@ special word you define --- a word that reads a single character
 from disk --- all Mops words that accept keyboard input will then
 take their input from disk, instead of from the keyboard. For example:
 
-```mops
+```shell
 : diskKey Here 1 read: ffcb drop       \ get 1 character from disk
        here c@ ;                       \ place it on the stack
 
@@ -631,7 +631,7 @@ works, so that there's no performance penalty whatever.
 You may specify that a definition or method is to be compiled inline
 whenever it is used. This allows faster execution. The syntax is:
 
-```mops
+```shell
 : XXX inline{ <some code>} ;
 ```
 
@@ -643,14 +643,14 @@ source text for `<some code>` as a string, and
 to our optimization, which is why we took this approach. This syntax is
 really equivalent to
 
-```mops
+```shell
 : XXX " <some code>" evaluate ; immediate
 ```
 
 but the syntax is probably clearer. It also has advantages when used in
 methods. The syntax for an inline method is as you would expect:
 
-```mops
+```shell
 `:m YYY:`\
 `       inline{ <some code>}`\
 `;m`\

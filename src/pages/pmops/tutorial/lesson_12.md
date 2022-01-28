@@ -49,7 +49,7 @@ run on Mops. For this example, we'll put the code for the
 `IF`\...`THEN` statement inside a colon
 definition and compile it before we can run it. Type the following:
 
-```mops
+```shell
 `: TEST`\
 `       IF  ." There is a non-zero number on the stack."`\
 `       THEN  cr ;`\
@@ -98,7 +98,7 @@ stack is non-zero before it makes any decision. Now redefine
 `TEST` so it takes into account the `ELSE`
 provision.
 
-```mops
+```shell
 `: TEST`\
 `       IF    ." Non-zero number on stack."`\
 `       ELSE  ." Zero on stack."`\
@@ -172,7 +172,7 @@ again so that it reinforces the way the
 construction responds to `TRUE` and
 `FALSE` flags existing in the stack.
 
-```mops
+```shell
 `: TEST`\
 `       IF    ." True!"`\
 `       ELSE  ." False!"`\
@@ -183,7 +183,7 @@ Now, place the numbers (zero) and 4 on the stack, leaving the the true
 and false flags from before underneath them on the stack. Then run the
 test four times:
 
-```mops
+```shell
 0 4`
 
 test
@@ -257,7 +257,7 @@ meets. To do this, you'll nest several
 `IF`\...`THEN` statements inside one
 another:
 
-```mops
+```shell
 `: IFTEST  { n -- }`\
 `       n 0<`\
 `       IF    ." less than "`\
@@ -440,7 +440,7 @@ Mops' shortcut for this multiple-decision making is the
 `CASE` structure. Using the example above, you could
 define a word like this:
 
-```mops
+```shell
 `: CASETEST  ( n --  )  \ Print TWO, SIX, SEVEN, or OTHER`\
 `       CASE`\
 `               2  OF  ." TWO"    ENDOF`\

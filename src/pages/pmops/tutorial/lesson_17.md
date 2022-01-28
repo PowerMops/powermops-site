@@ -13,7 +13,7 @@ called 'Turtle', and is in 'Demo folder'.
 
 Here's the whole thing first. We'll then go through it in detail.
 
-```mops
+```shell
 `\ Turtle Graphics Objects for Demo`
 
 `need   sin`
@@ -223,7 +223,7 @@ necessary adjustments behind the scenes. This was something we had to do
 for the PowerPC in any case, since the lengths of parameters can be
 different.
 
-```mops
+```shell
 `:class PEN super{ object }`\
 `...`\
 ```
@@ -276,7 +276,7 @@ methods definitions of this class. If you were building this class from
 scratch, you would probably be inserting new instance variables in this
 list as you find need for them while defining methods.
 
-```mops
+```shell
 `:m GET:    ^base GetPenState ;m                \ Save state here`\
 `:m SET:    ^base SetPenState ;m                \ Restore from here`\
 ```
@@ -300,7 +300,7 @@ the data in Scripto1. Later, when you need to work with Scripto1, the
 SET: command reminds the Toolbox where Scripto1's position was the last
 time.
 
-```mops
+```shell
 `:m TURN:             ( deg -- )    +: direction ;m`\
 `&#133;`\
 `&#133;`\
@@ -384,7 +384,7 @@ pen state parameters (the ones the Toolbox starts up with) from the
 Toolbox into an object's first five ivars (get: self). Finally, the
 maxReps ivar for the object is set to 200.
 
-```mops
+```shell
 `:m SPIRAL: { \ dist degrees delta reps -- }`\
 `&#133;`
 
@@ -445,13 +445,13 @@ This means, of course, that the program will have to load values into
 initLen, deltaLen, and deltaDeg before a SPIRAL: selector message can be
 sent. But that's why PUTRANGE: was defined earlier.
 
-```mops
+```shell
 `;class`\
 ```
 
 ends the definition of class Pen.
 
-```mops
+```shell
 `\ Define a Smalltalk Polygon object as subclass of Pen`
 
 `:class POLY super{ pen }`\
@@ -463,7 +463,7 @@ subclass of Pen, so it inherits the methods and ivars of Pen. Therefore,
 if you create an object of the class Poly, you can still issue messages
 with selectors like MOVE: and HOME:.
 
-```mops
+```shell
 `int    Sides           \ # of sides in the Polygon`\
 `int    Length          \ Length of each side  `\
 ```
@@ -474,7 +474,7 @@ the list of ivars inherited from class Pen. One ivar is for the number
 of sides of a polygon object created from this class. The other is the
 length (in pixels) of each side (all sides are of equal length).
 
-```mops
+```shell
 `:m DRAW: { \ turnAngle -- }`\
 `       360 get: sides /   -> turnAngle`\
 `       get: sides 0`\
@@ -492,7 +492,7 @@ Length MOVE: Self). Then the direction is changed by the amount of
 turnAngle. This draw\...turn action is repeated until the index equals
 the limit of the loop.
 
-```mops
+```shell
 `:m SIZE:       \ ( len #sides -- )     Stores sides and goes to Home`\
 `       get: self put: sides put: length`\
 `       home: self   up: self ;m`\
@@ -509,7 +509,7 @@ positions an object to the home position (as defined by the HOME: method
 in class Pen) and orients it facing to the top of the screen (from the
 UP: method also in class Pen).
 
-```mops
+```shell
 `:m SPIN: { \ reps -- } \ Spins a series of polygons around a point`\
 `       home: self 10 get: initLen size: self`\
 `       0 -> reps`\
@@ -524,7 +524,7 @@ center point to make them look as if they are spinning. Notice that this
 method has one local variable, reps, which is used as a counter for the
 number of repetitions through the BEGIN\...WHILE\...REPEAT loop.
 
-```mops
+```shell
 ` :m CLASSINIT: \ Default Poly is 30-dot triangle`\
 `       30 3 size: self 100 put: maxReps ;m`\
 ```
@@ -534,7 +534,7 @@ CLASSINIT:. Unless otherwise specified, a Poly object will be a polygon
 with 3 sides, each 30 pixels long. This method also sets the ivar,
 maxReps, to 100.
 
-```mops
+```shell
 `\ Create a pen named Bic`\
 `Pen    BIC`
 
@@ -587,7 +587,7 @@ homeLocation in the center of the screen (performed by method CENTER:),
 and c) draws the Lissajous figures (method LJ:). Here's one way to do
 it:
 
-```mops
+```shell
 : lj  cls  putrange: bic
             250 160 center: bic
             lj: bic   cr   ;
@@ -604,7 +604,7 @@ cursor back on).
 Now, define a new word that turns the cursor off before doing the
 Lissajous figures, and turns it on when the drawing is completed:
 
-```mops
+```shell
 `: cleanlj -curs lj +curs ;`\
 ```
 

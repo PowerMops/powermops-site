@@ -74,7 +74,7 @@ the powers of Mops to help you. For example, while you are experimenting
 with parameters, you can place a special method inside class Pen that
 fetches the current values of the parameters from an object:
 
-```mops
+```shell
 `:m INSPECT:            \ (  --  HiPat  LoPat  mode w h x y )`\
 `            get: PnPatHi  get: PnPatLo  get: PnMode`\
 `            get: PnSize  get: PnLoc   ;m`\
@@ -82,7 +82,7 @@ fetches the current values of the parameters from an object:
 
 Send a message like:
 
-```mops
+```shell
 inspect: Bic
 ```
 
@@ -97,7 +97,7 @@ integer of the pair in each variable, PnPatHi and PnPatLo, draw the
 object with a white pen, and then restore the pen to black.\<br /\> The
 UNDRAW: method could look like this:
 
-```mops
+```shell
 `:m UNDRAW:            \ Erases object before moving it and restore black pen`\
 `            0 0  put: PnPatHi  put: PnPatLo  draw: self`\
 `            -1 -1  put: PnPatHi  put: PnPatLo  ;m`\
@@ -108,7 +108,7 @@ UNDRAW: method could look like this:
 Here is the listing of Mops definitions added to the end of the modified
 Turtle listing:
 
-```mops
+```shell
 `\ Create Logo-like environment`
 
 `poly turtle                   \ the name of our Logo object`\

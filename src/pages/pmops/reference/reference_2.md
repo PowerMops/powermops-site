@@ -138,7 +138,7 @@ clearly the structure of the problem being solved.
 Now, let's take a closer look at the mechanics of building a new class.
 A class definition has the following skeletal structure:
 
-```mops
+```shell
 :class  ClassName  super{ super1 ... superN } [ n indexed ] [ large ]
        [ instance variable names ] 
        [ method definitions ] 
@@ -242,7 +242,7 @@ save ivar dictionary space by using the `BYTES`
 pseudo-class to allocate a string of bytes with a single name. For
 instance, the following ivar declaration:
 
-```mops
+```shell
 var    v1
 20     bytes   junk
 var    v2
@@ -287,7 +287,7 @@ After all of the instance variables are declared, you must write the
 methods for the new class. A method definition takes the form (here
 brackets denote optional sections):
 
-```mops
+```shell
 :m SELECTOR: [ { named args \ local vars -- results } ] 
        [ method code ]  ;m
 ```
@@ -337,7 +337,7 @@ area, and then perform some kind of fetch or store operation at that
 address. The get: method for class LongWord, for instance, could have
 been defined in this manner:
 
-```mops
+```shell
 :m GET: ^base @ ;m
 ```
 

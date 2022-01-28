@@ -161,7 +161,7 @@ parent view moves
 Let's look at how we've set up these quantities for the views in our
 grDemo application. Look at the CLASSINIT: method in class Indicator:
 
-```mops
+```shell
 `:m CLASSINIT:`\
 `      parCenter   parTop      parCenter   parBottom   setJust: theVscroll`\
 `      -8          0           8           -20         setBounds: theVscroll`\

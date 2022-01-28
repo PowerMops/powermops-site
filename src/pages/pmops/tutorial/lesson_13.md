@@ -53,7 +53,7 @@ them inside colon definitions to see how they operate. Let's define a
 new word that adds up 10 numbers from the stack by repeatedly performing
 nine addition operations:
 
-```mops
+```shell
 `: ADDTEN  ( n1 ... n10 -- sum )`\
 `       9 0 DO  +  LOOP  . cr ;`\
 ```
@@ -104,7 +104,7 @@ index in any way. Here are a couple of examples to demonstrate.
 Define a word, `FIVECOUNT`, that displays a series of
 numbers from 101 to 105\<nowiki\>: \</nowiki\>
 
-```mops
+```shell
 `: FIVECOUNT  106 101 DO  i .  LOOP  cr ;`\
 ```
 
@@ -121,7 +121,7 @@ You can similarly use the index number to perform operations on a number
 passed on the parameter stack prior to execution. Consider the following
 definition:
 
-```mops
+```shell
 `: TIMESTABLES  { n -- }`\
 `       13 1 DO  n i *  .  LOOP  cr ;`\
 ```
@@ -150,7 +150,7 @@ You can even use a negative number if you wish the loop to decrement.
 
 Here's how you would use `+LOOP` to manage a countdown:
 
-```mops
+```shell
 `: COUNTDOWN`\
 `       1 10 DO  i . cr  -1 +LOOP`\
 `       ." Ignition...Liftoff!" cr ;`\
@@ -180,7 +180,7 @@ inside one another. All you have to remember is to supply one
 `LOOP` (or `+LOOP`) for each
 `DO` within the colon definition.
 
-```mops
+```shell
 `: NESTEDLOOP`\
 `       1 10 DO`\
 `               ." Loop: " i . cr`\
@@ -205,7 +205,7 @@ In other words, `J` looks up the index of the loop just
 outside the current `DO`\...`LOOP`
 construction and copies that number to the parameter stack.
 
-```mops
+```shell
 `: NESTEDLOOP2`\
 `       1 10 DO`\
 `               ." Loop " i . cr`\
@@ -235,7 +235,7 @@ word `LEAVE` is available for this purpose.
 
 Here's our countdown example again, appropriately modified:
 
-```mops
+```shell
 `: COUNTDOWN2`\
 `       1 10 DO`\
 `               i . cr`\
@@ -297,7 +297,7 @@ flag) is placed on the stack, and the loop ends. Otherwise, a FALSE flag
 is placed on the stack, and execution returns to the beginning of the
 loop.
 
-```mops
+```shell
 `: BEGINTEST`\
 `       BEGIN  key 97 =  UNTIL`\
 `       ." Loop broken." cr ;`\
@@ -338,7 +338,7 @@ stack is zero (FALSE):
 Here is a variation on our `BEGINTEST` example to show
 the new construct at work:
 
-```mops
+```shell
 `: BEGINTEST2`\
 `       ." Type a lower-case letter 'a', please." cr`\
 `       BEGIN`\
@@ -374,7 +374,7 @@ Unlike `LEAVE`, `EXIT` exits the
 `BEGINTEST` example that uses
 `EXIT`\<nowiki\>:\</nowiki\>
 
-```mops
+```shell
 `: BEGINTEST`\
 `       BEGIN`\
 `               key 97 = IF EXIT THEN`\
@@ -385,7 +385,7 @@ Unlike `LEAVE`, `EXIT` exits the
 This definion will keep running until you type either an 'a' (ASCII
 code number 97) or a 'b' (ASCII code number 98). You can also write:
 
-```mops
+```shell
 `: BEGINTEST`\
 `       BEGIN`\
 `               key 97 = IF EXIT THEN`\
@@ -420,7 +420,7 @@ is, not via `LOOP`, `+LOOP` or
 
 We'll illustrate this with the countdown example again:
 
-```mops
+```shell
 `: COUNTDOWN3`\
 `       1 10 DO`\
 `               i . cr`\

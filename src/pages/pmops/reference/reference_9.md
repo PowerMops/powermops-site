@@ -64,7 +64,7 @@ enough, the **event loop**. Mops simplifies this for you by providing a
 word, `EventLoop`, which executes this loop. The
 definition isn't very complex:
 
-```mops
+```shell
 `: EVENTLOOP`\
 `       BEGIN`\
 `               next: fevent`\
