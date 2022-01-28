@@ -3,8 +3,7 @@ title: Events
 layout: ../../../layouts/Main.astro
 ---
 
-About this chapter
-------------------
+## About this chapter
 
 This chapter describes the Mops classes and words that manage Macintosh
 events for the application. Macintosh applications are event-driven,
@@ -26,25 +25,15 @@ will be installed for each event at runtime. See also relevant sections
 [EventLoop](Reference_9#Waiting_for_Events)) of Reference
 part.
 
-  rowspan=4 style="border: thin \#aaa solid" \| [Inside Macintosh](http://developer.apple.com/documentation/macos8/mac8.html)   [Event Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-28.html)
-  ------------------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------
-  [Window Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-188.html)                                         
-  [Menu Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-89.html)                                            
-  [Control Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-297.html)                                        
-  rowspan=3 style="border: thin \#aaa solid" \| Mops:                                                                           [Windows](Lesson_20)
-  [Menus](Lesson_21)                                                                                                   
-  [Controls](Lesson_20#Controls)                                                                                       
+|Recommended reading|     |
+| --- | --- |
+|[Inside Macintosh](http://developer.apple.com/documentation/macos8/mac8.html) |[Event Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-28.html)<br>[Window Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-188.html)<br>[Menu Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-89.html)<br>[Control Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-297.html) |
+| Mops  | [Menus](/pmops/tutorial/lesson_21)<br>[Controls](Lesson_20#Controls) |
 
-  : Recommended reading
-
-  ------- --------------
-  Event   CarbonEvents
-  ------- --------------
-
-  : Source files
-
-Using events
-------------
+| Source files |              |
+| ---          | ---          |
+| Event        | CarbonEvents |
+## Using events
 
 Class Event is the core of Mops's event management. It instantiates a
 single object, fEvent, which resides in the nucleus portion of Mops's
@@ -77,24 +66,24 @@ general behavior that will be acceptable for many situations.
 
 Macintosh events are assigned a contiguous series of type codes:
 
-  Code   &nbsp;   Description
-  ------ -------- ---------------------------------------------------------
-  0      *       Null event - used to provide background processing
-  1               Mouse down - button was depressed
-  2      *       Mouse up - button was released
-  3               Key down - key was depressed
-  4      *       Key up - key was released
-  5               AutoKey - key is being held down
-  6               Update - a window must redraw a portion of its contents
-  7               Disk - a disk was inserted in a drive
-  8               Activate - a window became active or inactive
-  10     *       Network - an AppleBus event occurred
-  11     *       IODriver - a device driver event occurred
-  12     *       user-definable events
-  13              
-  14              
-  15              OS events, such as Suspend and Resume
-  23              High-level events, including AppleEvents
+| Code  | | Description
+| ------ -------- ---------------------------------------------------------
+| 0     |*| Null event - used to provide background processing
+| 1     | | Mouse down - button was depressed
+| 2     |*| Mouse up - button was released
+| 3     | | Key down - key was depressed
+| 4     |*| Key up - key was released
+| 5     | | AutoKey - key is being held down
+| 6     | | Update - a window must redraw a portion of its contents
+| 7     | | Disk - a disk was inserted in a drive
+| 8     | | Activate - a window became active or inactive
+| 10    |*| Network - an AppleBus event occurred
+| 11    |*| IODriver - a device driver event occurred
+| 12    | | 
+| 13    |*| user-definable events
+| 14    | | 
+| 15    | | OS events, such as Suspend and Resume
+| 23    | | High-level events, including AppleEvents
 
 Events marked with an asterisk (*) are events for which Mops executes
 its null-event code rather than code specific to the type of event. If
@@ -119,8 +108,7 @@ In the source file Dialog+ there is a matching word +MODELESS which
 installs the event handling that is required if there is a modeless
 dialog active.)
 
-Listening to events
--------------------
+## Listening to events
 
 The chief means by which you can cause Mops to listen to the event queue
 is by calling the Mops word KEY. This causes class Event to enter a loop
@@ -151,8 +139,7 @@ appropriate handler each time. While less familiar to most of us, this
 architecture will probably result in a simpler application in the long
 run.
 
-Specific event handling
------------------------
+## Specific event handling
 
 Null events (all event types with the * above) can be used to execute
 the Idle: method for the front window. The programmer should use a
@@ -196,125 +183,96 @@ The Activate handler determines whether the event is an Activate or
 Deactivate, and sends the appropriate late-bound Enable: or Disable:
 message to the window involved.
 
-Classes
--------
+## Classes
 
 ### Event
-
-------------------------------------------------------------------------
 
 Event associates a Toolbox event record with a dispatcher that executes
 a Mops word for each type of event received.
 
-+-----------------------------+---------------------------------------+
-| Superclass                  | Event                                 |
-+=============================+=======================================+
-| nowrap \|Instance variables |                                       |
-+-----------------------------+---------------------------------------+
-|                             |   Class   Name   description          |
-|                             |   ------- ------ -------------------  |
-|                             | ------------------------------------- |
-|                             |   int     what   The named ivars c    |
-|                             | omprise an eventRecord --- see IM |
-|                             |   var     msg                         |
-|                             |   Var     time                        |
-|                             |   var     loc                         |
-|                             |   int     mods                        |
-|                             |   int     mask                        |
-+-----------------------------+---------------------------------------+
-| Source file                 | Struct                                |
-+-----------------------------+---------------------------------------+
-| Status                      | Core                                  |
-+-----------------------------+---------------------------------------+
-| Indexed data                | None                                  |
-+-----------------------------+---------------------------------------+
-| System objects              |                                       |
-+-----------------------------+---------------------------------------+
-|                             |   Name     description                |
-|                             |   --                                  |
-|                             | ------ ------------------------------ |
-|                             |                                       |
-|                             | fEvent   The system-wide Event object |
-+-----------------------------+---------------------------------------+
+**Superclass:** Event
 
-  Inherits:   X-Array, Array, Indexed-Obj, Object
-  ----------- -------------------------------------
+**Instance variables:**
 
-  accessing
-  -----------
-  type:
-  mods:
-  msg:
-  where:
-  msgID:
-  when:
-  set:
-  polling
-  next:
-  key:
+| Class | Name |  description         |
+| ---   | ---  | ---                  |
+| int   | what | The named ivars comprise an eventRecord |
+| var   | msg  | see Inside Macintosh |
+| Var   | time |                      |
+| var   | loc  |                      |
+| int   | mods |                      |
+| int   | mask |                      |
 
-  : Methods
+**Source file:** Struct
 
-  -------------------- ---------------------------------
-  **Error messages**   See messages for class X-Array.
-  -------------------- ---------------------------------
+**Status:** Core
+
+**Indexed data:** None
+
+**System objects:**
+
+|   Name |   description                |
+| ---    | ---                          |
+| fEvent | The system-wide Event object |
+
+**Inherits:**   X-Array, Array, Indexed-Obj, Object
+
+**Methods (accessing):**
+
+|       | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        |             |
+| ---   | ---       | ---         |
+| type:	| `( -- evt )`	| Returns the type of the last event received
+| mods:	| `( -- mods )`	| Returns the value of the mods field
+| msg:	| `( -- msg )`| Returns the value of the msg field
+| where:| `( -- point )`| Returns the position of the mouse as a global, packed Toolbox Point
+| msgID:| `( -- msgID )`| Returns the high-level message ID. This is actually the same as the Loc field, but the different usage is made clear by the different name
+| when:	| `( -- ticks )`| Returns the number of ticks (1/60ths of a second ) since system startup
+| set:	| `( mask -- )`| Sets the event mask
+
+**Methods (polling):**
+
+|       | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        |             |
+| ---   | ---       | ---         |
+| next:	| `( -- … b )` |	Gets next event out of event queue and executes the appropriate action vector, which leaves a boolean on the stack. Some events (such as key events) may leave other information on the stack under the boolean, depending on the action handlers
+| key:	| `( -- key )` |	Loops and polls the event queue (via next:) until a keystroke is received. During this time, all other events will be handled automatically as they come.
+
+**Error messages:**   See messages for class X-Array.
 
 ### Mouse
-
-------------------------------------------------------------------------
 
 Mouse integrates various Toolbox calls, providing easy access to the
 mouse's position in local coordinates, the state of the mouse button,
 and whether a double-click has occurred.
 
-+-----------------------------+---------------------------------------+
-| Superclass                  | Object                                |
-+=============================+=======================================+
-| Source file                 | Event CarbonEvents                    |
-+-----------------------------+---------------------------------------+
-| Status                      | Core                                  |
-+-----------------------------+---------------------------------------+
-| nowrap \|Instance variables |                                       |
-+-----------------------------+---------------------------------------+
-|                             |   Class   Name       description      |
-|                             |   ------- ---------- ------           |
-|                             | ------------------------------------- |
-|                             |   var     last       Tic              |
-|                             | ks value when the last click occurred |
-|                             |   var     interval   Tick             |
-|                             | s between this click and the last one |
-+-----------------------------+---------------------------------------+
-| Indexed data                | None                                  |
-+-----------------------------+---------------------------------------+
-| System objects              |                                       |
-+-----------------------------+---------------------------------------+
-|                             |   Name       description              |
-|                             |   ---------- ---------------          |
-|                             |   theMouse   default mouse            |
-+-----------------------------+---------------------------------------+
+**Superclass:** Event
 
-  Inherits:   Object
-  ----------- --------
+**Source file:** Event CarbonEvents
 
-  accessing
-  -----------
-  get:
-  where:
-  click:
-  put:
+**Status:** Core
 
-  : Methods
+**Instance variables:**
+| Class |  Name    |      description      |
+| ----- |  ----    | ----------------------|
+| var   | last     | Ticks value when the last click occurred  |
+| var   | interval | Ticks between this click and the last one |
+
+**Indexed data:** None
+
+**System objects:**
+
+|Name      | description              |
+|----------| ---------------          |
+|theMouse  | default mouse            |
+
+**Inherits:** Object
+
+**Methods:**
+
+|      |                |     
+| ---  |  ---           | ---
+|get:	 | ( -- x y but )	| Returns the mouse's local position and a boolean reflecting the state of the button |
+|where:| 	( -- x y )    | Returns the mouse's current position as a local Mops point
+|click:| 	( -- b )      | Returns 2 if last click was a double-click, 1 otherwise
+|put:	 | ( ticks -- )   |Updates the click interval with the current sysTicks value 
 
 **Error messages** - None
-
-------------------------------------------------------------------------
-
-&nbsp;
-
-  ------------------------------- ------------------------------------------- ---------------------------------
-  [Files](Classes_3)   [Classes](Classes)               [Windows](Classes_5)
-  &nbsp;                          [Documentation](Documentation)   
-  ------------------------------- ------------------------------------------- ---------------------------------
-
-
-
