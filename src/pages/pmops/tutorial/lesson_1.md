@@ -1,6 +1,8 @@
 ---
 title: Starting Up
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 To start Mops, if the 'Mops &fnof;' folder is not open, double-click
@@ -150,12 +152,4 @@ Now type an undefined word again. The error message lines will again
 appear, but also notice that the stack becomes empty. This is another
 part of Mops' error handling&\#148;the stack is emptied on an error.
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- ---------------------------------
-  [Introduction](Tutorial)         [Tutorial](Tutorial)   [Lesson 2](Lesson_2)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- ---------------------------------
-
-
-
+<PrevNext />

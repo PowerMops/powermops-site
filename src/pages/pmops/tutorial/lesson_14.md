@@ -1,6 +1,8 @@
 ---
 title: Fixed-Point Arithmetic
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 The version of Mops that you've been using in this tutorial utilizes
@@ -290,3 +292,4 @@ separated by a factor of 32, regardless of the letter. This may come in
 handy when you need to convert upper to lower cases or vice versa.
 
 
+<PrevNext/>

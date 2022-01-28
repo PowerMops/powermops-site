@@ -1,6 +1,8 @@
 ---
 title: Files
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 ## About this chapter
@@ -447,4 +449,4 @@ stack.
   ------------------------------------
 
 
-
+<PrevNext />

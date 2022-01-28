@@ -1,6 +1,8 @@
 ---
 title: Predefined Classes
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 Mops comes with a large number of predefined classes that provide you
@@ -154,12 +156,4 @@ printer, producing sound, and other functions. The
 explanations of all frequently used Mops classes. You will look to these
 reference sections very often once you have completed this tutorial.
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 8](Lesson_8)             [Tutorial](Tutorial)   [Lesson 10](Lesson_10)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- -----------------------------------
-
-
-
+<PrevNext />

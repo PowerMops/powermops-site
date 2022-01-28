@@ -1,6 +1,8 @@
 ---
 title: Basic Data Structure
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 ## About this chapter
@@ -1230,12 +1232,4 @@ A call to getnew: resulted in the Mac system not being able to locate a
 resource with the current type and ID. Possibly the type or ID are
 wrong, or the correct resource file isn't open.
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- ------------------------------- ---------------------------------
-  &nbsp;                                      [Classes](Classes)   [Strings](Classes_2)
-  [Documentation](Documentation)                                   
-  ------------------------------------------- ------------------------------- ---------------------------------
-
-
-
+<PrevNext/>

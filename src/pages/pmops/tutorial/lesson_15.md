@@ -1,6 +1,8 @@
 ---
 title: Global Constants and Values
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 Assigning recognizable names to numbers is a convenient shortcut, as
@@ -70,3 +72,4 @@ So much for theory. Now it's time to pull together all the discussions
 and examples from the preceding lessons and dive into some real Mops
 applications.
 
+<PrevNext />

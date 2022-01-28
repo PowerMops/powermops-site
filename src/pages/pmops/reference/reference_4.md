@@ -1,6 +1,8 @@
 ---
 title: More About Objects
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 ## Binding
@@ -653,3 +655,5 @@ ivar. To access this from outside the class, you can't use the above
 syntax since there's no object to refer to. So the syntax is:
 
 `msg: ivar> aStaticIvar IN_CLASS myClass`
+
+<PrevNext />

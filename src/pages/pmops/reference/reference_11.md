@@ -1,6 +1,8 @@
 ---
 title: Coding V. 5.1 and Later
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 ## Introduction
@@ -226,12 +228,5 @@ generic document-style window.
   Error messages
   None
 
-------------------------------------------------------------------------
 
-  ------------------------------------------- ----------------------------------- -----------------------------------------
-  [Reference 10](Reference_10)     [Reference](Reference)   [Reference 12](Reference_12)
-  [Documentation](Documentation)                                       
-  ------------------------------------------- ----------------------------------- -----------------------------------------
-
-
-
+<PrevNext />

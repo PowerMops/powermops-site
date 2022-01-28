@@ -1,6 +1,8 @@
 ---
 title: Miscellaneous Topics
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 ## ANSI Standard
@@ -666,3 +668,5 @@ the method. Thus making a method inline saves significant time at the
 cost of a little space. The file Struct has many methods which use
 inline code, so if you look there you will see plenty of examples of how
 to do it.
+
+<PrevNext />

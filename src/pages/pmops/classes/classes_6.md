@@ -1,6 +1,8 @@
 ---
 title: Views and Controls
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 
@@ -843,12 +845,4 @@ We'll therefore omit a full listing.
   Inherits:   View, Object
   ----------- --------------
 
-------------------------------------------------------------------------
-
-  ---------------------------------- ------------------------------------------- --------------------------------
-  [ Windows](Classes_5)   [Classes](Classes)               [ Menus](Classes_7)
-  &nbsp;                             [Documentation](Documentation)   
-  ---------------------------------- ------------------------------------------- --------------------------------
-
-
-
+<PrevNext/>

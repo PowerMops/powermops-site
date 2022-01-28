@@ -1,6 +1,8 @@
 ---
 title: Windows
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 About this chapter
@@ -401,12 +403,4 @@ to be very basic indeed, you should use this class.
 
 **Error messages** - None
 
-------------------------------------------------------------------------
-
-  -------------------------------- ------------------------------------------- ----------------------------------------------
-  [Events](Classes_4)   [Classes](Classes)               [ Views and Controles](Classes_6)
-  &nbsp;                           [Documentation](Documentation)   
-  -------------------------------- ------------------------------------------- ----------------------------------------------
-
-
-
+<PrevNext />

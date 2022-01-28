@@ -1,6 +1,8 @@
 ---
 title: Modifying a Program
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 We're going to add another class. This one, however, will be a subclass
@@ -116,12 +118,4 @@ of the overall program:
 Next, you'll be introduced to the powerful building blocks of Mops: the
 [predefined classes](Classes).
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- ---------------------------------
-  [Lesson 6](Lesson_6)             [Tutorial](Tutorial)   [Lesson 8](Lesson_8)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- ---------------------------------
-
-
-
+<PrevNext />

@@ -1,6 +1,8 @@
 ---
 title: Events
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 ## About this chapter
@@ -276,3 +278,5 @@ and whether a double-click has occurred.
 |put:	 | ( ticks -- )   |Updates the click interval with the current sysTicks value 
 
 **Error messages** - None
+
+<PrevNext />

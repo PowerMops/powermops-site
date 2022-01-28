@@ -1,6 +1,8 @@
 ---
 title: Modules
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 Mops provides a facility for creating separately compilable, relocatable
@@ -140,4 +142,4 @@ any time before calling install. Do it like this:
   ------------------------------------------- ----------------------------------- ---------------------------------------
 
 
-
+<PrevNext />

@@ -1,6 +1,8 @@
 ---
 title: Powermops
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 ## Introduction
@@ -297,9 +299,4 @@ definition of `myEntry` in exactly the way you expect.
 (And of course you can have local variables in the definition as well,
 if you want.)
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- ----------------------------------- -----------------------------------------
-  [Reference 9](Reference_9)       [Reference](Reference)   [Reference 11](Reference_11)
-  [Documentation](Documentation)                                       
-  ------------------------------------------- ----------------------------------- -----------------------------------------
+<PrevNext />

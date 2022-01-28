@@ -1,6 +1,8 @@
 ---
 title: Memory Organization
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 We will now move on to some of Mops' more advanced capabilities. Some
@@ -288,4 +290,4 @@ occupy is allocated dynamically.
   ------------------------------------------- ----------------------------------- ---------------------------------------
 
 
-
+<PrevNext/>

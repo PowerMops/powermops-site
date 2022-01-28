@@ -1,6 +1,8 @@
 ---
 title: Mapping Class-Object Relationships
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 An object-oriented language like Mops builds programs around the same
@@ -329,3 +331,4 @@ your code to understand it (and you yourself for that matter, when in a
 few weeks time when it's no longer fresh in your mind). But in the end,
 the choice is up to you.
 
+<PrevNext/>

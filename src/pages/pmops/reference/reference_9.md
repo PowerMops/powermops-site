@@ -1,6 +1,8 @@
 ---
 title: Implementing an Application
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 Once you have a blueprint for the class hierarchy of a program, you're
@@ -493,3 +495,4 @@ a data fork icns resource file, do the following:
 file 'info.plist'. You can change it by editing the info.plist file.
 
 
+<PrevNext />

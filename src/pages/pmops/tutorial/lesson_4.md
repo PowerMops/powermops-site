@@ -1,6 +1,8 @@
 ---
 title: Mops and OOP
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 Armed with a basic knowledge of Mops' stack, you're now ready for an
@@ -175,12 +177,4 @@ your figures, which John has to himself:
 
 ![](/pmops/InheritMethod.png "InheritMethod.png")
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- ---------------------------------
-  [Lesson 3](Lesson_3)             [Tutorial](Tutorial)   [Lesson 5](Lesson_5)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- ---------------------------------
-
-
-
+<PrevNext />

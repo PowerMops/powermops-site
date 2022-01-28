@@ -1,9 +1,9 @@
 ---
-title: FAQ
+title: Installing an Application
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
-Installing an Application
--------------------------
 
 In this lesson we will install our Curves program as a doubleclickable
 application.
@@ -207,3 +207,5 @@ objects you create.
 
 Just as with a spoken language, the more you practice with Mops the
 faster You'll be comfortable with it.
+
+<PrevNext/>

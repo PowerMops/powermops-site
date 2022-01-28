@@ -1,6 +1,8 @@
 ---
 title: Strings in Mops
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 String Types
@@ -129,4 +131,4 @@ Mops itself when interpreting or compiling.
   ------------------------------------------- ----------------------------------- ---------------------------------------
 
 
-
+<PrevNext />

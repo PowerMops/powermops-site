@@ -1,9 +1,9 @@
 ---
-title: FAQ
+title: Building a Turtle Graphics Program
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
-Building a Turtle Graphics Program
-==================================
 
 Now we can look at a graphics program, called Turtle. It defines a
 number of complex graphics curves and a way we'll be able to create a
@@ -653,12 +653,4 @@ messed things up. Therefore, define a Mops word that:
 
 `: draw cls -curs draw: anna cr +curs ;`
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 16](Lesson_16)           [Tutorial](Tutorial)   [Lesson 18](Lesson_18)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- -----------------------------------
-
-
-
+<PrevNext />

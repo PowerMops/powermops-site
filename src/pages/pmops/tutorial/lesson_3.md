@@ -1,6 +1,8 @@
 ---
 title: Stack Notation
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 Before we go further, you should become acquainted with a special
@@ -202,3 +204,4 @@ substitute readily identifiable names for the values on the stack and
 use them at will. The stack will become almost invisible to you. It is
 important, however, to understand the stack fundamentals just the same.
 
+<PrevNext />

@@ -1,9 +1,9 @@
 ---
-title: FAQ
+title: Conditionals
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
-Conditionals
-============
 
 A decision (both the human and the computer kind) is little more than
 the result of a test of conditions. For example: if it is true that the
@@ -473,3 +473,4 @@ default if nothing else does.
 > the stack) to be dropped by the `ENDCASE`.
 
 
+<PrevNext/>

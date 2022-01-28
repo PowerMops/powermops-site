@@ -1,6 +1,8 @@
 ---
 title: Strings
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 ## About this chapter
@@ -432,3 +434,5 @@ shouldn't affect your source code at all
 
 **Error messages** - None
 ```
+
+<PrevNext/>

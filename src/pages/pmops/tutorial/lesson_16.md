@@ -1,9 +1,9 @@
 ---
-title: FAQ
+title: Sine Table Demo
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
-Sine Table Demo
-===============
 
 One of the best ways to learn the fine points of Mops programming is to
 study existing programs and then work slowly to customize them by
@@ -609,12 +609,4 @@ then create an object of class `Angle`. Then,
 `PUT:` a value in the object, then send messages to that
 object to calculate the sine and cosine of the value.
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 15](Lesson_15)           [Tutorial](Tutorial)   [Lesson 17](Lesson_17)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- -----------------------------------
-
-
-
+<PrevNext />

@@ -1,8 +1,9 @@
 ---
-title: FAQ
+title: Windows
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
-# Windows
 
 Let's now return to the listing for grDemo. After we set the bounds and
 justifications for the `dPane` and the three
@@ -365,3 +366,5 @@ bar's actions ivars. The syntax here, `xts{ ... }` is a
 shortcut for entering the xt of each action handler word. Addresses for
 each definition are passed as parameters to the scroll bars' actions
 ivars.
+
+<PrevNext/>

@@ -1,6 +1,8 @@
 ---
 title: Loops
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 Computer programs frequently need certain operations to be repeated a
@@ -443,3 +445,4 @@ entirely.
 > have to force quit the Mops application.
 
 
+<PrevNext/>

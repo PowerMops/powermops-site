@@ -1,9 +1,9 @@
 ---
-title: FAQ
+title: Create a Mini-Logo Language
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
-Create a Mini-Logo Language
----------------------------
 
 The framework established by classes Pen and Poly allow you to create a
 miniature version of the Logo language, which controls the position and
@@ -189,3 +189,4 @@ Mops' predefined classes more closely, with the help of an extension of
 the Turtle program that adds Macintosh-like features to it, such as
 scroll bars, mouse input, windows, and menus.
 
+<PrevNext/>

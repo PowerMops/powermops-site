@@ -1,6 +1,8 @@
 ---
 title: Objects and Their Messages
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 Now we come to creating an object of class `Rect` and
@@ -177,12 +179,4 @@ Both relationships cascade through the hierarchy of a Mops program
 independently of each other. That will become even clearer as we make
 one further extension to the example above.
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- ---------------------------------
-  [Lesson 5](Lesson_5)             [Tutorial](Tutorial)   [Lesson 7](Lesson_7)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- ---------------------------------
-
-
-
+<PrevNext/>

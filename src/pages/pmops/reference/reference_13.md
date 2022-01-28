@@ -1,6 +1,8 @@
 ---
 title: Utility Modules
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 The Mops system contains several modules providing general functions
@@ -199,12 +201,4 @@ code starts by purging `init\_actions` of any xts above
 the current top of the dictionary. This prevents
 `init\_actions` from getting invalid xts in it.
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- ----------------------------------- -----------------------------------------
-  [Reference 12](Reference_12)     [Reference](Reference)   [Reference 14](Reference_14)
-  [Documentation](Documentation)                                       
-  ------------------------------------------- ----------------------------------- -----------------------------------------
-
-
-
+<PrevNext/>

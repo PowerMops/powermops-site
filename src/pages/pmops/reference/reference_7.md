@@ -1,6 +1,8 @@
 ---
 title: Calling the Toolbox
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 Toolbox calls are calls you make to the Macintosh Operating System.
@@ -346,3 +348,5 @@ a Toolbox True (1), if necessary. You can do this with the word
 `TBOOL`, as in `TRUE Tbool`. As this
 messes up the stack as far as Mops is concerned, you do it right at the
 end of your `:proc`.
+
+<PrevNext />

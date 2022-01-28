@@ -1,6 +1,8 @@
 ---
 title: The Stack
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 Type the numbers 7, 4, and 1 on one line with a space between them:
@@ -133,3 +135,5 @@ Mops lets you perform all these manipulations in a simpler form as a single line
 ```
 
 The line of instructions contains the same commands as the step-by-step method, but is much easier to type in. The only thing you miss along the way is a step-by-step readout of the stack display. But after all, it's the answer that should be important, not the momentary contents of the stack.
+
+<PrevNext />

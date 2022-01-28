@@ -1,9 +1,9 @@
 ---
-title: FAQ
+title: Specialized Stack and Arithmetic Operations
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
-Specialized Stack and Arithmetic Operations
-===========================================
 
 This is a good time to learn several other basic Mops operations.
 They're rather simple, so we may as well get them out of the way now.
@@ -210,12 +210,4 @@ stack gymnastics). And because named parameters and local variables are
 more intuitive, there is less chance of making a mistake in the first
 place.
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 10](Lesson_10)           [Tutorial](Tutorial)   [Lesson 12](Lesson_12)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- -----------------------------------
-
-
-
+<PrevNext />

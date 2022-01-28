@@ -1,6 +1,8 @@
 ---
 title: Menus
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 About this chapter
@@ -386,12 +388,4 @@ build and draw the menu bar via messages sent by the menu text loader.
 
 **Error messages** - None
 
-------------------------------------------------------------------------
-
-  -------------------------------------------- ------------------------------------------- -----------------------------------
-  [Views and Controls](Classes_6)   [Classes](Classes)               [ Graphics](Classes_8)
-  &nbsp;                                       [Documentation](Documentation)   
-  -------------------------------------------- ------------------------------------------- -----------------------------------
-
-
-
+<PrevNext/>

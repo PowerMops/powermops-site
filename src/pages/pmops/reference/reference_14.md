@@ -1,6 +1,8 @@
 ---
 title: Technical Section
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 This chapter is intended for hackers, or people who want to understand
@@ -580,12 +582,4 @@ at all in doing so. If you have an application which is allocating a lot
 of dynamic memory and not calling the event loop very often, you may
 want to do this.
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- ----------------------------------- -----------------------------------------
-  [Reference 13](Reference_13)     [Reference](Reference)   [Reference 15](Reference_15)
-  [Documentation](Documentation)                                       
-  ------------------------------------------- ----------------------------------- -----------------------------------------
-
-
-
+<PrevNext />

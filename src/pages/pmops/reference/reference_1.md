@@ -1,6 +1,8 @@
 ---
 title: Mops and QuickEdit
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 ## The Mops Menu Bar
@@ -219,5 +221,4 @@ In QE, there is now a **Mops** menu with a number of commands:
     command. If Mops is running, it will open the file with that name
     (if it exists).
 
-
-
+<PrevNext />

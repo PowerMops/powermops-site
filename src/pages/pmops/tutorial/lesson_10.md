@@ -1,9 +1,9 @@
 ---
-title: Lesson 10
+title: Defining New Words
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
-
-## Defining New Words
 
 We said earlier that you can add words to the Mops dictionary while
 building a program. In fact, that is what programming in Mops is all
@@ -270,3 +270,4 @@ operation to produce the result.
 > beginning of a definition.
 
 
+<PrevNext />

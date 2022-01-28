@@ -1,9 +1,9 @@
 ---
-title: FAQ
+title: Menus
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
-Menus
-=====
 
 A Mops program uses menus which are stored as separate resources. This
 is the normal Mac method for defining menus, since it makes it easy for
@@ -182,12 +182,4 @@ And lastly comes the definition of the word that starts your program. It
 calls the words you've defined in the dictionary to create objects and
 let the program respond to your input.
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 20](Lesson_20)           [Tutorial](Tutorial)   [Lesson 22](Lesson_22)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- -----------------------------------
-
-
-
+<PrevNext />

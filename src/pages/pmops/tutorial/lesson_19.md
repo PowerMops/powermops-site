@@ -1,9 +1,9 @@
 ---
-title: FAQ
+title: Inside the grDemo
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
-Inside the grDemo
-=================
 
 Before we begin to explain the inner workings of the graphics
 demonstration program (grDemo), you should be familiar with its basic
@@ -305,12 +305,4 @@ can't do this at compile time, since we have to pass in the address of
 the child view we're adding, and this might be different in different
 Mops runs.
 
-------------------------------------------------------------------------
-
-  ------------------------------------------- --------------------------------- -----------------------------------
-  [Lesson 18](Lesson_18)           [Tutorial](Tutorial)   [Lesson 20](Lesson_20)
-  [Documentation](Documentation)                                     
-  ------------------------------------------- --------------------------------- -----------------------------------
-
-
-
+<PrevNext/>

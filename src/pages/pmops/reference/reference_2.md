@@ -1,6 +1,8 @@
 ---
 title: Classes and Objects
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 Building a Mops program is largely a process of defining classes of
@@ -376,3 +378,5 @@ faster to use `^ELEM1` for 1-byte elements,
 
 Finally, the message " `width: self` " will
 leave the width of an object's indexed elements on the stack.
+
+<PrevNext />

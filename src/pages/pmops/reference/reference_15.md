@@ -1,6 +1,8 @@
 ---
 title: Assembler and Disassembler
 layout: ../../../layouts/Main.astro
+setup: |
+  import PrevNext from '../../../components/PrevNext.astro';
 ---
 
 The Mops' PowerPC assembler and disassembler were originally written by
@@ -275,4 +277,4 @@ You call the disassembler with one of the following words:
   ------------------------------- ---------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
+<PrevNext />
