@@ -83,7 +83,7 @@ and '`Struct1`' (in 'Extras').
 
 These classes form the basis of much number and string (text character)
 storage and manipulation inside a Mops program. In the rectangle example
-in [Lesson 6](Lesson_6), you already saw how instance
+in [Lesson 6](/pmops/tutorial/lesson_6), you already saw how instance
 variables of one basic data structure class, `Int`, were
 used as components of coordinate `Point` objects, which
 were, in turn, used as components for a rectangle object.

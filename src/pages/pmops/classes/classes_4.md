@@ -23,14 +23,14 @@ Carbon. Classes described in this chapter are still defined in Carbon
 PowerMops. However the role of Event class object is now quite
 different. In Carbon, Event handler should be a callback routine that
 will be installed for each event at runtime. See also relevant sections
-([Callback](Reference_7#Callback_Routines),
-[EventLoop](Reference_9#Waiting_for_Events)) of Reference
+([Callback](/pmops/reference/reference_7#Callback_Routines),
+[EventLoop](/pmops/reference/reference_9#Waiting_for_Events)) of Reference
 part.
 
 |Recommended reading|     |
 | --- | --- |
 |[Inside Macintosh](http://developer.apple.com/documentation/macos8/mac8.html) |[Event Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-28.html)<br>[Window Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-188.html)<br>[Menu Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-89.html)<br>[Control Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-297.html) |
-| Mops  | [Menus](/pmops/tutorial/lesson_21)<br>[Controls](Lesson_20#Controls) |
+| Mops  | [Menus](/pmops/tutorial/lesson_21)<br>[Controls](/pmops/tutorial/lesson_20#Controls) |
 
 | Source files |              |
 | ---          | ---          |
@@ -127,7 +127,7 @@ application, and was designed to simplify Macintosh program-ming for
 those used to more conventional systems.
 
 As pointed out in [Reference
-12](Reference_12#Clearing_Nested_Stacks_-_Become), you might
+12](/pmops/reference/reference_12#Clearing_Nested_Stacks_-_Become), you might
 need to use the Mops word BECOME if you nest calls to KEY within several
 layers of code, because a menu or control choice could cause a new
 portion of the application to begin executing, and ultimately cause the

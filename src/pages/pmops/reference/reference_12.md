@@ -115,7 +115,7 @@ We provide no less than three different flavors of case statement in
 Mops; each of these is most suitable in a different situation.
 
 The first is the Eaker model, and was described [in the
-Tutorial](Lesson_12#The_CASE_Decision). We'll use expr1,
+Tutorial](/pmops/tutorial/lesson_12#The_CASE_Decision). We'll use expr1,
 exprn2 and so on to mean any code that leaves one result on the stack.
 
 `expr1`\

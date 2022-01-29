@@ -145,7 +145,7 @@ about the stack or the order of the data. When you need a datum for an
 operation, simply refer to it by the name you have assigned to it.
 
 As an example, we will use the multiply-then-divide problem described in
-[Lesson 3](Lesson_3). If you
+[Lesson 3](/pmops/tutorial/lesson_3). If you
 recall, the operation was presented as:
 
 ```shell

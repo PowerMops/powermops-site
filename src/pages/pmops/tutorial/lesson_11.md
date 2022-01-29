@@ -147,7 +147,7 @@ mind:
 definition, when two values are on the stack but their order is wrong
 for a subtraction or division. In fact, it could have been used in a
 less elegant definition for the problem cited in [ Lesson
-3](Lesson_3#Mastering_Postfix_Notation)\<nowiki\>:\</nowiki\>
+3](/pmops/tutorial/lesson_3#Mastering_Postfix_Notation)\<nowiki\>:\</nowiki\>
 
 ```shell
 ` 5 * 12 * 50`\

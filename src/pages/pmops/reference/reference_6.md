@@ -126,7 +126,7 @@ Mops itself when interpreting or compiling.
 ------------------------------------------------------------------------
 
   ------------------------------------------- ----------------------------------- ---------------------------------------
-  [Reference 5](Reference_5)       [Reference](Reference)   [Reference 7](Reference_7)
+  [Reference 5](/pmops/reference/reference_5)       [Reference](Reference)   [Reference 7](/pmops/reference/reference_7)
   [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- ---------------------------------------
 

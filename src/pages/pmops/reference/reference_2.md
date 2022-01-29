@@ -65,7 +65,7 @@ that particular method name had been declared in both
 `sup2` will be used, and the one in `sup3`
 will never be accessible within `MyClass`. In typical
 Mops fashion, we provide an out for this problem: as we saw in [Lesson
-19](Lesson_19#Positioning_Views) of the Tutorial, when
+19](/pmops/tutorial/lesson_19#Positioning_Views) of the Tutorial, when
 referring to a method of a superclass, we use the syntax
 `aMethod: super`. We can be more specific and use
 `aMethod: super> aSuperClass`, where
@@ -192,7 +192,7 @@ which are simply statements of the form:
 
   ![](/pmops/IVars.png "fig:IVars.png")
 
-  Figure 2-1---Instance Variables and Objects   Notice that the 'object' in the diagram has some 'Mops info' at the start --- as we mentioned in [Lesson 5](Lesson_5#Defining_a_Class) of the Tutorial, Mops objects have 8 bytes of extra information at the start. Part of this extra information is a pointer to the class of the object, as we show in the diagram. (We'll give the full details of this extra information in the technical section later).
+  Figure 2-1---Instance Variables and Objects   Notice that the 'object' in the diagram has some 'Mops info' at the start --- as we mentioned in [Lesson 5](/pmops/tutorial/lesson_5#Defining_a_Class) of the Tutorial, Mops objects have 8 bytes of extra information at the start. Part of this extra information is a pointer to the class of the object, as we show in the diagram. (We'll give the full details of this extra information in the technical section later).
   
 Then comes the first ivar, so this is the start of the actual data area of the object.
 

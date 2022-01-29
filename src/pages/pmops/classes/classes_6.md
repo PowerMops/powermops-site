@@ -34,7 +34,7 @@ Class Control, which in earlier versions of Mops was an independent
 class, is now a subclass of View.
 
   ------- ---------------------------------
-  Mops:   [Windows](Classes_5)
+  Mops:   [Windows](/pmops/classes/classes_5)
   ------- ---------------------------------
 
   : Recommended reading

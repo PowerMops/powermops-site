@@ -137,7 +137,7 @@ any time before calling install. Do it like this:
 ------------------------------------------------------------------------
 
   ------------------------------------------- ----------------------------------- ---------------------------------------
-  [Reference 7](Reference_7)       [Reference](Reference)   [Reference 9](Reference_9)
+  [Reference 7](/pmops/reference/reference_7)       [Reference](Reference)   [Reference 9](/pmops/reference/reference_9)
   [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- ---------------------------------------
 

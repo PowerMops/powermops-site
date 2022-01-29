@@ -21,11 +21,11 @@ of constantly having to rewrite system-level code for window management.
   [Window Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-188.html)                                         
   [QuickDraw](http://developer.apple.com/documentation/mac/QuickDraw/QuickDraw-9.html)                                            
   [Control Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-297.html)                                        
-  rowspan="5" style="border: thin \#aaa solid" \| Mops                                                                        [Window](Lesson_20.html)
-  [Controls](Lesson_20#Controls)                                                                                       
-  [QuickDraw](Classes_8)                                                                                               
-  [Toolbox Views](Reference_3)                                                                                         
-  [Resources](Reference_12#Resources)                                                                                  
+  rowspan="5" style="border: thin \#aaa solid" \| Mops                                                                        [Window](/pmops/tutorial/lesson_20.html)
+  [Controls](/pmops/tutorial/lesson_20#Controls)                                                                                       
+  [QuickDraw](/pmops/classes/classes_8)                                                                                               
+  [Toolbox Views](/pmops/reference/reference_3)                                                                                         
+  [Resources](/pmops/reference/reference_12#Resources)                                                                                  
   ------------------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------
 
   : Recommended reading
@@ -199,7 +199,7 @@ Classes
 ------------------------------------------------------------------------
 
 Window is the basic class of windows without controls. As for PowerMops,
-see also [Reference 11](Reference_11) (at present).
+see also [Reference 11](/pmops/reference/reference_11) (at present).
 
 +-----------------------------+---------------------------------------+
 | Superclass                  | GrafPort                              |

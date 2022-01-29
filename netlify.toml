@@ -10,3 +10,6 @@
   from = "/about.html"
   to = "/about/"
 
+[[redirects]]
+  from = "/pmops/classes/"
+  to = "/pmops/classes/classes_1/"

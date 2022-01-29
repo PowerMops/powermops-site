@@ -10,7 +10,7 @@ fixed-point arithmetic (also called integer arithmetic) instead of
 floating-point arithmetic. The primary difference between the two is
 that fixed-point arithmetic functions only with integers. You had a hint
 of that when you started experimenting with division in [Lesson
-3](Lesson_3#Arithmetic_Operators): the answer on
+3](/pmops/tutorial/lesson_3#Arithmetic_Operators): the answer on
 the stack was either an integer quotient or a quotient-plus-remainder
 (both of which were integers). Floating point arithmetic, on the other
 hand, allows you to enter numbers with digits to the right of the

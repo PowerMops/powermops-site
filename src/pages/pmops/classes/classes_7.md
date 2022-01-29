@@ -14,7 +14,7 @@ build your application's menus.
   rowspan=2 style="border:thin solid \#aaa" \| Inside Macintosh:                       [Event Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-28.html)
   -------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------
   [Menu Manager](http://developer.apple.com/documentation/mac/Toolbox/Toolbox-89.html)   
-  style="border:thin solid \#aaa" \| Mops:                                             [ Events ](Classes_4)
+  style="border:thin solid \#aaa" \| Mops:                                             [ Events ](/pmops/classes/classes_4)
 
   : Recommended reading
 

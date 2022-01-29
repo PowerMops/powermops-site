@@ -144,7 +144,7 @@ allow for expansion of the user dictionary, but will leave enough room
 for both the system and Mops to use on a temporary basis (dynamic heap)
 as the program executes. Exactly how much memory is to be devoted to the
 dynamic heap can be altered by the Mops Install utility, which was
-described in [Lesson 22](Lesson_22) of the Tutorial.
+described in [Lesson 22](/pmops/tutorial/lesson_22) of the Tutorial.
 
 Many parts of Mops and the Mac Operating System rely upon dynamic heap.
 For instance, when your application requires a resource, such as a font,
@@ -285,7 +285,7 @@ occupy is allocated dynamically.
 ------------------------------------------------------------------------
 
   ------------------------------------------- ----------------------------------- ---------------------------------------
-  [Reference 4](Reference_4)       [Reference](Reference)   [Reference 6](Reference_6)
+  [Reference 4](/pmops/reference/reference_4)       [Reference](Reference)   [Reference 6](/pmops/reference/reference_6)
   [Documentation](Documentation)                                       
   ------------------------------------------- ----------------------------------- ---------------------------------------
 

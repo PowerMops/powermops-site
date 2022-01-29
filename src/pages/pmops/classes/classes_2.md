@@ -17,7 +17,7 @@ utilities.
   [Inside Macintosh](http://developer.apple.com/documentation/macos8/mac8.htm)
   [Text Utilities](http://developer.apple.com/documentation/mac/Text/Text-279.html)
   [Toolbox Utilities](http://developer.apple.com/documentation/mac/Text/Text-592.html)
-  **Mops:** [ Using Strings](Reference_6)
+  **Mops:** [ Using Strings](/pmops/reference/reference_6)
   --------------------------------------------------------------------------------------
 
   : Recommended reading

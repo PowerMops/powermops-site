@@ -7,8 +7,8 @@ setup: |
 
 Assigning recognizable names to numbers is a convenient shortcut, as
 you've seen with [named input
-parameters](Lesson_10#Named_Input_Parameters) and [local
-variables](Lesson_10#Local_Variables). But as you saw, both
+parameters](/pmops/tutorial/lesson_10#Named_Input_Parameters) and [local
+variables](/pmops/tutorial/lesson_10#Local_Variables). But as you saw, both
 of those kinds of names are local, they apply only to a very limited
 section of the program, inside a definition. But Mops also has a
 provision called `VALUE` for assigning

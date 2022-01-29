@@ -8,7 +8,7 @@ setup: |
 In this lesson we will install our Curves program as a doubleclickable
 application.
 
-First, load GrDemo as we described in [Lesson 19](Lesson_19).
+First, load GrDemo as we described in [Lesson 19](/pmops/tutorial/lesson_19).
 But this time, don't start it up.
 
 > **Note for Mac OS X 10.4 users**: To avoid a QuickDraw trouble Tiger users may need to
@@ -109,7 +109,7 @@ the words we've used, so we can leave them unchanged.
 
 The way these words are handled in an installed application is quite
 simple, thanks to the mechanism of **vectors**, which we introduced in
-[lesson 20](Lesson_20#Scroll_Bar_Actions).\<br /\> A vector
+[lesson 20](/pmops/tutorial/lesson_20#Scroll_Bar_Actions).\<br /\> A vector
 is basically the same as what some Forth systems call a
 `DEFER`red word. A vector contains an address. You call a
 vector in the same way as for an ordinary word, but it is the word where

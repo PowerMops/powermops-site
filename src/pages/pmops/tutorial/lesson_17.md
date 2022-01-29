@@ -243,7 +243,7 @@ As the comment indicates, the first five instance variables are the
 components of a Macintosh Toolbox data structure, a PenState. This is
 the structure required by the calls GetPenState and SetPenState, just as
 FrameRect required a Rect ([lesson
-5](Lesson_5#Defining_a_Class)). For details on what the
+5](/pmops/tutorial/lesson_5#Defining_a_Class)). For details on what the
 PenState variables are, Inside Macintosh's Quickdraw chapter is the
 best source. There you learn that a PenState contains four variables,
 called pnLoc (a coordinate point), pnSize (a coordinate point indicating
@@ -256,7 +256,7 @@ right order.
 
 Since this is a Toolbox structure, we have to declare it as a
 68k\_record, as we discussed in [lesson
-5](Lesson_5#Defining_a_Class). Ivars declared within records
+5](/pmops/tutorial/lesson_5#Defining_a_Class). Ivars declared within records
 have no extra Mops housekeeping information between them, and this is
 what Toolbox structures require.
 

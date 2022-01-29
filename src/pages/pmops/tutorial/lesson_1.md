@@ -32,7 +32,7 @@ The Edit menu has the usual items---`Cut`,
 
 The remaining menus, List, Show, and Utilities, contain many operations
 that will be useful in the writing and debugging of Mops programs. More
-[ useful information on these menus](Reference_1) will be
+[ useful information on these menus](/pmops/reference/reference_1) will be
 discussed later.
 
 The Mops Window
@@ -137,7 +137,7 @@ The numbers on the stack didn't actually change, but are now being
 displayed in hexadecimal instead of decimal. (If you are not very
 familiar with hexadecimal numbers, you'll find [a more complete
 description in Lesson
-14](Lesson_14#Decimal,_Hex,_and_Binary_Arithmetic).) To
+14](/pmops/tutorial/lesson_14#Decimal,_Hex,_and_Binary_Arithmetic).) To
 change back to decimal, simply type
 
 `decimal</code><ENTER>`

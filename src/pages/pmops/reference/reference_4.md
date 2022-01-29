@@ -242,7 +242,7 @@ is particularly useful:
     the object address must be dynamically changed at runtime, in which
     case you could use a **vector** as message receiver. A vector is a
     special kind of `Value` that holds the execution
-    token (xt, see [Lesson 20](Lesson_20#Scroll_Bar_Actions)
+    token (xt, see [Lesson 20](/pmops/tutorial/lesson_20#Scroll_Bar_Actions)
     of the tutorial) of an executable Mops word (not an object); for
     brevity they are known as `Vect`s, and have to be
     initiated with the xt of a Mops word:`' null vect

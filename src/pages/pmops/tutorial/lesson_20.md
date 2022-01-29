@@ -59,7 +59,7 @@ window, you may do like following:
 
 `konst kFloatingWindowClass put: ivar> WindowClass in aWindowObj ...  new: aWindowObj`
 
-As for public ivars, see [Reference 4](Reference_4) (Part
+As for public ivars, see [Reference 4](/pmops/reference/reference_4) (Part
 II) of this manual.
 
 Window attributes include close box, zoomability, resizability, etc..
@@ -325,7 +325,7 @@ that it was the second scroll bar you activated. In the action handler
 definition, then, `get: [ thisCTL ]` fetches the
 previous value of the second scroll bar. The object of the
 `get:` method is determined dynamically at runtime, a
-technique explained in [ Part II ](Reference_4#Late_Binding)
+technique explained in [ Part II ](/pmops/reference/reference_4#Late_Binding)
 as **late-binding**. After the value of the second scroll bar is
 decremented by 10, a `put: [ thisCTL ]` stores the
 value in the second scroll bar's ivar before sending the update message

@@ -198,8 +198,8 @@ in the stack.
 
 Don't be discouraged by all this concern over the stack! You'll learn
 in Lesson 10 that Mops provides you with two powerful tools, [ named
-input parameters](Lesson_10#Named_Input_Parameters) and [
-local variables](Lesson_10#Local_Variables), that let you
+input parameters](/pmops/tutorial/lesson_10#Named_Input_Parameters) and [
+local variables](/pmops/tutorial/lesson_10#Local_Variables), that let you
 substitute readily identifiable names for the values on the stack and
 use them at will. The stack will become almost invisible to you. It is
 important, however, to understand the stack fundamentals just the same.
