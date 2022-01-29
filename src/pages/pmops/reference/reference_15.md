@@ -17,8 +17,8 @@ Assembler colon definitions
 You write a code definition thus:
 
 ```shell
-`:ppc_code  someName`\
-`       </nowiki><var><ppc instructions></var><nowiki>`\
+`:ppc_code  someName`\
+`       </nowiki><var><ppc instructions></var><nowiki>`\
 `;ppc_code`\
 ```
 
@@ -34,7 +34,7 @@ actual address of the first instruction. If, however, you use
 We don't provide a full rundown of the assembly syntax here; however
 the comments in the source files are fairly extensive. So if you're the
 type of person who might want to write assembly language, you'll
-probably be able to figure out what to do! &\#148;especially as the file
+probably be able to figure out what to do! &#148;especially as the file
 "`test pasm`" in the 'Module Source' folder has a
 definition containing all the PowerPC instructions supported by the
 assembler. Remember that it's a Forth-style postfix assembler. We also
@@ -45,7 +45,7 @@ the file "`setup`".
 We don't provide any way of writing a method with the assembler. This
 should never be necessary for performance, and if you really need access
 to machine-level features, you can write a
-`\<nowiki\>:ppc\_code\</nowiki\>` word and call it from
+`:ppc\_code` word and call it from
 your method.
 
 Accessing the dictionary
@@ -54,16 +54,16 @@ Accessing the dictionary
 If you need to get the address of an item in the code or data area of
 the dictionary, you can do it with this syntax:
 
-`r0     ' <var>someWord</var>   <var>dicaddr,</var>`
+`r0     ' <var>someWord</var>   <var>dicaddr,</var>`
 
 This generates an `addi` instruction, using the
 appropriate base register and offset to place the address of the
 location you want into a register. We used `r0` in this
 example, but you could have used any free register. For a location in
 the data area, remember that ticking the name of the item won't get you
-there&\#148;you have to do something like this:
+there&#148;you have to do something like this:
 
-`r0     ' <var>myValue</var> >body  <var>dicaddr,</var>`
+`r0     ' <var>myValue</var> >body  <var>dicaddr,</var>`
 
 You can execute any code you like between naming the register and
 putting `dicaddr,`. You are in execution mode, and can
@@ -91,7 +91,7 @@ registers. Remembering that the first instruction of a code definition
 starts two bytes after where the xt points, you call another code
 definition this way:
 
-`' <var>someWord</var> 2+       bl,`
+`' <var>someWord</var> 2+       bl,`
 
 The Assembler automatically converts the absolute address of the first
 instruction of `someWord`, which we generate with
@@ -216,16 +216,16 @@ Finally, here's a short example, from the file
 of `PICK`.
 
 ```shell
-`:ppc_code PICK`\
-`       r4      0               cmpi,       \is it 0 pick?`\
-`  eq if,`\
-`       r4      r3 r3           or,         \yes - copy TOS`\
-`  else,`\
-`       r5      r4 2 0 29       rlwinm,     \no- mult index by 4 by left shift`\
-`       r5      r5 -4           addi,       \and subtract 4 to get SP offset`\
-`       r4      r18 r5          lwzx,       \grab the cell`\
-`  then,`\
-`                               blr,        \and return.`\
+`:ppc_code PICK`\
+`       r4      0               cmpi,       \is it 0 pick?`\
+`  eq if,`\
+`       r4      r3 r3           or,         \yes - copy TOS`\
+`  else,`\
+`       r5      r4 2 0 29       rlwinm,     \no- mult index by 4 by left shift`\
+`       r5      r5 -4           addi,       \and subtract 4 to get SP offset`\
+`       r4      r18 r5          lwzx,       \grab the cell`\
+`  then,`\
+`                               blr,        \and return.`\
 `;ppc_code`\
 ```
 
@@ -236,12 +236,12 @@ routine, there's no need to save and restore the return address which
 is in the link register on entry. If we had needed to save and restore
 the link register, we would have put the instructions
 
-`       r0                      mflr,      \save lr on return stack`\
-`       r0      -4  rRP         stwu,`
+`       r0                      mflr,      \save lr on return stack`\
+`       r0      -4  rRP         stwu,`
 
 at the beginning, and
 
-`       r0                      mtlr,      \restore lr`
+`       r0                      mtlr,      \restore lr`
 
 at the end before the `blr,`.
 
@@ -257,7 +257,7 @@ source').
 > note that you *must* write instructions at the end of your code routine
 > so that it will return. The PowerPC Assembler doesn't do this for you,
 > since it can't always know where your return address is. (It might not
-> necessarily be in the link register at that point&\#148;you might have
+> necessarily be in the link register at that point&#148;you might have
 > put it in the count register or have saved it on the return stack or
 > somewhere else.)
 

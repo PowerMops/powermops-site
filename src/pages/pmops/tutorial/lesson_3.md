@@ -9,7 +9,7 @@ Before we go further, you should become acquainted with a special
 notation that tells someone reading your program listing what's
 happening on the stack before and after a command. The format is:
 
-`( before -- after )`
+`( before -- after )`
 
 The arrangement of values on the stack is shown both before and after
 the operation (note the space between the opening parenthesis and the
@@ -22,13 +22,13 @@ numbers, on the stack *after* the operation. That is, you start with
 your first and second numbers on the stack and end with the sum on the
 stack. The stack notation looks like this:
 
-`( n1 n2 -- sum )`
+`( n1 n2 -- sum )`
 
 This, therefore, is the description for the addition operation.
 
 For the dot command, the description is:
 
-`( n -- )`
+`( n -- )`
 
 because this command takes the topmost value from the stack and displays
 it on the screen. The value is removed from the stack in the process,
@@ -39,14 +39,14 @@ in the stack, it simply moves the prompt to the left margin of the next
 line. Because no stack operations are involved, the `CR`
 command's notation is:
 
-`( -- )`
+`( -- )`
 
 The definition of every Mops word you define in a program should be
 accompanied by its stack notation. Our convention is that we may omit
 the stack notation if it is `( -- )`,
 but only in this situation.
 
-Peruse the [Classes section of this manual](Classes) to
+Peruse the [Classes section of this manual](/pmops/classes/) to
 see how we have noted the stack actions of all the words in the Mops
 dictionary. While the notation will at first help you learn how Mops
 words work, it will also help you later when you start writing programs
@@ -76,7 +76,7 @@ operations:
   `+`                         `( n1 n2 \-- sum )`    Adds 'n1' and 'n2' and leaves the sum on the stack.
   ------------------------------------------ ------------------------------------- -------------------------------------------------------------------------------
   `-`                         `( n1 n2 \-- diff )`   Subtracts 'n1' and 'n2' and leaves the difference on the stack.
-  `\<nowiki\>*\</nowiki\>`   `( n1 n2 \-- prod )`   Multiplies 'n1' and 'n2' and leaves the product on the stack.
+  `*`   `( n1 n2 \-- prod )`   Multiplies 'n1' and 'n2' and leaves the product on the stack.
   `/`                         `( n1 n2 \-- quot )`   Divides 'n1' and 'n2' and leaves the quotient on the stack.
 
 To newcomers, the stack order (the way in which numbers come out in the
@@ -90,7 +90,7 @@ performing all kinds of mental gymnastics in the process.
 In the kind of arithmetic notation you probably learned in school, you
 write the problem like this:
 
-`10 - 4`
+`10 - 4`
 
 and get the desired answer, 6. In Mops arithmetic, the order of the
 numbers going on the stack is the same. All you do is move the operation
@@ -98,16 +98,16 @@ sign to the right.
 
 In this case, the problem becomes:
 
-`10 4 -`
+`10 4 -`
 
 The same goes for division. The formula for dividing 200 by 25 changes
 from
 
-`200 / 25`
+`200 / 25`
 
 into
 
-`200 25 /`
+`200 25 /`
 
 The four basic arithmetic operations are usable only on integers, that
 is, whole numbers like -2, , 3, -453, and 1002. Numbers with digits to
@@ -124,7 +124,7 @@ If you tried it, everything should have worked well, except when you
 divided numbers that were not even multiples of each other. For example,
 if you divide 10 by 3, the Mops answer is 3.
 
-`10 3 / . CR`\
+`10 3 / . CR`\
 `3`
 
 When you use the divide operation (`/`) in Mops, the
@@ -138,8 +138,8 @@ Let's try dividing 10 by 3 again, but this time using the
 `/MOD` operation instead of straight division
 (`/`). (Remember! Mops is case-insensitive.)
 
-`10 3 /mod . . cr`\
-`3 1`
+`10 3 /mod . . cr`\
+`3 1`
 
 Notice now that both the quotient (3) and remainder (1) were returned to
 the stack (and subsequently printed out by two dot commands). Notice
@@ -168,9 +168,9 @@ environment. For example, you may find yourself confronted with having
 to include the following formula in a Mops program:
 
 ```shell
-1.25 * 12 * 50
+1.25 * 12 * 50
 ----------------
-      10
+      10
 ```
 
 If so, then Mops' integer arithmetic might seem like a stumbling block,
@@ -181,7 +181,7 @@ paper.
 
 The Mops equivalent of this formula is:
 
-`5 12 50 * * 40 /`
+`5 12 50 * * 40 /`
 
 It's worth following what happens to the stack during a complex formula
 like this. First of all, to make the 1.25 an integer, multiply it and

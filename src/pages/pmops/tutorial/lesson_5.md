@@ -66,16 +66,16 @@ rectangle can be drawn.
 The class definition up to this point looks like this:
 
 ```shell
-`:class  RECT  super{ object }`\
-`       point     TopLeft`\
-`       point     BotRight`\
+`:class  RECT  super{ object }`\
+`       point     TopLeft`\
+`       point     BotRight`\
 ```
 
 Notice several things. First of all, the beginning of a class definition
-is `\<nowiki\>:class\</nowiki\>` (pronounced "colon
+is `:class` (pronounced "colon
 class") with no space between the colon and the word "class". There
 is at least one space or a tab between
-`\<nowiki\>:class\</nowiki\>` and the name of the class.
+`:class` and the name of the class.
 We have put `RECT` in capitals to make it stand out,
 since this is where it is defined. However, this is not necessary, since
 upper- and lower-case are treated the same by Mops. You can use whatever
@@ -121,7 +121,7 @@ variables (ivars) are named `TopLeft` and
 `TopLeft` and `BotRight` in class
 `Rect` if class `Point` had not been
 previously defined. Fortunately, class `Point` is one of
-[ Mops' many predefined classes](Classes).
+[ Mops' many predefined classes](/pmops/classes/).
 
 > Note: For procedural language buffs, a key to understanding the object
 > orientation of Mops is that as you follow the threads through the
@@ -139,10 +139,10 @@ class (located in the "`zQD`" source file in the
 like this:
 
 ```shell
-`:class  POINT  super{ object }`\
+`:class  POINT  super{ object }`\
 `record`\
-`{      int     Y       \ Vertical coordinate`\
-`       int     X       \ Horizontal  coordinate`\
+`{      int     Y       \ Vertical coordinate`\
+`       int     X       \ Horizontal  coordinate`\
 `}`
 
 `...`
@@ -166,21 +166,21 @@ code as a way of *documenting* the program. There are three ways of
 specifying comments in Mops:
 
 ```shell
-`( this kind of comment continues to a )`
+`( this kind of comment continues to a )`
 
-`\ This is another comment, which extends to the end of the line`
+`\ This is another comment, which extends to the end of the line`
 
-`(* This kind of comment`\
-`can go over several lines,`\
-`    (* and can be nested *)`\
+`(* This kind of comment`\
+`can go over several lines,`\
+`    (* and can be nested *)`\
 `*)`\
 ```
 
 Note that `(`, `\\`, `(*`
-and `\<nowiki\>*)\</nowiki\>` are Mops words, and so
+and `*)` are Mops words, and so
 must be followed by a white space character. Thus if you had
 
-`(this isn't a comment)`
+`(this isn't a comment)`
 
 Mops would try to recognize the word `(this`, and
 wouldn't treat the rest of the line as a comment. You'd probably get
@@ -196,23 +196,23 @@ the characteristics of class `Int`. Class
 in 'PPC source' folder. The search reveals:
 
 ```shell
-`:class INT     super{ object }`
+`:class INT     super{ object }`
 
-`       2 bytes data`
+`       2 bytes data`
 
-`:m PUT:                inline{ ^base w!}    ;m`\
+`:m PUT:                inline{ ^base w!}    ;m`\
 `...`
 
 `;class`\
 ```
 
 Class `Int` is another one of [ Mops' predefined
-classes](Classes). It states, first of all, that its
+classes](/pmops/classes/). It states, first of all, that its
 superclass, like many in Mops, is class `Object`. Next,
 it states that two bytes (16 bits) of data are set aside for each value
 whenever an integer object is created. The third line is a method of
-this class (preceded by `\<nowiki\>:m\</nowiki\>` and
-ended by `\<nowiki\>;m\</nowiki\>`). These message inside
+this class (preceded by `:m` and
+ended by `;m`). These message inside
 this method definition stores an integer in a special area of memory.
 (Don't worry about details of this method definition for now.)
 
@@ -220,7 +220,7 @@ Going back to the definition of class `Point`, the ninth
 method:
 
 ```shell
-`:m PUT:                put: Y  put: X   ;m`\
+`:m PUT:                put: Y  put: X   ;m`\
 ```
 
 is a single instruction for Mops to store *both* the `X`
@@ -236,13 +236,13 @@ stack.
 Next in the class `Rect` definition come two methods:
 
 ```shell
-`:class  RECT  super{ object }`\
-`       point     TopLeft`\
-`       point     BotRight`
+`:class  RECT  super{ object }`\
+`       point     TopLeft`\
+`       point     BotRight`
 
-`:m PUT:                put: BotRight   put: TopLeft  ;m  ( l t r b -- )`
+`:m PUT:                put: BotRight   put: TopLeft  ;m  ( l t r b -- )`
 
-`:m DRAW:       ^base  FrameRect  ;m`
+`:m DRAW:       ^base  FrameRect  ;m`
 
 `;class`\
 ```
@@ -296,15 +296,15 @@ extra information, and we do this with the '`record{ ...
 }`' syntax, as follows:
 
 ```shell
-`:class  RECT  super{ object }`\
+`:class  RECT  super{ object }`\
 `record`\
-`{      point     TopLeft`\
-`       point     BotRight`\
+`{      point     TopLeft`\
+`       point     BotRight`\
 `}`
 
-`:m PUT:                put: BotRight   put: TopLeft  ;m  ( l t r b -- )`
+`:m PUT:                put: BotRight   put: TopLeft  ;m  ( l t r b -- )`
 
-`:m DRAW:       ^base  FrameRect  ;m`
+`:m DRAW:       ^base  FrameRect  ;m`
 
 `;class`\
 ```

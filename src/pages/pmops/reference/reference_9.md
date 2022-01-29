@@ -67,10 +67,10 @@ word, `EventLoop`, which executes this loop. The
 definition isn't very complex:
 
 ```shell
-`: EVENTLOOP`\
-`       BEGIN`\
-`               next: fevent`\
-`       AGAIN ;`\
+`: EVENTLOOP`\
+`       BEGIN`\
+`               next: fevent`\
+`       AGAIN ;`\
 ```
 
 `FEvent` is our one-off object of class
@@ -108,7 +108,7 @@ that it recognises [Apple
 events](http://developer.apple.com/documentation/Carbon/Reference/Apple_Event_Manager/index.html),
 which are described in [Inside
 Macintosh](http://developer.apple.com/techpubs/mac/IAC/IAC-2.html),
-volume VI. Mops handles the &\#152;core' Apple events: OpenApplication,
+volume VI. Mops handles the &#152;core' Apple events: OpenApplication,
 OpenDocuments, PrintDocuments and QuitApplication. These have to be
 available in the nucleus, so that the nucleus can be properly System 7
 friendly. We have provided handlers for these Apple events, as required
@@ -128,7 +128,7 @@ vectors are ordinary Mops words.
 When an Apple event handler is called from the system, there are three
 parameters on the stack:
 
-`( ^AE ^AEReply RefCon -- )`
+`( ^AE ^AEReply RefCon -- )`
 
 `\^AE` is a pointer to the Apple event itself.
 `\^AEReply` is a pointer to an Apple event that can be
@@ -168,7 +168,7 @@ exception.
 
 These three vectors have the stack effect
 
-`( -- code True | -- False )`
+`( -- code True | -- False )`
 
 If False is returned, the default handler windup is used, which performs
 the recommended system calls to check if we got all the parameters and
@@ -315,7 +315,7 @@ interpreter.
 
 You can Save an image of the dictionary at any point during compilation
 of your source (this is different from installing a finished
-application, as described later), by selecting Save as&\#133; from the
+application, as described later), by selecting Save as&#133; from the
 File menu. This creates a binary image on disk of that portion of the
 dictionary from the top of the nucleus up to the last word compiled.
 Save your work often, because you can always use FORGET or FM to remove
@@ -342,10 +342,10 @@ problem is.
 For files that you know well, disable Echo During Load for a much faster
 load, but you won't get as detailed messages if an error occurs during
 compilation. You might then use WORDS to determine the last name loaded
-into the dictionary&\#148;this should be the name of the word containing
+into the dictionary&#148;this should be the name of the word containing
 the error.
 
-After an error, Mops prints the contents of the file stack&\#148;the
+After an error, Mops prints the contents of the file stack&#148;the
 file at the top of the stack is this file containing the error. You can
 pause an echoed load at any time by hitting the space bar. You can then
 either continue (by pressing the space bar again), or abort the load (by
@@ -394,7 +394,7 @@ probably have to reset your Mac if you're not using Macsbug, but if you
 are using Macsbug (always a good idea when testing code) you may be able
 to resume by typing:
 
-`a5=currenta5<br /> g 1e4`
+`a5=currenta5<br /> g 1e4`
 
 Sometimes, however, enough 'damage' will be done to the heap or 68000
 register contents to necessitate a restart, even with Macsbug installed.
@@ -428,7 +428,7 @@ A System Error 28 means that the system stack (the Mops data stack) has
 grown down into the top of the heap. Because Toolbox routines use the
 system stack for their data storage, stack overflow can occur if a
 deeply nested Mops word calls a Toolbox routine that uses a lot of
-stack. You can use the [ Install Utility](lesson_22)
+stack. You can use the [Install Utility](/pmops/tutorial/lesson_22)
 (described in the Tutorial) to adjust the proportions of heap available
 for the stack and the dynamic heap.
 

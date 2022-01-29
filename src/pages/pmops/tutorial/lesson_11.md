@@ -69,7 +69,7 @@ text message, and followed by a final quotation mark (")
 
 In Mops, like many computer languages, quotation marks fall into a broad
 category of symbols which are known as delimiters, because they
-*delimit* or set the limits for something&\#148;in this case, a text
+*delimit* or set the limits for something&#148;in this case, a text
 message. The text within this set of delimiters is called a text string,
 or just string. With normal Mops words, spaces, tabs, or carriage
 returns are the delimiters. However for message strings we usually want
@@ -80,7 +80,7 @@ part of the string, but the first character after the space is the first
 character of the string (even if it is a space). Here is an example:
 
 ```shell
-`: HI  ." Hello, this is Mops operating on the Mac."  cr ;`\
+`: HI  ." Hello, this is Mops operating on the Mac."  cr ;`\
 ```
 
 Now, when you type `HI` at the Mops prompt, the message
@@ -97,7 +97,7 @@ words inside the definitions of new words. Therefore, you could take the
 another Mops definition. For example,
 
 ```shell
-`: GREETING  hi ." How are you?" cr ;`\
+`: GREETING  hi ." How are you?" cr ;`\
 ```
 
 produces not only the message of `HI`, but an additional
@@ -109,20 +109,20 @@ Now combine your knowledge of arithmetic operations and text strings to
 previous lesson. Here's the new definition:
 
 ```shell
-`: ADD  ( n1 n2 --  )  + ." The sum is: " . cr ;`\
+`: ADD  ( n1 n2 --  )  + ." The sum is: " . cr ;`\
 ```
 
 Or, if `ADD` is still defined from our last lesson (and
 you want to be tricky), we can also do:
 
 ```shell
-`: ADD  ( n1 n2 --  )  ." The sum is: " add ;`\
+`: ADD  ( n1 n2 --  )  ." The sum is: " add ;`\
 ```
 
 To use the new word, issue the command at the Mops prompt like this:
 
-`10 20 add`\
-`The sum is: 30 `
+`10 20 add`\
+`The sum is: 30 `
 
 Explicit Stack Manipulations
 ----------------------------
@@ -147,12 +147,12 @@ mind:
 definition, when two values are on the stack but their order is wrong
 for a subtraction or division. In fact, it could have been used in a
 less elegant definition for the problem cited in [ Lesson
-3](/pmops/tutorial/lesson_3#Mastering_Postfix_Notation)\<nowiki\>:\</nowiki\>
+3](/pmops/tutorial/lesson_3#Mastering_Postfix_Notation):
 
 ```shell
-` 5 * 12 * 50`\
+` 5 * 12 * 50`\
 `-------------`\
-`     40`\
+`     40`\
 ```
 
 By putting the divisor at the bottom of the stack (the first one in),
@@ -160,13 +160,13 @@ you can perform all the multiplications and then switch the order of the
 two remaining numbers on the stack so they divide properly. The revised
 operation would be:
 
-`40 5 12 50 * * swap /`
+`40 5 12 50 * * swap /`
 
 The word definition that calculates this would be:
 
 ```shell
-`: FORMULA3  ( denom num1 num2 num3 -- solution )`\
-`            * * swap / ;`\
+`: FORMULA3  ( denom num1 num2 num3 -- solution )`\
+`            * * swap / ;`\
 ```
 
 `DUP` is sometimes useful for particular arithmetic
@@ -175,25 +175,25 @@ square of a number. Instead of pushing two identical values on the
 stack, you need to push only one, duplicate it, and then multiply the
 two values on the stack like this:
 
-`4 dup *`
+`4 dup *`
 
 Calculating the cube of a number could, likewise, be performed like
 this:
 
-`4 dup dup * *`
+`4 dup dup * *`
 
 Therefore, you could set up a Mops word, `CUBED`, to
 perform the cube calculation:
 
 ```shell
-`: CUBED  ( n -- )  dup dup * * . cr ;`\
+`: CUBED  ( n -- )  dup dup * * . cr ;`\
 ```
 
 Then you could type '`3 cubed`' from the Mops prompt,
 and the answer would appear on the screen like this:
 
 ``\
-`3 cubed`\
+`3 cubed`\
 `27`
 
 Experiment with the other stack manipulation operators described above.

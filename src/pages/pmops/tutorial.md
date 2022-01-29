@@ -168,7 +168,7 @@ it. In a moment, the Mops window appears. We'll explain the window's
 contents in detail in Lesson 1, but for now, create a rectangle object
 called `box` in memory by typing:
 
-`rect box`
+`rect box`
 
 (Remember to hit `<enter>` at the end.)
 
@@ -180,14 +180,14 @@ the bottom right. Put these figures into box's memory by typing the
 following line, making sure you observe the spacing between elements and
 the colon:
 
-` 20 10 100 50 put: box`
+` 20 10 100 50 put: box`
 
 This line is called a **message**, which we just sent to box. Now we
 want to send messages to box so that it will draw itself on the screen.
 First, however, it will need a window to draw itself in. To set up a
 window object named `ww` in memory, type:
 
-`window ww`
+`window ww`
 
 Macintosh windows need a lot of information before they can be placed on
 the screen, including the rectangular limits of the window, the title of
@@ -198,7 +198,7 @@ classes, including Window, have test or example methods that display an
 instance of that class, with typical values. To see the window you just
 created, type the following message:
 
-`test: ww`
+`test: ww`
 
 You will be able to resize and drag **ww** around the screen as for any
 Mac window. But if you type keys while **ww** is in front, nothing will
@@ -209,7 +209,7 @@ can type further commands. Resize the Mops window if necessary so that
 
 Now type:
 
-`set: ww draw: box`
+`set: ww draw: box`
 
 The message 'set: ww' tells the system that drawing is now to take
 place in **ww** (but without bringing it to the front). Box

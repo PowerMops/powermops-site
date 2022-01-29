@@ -86,7 +86,7 @@ purge them, query their status etc.
     compile: message to the module, e.g. `compile:
     MyMod`When the module has been compiled, a message will
     appear stating that the module has been saved. You must have room in
-    your dictionary to load the module source file.\<br\>When we compile
+    your dictionary to load the module source file.<br />When we compile
     a module, we temporarily hide all of the main dictionary above the
     module object itself. This means you don't have to worry about what
     you might have loaded in the dictionary when you want to recompile a
@@ -96,7 +96,7 @@ If you need to call a module several times in succession, you can save
 some runtime overhead by locking it in memory while you are making the
 calls. Do it thus:
 
-`lock: MyMod`
+`lock: MyMod`
 
 You will also need to lock the module if you get the address of
 somewhere in the module --- an object, say --- and need to use
@@ -105,26 +105,26 @@ heap in the meantime or be removed altogether, so that the address
 won't be valid any longer. When you are finished with the module,
 remember to unlock it thus:
 
-`unlock: MyMod`
+`unlock: MyMod`
 
 When you are completely finished with a module, you can release its heap
 memory thus:
 
-`release: MyMod`
+`release: MyMod`
 
 You do not have to do this, however, since loaded modules which are not
 actually being executed will be released automatically if more heap
 space is needed. If you want a module not to be released from memory,
 you can send the message
 
-`keep: MyMod`
+`keep: MyMod`
 
 This will flag a module as needing to be kept in memory. Unlike the
 situation with `lock:`, the module may be moved within
 the heap by the Memory Manager, if it isn't actually being executed. To
 undo a keep:, send
 
-`drop: MyMod`
+`drop: MyMod`
 
 This will not release the module from memory, but will once again allow
 it to be released if more heap space is needed for something else.
@@ -132,14 +132,6 @@ it to be released if more heap space is needed for something else.
 To include a module in an installed application, mark it as installable
 any time before calling install. Do it like this:
 
-`true setInstall: MyMod`
-
-------------------------------------------------------------------------
-
-  ------------------------------------------- ----------------------------------- ---------------------------------------
-  [Reference 7](/pmops/reference/reference_7)       [Reference](Reference)   [Reference 9](/pmops/reference/reference_9)
-  [Documentation](Documentation)                                       
-  ------------------------------------------- ----------------------------------- ---------------------------------------
-
+`true setInstall: MyMod`
 
 <PrevNext />

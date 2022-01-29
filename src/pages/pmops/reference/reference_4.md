@@ -28,7 +28,7 @@ Mops dictionary. A very fast search word, called `FIND`,
 does this in the Mops system. When you send a message to an object, such
 as:
 
-`get: myint`
+`get: myint`
 
 the first thing that happens is that the selector,
 `Get:`, is converted into a unique 32-bit code known as a
@@ -96,16 +96,16 @@ Toolbox, meaning that the user has clicked the mouse button,
 `fEvent` hands the processing of the Click over to the
 window (or menu bar) that was involved. If the Toolbox tells fEvent that
 a click was received in the Content region of a window,
-`fEvent` sends a `<Content:</code>>;` message
+`fEvent` sends a `<Content:>;` message
 to the window involved. This event must be processed differently
 according to whether the window has controls, editable text, graphics,
 and so on. In a conventional C or Pascal program, a large switch/case
 statement would be required that would handle clicks for different types
 of windows. In Mops, the differential processing is handled
-automatically by late binding of the `<Content:</code>>;`
+automatically by late binding of the `<Content:>;`
 method, because the correct processing will occur for the class of the
 actual window involved. The programmer is then free to define new
-subclasses of Window with their own `<Content:</code>>;`
+subclasses of Window with their own `<Content:>;`
 methods, and `fEvent` can still do exactly the same
 thing.
 
@@ -123,8 +123,8 @@ You can cause late binding to occur in a particular message with a very
 simple modification of your source:
 
 ```shell
-get: myint         \\ early binding
-get: [ myint ]     \\ late binding
+get: myint         \\ early binding
+get: [ myint ]     \\ late binding
 ```
 
 In the first example, Mops would determine at compile time the class of
@@ -137,21 +137,21 @@ This can be a single Mops word, a sequence of words, messages to other
 objects, or anything else. Some examples:
 
 ```shell
-get: [ dup ]    \\ message receiver is the object whose address
-                \\ was duplicated on the data stack
+get: [ dup ]    \\ message receiver is the object whose address
+                \\ was duplicated on the data stack
 ```
 ```shell
-get: [ i at: myArray ]     \\ receiver is the object whose address is
-                           \\ at element i in myArray
+get: [ i at: myArray ]     \\ receiver is the object whose address is
+                           \\ at element i in myArray
 ```
 ```shell
-0 value theObject          \\ create a Value to hold an object address
-myInt -> theObject         \\ place the address of myInt in theObject
-get: [ theObject ]         \\ receiver is myInt via theObject
+0 value theObject          \\ create a Value to hold an object address
+myInt -> theObject         \\ place the address of myInt in theObject
+get: [ theObject ]         \\ receiver is myInt via theObject
 ```
 ```shell
-get: [ ]                   \\ receiver is object whose addr is top
-                           \\ of stack
+get: [ ]                   \\ receiver is object whose addr is top
+                           \\ of stack
 ```
 
 Since the normal use of brackets in Forth is to turn compilation off and
@@ -163,8 +163,8 @@ To help avoid (or maybe to add to) confusion, we have
 added two more ways to specify a late bind
 
 ```shell
-method: **
-method: []
+method: **
+method: []
 ```
 
 to bind to whatever is on the top of the stack at run time.
@@ -181,15 +181,15 @@ what kind of array. It can simply send messages such as
 kind of array access will be done. We have even provided an extra syntax
 to make this operation look neater, e.g
 
-`at: [self]`
+`at: [self]`
 
 Thus the following are all equivalent:
 
 ```shell
-aMethod: [self]
-aMethod: [ self ]
-self aMethod: **
-^base aMethod: **
+aMethod: [self]
+aMethod: [ self ]
+self aMethod: **
+^base aMethod: **
 ```
 
 You can take your pick. But in the case of late binding to
@@ -275,11 +275,11 @@ need to use references effectively is here in this section.
 Anyplace you declare an object, you can now put the word **ref** in
 front. So, for example, let's say you have a `View` object
 
-`view myView`
+`view myView`
 
 you can instead make it a reference:
 
-`ref view myView`
+`ref view myView`
 
 Before you can send messages to it, you need to set it to point to an
 actual view object. You can do this in two different ways, using one of
@@ -292,11 +292,11 @@ the object's address, and use the -> prefix. The object can be
 anywhere. So for example if you already have a view someView, you can
 set the reference myView to point to it thus:
 
-`someView -> myView`
+`someView -> myView`
 
 or, equivalently
 
-`addr: someView -> myView`
+`addr: someView -> myView`
 
 of course you can determine the source object's address in any way you
 like. Any arbitrary computation can precede the `->`. The actual
@@ -318,7 +318,7 @@ is.)
 If you want to create a new view object in the heap and set myView to
 point to it, use the `new>` prefix:
 
-`new> myView`
+`new> myView`
 
 That does the whole job. The heap block can't move (for the technical,
 it's a pointer-based block), so you don't have to worry about locking
@@ -395,14 +395,14 @@ You are not forced to use a vtable bind through a reference, however
 can point to an object of any class whatsoever, and invoke late binding,
 declare
 
-`ref any <name>`
+`ref any <name>`
 
 Naturally enough you can't use the **new>** prefix on a ref any,
 since there's no class we can use to create the object!
 
 You can also specify early binding through a reference, if you declare
 
-`ref <class> <name> no_subclasses`
+`ref <class> <name> no_subclasses`
 
 For this kind of reference, you will get an error if you try to assign
 an object whose class doesn't match exactly. You can't have an
@@ -443,7 +443,7 @@ ObjHandles, which we describe here.
 this class we provide methods for creating and accessing heap objects. A
 heap object can be created thus:
 
-`ObjHandle anObjHdl<br /> ' someClass newObj: anObjHdl`
+`ObjHandle anObjHdl<br /> ' someClass newObj: anObjHdl`
 
 Then, to access the object, the method `obj: anObjHdl`
 returns a pointer to the object, and also locks the handle so that the
@@ -452,9 +452,9 @@ it. Remember to `unlock: anObjHdl` when finished. So,
 using the above example, you can access the object thus:
 
 ```shell
-mssg1: [ get: anObjHdl ]
-       ...
-       unlock: anObjHdl
+mssg1: [ get: anObjHdl ]
+       ...
+       unlock: anObjHdl
 ```
 
 When you are completely finished with the object, send
@@ -480,7 +480,7 @@ As we saw above, in PowerMops you may declare a reference to an object
 in which you specify that messages to the object will use early binding,
 by using the word **no_subclasses**.
 
-`ref <class> <name> no_subclasses`
+`ref <class> <name> no_subclasses`
 
 In 68k Mops, to do the same kind of thing, you will need to use the
 older feature, Object pointers.
@@ -502,24 +502,24 @@ compile time). An object pointer is a 'low-level' entity, rather like
 a `Value`. The syntax for object pointers is:
 
 ```shell
-objPtr anObjPtr  class_is theClass
-`               ...
+objPtr anObjPtr  class_is theClass
+`               ...
 
-( get obj addr to the stack ) -> anObjPtr
-               ...
+( get obj addr to the stack ) -> anObjPtr
+               ...
 
-aMethod: anObjPtr
+aMethod: anObjPtr
 ```
 
 Occasionally, the desired class for an object pointer may not be defined
 at the time the object pointer needs to be defined. In this case, use
 the syntax
 
-`objPtr anObjPtr`
+`objPtr anObjPtr`
 
 then after the class is defined:
 
-`' anObjPtr set_to_class theClass`
+`' anObjPtr set_to_class theClass`
 
 This, of course, must precede any code which sends a message to
 `anObjPtr`. See the file Dialog+ for some examples
@@ -540,9 +540,9 @@ of the object, use the word `>OBJ` to convert it to
 the object address. So, either of the following will work:
 
 ```shell
-anObj -> anObjPtr
+anObj -> anObjPtr
 
-' anObj >obj -> anObjPtr
+' anObj >obj -> anObjPtr
 ```
 
 ### class_as>
@@ -551,7 +551,7 @@ There's a way to force an early bind to an object, without having to
 set up a reference or an `objPtr`. The disadvantage is
 that it's less secure. With earlier versions of Mops you could say
 
-`( obj addr on stack ) aMethod: theClass`
+`( obj addr on stack ) aMethod: theClass`
 
 with the object's class being used as the 'object' to which the
 method is sent. This syntax was available in Neon, but was undocumented
@@ -575,7 +575,7 @@ unambiguous manner that they just couldn't be anything but classes.)
 Anyway for those who do sometimes give their classes less than ideal
 names, with version 2.6 we have a new syntax for the above operation:
 
-`<obj addr on stack> msg: class_as> someClass`
+`<obj addr on stack> msg: class_as> someClass`
 
 The old way will still work --- I don't plan to delete it and maybe
 break existing code --- but the new way reads less ambiguously (and
@@ -600,13 +600,13 @@ ivars.
 They're declared like this:
 
 ```shell
-class myClass super{ mySuper }
-       var     oneVar
+class myClass super{ mySuper }
+       var     oneVar
 static
-{      var     someVar
-       int     someInt
+{      var     someVar
+       int     someInt
 }
-       var anotherVar
+       var anotherVar
 ```
 
 In this example, `someVar` and `someInt`
@@ -620,18 +620,18 @@ Public ivars can be accessed from outside the class. They're declared
 this way:
 
 ```shell
-class myClass super{ mySuper }
+class myClass super{ mySuper }
 public
-       var     aVar
-       int     anInt
+       var     aVar
+       int     anInt
 end_public
-       var anotherVar
-       int anotherInt
+       var anotherVar
+       int anotherInt
 ```
 
 They're accessed from outside the class via this syntax:
 
-`msg: ivar> anIvar IN someObject`
+`msg: ivar> anIvar IN someObject`
 
 (where `someObject` is an object of
 `myClass`, of course.)
@@ -654,6 +654,6 @@ If you combine these two new features, you can get a 'public static'
 ivar. To access this from outside the class, you can't use the above
 syntax since there's no object to refer to. So the syntax is:
 
-`msg: ivar> aStaticIvar IN_CLASS myClass`
+`msg: ivar> aStaticIvar IN_CLASS myClass`
 
 <PrevNext />

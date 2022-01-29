@@ -44,7 +44,7 @@ first create an object of class Menu for each menu in the application,
 and allocate as many indexed cells to each menu object as there are
 items to be selected. For example:
 
-`7 menu FileMen  \  creates a menu object that can have up to 7 items`
+`7 menu FileMen  \  creates a menu object that can have up to 7 items`
 
 However, if you have many menu items with similar behavior, such as in a
 font menu, you only need to provide one indexed cell for that behavior,

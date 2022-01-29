@@ -38,14 +38,14 @@ appears on the screen, which in this case means you're in the clear to
 define a word with that name.
 
 ```shell
-' window .
+' window .
 5241310
-' twindow .
+' twindow .
 
-Error # -13  undefined word
-' twindow .
-         ^
-Current object:  TW    class:  MLTEFWIND
+Error # -13  undefined word
+' twindow .
+         ^
+Current object:  TW    class:  MLTEFWIND
 ```
 
 You define a new Mops word by typing a colon (`:`), a
@@ -65,7 +65,7 @@ good practice; you need not type it in.) Recall that each line you type
 must be terminated by the ENTER key:
 
 ```shell
-: ADD  ( n1 n2 --  )  + . cr ;
+: ADD  ( n1 n2 --  )  + . cr ;
 ```
 
 The `+` operation expects to find two numbers on the
@@ -73,7 +73,7 @@ stack, so to use your new word you would type two numbers (which go onto
 the stack) and then the new word:
 
 ```shell
-2 6 add
+2 6 add
 8
 ```
 
@@ -112,12 +112,12 @@ try to help you do this, however, by reporting errors as we saw in the
 error message above. Let's look at it again:
 
 ```shell
-' twindow .
+' twindow .
 
-Error # -13  undefined word
-' twindow .
+Error # -13  undefined word
+' twindow .
 
-Current object:  TW    class:  MLTEFWIND
+Current object:  TW    class:  MLTEFWIND
 ```
 
 The first line of the error message tells the nature of the error that
@@ -149,9 +149,9 @@ As an example, we will use the multiply-then-divide problem described in
 recall, the operation was presented as:
 
 ```shell
- 5 * 12 * 50
+ 5 * 12 * 50
 -------------
-     40
+     40
 ```
 
 To calculate this without named input parameters, just as we did in that
@@ -161,8 +161,8 @@ simplified in a definition that performs the math with named input
 parameters:
 
 ```shell
-: FORMULA  { denom n1 n2 n3 -- solution }
-           n1 n2 n3 * * denom /  ;
+: FORMULA  { denom n1 n2 n3 -- solution }
+           n1 n2 n3 * * denom /  ;
 ```
 The magic of named input parameters takes place inside the braces (`{` and
 `}`, also called curly brackets). The syntax is deliberately similar to a
@@ -171,7 +171,7 @@ this case, whenever the word `FORMULA` is executed, like
 this:
 
 ```shell
-40 5 12 50 formula .
+40 5 12 50 formula .
 75
 ```
 
@@ -196,7 +196,7 @@ Named input parameters become very powerful in the way you can adjust
 their values in the course of a colon definition. Consider for example,
 this formula:
 
-`a^2 + b^2`
+`a^2 + b^2`
 
 Since the computer can compute only one square at a time, it needs to
 hold the result of one square while it calculates the second before it
@@ -204,10 +204,10 @@ can add the two squares. A definition for a word equivalent to this
 formula would be:
 
 ```shell
-: FORMULA1  { a  b -- solution }
-            a  a  *  -> a
-            b  b  *
-            a  +    .  cr  ;
+: FORMULA1  { a  b -- solution }
+            a  a  *  -> a
+            b  b  *
+            a  +    .  cr  ;
 ```
 
 The "arrow" (gazinta) operation, `->`, stores the
@@ -226,7 +226,7 @@ there, or subtract a number from what is there, with the
 `++>` and `-->` operations. For
 example, doing
 
-`10 ++> denom`
+`10 ++> denom`
 
 inside a colon definition adds ten to a value stored in a hypothetical
 named input parameter named `denom`.
@@ -241,18 +241,18 @@ results that can occur inside such a definition. Local variables are
 preceded by a backslash. Take this formula, for instance:
 
 ```shell
- ( a + b - 3c )
+ ( a + b - 3c )
 ----------------
-   ( b + 2c )
+   ( b + 2c )
 ```
 
 The word definition would be:
 
 ```shell
-: FORMULA2  { a  b  c  \  num den -- result }
-            a  b  +  3  c  *  -  -> num
-            2  c  *  b  +        -> den
-            num  den  /  ;
+: FORMULA2  { a  b  c  \  num den -- result }
+            a  b  +  3  c  *  -  -> num
+            2  c  *  b  +        -> den
+            num  den  /  ;
 ```
 
 In this example, `a`, `b`, and

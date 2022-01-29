@@ -25,7 +25,7 @@ would have been a lost cause, so Carbon provides a solution. It does
 this in two ways. Firstly, it provides a new API which is sufficiently
 similar to the classic Mac OS API that older applications can be
 converted to run under it without a huge amount of work (in theory at
-least&\#148;see below). Secondly, it provides an implementation via the
+least&#148;see below). Secondly, it provides an implementation via the
 shared library CarbonLib, that runs on both OSX and OS9 (and even later
 versions of OS8). Thus applications that have been converted to run
 under Carbon (i.e. 'Carbonized'), will run natively under
@@ -160,7 +160,7 @@ generic document-style window.
   rect
   \^view\_in\_focus
 
-\<br\>
+<br />
 
   Indexed data
   ----------------
@@ -168,7 +168,7 @@ generic document-style window.
   System objects
   fWind
 
-\<br\>
+<br />
 
   Methods
   -------------------------

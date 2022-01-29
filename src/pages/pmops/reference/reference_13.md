@@ -21,7 +21,7 @@ This module gives you a predefined alert box without having to define
 any resources. Use `Alert"` within a word or method to
 produce an informatory message. Example:
 
-`readLine: myFcb 2 alert" A read error has occurred"`
+`readLine: myFcb 2 alert" A read error has occurred"`
 
 If the readLine is successful no alert will appear, but if readLine
 returns a nonzero result, an alert box with the given message will be
@@ -48,11 +48,11 @@ implemented for PowerMops. They're integrated into a single module,
 DebugMod, since the job of displaying compiled code is very similar
 whether you're decompiling or debugging. To decompile a word, type
 
-`see aWord`
+`see aWord`
 
 or to debug a word, type
 
-`debug aWord`
+`debug aWord`
 
 then keep typing spaces to step through each instruction. Of course, if
 you're debugging, nothing will happen until aWord gets executed.
@@ -91,11 +91,11 @@ End, Page down and Page up, respectively, which is why I chose them.)
 
 To decompile/debug in a module, type e.g.
 
-`in aMod see aWord`
+`in aMod see aWord`
 
 To decompile/debug a method, type:
 
-`[in aMod] see aMeth: aClass`
+`[in aMod] see aMeth: aClass`
 
 The debugger works fine on both my Mac Plus and IIsi, and even under
 System 7. Since I change two interrupt vectors (T-bit and TRAP \#0), it
@@ -113,7 +113,7 @@ Mops, then as we mentioned above, Debug and See will send QuickEdit an
 Apple event asking it to open the source file. You can use this feature
 directly, by typing
 
-`edit someFile`
+`edit someFile`
 
 Then assuming that someFile can be found via the normal Mops file
 lookup, the Apple event is sent to QuickEdit so that it will open the
@@ -137,7 +137,7 @@ must be loaded with logging on, since the profiler needs to know the
 correspondence between the source and compiled code, and this is
 recorded in the log file. Once this is done, just type
 
-`profile aWord`
+`profile aWord`
 
 then after aWord has been run, more than once if need be, type
 
@@ -193,7 +193,7 @@ package that needs special startup action, make the startup action into
 a word, let's call it `MyStartupWord`, then at the end
 of your code put
 
-`' MyStartupWord add: init_actions`
+`' MyStartupWord add: init_actions`
 
 and that's it. If you do a `Forget` or
 `RL` (reload) there's no problem, since the Mops loading

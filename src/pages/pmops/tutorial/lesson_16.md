@@ -98,82 +98,82 @@ How the Sine Table Works
 Let's start with the Sin source code, which is numbered from lines 1 to
 76:
 
-`1      \ These classes obtain the sine and cos of an angle by table lookup.`\
-`2      \ Modified from the original Neon version by Mike Hore.`\
+`1      \ These classes obtain the sine and cos of an angle by table lookup.`\
+`2      \ Modified from the original Neon version by Mike Hore.`\
 `3`\
-`4      \ The main class is ANGLE, which has SIN: and COS: methods that look`\
-`5      \ up a table defined with the TRIGTABLE class.`\
+`4      \ The main class is ANGLE, which has SIN: and COS: methods that look`\
+`5      \ up a table defined with the TRIGTABLE class.`\
 `6`\
 `7`\
-`8      need    struct1`\
+`8      need    struct1`\
 `9`\
 `10`\
-`11     :class TRIGTABLE super{ wArray }`\
+`11     :class TRIGTABLE super{ wArray }`\
 `12`\
-`13             4       wArray AXISVALS         \ 90 degree values`\
+`13             4       wArray AXISVALS         \ 90 degree values`\
 `14`\
-`15     :m SIN: { degree \ quadrant -- sin }`\
-`16     \ Looks up a sin * 10000 of an angle`\
+`15     :m SIN: { degree \ quadrant -- sin }`\
+`16     \ Looks up a sin * 10000 of an angle`\
 `17`\
-`18             degree 360 mod                  \ Put angle in range -359 to +359`\
-`19             dup 0< IF 360 + THEN         \ Now 0 to +359`\
-`20             90 /mod         \ Convert angle to range 0-89 and get quadrant`\
-`21             -> quadrant   -> degree`\
-`22             degree                          \ Test for an axis`\
-`23             NIF     quadrant at: axisVals   \ If an axis, get value`\
-`24             ELSE    quadrant 1 and          \ True for "mirror" quadrants 1 and 3`\
-`25                     IF      90 degree -     \ Create mirror image`\
-`26                     ELSE    degree`\
-`27                     THEN`\
-`28                     at: self                        \ Get sin for this degree`\
-`29                     quadrant 2 and          \ True for "negative" quadrants 2 and 3`\
-`30                     IF negate THEN`\
-`31             THEN ;m`\
+`18             degree 360 mod                  \ Put angle in range -359 to +359`\
+`19             dup 0< IF 360 + THEN         \ Now 0 to +359`\
+`20             90 /mod         \ Convert angle to range 0-89 and get quadrant`\
+`21             -> quadrant   -> degree`\
+`22             degree                          \ Test for an axis`\
+`23             NIF     quadrant at: axisVals   \ If an axis, get value`\
+`24             ELSE    quadrant 1 and          \ True for "mirror" quadrants 1 and 3`\
+`25                     IF      90 degree -     \ Create mirror image`\
+`26                     ELSE    degree`\
+`27                     THEN`\
+`28                     at: self                        \ Get sin for this degree`\
+`29                     quadrant 2 and          \ True for "negative" quadrants 2 and 3`\
+`30                     IF negate THEN`\
+`31             THEN ;m`\
 `32`\
-`33     :m COS: \ ( degree -- cos )`\
-`34             90 +   sin: self ;m             \ Cos is sin shifted by 90 degrees`\
+`33     :m COS: \ ( degree -- cos )`\
+`34             90 +   sin: self ;m             \ Cos is sin shifted by 90 degrees`\
 `35`\
-`36     :m CLASSINIT:`\
-`37             0        0 to: axisvals`\
-`38             10000    1 to: axisvals`\
-`39             0        2 to: axisvals`\
-`40             -10000 3 to: axisvals ;m`\
+`36     :m CLASSINIT:`\
+`37             0        0 to: axisvals`\
+`38             10000    1 to: axisvals`\
+`39             0        2 to: axisvals`\
+`40             -10000 3 to: axisvals ;m`\
 `41`\
-`42     ;class`\
+`42     ;class`\
 `43`\
-`44     90 TrigTable SINES      \ system-wide table of sines`\
+`44     90 TrigTable SINES      \ system-wide table of sines`\
 `45`\
-`46     : 's            \ ( val degree -- )    Fills a Sin table entry`\
-`47             to: sines ;`\
+`46     : 's            \ ( val degree -- )    Fills a Sin table entry`\
+`47             to: sines ;`\
 `48`\
-`49     00000 00 's   00175 01 's   00349 02 's   00524 03 's   00698 04 's`\
-`50     00872 05 's   01045 06 's   01219 07 's   01392 08 's   01571 09 's`\
-`51     01736 10 's   01908 11 's   02079 12 's   02250 13 's   02419 14 's`\
-`52     02588 15 's   02756 16 's   02924 17 's   03090 18 's   03256 19 's`\
-`53     03420 20 's   03584 21 's   03746 22 's   03907 23 's   04067 24 's`\
-`54     04226 25 's   04384 26 's   04540 27 's   04695 28 's   04848 29 's`\
-`55     05000 30 's   05150 31 's   05299 32 's   05446 33 's   05592 34 's`\
-`56     05736 35 's   05878 36 's   06018 37 's   06157 38 's   06293 39 's`\
-`57     06428 40 's   06561 41 's   06691 42 's   06820 43 's   06947 44 's`\
-`58     07071 45 's   07193 46 's   07314 47 's   07431 48 's   07547 49 's`\
-`59     07660 50 's   07771 51 's   07880 52 's   07986 53 's   08090 54 's`\
-`60     08192 55 's   08290 56 's   08387 57 's   08480 58 's   08572 59 's`\
-`61     08660 60 's   08746 61 's   08829 62 's   08910 63 's   08988 64 's`\
-`62     09063 65 's   09135 66 's   09205 67 's   09272 68 's   09336 69 's`\
-`63     09397 70 's   09455 71 's   09511 72 's   09563 73 's   09613 74 's`\
-`64     09659 75 's   09703 76 's   09744 77 's   09781 78 's   09816 79 's`\
-`65     09848 80 's   09877 81 's   09903 82 's   09925 83 's   09945 84 's`\
-`66     09962 85 's   09976 86 's   09986 87 's   09994 88 's   09998 89 's`\
+`49     00000 00 's   00175 01 's   00349 02 's   00524 03 's   00698 04 's`\
+`50     00872 05 's   01045 06 's   01219 07 's   01392 08 's   01571 09 's`\
+`51     01736 10 's   01908 11 's   02079 12 's   02250 13 's   02419 14 's`\
+`52     02588 15 's   02756 16 's   02924 17 's   03090 18 's   03256 19 's`\
+`53     03420 20 's   03584 21 's   03746 22 's   03907 23 's   04067 24 's`\
+`54     04226 25 's   04384 26 's   04540 27 's   04695 28 's   04848 29 's`\
+`55     05000 30 's   05150 31 's   05299 32 's   05446 33 's   05592 34 's`\
+`56     05736 35 's   05878 36 's   06018 37 's   06157 38 's   06293 39 's`\
+`57     06428 40 's   06561 41 's   06691 42 's   06820 43 's   06947 44 's`\
+`58     07071 45 's   07193 46 's   07314 47 's   07431 48 's   07547 49 's`\
+`59     07660 50 's   07771 51 's   07880 52 's   07986 53 's   08090 54 's`\
+`60     08192 55 's   08290 56 's   08387 57 's   08480 58 's   08572 59 's`\
+`61     08660 60 's   08746 61 's   08829 62 's   08910 63 's   08988 64 's`\
+`62     09063 65 's   09135 66 's   09205 67 's   09272 68 's   09336 69 's`\
+`63     09397 70 's   09455 71 's   09511 72 's   09563 73 's   09613 74 's`\
+`64     09659 75 's   09703 76 's   09744 77 's   09781 78 's   09816 79 's`\
+`65     09848 80 's   09877 81 's   09903 82 's   09925 83 's   09945 84 's`\
+`66     09962 85 's   09976 86 's   09986 87 's   09994 88 's   09998 89 's`\
 `67`\
-`68     : SIN    sin: sines   ;`\
-`69     : COS    cos: sines   ;`\
+`68     : SIN    sin: sines   ;`\
+`69     : COS    cos: sines   ;`\
 `70`\
-`71     :class   ANGLE super{ int }`\
+`71     :class   ANGLE super{ int }`\
 `72`\
-`73     :m SIN: get: self   sin ;m`\
-`74     :m COS: get: self   cos ;m`\
+`73     :m SIN: get: self   sin ;m`\
+`74     :m COS: get: self   cos ;m`\
 `75`\
-`76     ;class`
+`76     ;class`
 
 ### Lines 1 to 5
 
@@ -213,10 +213,10 @@ subclass of class `wArray`.
 If you look at the source code listing for the superclass
 `wArray` (in the file "`Struct1`"),
 You'll notice that `wArray` is defined as an *indexed
-class*\<nowiki\>:\</nowiki\>
+class*:
 
 ```shell
-`:class WARRAY  super{ indexed-obj }  2 indexed`\
+`:class WARRAY  super{ indexed-obj }  2 indexed`\
 ```
 
 When a class in indexed, it means that every object created of that
@@ -417,8 +417,8 @@ stack.
   `0<`            0                         0                         0
                                     35                        180                       293
   `IF`               35                        180                       293
-  `360`              \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>
-  `+`                \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>
+  `360`              :    :    : 
+  `+`                :    :    : 
   `90`               90                        90                        90
                                     35                        180                       293
   `/mod`             0                         2                         3
@@ -427,44 +427,44 @@ stack.
   `-> degree`     \-\--                     \-\--                     \-\--
   `degree`           35                        0                         23
   `NIF`              \-\--                     \-\--                     \-\--
-                                    \<nowiki\>: \</nowiki\>                             \<nowiki\>: \</nowiki\>
-  `quadrant`         \<nowiki\>: \</nowiki\>   2                         \<nowiki\>: \</nowiki\>
-                                    \<nowiki\>: \</nowiki\>                             \<nowiki\>: \</nowiki\>
-  `at: axisVals`     \<nowiki\>: \</nowiki\>   0                         \<nowiki\>: \</nowiki\>
-  `ELSE`             \-\--                     \<nowiki\>: \</nowiki\>   \-\--
-  `quadrant`         0                         \<nowiki\>: \</nowiki\>   3
-  `1`                1                         \<nowiki\>: \</nowiki\>   1
-                                    0                         \<nowiki\>: \</nowiki\>   3
-  `and`              0                         \<nowiki\>: \</nowiki\>   1
-  `IF`               \-\--                     \<nowiki\>: \</nowiki\>   \-\--
-                                    \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>   
-  `90`               \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>   90
-                                    \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>   
-  `degree`           \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>   23
-                                    \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>   90
-                                    \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>   
-  `-`                \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>   67
-                                    \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>
-  `ELSE`             \-\--                     \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>
-                                                              \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>
-  `degree`           35                        \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>
-                                                              \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>
-  `THEN`             35                        \<nowiki\>: \</nowiki\>   67
-                                                              \<nowiki\>: \</nowiki\>   
-  `at: self`         5736                      \<nowiki\>: \</nowiki\>   9205
-                                                              \<nowiki\>: \</nowiki\>   
-  `quadrant`         0                         \<nowiki\>: \</nowiki\>   3
-                                    5736                      \<nowiki\>: \</nowiki\>   9205
-                                                              \<nowiki\>: \</nowiki\>   
-  `at: signs`        0                         \<nowiki\>: \</nowiki\>   1
-                                    5736                      \<nowiki\>: \</nowiki\>   9205
-                                                              \<nowiki\>: \</nowiki\>   
-  `IF`               5736                      \<nowiki\>: \</nowiki\>   9205
-                                    \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>   
-  `negate`           \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>   -9205
-                                    \<nowiki\>: \</nowiki\>   \<nowiki\>: \</nowiki\>   
-  `THEN`             5736                      \<nowiki\>: \</nowiki\>   -9205
-                                                              \<nowiki\>: \</nowiki\>   
+                                    :                              : 
+  `quadrant`         :    2                         : 
+                                    :                              : 
+  `at: axisVals`     :    0                         : 
+  `ELSE`             \-\--                     :    \-\--
+  `quadrant`         0                         :    3
+  `1`                1                         :    1
+                                    0                         :    3
+  `and`              0                         :    1
+  `IF`               \-\--                     :    \-\--
+                                    :    :    
+  `90`               :    :    90
+                                    :    :    
+  `degree`           :    :    23
+                                    :    :    90
+                                    :    :    
+  `-`                :    :    67
+                                    :    :    : 
+  `ELSE`             \-\--                     :    : 
+                                                              :    : 
+  `degree`           35                        :    : 
+                                                              :    : 
+  `THEN`             35                        :    67
+                                                              :    
+  `at: self`         5736                      :    9205
+                                                              :    
+  `quadrant`         0                         :    3
+                                    5736                      :    9205
+                                                              :    
+  `at: signs`        0                         :    1
+                                    5736                      :    9205
+                                                              :    
+  `IF`               5736                      :    9205
+                                    :    :    
+  `negate`           :    :    -9205
+                                    :    :    
+  `THEN`             5736                      :    -9205
+                                                              :    
   `THEN`             5736                      0                         -9205
 
 Now for a description of what happens to each degree value.
@@ -531,7 +531,7 @@ array. The `SELF` notation tells Mops to perform the
 `Sines` object.
 
 That `AT:` fetch operation places the sine value from the
-table on the stack. One last job remains&\#148;to determine if the sine
+table on the stack. One last job remains&#148;to determine if the sine
 value is positive or negative. The quadrant number is
 `AND`ed with 2 on line 29. If the quadrant is 2 or 3,
 which are the quadrants for which the sine is negative, the result of
@@ -549,13 +549,13 @@ degrees.
 At this point in the program (up to line 66), the kind of message you
 would send to calculate the sine of a given value in degrees would be:
 
-`125 sin: Sines`
+`125 sin: Sines`
 
 To simplify this even more, two Mops definitions are added (lines
 68-69). Each word sends a message like the one above. Thereafter, the
 only code you need in a program to obtain the sine of an angle is:
 
-`125 sin`
+`125 sin`
 
 ### Lines 71 to 76
 
@@ -572,7 +572,7 @@ own class hierarchy. It doesn't even know class
 `TrigTable` exists. When a method in class
 `Angle` uses the new Mops word `SIN`, it
 lets the word reach into memory to do what it has to, even if it means
-working in other classes&\#148;all without disturbing the integrity of
+working in other classes&#148;all without disturbing the integrity of
 class `Angle` and inheriting all the baggage of
 `TrigTable`.
 
@@ -584,18 +584,18 @@ found a `PUT:` method in the `Int`
 superclass that stores the value. For example, if you create an object
 like this:
 
-`angle Narrow`
+`angle Narrow`
 
 you are setting aside a cell in `Narrow`'s memory for an
 integer, because class `Angle` is a subclass of the
 `Int` class. You would then need to send the message:
 
-`30 put: Narrow`
+`30 put: Narrow`
 
 to store the value, 30, in the object `Narrow`. After
 that, you can send the message:
 
-`sin: Narrow`
+`sin: Narrow`
 
 which sets the `SIN:` method in class
 `Angle` to work. The value, 30, is retrieved by the

@@ -106,7 +106,7 @@ There is one more view, and this is the contView for the window ---
 the view which covers the whole of the window's area.
 
 Thus we have 11 views in all. The contView is at the top level. Then the
-graphic pane and the three indicators are at the next level&\#148;these
+graphic pane and the three indicators are at the next level&#148;these
 are the children of the contView. Then each of the three indicators has
 two children --- a scroll bar and a digital display.
 
@@ -162,12 +162,12 @@ Let's look at how we've set up these quantities for the views in our
 grDemo application. Look at the CLASSINIT: method in class Indicator:
 
 ```shell
-`:m CLASSINIT:`\
-`      parCenter   parTop      parCenter   parBottom   setJust: theVscroll`\
-`      -8          0           8           -20         setBounds: theVscroll`\
-`      parCenter   parBottom   parCenter   parBottom   setJust: theReadout`\
-`      -12         -16         12          0           setBounds: theReadout`\
-`      classinit: super`\
+`:m CLASSINIT:`\
+`      parCenter   parTop      parCenter   parBottom   setJust: theVscroll`\
+`      -8          0           8           -20         setBounds: theVscroll`\
+`      parCenter   parBottom   parCenter   parBottom   setJust: theReadout`\
+`      -12         -16         12          0           setBounds: theReadout`\
+`      classinit: super`\
 `;m`\
 ```
 

@@ -130,11 +130,11 @@ Here's an example of how a HandleList could be used to implement a set
 of four windows, accessible by index:
 
 ```shell
-HandleList Windows
-: CreateWindows
-4 0 DO  ['] window newObj: windows  LOOP ;
-\ Resize window at index 2:
-2 select: windows  300 100 size: [ obj: windows ]
+HandleList Windows
+: CreateWindows
+4 0 DO  ['] window newObj: windows  LOOP ;
+\ Resize window at index 2:
+2 select: windows  300 100 size: [ obj: windows ]
 ```
 
 Notice how, once we have used select: to choose which ObjHandle in the
@@ -147,7 +147,7 @@ size: message, due to the late binding. When you are finished with
 Windows, you can release all its heap storage simply by sending the
 message
 
-`release: windows`
+`release: windows`
 
 If you look at the source for the HandleList class, you will see that
 release: causes each of the ObjHandles to be selected in turn, and
@@ -968,7 +968,7 @@ which frequently need to be looked at in sequence. At present the main
 function of Sequence is to implement the each: method, which makes it
 very simple to deal with each element. The usage is
 
-`BEGIN each: <obj> WHILE <do something to the element>  REPEAT`
+`BEGIN each: <obj> WHILE <do something to the element>  REPEAT`
 
 Sequence can be multiply inherited with any class which implements the
 first?: and next: methods. The actual implementation details are quite

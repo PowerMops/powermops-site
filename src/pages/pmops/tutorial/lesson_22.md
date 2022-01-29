@@ -17,7 +17,7 @@ But this time, don't start it up.
 > `NEW:` of class `GRWIND` (line 170). In
 > the definition of the method, insert a line
 > 
-> `$ 40000000 OR   \ use QD on Tiger`
+> `$ 40000000 OR   \ use QD on Tiger`
 > 
 > between lines '`RR tAddr tLen docWind`' and
 > '`true false`'.
@@ -25,11 +25,11 @@ But this time, don't start it up.
 > That is, the last part of the method will look like following: 
 > 
 > ```shell
-> `RR tAddr tLen  docWind    \ initial rect, title, window type
-> `$ 40000000 OR     \ use QD on Tiger
-> `true false                \ visible, no close box
-> `dView                     \ the main view
-> `new: super             \ create the window!
+> `RR tAddr tLen  docWind    \ initial rect, title, window type
+> `$ 40000000 OR     \ use QD on Tiger
+> `true false                \ visible, no close box
+> `dView                     \ the main view
+> `new: super             \ create the window!
 > ```
 >  
 > Then save and (re)load the file.

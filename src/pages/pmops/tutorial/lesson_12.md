@@ -26,7 +26,7 @@ stack orientation. The formal description of the
 `IF`\...`THEN` construction is as follows:
 
   -------------------------------- ---------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  `IF xx THEN zz`   `( n \-- )`   If '`n`' is non-zero (true), statement \<var\>xx\</var\> is executed, followed by statement \<var\>zz\</var\>\<nowiki\>;\</nowiki\> if '`n`' is zero (false) the program continues with statement \<var\>zz\</var\>.
+  `IF xx THEN zz`   `( n \-- )`   If '`n`' is non-zero (true), statement \<var\>xx\</var\> is executed, followed by statement \<var\>zz\</var\>; if '`n`' is zero (false) the program continues with statement \<var\>zz\</var\>.
   -------------------------------- ---------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 The `IF` part of the Mops decision process takes a number
@@ -50,9 +50,9 @@ run on Mops. For this example, we'll put the code for the
 definition and compile it before we can run it. Type the following:
 
 ```shell
-`: TEST`\
-`       IF  ." There is a non-zero number on the stack."`\
-`       THEN  cr ;`\
+`: TEST`\
+`       IF  ." There is a non-zero number on the stack."`\
+`       THEN  cr ;`\
 ```
 
 This defines `TEST` as a word that performs a check on
@@ -85,12 +85,12 @@ This kind of decision construction has been included in Mops. Its formal
 description is:
 
   ----------------------- -------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  `ELSE`   `( \-- )`   If '`n`' is non-zero (true), \<var\>xx\</var\> statement is executed, followed by \<var\>zz\</var\>\<nowiki\>; if '\</nowiki\>`n`' is zero (false), \<var\>yy\</var\> is executed, followed by \<var\>zz\</var\>.
+  `ELSE`   `( \-- )`   If '`n`' is non-zero (true), \<var\>xx\</var\> statement is executed, followed by \<var\>zz\</var\>; if '`n`' is zero (false), \<var\>yy\</var\> is executed, followed by \<var\>zz\</var\>.
   ----------------------- -------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 If its meaning isn't already clear to you, it is used like this:
 
-`IF  <var>xx</var>  ELSE  <var>yy</var>  THEN  <var>zz</var>`
+`IF  <var>xx</var>  ELSE  <var>yy</var>  THEN  <var>zz</var>`
 
 As with the `IF`\...`THEN` construction,
 this decision process looks first to see if the number on the top of the
@@ -99,22 +99,22 @@ stack is non-zero before it makes any decision. Now redefine
 provision.
 
 ```shell
-`: TEST`\
-`       IF    ." Non-zero number on stack."`\
-`       ELSE  ." Zero on stack."`\
-`       THEN  cr ;`\
+`: TEST`\
+`       IF    ." Non-zero number on stack."`\
+`       ELSE  ." Zero on stack."`\
+`       THEN  cr ;`\
 ```
 
 Place three numbers (1, 0, and 3) on the stack and perform three tests:
 
-`1 0 3`
+`1 0 3`
 
 `test`\
-`Non-zero number on stack.`\
+`Non-zero number on stack.`\
 `test`\
-`Zero on stack.`\
+`Zero on stack.`\
 `test`\
-`Non-zero number on stack.`
+`Non-zero number on stack.`
 
 Remember that the `IF` operation takes the top number off
 the stack when it performs its check, just like most of Mops'
@@ -152,7 +152,7 @@ binary). As we'll see a bit later, this corresponds to the value -1.
 
 Type these words now:
 
-`true false`
+`true false`
 
 You'll see from the stack display that `FALSE` is the
 same as (zero), and `TRUE` is -1.
@@ -163,7 +163,7 @@ sometimes referred to as flags. Flags in programs are something like
 markers planted in key places that symbolize a certain condition. A
 "true" flag signifies that a non-zero number is on the stack; a
 "false" flag signifies that a zero is on the stack. (Another term that
-is used is boolean&\#148;this really means the same as "flag".)
+is used is boolean&#148;this really means the same as "flag".)
 
 To help ingrain this difference between `TRUE` and
 `FALSE` n your mind, redefine `test` yet
@@ -173,10 +173,10 @@ construction responds to `TRUE` and
 `FALSE` flags existing in the stack.
 
 ```shell
-`: TEST`\
-`       IF    ." True!"`\
-`       ELSE  ." False!"`\
-`       THEN  cr ;`\
+`: TEST`\
+`       IF    ." True!"`\
+`       ELSE  ." False!"`\
+`       THEN  cr ;`\
 ```
 
 Now, place the numbers (zero) and 4 on the stack, leaving the the true
@@ -184,7 +184,7 @@ and false flags from before underneath them on the stack. Then run the
 test four times:
 
 ```shell
-0 4`
+0 4`
 
 test
 True!
@@ -212,7 +212,7 @@ values.)
   `0<`       `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if '`n`' is less than zero, otherwise leaves a `FALSE` flag.
   `0=`          `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if '`n`' equals zero, otherwise leaves a `FALSE` flag.
   `0<>`   `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if '`n`' does not equal zero, otherwise leaves a `FALSE` flag.
-  `0>`       `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if &\#152;`n`' is greater than zero, otherwise leaves a `FALSE` flag.
+  `0>`       `( n \-- boolean )`       Leaves a `TRUE` flag on the stack if &#152;`n`' is greater than zero, otherwise leaves a `FALSE` flag.
   `<`        `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' is less than '`n2`', otherwise leaves a `FALSE` flag.
   `<=`       `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' is less than or equal to '`n2`', otherwise leaves a `FALSE` flag.
   `<>`                     `( n1 n2 \-- boolean )`   Leaves a `TRUE` flag on the stack if '`n1`' does not equal '`n2`', otherwise leaves a `FALSE` flag.
@@ -228,11 +228,11 @@ algebraic notation. For example, to find out if
 '`n1`' is greater than
 '`n2`', the algebraic test would be:
 
-`<var>n1</var> > <var>n2</var>`
+`<var>n1</var> > <var>n2</var>`
 
 In Mops, you simply move the operation sign to the right:
 
-`<var>n1</var> <var>n2</var> >`
+`<var>n1</var> <var>n2</var> >`
 
 But in this case, Mops is testing the validity of the statement. The
 numbers are taken from the stack when they are tested. If the statement
@@ -258,13 +258,13 @@ meets. To do this, you'll nest several
 another:
 
 ```shell
-`: IFTEST  { n -- }`\
-`       n 0<`\
-`       IF    ." less than "`\
-`       ELSE  n 0>`\
-`               IF  ." greater than "`\
-`               THEN`\
-`       THEN  ." zero." cr ;`\
+`: IFTEST  { n -- }`\
+`       n 0<`\
+`       IF    ." less than "`\
+`       ELSE  n 0>`\
+`               IF  ." greater than "`\
+`               THEN`\
+`       THEN  ." zero." cr ;`\
 ```
 
 `IFTEST` is defined to check whether a number is
@@ -294,18 +294,18 @@ The key point to remember when nesting
 somewhere in the same colon definition. They are nested much in the same
 way that parenthetical delimiters in math formulas are nested:
 
-`( a / ( a - ( b * c ) ) + c )`
+`( a / ( a - ( b * c ) ) + c )`
 
 So, each `THEN` matches the `IF` with
 which it is lined up. Formatting your code this way,
 
-`IF  <var>xx</var>`\
-`       IF  <var>ww</var>`\
-`               IF  <var>uu</var>`\
-`               ELSE  <var>zz</var>`\
-`               THEN`\
-`       THEN  <var>qq</var>`\
-`THEN  <var>yy</var>`
+`IF  <var>xx</var>`\
+`       IF  <var>ww</var>`\
+`               IF  <var>uu</var>`\
+`               ELSE  <var>zz</var>`\
+`               THEN`\
+`       THEN  <var>qq</var>`\
+`THEN  <var>yy</var>`
 
 with corresponding `IF`s, `ELSE`s and
 `THEN`s lining up, is a good idea for readability, not to
@@ -328,7 +328,7 @@ is not less than zero). Conversely, you may need both flags to be
 ('`n1`' is both less than
 '`n2`' *and* less than zero). In these
 special cases, you can use the logical operators, `AND`
-and `OR`\<nowiki\>:\</nowiki\>
+and `OR`:
 
   ---------------------- ----------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------
   `AND`   `( n1 n2 \-- n3 )`   Performs a bit-wise AND of '`n1`' and '`n2`' and leaves the result on the stack.
@@ -343,12 +343,12 @@ either the first *or* the second numbers (or both numbers) have a
 `1`.
 
 For example, let's what happens when we `AND` and
-`OR` the numbers 1 and 3\<nowiki\>:\</nowiki\>
+`OR` the numbers 1 and 3:
 
-`1 3 and . cr`\
+`1 3 and . cr`\
 `1`
 
-`1 3 or . cr`\
+`1 3 or . cr`\
 `3`
 
 Remember that `AND` and `OR` perform these
@@ -393,7 +393,7 @@ description:
 As you can see, you use it exactly like you would use
 `AND` or `OR`. Try this:
 
-`1 3 xor . cr`\
+`1 3 xor . cr`\
 `2`
 
 However, unlike a "normal" `OR` operation (sometimes
@@ -401,7 +401,7 @@ referred to as "inclusive-or"), the `XOR` operation
 returns (FALSE) where both respective bit columns in each number are 1
 (TRUE). (In other words, we can have one or the other, but not *both*.)
 
-This is the binary form of our answer, 2\<nowiki\>:\</nowiki\>
+This is the binary form of our answer, 2:
 
 `0010`
 
@@ -441,13 +441,13 @@ Mops' shortcut for this multiple-decision making is the
 define a word like this:
 
 ```shell
-`: CASETEST  ( n --  )  \ Print TWO, SIX, SEVEN, or OTHER`\
-`       CASE`\
-`               2  OF  ." TWO"    ENDOF`\
-`               6  OF  ." SIX"    ENDOF`\
-`               7  OF  ." SEVEN"  ENDOF`\
-`               ." OTHER"`\
-`       ENDCASE  cr ;`\
+`: CASETEST  ( n --  )  \ Print TWO, SIX, SEVEN, or OTHER`\
+`       CASE`\
+`               2  OF  ." TWO"    ENDOF`\
+`               6  OF  ." SIX"    ENDOF`\
+`               7  OF  ." SEVEN"  ENDOF`\
+`               ." OTHER"`\
+`       ENDCASE  cr ;`\
 ```
 
 This word takes the number on the stack and checks whether it is a

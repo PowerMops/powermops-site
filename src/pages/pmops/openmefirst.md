@@ -39,7 +39,7 @@ Place the cursor at the end of the following line and press `<enter>`
 (If your keyboard does not have an enter then press `<shift-return>`).
 
 ```shell
-cr ." Hello World!"
+cr ." Hello World!"
 ```
 
 In the PowerMops window you should see the ubiquitous phrase. What
@@ -51,9 +51,9 @@ text. Try hiliting the following three lines, all three lines at the
 same time, and executing them by pressing `<enter>`:
 
 ```shell
-cr ." Now is the time"
-cr ." for all good people"
-cr ." to come to the aid of their country."
+cr ." Now is the time"
+cr ." for all good people"
+cr ." to come to the aid of their country."
 ```
 
 Now go back and hilite just ' ." for all good people" ' (be sure to
@@ -67,7 +67,7 @@ the 'cr'.
 
 Now place the cursor at the end of the next line and press `<enter>`.
 
-`33 45 +`
+`33 45 +`
 
 Again, the output will appear in the Mops window. But this time the
 output is numeric, so the result of adding 33 and 45 is left on the
@@ -93,7 +93,7 @@ Mops very easy and very powerful.
 Now execute the following:
 
 ```shell
-30 50 MoveTo  ." Hello World!"
+30 50 MoveTo  ." Hello World!"
 ```
 
 You will see our 'Hello World!' displayed in your Test window.
@@ -120,7 +120,7 @@ PowerMops can be used to take full advantage of the OpenGL Framework
 graphics package. Click on the following line and execute it by pressing
 `<enter>`.
 
-`// OpenGLDemo1`
+`// OpenGLDemo1`
 
 You will see the PowerMops window indicate that it is loading some
 files.
@@ -146,7 +146,7 @@ When done click the close box of the OpenGL DEMO Window.
 Here is a graphics demo that will work on either OS9 or OSX. Click on
 the following line and execute it by pressing `<enter>`.
 
-`// CurvesDemo`
+`// CurvesDemo`
 
 Click on the "Curves" window that appears. Try different control
 settings in the Curves window. Also try the four different kinds of
@@ -163,7 +163,7 @@ when the editor window is set to Console mode:
 Place the cursor at the end of the following line and press `<enter>`:
 
 ```shell
-cr ." Hello World!"
+cr ." Hello World!"
 
 33 45 + .
 ```
@@ -248,7 +248,7 @@ that Mops will use to look for files.
 
 If you need floating point, fire up PowerMops and type
 
-`// zfloating point`
+`// zfloating point`
 
 Yes, that's "floating point" with a z in front.
 
@@ -272,12 +272,12 @@ As always, I hope you enjoy Mops/PowerMops!
 
 |                 |                                       |
 |:----------------|---------------------------------------|
-|Mike Hore        | email:          mike_hore@aapt.net.au |
+|Mike Hore        | email:          mike_hore@aapt.net.au |
 |                 |                                       |
-|Mops web page:   | [http://www.powermops.org](http://www.powermops.org/) |
-|SourceForge project page: | [http://sourceforge.net/projects/powermops](http://sourceforge.net/projects/powermops/) |
-|                 |                                       |           `
-|Darwin, Northern Territory, Australia. |  |
+|Mops web page:   | [http://www.powermops.org](http://www.powermops.org/) |
+|SourceForge project page: | [http://sourceforge.net/projects/powermops](http://sourceforge.net/projects/powermops/) |
+|                 |                                       |           `
+|Darwin, Northern Territory, Australia. |  |
 
 ## Mops 6.0 RELEASE NOTES
 
@@ -308,21 +308,21 @@ handle the 64-bit stack cells.
 The following new words and classes are added:
 
 ```shell
-z@  ( addr -- n )      Fetches 64-bit value at address.
-z!  ( n addr -- )      Stores 64-bit n at address.
+z@  ( addr -- n )      Fetches 64-bit value at address.
+z!  ( n addr -- )      Stores 64-bit n at address.
 
-zValue  ( n --  :  name )  A 64-bit value.  The word Value
-remains at 32 bits, but sign-extends when fetched.
+zValue  ( n --  :  name )  A 64-bit value.  The word Value
+remains at 32 bits, but sign-extends when fetched.
 
-uValue  ( n --  :  name )  "Unsigned value".  A 32-bit value,
-which zero-extends when fetched.
+uValue  ( n --  :  name )  "Unsigned value".  A 32-bit value,
+which zero-extends when fetched.
 
-Class Var, similarly to Value, remains at 32-bits but
-sign-extends when fetched.  The expected two new classes
-are added:
+Class Var, similarly to Value, remains at 32-bits but
+sign-extends when fetched.  The expected two new classes
+are added:
 
-zVar       64-bit version of Var.
-uVar       Unsigned 32-bit version of Var.
+zVar       64-bit version of Var.
+uVar       Unsigned 32-bit version of Var.
 ```
 
 The shifts `<<` `>>` and `a>>` work on full stack cells, and so are
@@ -340,8 +340,8 @@ has to be sensitive to stack cell size. A constant 64bit? is defined,
 which is set true in the 64-bit versions and false in the 32-bit
 versions. You can use this constant for conditional compilation, e.g.
 
-`: fetch_whatever  ( addr -- n )`
-`   [ 64bit? ] [if]  z@  [else]  @  [then]  ;`
+`: fetch_whatever  ( addr -- n )`
+`   [ 64bit? ] [if]  z@  [else]  @  [then]  ;`
 
 There are plenty of more sensible examples in the code generator itself
 -- the source code is in the "PPC source" folder.
@@ -431,15 +431,15 @@ syntax for calling shared libraries and know some Objective-C, this
 should be quite intuitive.
 
 ```shell
-need  CocoaCalls    load the file you need
+need  CocoaCalls    load the file you need
 
-@class  myClass         declares a class
+@class  myClass         declares a class
 
-+M method1withparm1|parm2|parm3 { parm1 parm2 %parm3 -- result }
-                    declares a class method.`
-                    Parameters are specified exactly as for shared libraries.`
++M method1withparm1|parm2|parm3 { parm1 parm2 %parm3 -- result }
+                    declares a class method.`
+                    Parameters are specified exactly as for shared libraries.`
 
--M method2 { ... }  declares an instance method.
+-M method2 { ... }  declares an instance method.
 ```
 
 The method names are the same as the methods you want to call, except
@@ -463,23 +463,23 @@ super. Otherwise you can do it explicitly yourself.
 
 For example:
 
-`:class myObjCclass  super{ NSMetaObj }`
+`:class myObjCclass  super{ NSMetaObj }`
 
-`:m init:                    set things up explicitly`
-`   myClass  class-id !      class-id is an ivar of NSMetaObj`
+`:m init:                    set things up explicitly`
+`   myClass  class-id !      class-id is an ivar of NSMetaObj`
 `;m`
 
-`:m new:`
-`   ...`
-`   new: super               does "myClass class-id !" for you,`
-`                            also allocates obj-C object of the class`
-`                            and stores the pointer in obj-id, another`
-`                            ivar of NSMetaObj`
-`   ...`
+`:m new:`
+`   ...`
+`   new: super               does "myClass class-id !" for you,`
+`                            also allocates obj-C object of the class`
+`                            and stores the pointer in obj-id, another`
+`                            ivar of NSMetaObj`
+`   ...`
 `;m`
 
-`:m someMethod:`
-`   ....  method1withparm1|parm2|parm3`
+`:m someMethod:`
+`   ....  method1withparm1|parm2|parm3`
 `;m`
 
 `;class`
@@ -506,19 +506,19 @@ In CocoaCalls, the pointer of the structure is distinguished by "\*"
 at the top of the parameter name in the declaration. For example, if an
 instance method "getFrameRect:" is prototyped as
 
-`[imaginary code-begin]`
+`[imaginary code-begin]`
 
-`(NSRect)getFrameRect:(NSWindow *)wind`
+`(NSRect)getFrameRect:(NSWindow *)wind`
 
-`[imaginary code-end]`
+`[imaginary code-end]`
 
 We must declare it like
 
-`[imaginary code-begin]`
+`[imaginary code-begin]`
 
-`-M getFrameRect| { *framerect wptr -- }`
+`-M getFrameRect| { *framerect wptr -- }`
 
-`[imaginary code-end]`
+`[imaginary code-end]`
 
 (Of course, we must pass a pointer of a NSRect structure as the first
 parameter to it.)
@@ -536,8 +536,8 @@ I avoided giving the symbol a special meaning.
 
 ### Nav manager support
 
-`Read Me for new NavFile classes.`
-`   Aug. 04 N.S.`
+`Read Me for new NavFile classes.`
+`   Aug. 04 N.S.`
 
 New "File" class supports Mode-less and window-modal Navigation Dialog
 too. "FileX" class supports additionally long unicode file names.
@@ -546,25 +546,25 @@ normal "Navget:" or "Navput:" as before.
 
 The Usages are :
 
-`File ff  I implemented it as a feature of File class.`
-`        if you need long unicode file name, use FileX class.`
+`File ff  I implemented it as a feature of File class.`
+`        if you need long unicode file name, use FileX class.`
 
-`128 NavGet: ff`
-` NavGet: ( resID -- b ) -usual application-modal Open file Dialog`
+`128 NavGet: ff`
+` NavGet: ( resID -- b ) -usual application-modal Open file Dialog`
 
-`" undefined" NavPut: ff`
-` NavPut: ( addr len -- b ) -usual application-modal Save file Dialog`
+`" undefined" NavPut: ff`
+` NavPut: ( addr len -- b ) -usual application-modal Save file Dialog`
 
-`128 windowref NavGetWM: ff`
-` NavGetWM: ( resID windowref -- b ) - window-modal Open file Dialog`
-` Windowref shall be the parent window's windowref (windowpointer).`
+`128 windowref NavGetWM: ff`
+` NavGetWM: ( resID windowref -- b ) - window-modal Open file Dialog`
+` Windowref shall be the parent window's windowref (windowpointer).`
 
-`" undefined" windowref NavPutWM: ff`
-` NavPutWM: ( addr len windowref -- b ) - window-modal Save File Dialog`
-` WindowRef shall be the parent window's windowref.`
+`" undefined" windowref NavPutWM: ff`
+` NavPutWM: ( addr len windowref -- b ) - window-modal Save File Dialog`
+` WindowRef shall be the parent window's windowref.`
 
-`128 NavGetML: ff`
-` NavGetML: ( resID -- b ) - mode-less OpenFile Dialog`
+`128 NavGetML: ff`
+` NavGetML: ( resID -- b ) - mode-less OpenFile Dialog`
 
 The point we must pay attention to is that in the case of window-modal
 or mode-less NavDialog the methods return immediately after displaying
@@ -574,22 +574,22 @@ the dialog. So boolean to be returned means simply whether succeeding
 So when we will use mode-less or window-modal NavDialog, we must set
 vects "ForSaveProc" and/or "ForOpenProc".
 
-`ForSaveproc ( ^file -- )`
+`ForSaveproc ( ^file -- )`
 
-`ForOpenProc ( ^file -- )`
+`ForOpenProc ( ^file -- )`
 
 When we click "save" or "open" button on NavDialog, one of these
 vect will be executed respectively. These vect will be passed an address
 of file object for which the NavDialog are used. So, for example,
 
 `//////////////`
-`: mysaveproc { ^file -- }`
-`^file create: class_as> file ?EXIT`
-`^file savefile: mytextview  various writing process`
-`^file close: class_as> file drop`
+`: mysaveproc { ^file -- }`
+`^file create: class_as> file ?EXIT`
+`^file savefile: mytextview  various writing process`
+`^file close: class_as> file drop`
 `;`
 
-`' mysaveproc -> forsaveproc`
+`' mysaveproc -> forsaveproc`
 `////////////`
 
 etc. should work.
@@ -597,11 +597,11 @@ etc. should work.
 Initially these vects is initialized by "drop" in order that the code
 like following may not be broken :
 
-`: savefile`
-`128 NavPut: myfile`
+`: savefile`
+`128 NavPut: myfile`
 `IF`
-`   create: myfile drop`
-`   ......`
+`   create: myfile drop`
+`   ......`
 `THEN`
 `;`
 
@@ -629,29 +629,29 @@ example,
 
 `////////////////`
 
-`File ff`
+`File ff`
 
-`modeless: NavDLGs`
-`" your message" setmessage: NavDLGs`
-`128  ff OpenByNav: NavDLGs  OpenByNav ( resID ^file -- rc )`
+`modeless: NavDLGs`
+`" your message" setmessage: NavDLGs`
+`128  ff OpenByNav: NavDLGs  OpenByNav ( resID ^file -- rc )`
 
 `//////////////////`
 
 will display mode-less File Open Navigation Dialog with the message.
 Among other methods for NavDLGs:
 
-`AppModal:  ( -- ) -- init as application-modal NavDialog`
-`WinModal:  ( windowref -- ) -- init as window-modal NavDialog`
-`         and set the parent window.`
+`AppModal:  ( -- ) -- init as application-modal NavDialog`
+`WinModal:  ( windowref -- ) -- init as window-modal NavDialog`
+`         and set the parent window.`
 
-`ActionBtnLabel:  ( addr len -- ) -- customize word-label of Save/Open`
-`                button.`
+`ActionBtnLabel:  ( addr len -- ) -- customize word-label of Save/Open`
+`                button.`
 
-`CancelBtnLabel:  ( addr len -- ) -- customize word-label of cancel button.`
+`CancelBtnLabel:  ( addr len -- ) -- customize word-label of cancel button.`
 
-`Title:  ( addr len -- ) customize NavDialog's window title.`
+`Title:  ( addr len -- ) customize NavDialog's window title.`
 
-`SaveByNav:  ( addr len ^file -- rc ) -- Create Save File Dialog.`
+`SaveByNav:  ( addr len ^file -- rc ) -- Create Save File Dialog.`
 
 Generally speaking, set mode of NavDialog first of all -- which
 initialize "NavDialogCreationOption" structure. Then customize the
@@ -672,16 +672,16 @@ Nao Sacrada
 "deprecated" functions still used are :
 
 `AppendMenu()`
-` -- because of the bug (probably) of "AppendMenuItemTextWithCFString()"`
-`    (.. lengthy name! :-)`
+` -- because of the bug (probably) of "AppendMenuItemTextWithCFString()"`
+`    (.. lengthy name! :-)`
 
 `GetNewMenu()`
 `AppendResMenu()`
-` -- for resource fork menu support.`
+` -- for resource fork menu support.`
 
 `MenuKey()`
-` -- its alternative "IsMenuKeyEvent()" will require`
-`    some modification of "CarbonEvents" file.`
+` -- its alternative "IsMenuKeyEvent()" will require`
+`    some modification of "CarbonEvents" file.`
 
 ------------------------------------------------------------------------
 
@@ -699,18 +699,18 @@ menu creation is as following :
 when the menu has 5 items,
 
 `[code-begin]`
-`5 menu myFileMen`
+`5 menu myFileMen`
 
-`xts{ word0 word1 word2 word3 word4 } 128 ( MenuID ) init: myFileMen`
-`" main" setNib: myFileMen  ".nib" extension must be dropped`
+`xts{ word0 word1 word2 word3 word4 } 128 ( MenuID ) init: myFileMen`
+`" main" setNib: myFileMen  ".nib" extension must be dropped`
 
-`" File" createfromNIB: myFileMen`
+`" File" createfromNIB: myFileMen`
 `........`
 `[code-end]`
 
 In order to see the menu immediately,
 
-`insert: myFileMen`
+`insert: myFileMen`
 
 will append the menu to current menubar.
 
@@ -793,12 +793,12 @@ similar in appearance to the RIghtArrow.
 Smalltalk uses cascaded messages and we decided that they could be
 useful in Mops as well. Consider the following snippet of code:
 
-`10 10 40 40 put: myrectangle  1 1 inset: myrectangle`
-`draw: myrectangle  invert: myrectangle  clear: myrectangle`
+`10 10 40 40 put: myrectangle  1 1 inset: myrectangle`
+`draw: myrectangle  invert: myrectangle  clear: myrectangle`
 
 Cascaded messages let us re-write the above as follows:
 
-`10 10 40 40 put: myrectangle 1 1 inset: | draw: | invert: | clear: |`
+`10 10 40 40 put: myrectangle 1 1 inset: | draw: | invert: | clear: |`
 
 The '|' (vertical bar), will cause the reference to the last object
 in the input stream to be re-used. Note how this syntax once again
@@ -830,10 +830,10 @@ The changes in Mops 5.5 were:
 -   -   Under OSX, you can now call frameworks exactly as you call
 shared libraries. The syntax is exactly parallel:
 
-`FRAMEWORK <someFramework>`
+`FRAMEWORK <someFramework>`
 
-`FrwkCall  CallName1`
-`FrwkCall  CallName2`
+`FrwkCall  CallName1`
+`FrwkCall  CallName2`
 
 Note the framework name and call names are case sensitive.
 
@@ -841,13 +841,13 @@ Thanks to Nao Sacrada for the main work in implementing this. Nao's
 OpenGL demo code is in the folder OpenGLDemoFolder, and you can load it
 with:
 
-`// OpenGLDemo`
+`// OpenGLDemo`
 
 -   -   You can now do direct Mach-O calls using similar syntax
 
 to Syscall, e.g.
 
-`MachOCall  EnterMovies`
+`MachOCall  EnterMovies`
 
 Nao also contributed this code. He found that many QuickTime calls were
 crashing under OSX, and that using direct Mach-O calls avoided the
@@ -870,8 +870,8 @@ something reasonable.
 
 -   -   If you accidentally put e.g.
 
-`: aDefn  { a b -- )`
-`   blah blah`
+`: aDefn  { a b -- )`
+`   blah blah`
 `;`
 
 where you close the locals list with a ')' instead of a '}', we now
@@ -1102,5 +1102,5 @@ web site.
 
 As always, I hope you enjoy Mops!
 
--  *Mike Hore*
+-  *Mike Hore*
 

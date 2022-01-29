@@ -14,152 +14,152 @@ called 'Turtle', and is in 'Demo folder'.
 Here's the whole thing first. We'll then go through it in detail.
 
 ```shell
-`\ Turtle Graphics Objects for Demo`
+`\ Turtle Graphics Objects for Demo`
 
-`need   sin`
+`need   sin`
 
 `decimal`
 
-`\ Class PEN defines a turtle-graphics pen.`
+`\ Class PEN defines a turtle-graphics pen.`
 
-`syscall GetPenState`\
-`syscall SetPenState`\
-`syscall Line`\
-`syscall LineTo`
+`syscall GetPenState`\
+`syscall SetPenState`\
+`syscall Line`\
+`syscall LineTo`
 
-`:class PEN     super{ object }`
+`:class PEN     super{ object }`
 
-`68k_record{                    \ These first 5 ivars comprise a PenState structure`\
-`       point   PnLoc           \ location of pen`\
-`       point   PnSize          \ width, height`\
-`       int     PnMode`\
-`       var     PnPatLo`\
-`       var     PnPatHi`\
+`68k_record{                    \ These first 5 ivars comprise a PenState structure`\
+`       point   PnLoc           \ location of pen`\
+`       point   PnSize          \ width, height`\
+`       int     PnMode`\
+`       var     PnPatLo`\
+`       var     PnPatHi`\
 `}`\
-`       angle   Direction`\
-`       point   homeLoc`\
-`       int     maxReps`\
-`       int     initLen`\
-`       int     deltaLen        \ change in len`\
-`       int     deltaDeg        \ change in angle`
+`       angle   Direction`\
+`       point   homeLoc`\
+`       int     maxReps`\
+`       int     initLen`\
+`       int     deltaLen        \ change in len`\
+`       int     deltaDeg        \ change in angle`
 
-`:m GET:    ^base GetPenState ;m                \ Save state here`\
-`:m SET:    ^base SetPenState ;m                \ Restore from here`
+`:m GET:    ^base GetPenState ;m                \ Save state here`\
+`:m SET:    ^base SetPenState ;m                \ Restore from here`
 
-`:m TURN: ( deg -- )    +: direction ;m`
+`:m TURN: ( deg -- )    +: direction ;m`
 
-`:m UP: 90 put: direction ;m`
+`:m UP: 90 put: direction ;m`
 
-`:m MOVETO:     \ ( x y -- )    Draws a line to x,y if pen shows`\
-`       set: self LineTo get: self ;m`
+`:m MOVETO:     \ ( x y -- )    Draws a line to x,y if pen shows`\
+`       set: self LineTo get: self ;m`
 
-`:m MOVE: { dist -- }   \ Draws dist bits in current direction`\
-`       set: self cos: direction dist * 10000 /`\
-`       sin: direction dist * 10000 /   negate`\
-`       Line get: self ;m`
+`:m MOVE: { dist -- }   \ Draws dist bits in current direction`\
+`       set: self cos: direction dist * 10000 /`\
+`       sin: direction dist * 10000 /   negate`\
+`       Line get: self ;m`
 
-`:m GOTO:       \ ( x y -- )    Goes to a location without drawing`\
-`       put: PnLoc ;m`
+`:m GOTO:       \ ( x y -- )    Goes to a location without drawing`\
+`       put: PnLoc ;m`
 
-`:m CENTER:     \ ( x y -- )    Sets the center coordinates`\
-`       put: homeLoc ;m`
+`:m CENTER:     \ ( x y -- )    Sets the center coordinates`\
+`       put: homeLoc ;m`
 
-`:m HOME:       \ ( -- )                Places pen in center of Mops window`\
-`       get: homeLoc goto: self   ;m`
+`:m HOME:       \ ( -- )                Places pen in center of Mops window`\
+`       get: homeLoc goto: self   ;m`
 
-`:m SIZE:       \ ( w h -- )    Sets size in pixels of drawing pen`\
-`       put: PnSize ;m`
+`:m SIZE:       \ ( w h -- )    Sets size in pixels of drawing pen`\
+`       put: PnSize ;m`
 
-`:m INIT:       \ ( x y w h mode -- )`\
-`       put: PnMode put: PnSize   put: PnLoc ;m`
+`:m INIT:       \ ( x y w h mode -- )`\
+`       put: PnMode put: PnSize   put: PnLoc ;m`
 
-`:m PUTRANGE:   \ ( initlen dLen dDeg -- )      Sets parameters`\
-`       put: deltaDeg put: deltaLen put: initLen ;m`
+`:m PUTRANGE:   \ ( initlen dLen dDeg -- )      Sets parameters`\
+`       put: deltaDeg put: deltaLen put: initLen ;m`
 
-`:m PUTMAX:   ( maxReps -- )    put: maxReps ;m`
+`:m PUTMAX:   ( maxReps -- )    put: maxReps ;m`
 
-`:m CLASSINIT:   get: self   200 put: maxReps ;m`
+`:m CLASSINIT:   get: self   200 put: maxReps ;m`
 
-`:m SPIRAL: { \ dist degrees delta reps -- }`\
-`               \ Draws a spiral of line segments - Logo POLYSPI`\
-`       home: self`\
-`       get: initLen -> dist get: deltaLen -> delta`\
-`       get: deltaDeg -> degrees   0 -> reps`\
-`       BEGIN   1 ++> reps reps get: maxReps <`\
-`       WHILE   dist move: self   degrees turn: self`\
-`               delta ++> dist`\
-`       REPEAT ;m`
+`:m SPIRAL: { \ dist degrees delta reps -- }`\
+`               \ Draws a spiral of line segments - Logo POLYSPI`\
+`       home: self`\
+`       get: initLen -> dist get: deltaLen -> delta`\
+`       get: deltaDeg -> degrees   0 -> reps`\
+`       BEGIN   1 ++> reps reps get: maxReps <`\
+`       WHILE   dist move: self   degrees turn: self`\
+`               delta ++> dist`\
+`       REPEAT ;m`
 
-`:m DRAGON:     \ ( n -- )   Dragon curves from Martin Gardner`\
-`       dup`\
-`       NIF     get: deltaLen move: self drop`\
-`       ELSE    dup 0>`\
-`               IF      dup 1- dragon: self`\
-`                       get: deltadeg turn: self`\
-`                       1 swap -   dragon: self`\
-`               ELSE`\
-`                       -1 over -   dragon: self`\
-`                       360 get: deltadeg - turn: self`\
-`                       1+ dragon: self`\
-`               THEN`\
-`       THEN ;m`
+`:m DRAGON:     \ ( n -- )   Dragon curves from Martin Gardner`\
+`       dup`\
+`       NIF     get: deltaLen move: self drop`\
+`       ELSE    dup 0>`\
+`               IF      dup 1- dragon: self`\
+`                       get: deltadeg turn: self`\
+`                       1 swap -   dragon: self`\
+`               ELSE`\
+`                       -1 over -   dragon: self`\
+`                       360 get: deltadeg - turn: self`\
+`                       1+ dragon: self`\
+`               THEN`\
+`       THEN ;m`
 
-`:m LJ: { \ reps -- }   \ Draws an infinite Lissajous figure`\
-`       up: self   0 -> reps`\
-`       get: initLen get: direction * cos 120 /         getX: homeLoc +`\
-`       get: deltalen get: direction * sin 120 / negate getY: homeLoc +`\
-`       goto: self`\
-`       BEGIN   1 ++> reps reps get: maxReps <`\
-`       WHILE`\
-`               get: initLen get: direction * cos 120 / getX: homeLoc +`\
-`               get: deltaLen get: direction * sin 120 / negate`\
-`               getY: homeLoc +   moveTo: self`\
-`               get: deltaDeg turn: self`\
-`       REPEAT ;m`\
+`:m LJ: { \ reps -- }   \ Draws an infinite Lissajous figure`\
+`       up: self   0 -> reps`\
+`       get: initLen get: direction * cos 120 /         getX: homeLoc +`\
+`       get: deltalen get: direction * sin 120 / negate getY: homeLoc +`\
+`       goto: self`\
+`       BEGIN   1 ++> reps reps get: maxReps <`\
+`       WHILE`\
+`               get: initLen get: direction * cos 120 / getX: homeLoc +`\
+`               get: deltaLen get: direction * sin 120 / negate`\
+`               getY: homeLoc +   moveTo: self`\
+`               get: deltaDeg turn: self`\
+`       REPEAT ;m`\
 `;class`
 
-`\ Define a Smalltalk Polygon object as subclass of Pen`
+`\ Define a Smalltalk Polygon object as subclass of Pen`
 
-`:class POLY super{ pen }`
+`:class POLY super{ pen }`
 
-`       int     Sides                   \ # of sides in the Polygon`\
-`       int     Length                  \ Length of each side`
+`       int     Sides                   \ # of sides in the Polygon`\
+`       int     Length                  \ Length of each side`
 
-`:m DRAW: { \ turnAngle -- }`\
-`       360 get: sides /   -> turnAngle`\
-`       get: sides 0`\
-`       DO      get: length move: self`\
-`               turnAngle turn: self`\
-`       LOOP ;m`
+`:m DRAW: { \ turnAngle -- }`\
+`       360 get: sides /   -> turnAngle`\
+`       get: sides 0`\
+`       DO      get: length move: self`\
+`               turnAngle turn: self`\
+`       LOOP ;m`
 
-`:m SIZE:       \ ( len #sides -- )     Stores sides and goes to Home`\
-`       get: self put: sides put: length`\
-`       home: self   up: self ;m`
+`:m SIZE:       \ ( len #sides -- )     Stores sides and goes to Home`\
+`       get: self put: sides put: length`\
+`       home: self   up: self ;m`
 
-`:m SPIN: { \ reps -- }         \ Spins a series of polygons around a point`\
-`       home: self 10 get: initLen size: self`\
-`       0 -> reps`\
-`       BEGIN   reps get: maxReps <`\
-`       WHILE   draw: self get: deltaDeg turn: self`\
-`               get: deltaLen +: length 1 ++> reps`\
-`       REPEAT ;m`
+`:m SPIN: { \ reps -- }         \ Spins a series of polygons around a point`\
+`       home: self 10 get: initLen size: self`\
+`       0 -> reps`\
+`       BEGIN   reps get: maxReps <`\
+`       WHILE   draw: self get: deltaDeg turn: self`\
+`               get: deltaLen +: length 1 ++> reps`\
+`       REPEAT ;m`
 
-`:m CLASSINIT:          \ Default Poly is 30-dot triangle`\
-`       30 3 size: self 100 put: maxReps ;m`
+`:m CLASSINIT:          \ Default Poly is 30-dot triangle`\
+`       30 3 size: self 100 put: maxReps ;m`
 
 `;class`
 
-`\ Create a pen named Bic`\
-`Pen    BIC`
+`\ Create a pen named Bic`\
+`Pen    BIC`
 
-`\ Create a Polygon named Anna`\
-`Poly   ANNA`\
-`60 4 size: Anna`\
+`\ Create a Polygon named Anna`\
+`Poly   ANNA`\
+`60 4 size: Anna`\
 ```
 
 We'll now look at this program in detail.
 
-`need sin`
+`need sin`
 
 This statement ensures that the Sin file is loaded before this one. In
 this file we will make use of the Angle class we defined in the file Sin
@@ -177,10 +177,10 @@ may have less difficulty remem-bering what number base you're in if you
 stay in decimal and precede any hex number with a dollar sign and a
 space (e.g., \$ AE9F).
 
-`syscall GetPenState`\
-`syscall SetPenState`\
-`syscall Line`\
-`syscall LineTo`
+`syscall GetPenState`\
+`syscall SetPenState`\
+`syscall Line`\
+`syscall LineTo`
 
 GetPenState, SetPenState, Line and LineTo are Mac Toolbox calls. We
 don't want to include information about every possible Toolbox call in
@@ -203,7 +203,7 @@ Here are the important things you need to know about syscall:
 2.  The names following syscall are **case sensitive**, this is the one
     place in Mops where case matters. This is forced on us by the way
     Apple handles its Toolbox calls on PowerMacs. So for example, if we
-    had put\<br\> `syscall getpenstate`\<br\>above, we
+    had put<br /> `syscall getpenstate`<br />above, we
     would have received a compile-time error message telling us that
     Mops couldn't find the name.
 3.  Not all Toolbox routines mentioned in Inside Macintosh are
@@ -224,7 +224,7 @@ for the PowerPC in any case, since the lengths of parameters can be
 different.
 
 ```shell
-`:class PEN super{ object }`\
+`:class PEN super{ object }`\
 `...`\
 ```
 
@@ -277,8 +277,8 @@ scratch, you would probably be inserting new instance variables in this
 list as you find need for them while defining methods.
 
 ```shell
-`:m GET:    ^base GetPenState ;m                \ Save state here`\
-`:m SET:    ^base SetPenState ;m                \ Restore from here`\
+`:m GET:    ^base GetPenState ;m                \ Save state here`\
+`:m SET:    ^base SetPenState ;m                \ Restore from here`\
 ```
 
 These two methods will be used frequently whenever an object of this
@@ -301,7 +301,7 @@ SET: command reminds the Toolbox where Scripto1's position was the last
 time.
 
 ```shell
-`:m TURN:             ( deg -- )    +: direction ;m`\
+`:m TURN:             ( deg -- )    +: direction ;m`\
 `&#133;`\
 `&#133;`\
 ```
@@ -311,7 +311,7 @@ that affect any object of this class. For example, TURN: increments the
 angle value stored in an object's Direction ivar (+: Direction) by the
 number of degrees passed to it in a message, like
 
-`30 turn: Scripto1`
+`30 turn: Scripto1`
 
 The Direction ivar is used by sin: and cos: methods from the last
 lesson. These correctly handle degree values of greater than 359
@@ -385,13 +385,13 @@ Toolbox into an object's first five ivars (get: self). Finally, the
 maxReps ivar for the object is set to 200.
 
 ```shell
-`:m SPIRAL: { \ dist degrees delta reps -- }`\
+`:m SPIRAL: { \ dist degrees delta reps -- }`\
 `&#133;`
 
-`:m DRAGON:     \ ( n -- )   Dragon curves from Martin Gardner`\
+`:m DRAGON:     \ ( n -- )   Dragon curves from Martin Gardner`\
 `&#133;`
 
-`:m LJ: { \ reps -- }   \ Draws an infinite Lissajous figure`\
+`:m LJ: { \ reps -- }   \ Draws an infinite Lissajous figure`\
 `&#133;`\
 ```
 
@@ -411,17 +411,17 @@ no relation to named input parameters in the same definition.
 The SPIRAL: method declares four local variable names: dist, degrees,
 delta and reps.
 
-`home: self`
+`home: self`
 
 moves the pen to the center of the current drawing window.
 
-`get: initLen -> dist get: deltaLen -> delta`
+`get: initLen -> dist get: deltaLen -> delta`
 
 Dist and delta are given values by first fetching values from two of the
 object's ivars, initLen and deltaLen, and then storing the values in
 their respective local variables (via -> operations).
 
-`get: deltaDeg -> degrees 0 -> reps`
+`get: deltaDeg -> degrees 0 -> reps`
 
 Here the third local variable, degrees, gets its value after the
 deltaDeg ivar value is fetched from the object's memory. Reps is
@@ -430,10 +430,10 @@ maxReps. Once these local variables have values stored in them, they can
 be used throughout that method for whatever calculations are desired, as
 shown in the following lines:
 
-`BEGIN  1 ++> reps reps get: maxReps <`\
-`WHILE  dist move: self   degrees turn: self`\
-`       delta ++> dist`\
-`REPEAT ;m`
+`BEGIN  1 ++> reps reps get: maxReps <`\
+`WHILE  dist move: self   degrees turn: self`\
+`       delta ++> dist`\
+`REPEAT ;m`
 
 Without local variables, you would have to arrange for a significant
 amount of stack manipulation to keep the right values in the right
@@ -452,9 +452,9 @@ sent. But that's why PUTRANGE: was defined earlier.
 ends the definition of class Pen.
 
 ```shell
-`\ Define a Smalltalk Polygon object as subclass of Pen`
+`\ Define a Smalltalk Polygon object as subclass of Pen`
 
-`:class POLY super{ pen }`\
+`:class POLY super{ pen }`\
 `&#133;`\
 ```
 
@@ -464,8 +464,8 @@ if you create an object of the class Poly, you can still issue messages
 with selectors like MOVE: and HOME:.
 
 ```shell
-`int    Sides           \ # of sides in the Polygon`\
-`int    Length          \ Length of each side  `\
+`int    Sides           \ # of sides in the Polygon`\
+`int    Length          \ Length of each side  `\
 ```
 
 Class Poly has two additional instance variables, both of them integers.
@@ -475,12 +475,12 @@ of sides of a polygon object created from this class. The other is the
 length (in pixels) of each side (all sides are of equal length).
 
 ```shell
-`:m DRAW: { \ turnAngle -- }`\
-`       360 get: sides /   -> turnAngle`\
-`       get: sides 0`\
-`       DO      get: length move: self`\
-`               turnAngle turn: self`\
-`       LOOP ;m`\
+`:m DRAW: { \ turnAngle -- }`\
+`       360 get: sides /   -> turnAngle`\
+`       get: sides 0`\
+`       DO      get: length move: self`\
+`               turnAngle turn: self`\
+`       LOOP ;m`\
 ```
 
 This method is an extension of the MOVE: and TURN: methods defined in
@@ -493,9 +493,9 @@ turnAngle. This draw\...turn action is repeated until the index equals
 the limit of the loop.
 
 ```shell
-`:m SIZE:       \ ( len #sides -- )     Stores sides and goes to Home`\
-`       get: self put: sides put: length`\
-`       home: self   up: self ;m`\
+`:m SIZE:       \ ( len #sides -- )     Stores sides and goes to Home`\
+`       get: self put: sides put: length`\
+`       home: self   up: self ;m`\
 ```
 
 SIZE: is redefined for this subclass. It takes two parameters: the
@@ -510,13 +510,13 @@ in class Pen) and orients it facing to the top of the screen (from the
 UP: method also in class Pen).
 
 ```shell
-`:m SPIN: { \ reps -- } \ Spins a series of polygons around a point`\
-`       home: self 10 get: initLen size: self`\
-`       0 -> reps`\
-`       BEGIN   reps get: maxReps <`\
-`       WHILE   draw: self get: deltaDeg turn: self`\
-`               get: deltaLen +: length 1 ++> reps`\
-`       REPEAT ;m`\
+`:m SPIN: { \ reps -- } \ Spins a series of polygons around a point`\
+`       home: self 10 get: initLen size: self`\
+`       0 -> reps`\
+`       BEGIN   reps get: maxReps <`\
+`       WHILE   draw: self get: deltaDeg turn: self`\
+`               get: deltaLen +: length 1 ++> reps`\
+`       REPEAT ;m`\
 ```
 
 The SPIN: method is a routine that draws a sequence of polygons around a
@@ -525,8 +525,8 @@ method has one local variable, reps, which is used as a counter for the
 number of repetitions through the BEGIN\...WHILE\...REPEAT loop.
 
 ```shell
-` :m CLASSINIT: \ Default Poly is 30-dot triangle`\
-`       30 3 size: self 100 put: maxReps ;m`\
+` :m CLASSINIT: \ Default Poly is 30-dot triangle`\
+`       30 3 size: self 100 put: maxReps ;m`\
 ```
 
 Finally, the default settings for an object of class Poly are set by
@@ -535,12 +535,12 @@ with 3 sides, each 30 pixels long. This method also sets the ivar,
 maxReps, to 100.
 
 ```shell
-`\ Create a pen named Bic`\
-`Pen    BIC`
+`\ Create a pen named Bic`\
+`Pen    BIC`
 
-`\ Create a Polygon named Anna`\
-`Poly   ANNA`\
-`60 4 size: Anna`\
+`\ Create a Polygon named Anna`\
+`Poly   ANNA`\
+`60 4 size: Anna`\
 ```
 
 These are two examples of objects ceated from the classes just defined.
@@ -562,14 +562,14 @@ First, you must load the file Turtle. Load it by either selecting the
 Load command from the File menu, or typing the 'slash-slash' command,
 as in
 
-`// turtle`
+`// turtle`
 
 As the file loads, you will see messages as each component file is
 loaded; you may see occasional messages when words are redefined or if
 an object name is being reused (is not unique). This will happen if TRUE
 has been put in the global value WARNINGS?
 
-`TRUE -> warnings?`
+`TRUE -> warnings?`
 
 Normally this value is set to FALSE, so warnings are not displayed.
 
@@ -588,9 +588,9 @@ and c) draws the Lissajous figures (method LJ:). Here's one way to do
 it:
 
 ```shell
-: lj  cls  putrange: bic
-            250 160 center: bic
-            lj: bic   cr   ;
+: lj  cls  putrange: bic
+            250 160 center: bic
+            lj: bic   cr   ;
 ```
 
 Try typing in various three integer combinations (e.g., 9 11 301 lj )
@@ -605,7 +605,7 @@ Now, define a new word that turns the cursor off before doing the
 Lissajous figures, and turns it on when the drawing is completed:
 
 ```shell
-`: cleanlj -curs lj +curs ;`\
+`: cleanlj -curs lj +curs ;`\
 ```
 
 > A Tip: Since PowerMops uses MLTE (Multi-Lingual
@@ -623,24 +623,24 @@ before they start retracing previous steps). For example, try 12 1 1949.
 To increase the number of repetitions, you can send a PUTMAX: message to
 Bic to change its maxReps ivar.
 
-`1000 putmax: bic`
+`1000 putmax: bic`
 
 Now Let's experiment with the Anna object. Right now, it is a square of
 60 pixels on a side. Put the coordinates for the center of the screen in
 Anna's homeLoc ivar by sending a message with the CENTER: selector:
 
-`250 160 center: Anna`
+`250 160 center: Anna`
 
 Now, move Anna's PnLoc to the center with this message:
 
-`home: Anna`
+`home: Anna`
 
 Draw Anna. The square appears on the screen. Now clear the screen
 (`CLS`) and resize Anna so the object has 8 sides, each
 20 pixels long and draw the object:
 
-`20 8 size: Anna`\
-`draw: Anna`
+`20 8 size: Anna`\
+`draw: Anna`
 
 In both drawings, the presence of the cursor and Mops prompt really
 messed things up. Therefore, define a Mops word that:
@@ -651,6 +651,6 @@ messed things up. Therefore, define a Mops word that:
 -   brings the prompt to the left margin
 -   turns the cursor back on:
 
-`: draw cls -curs draw: anna cr +curs ;`
+`: draw cls -curs draw: anna cr +curs ;`
 
 <PrevNext />

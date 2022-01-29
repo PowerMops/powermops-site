@@ -12,7 +12,7 @@ the name of the class followed by the name you want to assign to the
 object. For an object named "`Box1`" of class
 `Rect`, the statement would be:
 
-`Rect Box1`
+`Rect Box1`
 
 That's all there is to it! By creating this object, you have added a
 new Mops word, "`Box1`" to the dictionary in memory.
@@ -50,7 +50,7 @@ Since `Box1` is an object of our rectangle class, you can
 send a message to it that selects one of the methods defined in class
 `Rect`. If you send the message
 
-`300 20 400 100 put: Box1`
+`300 20 400 100 put: Box1`
 
 you put the coordinates 300,20 and 400,100 into the data cells reserved
 for `TopLeft` and `BotRight` in the
@@ -70,7 +70,7 @@ need to send another message, one that calls upon the
 `DRAW:` method of class `Rect`. The
 message would be:
 
-`draw: Box1`
+`draw: Box1`
 
 If you were defining class `Rect` from scratch, you could
 also define a new method that combines the functions of two methods into
@@ -82,17 +82,17 @@ same class. That's where a message receiver called
 (`DISP:`) the class looks like this:
 
 ```shell
-`:class  RECT  super{ object }`\
+`:class  RECT  super{ object }`\
 `record`\
-`{      point     TopLeft`\
-`       point     BotRight`\
+`{      point     TopLeft`\
+`       point     BotRight`\
 `}`
 
-`:m PUT:                put: BotRight   put: TopLeft  ;m  ( l t r b -- )`
+`:m PUT:                put: BotRight   put: TopLeft  ;m  ( l t r b -- )`
 
-`:m DRAW:       ^base  FrameRect  ;m`
+`:m DRAW:       ^base  FrameRect  ;m`
 
-`:m DISP:       put: self  draw: self  ;m`
+`:m DISP:       put: self  draw: self  ;m`
 
 `;class`\
 ```
@@ -114,7 +114,7 @@ along with any message bearing its selector, just like the actual
 four integers. Therefore, to both locate and draw `Box1`
 on the screen, you would send the message:
 
-`12 10 100 50 disp: Box1`
+`12 10 100 50 disp: Box1`
 
 If you want to try this, you'll have to have a window to display
 `Box1` in, as you did in the \[../Overview/Chapter1.html
@@ -130,16 +130,16 @@ and will be ready to do your bidding.
 
 Now type and execute this:
 
-`Window ww`\
-`test: ww`
+`Window ww`\
+`test: ww`
 
 Click back on the Mops window and move things around so you can see both
 the Mops window and `ww`, then type and execute
 
-`Rect Box1`
+`Rect Box1`
 
-`set: ww`\
-`12 10 100 50 disp: Box1`
+`set: ww`\
+`12 10 100 50 disp: Box1`
 
 and your `Rect` instance (`Box1`) should
 appear in the window `ww`.
@@ -165,9 +165,9 @@ disp: Box1`', the parameters fill `Box1`'s data
 cells held in reserve when `Box1` was created.
 
 The characteristics of the data had already been determined by the ivars
-`TopLeft` and `BotRight`\<nowiki\>; the
+`TopLeft` and `BotRight`; the
 characteristics of each those ivars had been likewise determined by the
-ivars \</nowiki\>`X` and `Y`, which, in
+ivars `X` and `Y`, which, in
 turn, had been defined by the methods of their defining class, class
 `Int`.
 

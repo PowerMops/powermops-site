@@ -67,11 +67,11 @@ algebraic infix notation of a problem to Mops' postfix notation. For
 example, to multiply 100 times the fraction two-thirds, the
 paper-and-pencil equation
 
-`100 * 2 / 3`
+`100 * 2 / 3`
 
 then becomes
 
-`100 2 3 */`
+`100 2 3 */`
 
 Similar operations can be used to work with percentages. Simply put a
 100 in place of the '`n3`' in the description
@@ -143,7 +143,7 @@ stores numbers on the stack as thirty-two bit binary numbers. Therefore,
 even though you type the number 10 (decimal) into the stack, the number
 is actually stored as:
 
-`0000 0000 0000 0000 0000 0000 0000 1010`
+`0000 0000 0000 0000 0000 0000 0000 1010`
 
 If you were to calculate how many numbers you could describe within a
 thirty-two bit binary number, it would come out to 4294967296, that's
@@ -201,7 +201,7 @@ entering three-billion (a 3 and nine zeros) on the stack. Sure enough,
 the stack display will show:
 
 ```shell
-Stack:  depth 1
+Stack:  depth 1
 -1294967296
 ```
 
@@ -220,8 +220,8 @@ an unsigned number and then types it to the screen.
 
 Try this sequence and watch what happens:
 
-`-1 U. cr`\
-`4294967295 `
+`-1 U. cr`\
+`4294967295 `
 
 Just to reinforce the difference, now try the same example with -1 using
 `.` instead of `U.`.
@@ -257,7 +257,7 @@ possible to create a `DO`\...`LOOP` that
 instantly prints those letters on the screen:
 
 ```shell
-`: ALPHABET  91 65 DO  i emit cr  LOOP ;`\
+`: ALPHABET  91 65 DO  i emit cr  LOOP ;`\
 ```
 
 `EMIT` is a Mops word that displays on the screen the
@@ -266,7 +266,7 @@ particular ASCII character value on the stack, you can use the Mops word
 `&` ("ampersand"). Try typing:
 
 ```shell
-& c . cr
+& c . cr
 99
 ```
 
@@ -284,7 +284,7 @@ Here's a use of `SPACES` in a modified alphabet
 definition to demonstrate its power:
 
 ```shell
-: ALPHABET2  91 65 DO  i dup  64 -  spaces  emit cr  LOOP ;
+: ALPHABET2  91 65 DO  i dup  64 -  spaces  emit cr  LOOP ;
 ```
 
 It is also convenient to remember that upper- and lower-case letters are

@@ -33,7 +33,7 @@ object of class `RndRect` will have a total of three
 ivars: `TopLeft`, `BotRight`, and
 `Ovalsize`. `TopLeft` and
 `BotRight` refer to the corners the
-`RndRect` would have if it wasn't rounded&\#148; that
+`RndRect` would have if it wasn't rounded&#148; that
 is, the intersection points of the lines on which the sides lie. These
 points, of course, will lie outside the rounded corners that will be
 actually drawn on the display.
@@ -64,14 +64,14 @@ the screen.
 The subclass definition looks like this:
 
 ```shell
-`:class  RNDRECT  super{ rect }`\
-`       point     Ovalsize`
+`:class  RNDRECT  super{ rect }`\
+`       point     Ovalsize`
 
-`:m PUT:                put: Ovalsize  put: super  ;m  ( l t r b w h -- )`
+`:m PUT:                put: Ovalsize  put: super  ;m  ( l t r b w h -- )`
 
-`:m DRAW:       ^base  get: Ovalsize  FrameRoundRect  ;m`
+`:m DRAW:       ^base  get: Ovalsize  FrameRoundRect  ;m`
 
-`:m DISP:       put: self  draw: self  ;m`
+`:m DISP:       put: self  draw: self  ;m`
 
 `;class`\
 ```
@@ -94,16 +94,16 @@ returns the address of `RndRect`.
 Once the class is defined, it is now ready for the creation of an
 object:
 
-`RndRect Cynthia`
+`RndRect Cynthia`
 
 To draw this object in window `ww`, as we did in the
 previous lesson, you can do this:
 
-`Window ww`\
-`test: ww`
+`Window ww`\
+`test: ww`
 
-`set: ww`\
-`20 20 100 60 20 30 disp: Cynthia`
+`set: ww`\
+`20 20 100 60 20 30 disp: Cynthia`
 
 The values 20 and 30 are the width and height of the oval in the rounded
 corners. The `DISP:` method uses the
@@ -116,6 +116,6 @@ of the overall program:
 ![](/pmops/CascadeClass.png "CascadeClass.png")
 
 Next, you'll be introduced to the powerful building blocks of Mops: the
-[predefined classes](Classes).
+[predefined classes](/pmops/classes/).
 
 <PrevNext />

@@ -97,9 +97,9 @@ on my figures.
 When John receives this message, he knows that the figures you provide
 are the parameters to be passed to the methods he will be using to
 calculate your taxes. He also knows, according to the methods in his
-background, that prepare the tax return\<nowiki\>; means he should do
+background, that prepare the tax return; means he should do
 certain things, like organize the figures, obtain copies of each tax
-form necessary, and so on. The \</nowiki\>prepare the tax return part of
+form necessary, and so on. The prepare the tax return part of
 the message is a selector in that it tells John what method (of the many
 methods in his background) to proceed with first. Even within that very
 first method he performs, some of the individual steps, such as

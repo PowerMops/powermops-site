@@ -16,26 +16,19 @@ language), we suggest you read one of several commercially available
 Forth texts listed in the references at the end of this chapter. Because
 of the way the Macintosh manages memory, Mops has several distinct areas
 in which it stores data. The following diagram gives a typical picture
-of the Mac's memory while a Mops program is running.\<br /\>
+of the Mac's memory while a Mops program is running.
 
-  ------------------------------------
-  Memory Map 1 (Classic Mac)
-  ![](/pmops/MemoryMap.png "MemoryMap.png")
-  ------------------------------------
+###  Memory Map 1 (Classic Mac)
+![](/pmops/MemoryMap.png "MemoryMap.png")
 
-\<br /\>
+###  Memory Map 2 (Mac OS X)
+![](/pmops/MemoryMapX.png "MemoryMapX.png")
 
-  --------------------------------------
-  Memory Map 2 (Mac OS X)
-  ![](/pmops/MemoryMapX.png "MemoryMapX.png")
-  --------------------------------------
-
-\<br /\> If you're new to Mac programming, don't worry about what
+If you're new to Mac programming, don't worry about what
 everything in the diagram means at this stage --- we'll describe
 the main things you need to know as we go along.
 
-The Mops Dictionary
--------------------
+## The Mops Dictionary
 
 Near the beginning of this manual we said that a Mops program builds a
 dictionary of words. Each word and its definition occupies a portion of
@@ -55,11 +48,10 @@ Most Mops words have four fields that you should be aware of:
 
 and they look like this in memory:
 
-  --------------------------------------------------
   ![](/pmops/DictionaryFields.png "DictionaryFields.png")
   --------------------------------------------------
 
-&nbsp;\<br /\> The link, name and handler fields are usually grouped
+The link, name and handler fields are usually grouped
 together as the header field. The name field holds the actual name of
 the word. Its length varies with the length of the name.
 
@@ -240,14 +232,14 @@ Memory Manager to move the block of memory around, and thus allow memory
 to be used more efficiently. When the Memory Manager moves a block of
 memory, it updates the master pointer so that programs can still know
 where the block of memory is, since the program knows the address of the
-master pointer, and that doesn&\#146;t change. However, blocks accessed
+master pointer, and that doesn&#146;t change. However, blocks accessed
 via a pointer can't be moved, since the Memory Manager has no way of
-knowing where the pointer (or any copies of it) are located&\#148;the
+knowing where the pointer (or any copies of it) are located&#148;the
 program may have put them anywhere.
 
 In Mops, we used to encourage the use of handles rather than pointers,
 since the ability of handle-based blocks of memory to move around made
-memory allocation in a small memory space easier. But today&\#146;s
+memory allocation in a small memory space easier. But today&#146;s
 machines have so much memory that the extra housekeeping associated with
 handles is usually not worth the trouble --- this is why the new
 Reference feature uses pointer-based blocks of memory.
@@ -277,17 +269,8 @@ address error if used.
 As we have seen, you may define objects which are created in memory
 allocated on the heap, with a reference or a pointer or a handle
 pointing to them (see the sections above). String variables
-(`String`, `String+`,
-`Bytestring`) are based on `Handle`s, and
+(`String`, `String+`, `Bytestring`) are based on `Handle`s, and
 are therefore able to grow and shrink as required, since the memory they
 occupy is allocated dynamically.
-
-------------------------------------------------------------------------
-
-  ------------------------------------------- ----------------------------------- ---------------------------------------
-  [Reference 4](/pmops/reference/reference_4)       [Reference](Reference)   [Reference 6](/pmops/reference/reference_6)
-  [Documentation](Documentation)                                       
-  ------------------------------------------- ----------------------------------- ---------------------------------------
-
 
 <PrevNext/>

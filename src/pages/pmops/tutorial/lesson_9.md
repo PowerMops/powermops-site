@@ -105,8 +105,8 @@ object might look something like this in memory:
 ![](/pmops/IndexedData.png "IndexedData.png")
 
 you'll notice that some data cells have reference numbers attached to
-them. Each number is an index&\#148;like an index tab in a three-ring
-binder&\#148;to that data cell. It is much easier and more efficient to
+them. Each number is an index&#148;like an index tab in a three-ring
+binder&#148;to that data cell. It is much easier and more efficient to
 reference an object's data by an index number than it is to provide the
 address in memory for the datum your program needs at a given moment.
 
@@ -152,7 +152,7 @@ scroll bars.
 In addition, there are numerous predefined classes and objects that give
 you shortcuts to opening and closing files, sending output to the
 printer, producing sound, and other functions. The
-[Classes](Classes) section of this manual contains in-depth
+[Classes](/pmops/classes/) section of this manual contains in-depth
 explanations of all frequently used Mops classes. You will look to these
 reference sections very often once you have completed this tutorial.
 

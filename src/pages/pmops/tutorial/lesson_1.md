@@ -50,7 +50,7 @@ The ENTER Key
 -------------
 
 There is one important difference however, which we have already seen in
-the [Introduction](Tutorial), and that is with the use of the
+the [Introduction](/pmops/tutorial), and that is with the use of the
 ENTER key. In most text editors, ENTER is treated the same as RETURN. In
 Mops, however, ENTER causes Mops commands to be executed. We'll try
 this now.
@@ -58,7 +58,7 @@ this now.
 We said earlier that Mops behaves like a dictionary. In other words,
 when you opened `"PowerMops"` just now, the Mac
 automatically loaded the basic Mops vocabulary into its memory. Each
-time you type a word&\#148;any group of text characters&\#148;and press
+time you type a word&#148;any group of text characters&#148;and press
 ENTER, Mops searches through its dictionary for that word and carries
 out whatever instructions are associated with it. If the word you type
 is not in the current Mops dictionary, a message appears on the screen
@@ -78,25 +78,25 @@ thing that terminates a word is a white space character.
 
 Now we'll demonstrate the difference between the RETURN and ENTER keys.
 
-First, type a nonsensical word and press RETURN\<nowiki\>:\</nowiki\>
+First, type a nonsensical word and press RETURN:
 
-`gnarly</code><RETURN>`
+`gnarly<RETURN>`
 
 The line just sits there in the Mops window, exactly as if you'd typed
 it into a text editor. Nothing else happens. Now try it again, but this
-time use ENTER\<nowiki\>:\</nowiki\>
+time use ENTER:
 
-`gnarly</code><ENTER>`
+`gnarly<ENTER>`
 
-`Error # -13  undefined word`\
+`Error # -13  undefined word`\
 `gnarly`\
-`&nbsp;`\
-`Current object:  TW    class:  MLTEFWIND`
+``\
+`Current object:  TW    class:  MLTEFWIND`
 
 A few things happened here. Since you used ENTER, Mops tried to
 interpret gnarly as a command. The message coming back from Mops
 indicated that the word you typed in was undefined. This means that the
-name was not found in the dictionary&\#148;in that split second, Mops
+name was not found in the dictionary&#148;in that split second, Mops
 compared the name against over 3000 words in the Mops dictionary. Mops
 would also have beeped, indicating that something was wrong.
 
@@ -104,20 +104,20 @@ And finally, the flashing cursor appears below the message lines,
 indicating that Mops is waiting for you to type another command.
 
 Now try typing the number 999, and then press ENTER . This time no
-message will appear from Mops&\#148;it has simply accepted the number
+message will appear from Mops&#148;it has simply accepted the number
 you typed in. Where is it? It has been placed on a stack. You'll be
 able to see it in the upper part of the Mops window, which is a display
 of the stack:
 
-`Stack:  depth 1`\
+`Stack:  depth 1`\
 `999`
 
 Now type the number 888 and press ENTER. You will see that it is placed
-*on top* of the number 999\<nowiki\>: \</nowiki\>
+*on top* of the number 999: 
 
-`Stack:  depth 2`\
+`Stack:  depth 2`\
 `888`\
-`999 `
+`999`
 
 The stack depth is now 2, since there are two numbers there.
 
@@ -125,11 +125,11 @@ You can now change the numeric base that Mops is using. Watch what
 happens when you change the base from decimal (the base that Mops starts
 in) to hexadecimal ("hex" for short). Type
 
-`hex</code><ENTER>`
+`hex<ENTER>`
 
 The stack display (the upper part of the Mops window) should change to
 
-`Stack:  depth 2`\
+`Stack:  depth 2`\
 `378`\
 `3E7`
 
@@ -137,10 +137,10 @@ The numbers on the stack didn't actually change, but are now being
 displayed in hexadecimal instead of decimal. (If you are not very
 familiar with hexadecimal numbers, you'll find [a more complete
 description in Lesson
-14](/pmops/tutorial/lesson_14#Decimal,_Hex,_and_Binary_Arithmetic).) To
+14](/pmops/tutorial/lesson_14#decimal-hex-and-binary-arithmetic).) To
 change back to decimal, simply type
 
-`decimal</code><ENTER>`
+`decimal<ENTER>`
 
 Now try the same thing, this time using upper-case letters (typing HEX
 and DECIMAL). The results should be exactly the same. That's because
@@ -150,6 +150,6 @@ everything is converted to upper-case.
 
 Now type an undefined word again. The error message lines will again
 appear, but also notice that the stack becomes empty. This is another
-part of Mops' error handling&\#148;the stack is emptied on an error.
+part of Mops' error handling&#148;the stack is emptied on an error.
 
 <PrevNext />

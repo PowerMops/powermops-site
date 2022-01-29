@@ -44,7 +44,7 @@ String Literals and Constants
 A Mops string literal is a quote followed by one space and the text of
 the string, immediately followed by another quote:
 
-`" Harold" \ leaves ( -- addr len ) of string`
+`" Harold" \ leaves ( -- addr len ) of string`
 
 Thus, `" Harold" TYPE` would print the word
 `Harold` on the screen. You should use the string literal
@@ -55,8 +55,8 @@ when you need to use a string several times in your code. You assign a
 name to the string, and then use the string name for operations with
 that string, as follows:
 
-`scon   harry   "Harold"        \ assign name harry to string `\
-`harry type                     \ prints "Harold" on the screen`
+`scon   harry   "Harold"        \ assign name harry to string `\
+`harry type                     \ prints "Harold" on the screen`
 
 **Note that in this case you don't put a space between the " and the
 first character of the string.** In the first example,
@@ -69,7 +69,7 @@ character after the name of the scon is the delimiter, and the string
 consists of all the characters up till the next occurrence of the
 delimiter. Thus you can have:
 
-`scon 3quotes /"""/`
+`scon 3quotes /"""/`
 
 Using the name of the scon in your program leaves `( addr len
 )` on the stack, and compiles into a single xt of the dictionary
@@ -96,17 +96,17 @@ definition. There are also the ANSI standard words `CHAR`
 and `\[CHAR\]` which perform this function. Outside a
 definition, the phrase:
 
-`char A`
+`char A`
 
 places the ASCII code for 'A' (65) on the stack. Inside a definition,
 the phrase
 
-`[char] A`
+`[char] A`
 
 compiles a literal for 'A', and places the value on the stack at
 runtime. And as we've seen, you can use
 
-`& A`
+`& A`
 
 either inside or outside a definition, which is probably more convenient
 (although not ANSI).
@@ -122,13 +122,5 @@ stream, moves it to `HERE` or `CDP`, and
 returns that address. `MWORD` ('Mops word') executes
 `BL WORD`, and maps the word to upper case. It is used by
 Mops itself when interpreting or compiling.
-
-------------------------------------------------------------------------
-
-  ------------------------------------------- ----------------------------------- ---------------------------------------
-  [Reference 5](/pmops/reference/reference_5)       [Reference](Reference)   [Reference 7](/pmops/reference/reference_7)
-  [Documentation](Documentation)                                       
-  ------------------------------------------- ----------------------------------- ---------------------------------------
-
 
 <PrevNext />

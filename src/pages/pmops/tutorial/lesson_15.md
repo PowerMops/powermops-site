@@ -19,7 +19,7 @@ Your program can contain many different values because you define each
 value by giving it a unique name and a number that it is to hold. You
 define a value like this:
 
-`25 value Jane`
+`25 value Jane`
 
 In other words, the value named `JANE` is holding the
 number 25. To recall a value's number, all you do is type the value
@@ -38,28 +38,28 @@ accessible to *all* definitions in a program), and responds to similar
 operations. To store a different number in a value, you use the gazinta
 (the store arrow), like this:
 
-`37 -> Jane`
+`37 -> Jane`
 
 which writes a 37 over the original number (25). Or you can increment or
 decrement the number stored in a value name with the
 `++>` or `\-->` operations, like
 this:
 
-`17 ++> Jane`\
-`4 --> Jane`
+`17 ++> Jane`\
+`4 --> Jane`
 
 which adds 17 to number already stored in `JANE` (37),
 then subtracts 4. Of course you can also do a subtraction by
 incrementing the value by a negative number:
 
-`-10 ++> Jane`
+`-10 ++> Jane`
 
 If you want to define your values at the beginning of a program without
 placing specific numbers in them, you can simply place zeros in them
 all:
 
-`0 value Joe`\
-`0 value Nancy`
+`0 value Joe`\
+`0 value Nancy`
 
 and then store (`->`) numbers to them when necessary.
 

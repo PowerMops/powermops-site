@@ -54,16 +54,16 @@ access.
 
 So to summarize the register usage:
 
-`D0-2   scratch`\
-`D3     loop counter I`\
-`D4-7   named parms/locals`
+`D0-2   scratch`\
+`D3     loop counter I`\
+`D4-7   named parms/locals`
 
-`A0-1   scratch`\
-`A3     lobase`\
-`A4     hibase`\
-`A5     modbase`\
-`A6     data stack pointer`\
-`A7     return stack pointer`
+`A0-1   scratch`\
+`A3     lobase`\
+`A4     hibase`\
+`A5     modbase`\
+`A6     data stack pointer`\
+`A7     return stack pointer`
 
 Runtime Environment - PowerPC
 -----------------------------
@@ -131,38 +131,38 @@ registers. This looks reasonable, although I would have preferred 12/10.
 
 So, here is the register usage:
 
-`r0     scratch`\
-`r1     system stack pointer`\
-`r2     RTOC (Table Of Contents pointer)`\
-`r3     scratch (cached stack cell)`\
-`r4     ditto`\
-`r5     ditto`\
-`r6     ditto`\
-`r7     ditto`\
-`r8     ditto`\
-`r9     ditto`\
-`r10    ditto`\
-`r11    scratch, also used in system calls`\
-`r12    ditto`\
-`r13    base address of main dic code area`\
-`r14    base address of main dic data area`\
-`r15    base address of current module's code area`\
-`r16    base address of current module's data area`\
-`r17    return stack pointer (points to top cell--lowest address)`\
-`r18    data stack pointer (points to top memory cell--lowest address)`\
-`r19    floating point stack pointer (points to top memory cell)`\
-`r20    base address of current object`\
-`r21    loop counter I`\
-`r22    limit value for DO...LOOP`\
-`r23    available for named parms/locals`\
-`r24    ditto`\
-`r25    ditto`\
-`r26    ditto`\
-`r27    ditto`\
-`r28    ditto`\
-`r29    ditto`\
-`r30    ditto`\
-`r31    ditto`
+`r0     scratch`\
+`r1     system stack pointer`\
+`r2     RTOC (Table Of Contents pointer)`\
+`r3     scratch (cached stack cell)`\
+`r4     ditto`\
+`r5     ditto`\
+`r6     ditto`\
+`r7     ditto`\
+`r8     ditto`\
+`r9     ditto`\
+`r10    ditto`\
+`r11    scratch, also used in system calls`\
+`r12    ditto`\
+`r13    base address of main dic code area`\
+`r14    base address of main dic data area`\
+`r15    base address of current module's code area`\
+`r16    base address of current module's data area`\
+`r17    return stack pointer (points to top cell--lowest address)`\
+`r18    data stack pointer (points to top memory cell--lowest address)`\
+`r19    floating point stack pointer (points to top memory cell)`\
+`r20    base address of current object`\
+`r21    loop counter I`\
+`r22    limit value for DO...LOOP`\
+`r23    available for named parms/locals`\
+`r24    ditto`\
+`r25    ditto`\
+`r26    ditto`\
+`r27    ditto`\
+`r28    ditto`\
+`r29    ditto`\
+`r30    ditto`\
+`r31    ditto`
 
 Dictionary Header Format
 ------------------------
@@ -208,7 +208,7 @@ so good.
 We also have inline definitions. For example, it would have been silly
 to handle DUP by JSRring to this code:
 
-`MOVE.L (A6),-6)`\
+`MOVE.L (A6),-6)`\
 `RTS`
 
 when we could simply have compiled the MOVE right in line. Two bytes
@@ -224,7 +224,7 @@ called by EXECUTE.
 Other dictionary items, such as objects, require other special actions
 to take place when a reference to them is compiled. So what we have
 tried to do is to take quite a general approach to the problem. Each
-dictionary header contains a 2-byte field we call the &\#152;handler
+dictionary header contains a 2-byte field we call the &#152;handler
 code'. This determines exactly what should happen when a reference to
 this dictionary item is to be compiled. For inline definitions, the
 handler code is positive (but not zero). It is interpreted as a byte
@@ -252,12 +252,12 @@ right place, then emit the improved code. This technique allows us to
 get some surprisingly good results. For example, if vv is a variable,
 the code
 
-`0 vv i + c!`
+`0 vv i + c!`
 
 will compile to
 
-`LEA    xx(A3),A1               ; Address of vv to A1`\
-`CLR.B  0(A1,D3.L)              ; Index on D3 (loop counter i)`
+`LEA    xx(A3),A1               ; Address of vv to A1`\
+`CLR.B  0(A1,D3.L)              ; Index on D3 (loop counter i)`
 
 This technique also means that we never have to backtrack if we tried an
 optimization strategy which failed. The unoptimized code is always
@@ -270,7 +270,7 @@ improved much more than this.
 Another optimization involves conditionals. If, for example, we have the
 code
 
-`aConst IF <some code> ELSE <some more code> THEN`
+`aConst IF <some code> ELSE <some more code> THEN`
 
 where the conditional is testing a constant, the condition will be
 evaluated at compile time, and either `<some code>`
@@ -287,7 +287,7 @@ Object Format
 -------------
 
 Here is our format for normal objects (remember that ivars declared
-within `record {\...}` won't have a header&\#148;that
+within `record {\...}` won't have a header&#148;that
 is, there will be nothing before the object's actual data). While I try
 to keep the descriptions here up to date, if you really need to know the
 exact details, please refer to the comments in the file Class (for 68k
@@ -309,7 +309,7 @@ time, and the comments in those files should always be accurate.
   2 bytes
   2 bytes
   Start of object data
-  This format means that when multiply inheriting, we need 4 bytes separating each group of ivars (&\#152;embedded object'), not 2 as on the 68k.\<br /\> For indexed objects, the indexed area (after the ivars) is preceded by the indexed descriptor (xdesc) with the following format. This format is the same as on the 68k, except that it starts off-aligned, i.e. the \#elements field is 4-byte aligned.
+  This format means that when multiply inheriting, we need 4 bytes separating each group of ivars (&#152;embedded object'), not 2 as on the 68k.\<br /\> For indexed objects, the indexed area (after the ivars) is preceded by the indexed descriptor (xdesc) with the following format. This format is the same as on the 68k, except that it starts off-aligned, i.e. the \#elements field is 4-byte aligned.
   2 bytes
   4 bytes
 
@@ -403,7 +403,7 @@ the offset from modbase (A5).
 
 The top byte is 7 if it is a self-relative address. We currently use
 this for a module address which is stored in the same module. A
-situation can arise for which A5 isn't valid&\#148;an action handler in
+situation can arise for which A5 isn't valid&#148;an action handler in
 an object whose class is implemented in a different module, may well be
 accessed when A5 is set up for that other module. This relocatable
 format will work in this situation since it doesn't depend on A5.
@@ -455,16 +455,16 @@ around. We have provided a means by which you can do the binding before
 entering the loop, and then use the resulting method address in the loop
 with almost the same speed as early binding. The syntax is
 
-`BIND_WITH ( ^obj -- <selector> ^obj-modified cfa )`
+`BIND_WITH ( ^obj -- <selector> ^obj-modified cfa )`
 
 If `saveCfa` and `\^obj-mod` are values or
 local variables, the usage of this word is:
 
-`(get object's address) BIND_WITH someSelector:`\
+`(get object's address) BIND_WITH someSelector:`\
 \
-`-> saveCfa  -> ^obj-mod`\
+`-> saveCfa  -> ^obj-mod`\
 \
-`(in the loop) ^obj-mod saveCfa EX-METHOD`
+`(in the loop) ^obj-mod saveCfa EX-METHOD`
 
 The use of the modified object address is a bit obscure, and is related
 to multiple inheritance. The method you actually end up binding to may

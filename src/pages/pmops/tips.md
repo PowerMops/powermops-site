@@ -28,7 +28,7 @@ local parameters.
 
 An example of such a word might be:
 
-`: foo  1 2 3  { one two three -- } ;`
+`: foo  1 2 3  { one two three -- } ;`
 
 Newer versions of Mops will compile such words without complaint, but a
 stack underflow will result when executed.
@@ -47,9 +47,9 @@ complicate debugging class definitions!
 For example:
 
 ```shell
-:class foo  super{ object }
-int x
-:m put:  ( n -- )  put: x ;m
+:class foo  super{ object }
+int x
+:m put:  ( n -- )  put: x ;m
 ;class
 ```
 
@@ -67,9 +67,9 @@ Here is the same definition as before, but with x declared outside of
 the definition for debugging purposes:
 
 ```shell
-int x
-:class foo  super{ object }
-:m put:  ( n -- )  put: x ;m
+int x
+:class foo  super{ object }
+:m put:  ( n -- )  put: x ;m
 ;class
 ```
 
@@ -108,36 +108,36 @@ Yet another effective method for finding a word name is wordsWith.
 Execute the following source from within a file...
 
 ```shell
-need zstring+
-string+ s1
-string+ s2
-: .id  ( xt -- )
-   NAME? IF >name N>COUNT ( addr len )
-           put: s2
-           get: s1 search: s2
-           IF all: s2 type cr 0 -> out THEN
-       ELSE drop
-       THEN ;
-: doWith ( addr len -- )
-   new: s1  new: s2  put: s1
-   setToTop: theMark
-   0 -> out cr
-   BEGIN
-       next: theMark
-       ?dup
-   WHILE
-       link> .id
-   REPEAT
-   release: s1 release: s2 ;
-: wordsWith
-   bl word count ( addr len )
-   doWith
-   cr ." wordsWith done "   cr ;
+need zstring+
+string+ s1
+string+ s2
+: .id  ( xt -- )
+   NAME? IF >name N>COUNT ( addr len )
+           put: s2
+           get: s1 search: s2
+           IF all: s2 type cr 0 -> out THEN
+       ELSE drop
+       THEN ;
+: doWith ( addr len -- )
+   new: s1  new: s2  put: s1
+   setToTop: theMark
+   0 -> out cr
+   BEGIN
+       next: theMark
+       ?dup
+   WHILE
+       link> .id
+   REPEAT
+   release: s1 release: s2 ;
+: wordsWith
+   bl word count ( addr len )
+   doWith
+   cr ." wordsWith done "   cr ;
 ```
 
 Invoke like this:
 
-`wordsWith similarword`
+`wordsWith similarword`
 
 Source: Information and neat code snippet courtesy of a
 <news://comp.lang.forth.mac> post from (who else?) Doug Hoffman. (April

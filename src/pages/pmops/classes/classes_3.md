@@ -62,9 +62,9 @@ calls. Consult the PowerPC version of class File (in file pFile) to see
 what routines are being used. To create an access path to a file, you
 must first create an object of class File, give it a name, and open it:
 
-`File myFile`\
-`" someFilename" name: myFile`\
-`open: myFile abort" open failed"`
+`File myFile`\
+`" someFilename" name: myFile`\
+`open: myFile abort" open failed"`
 
 The Name: message first clears the parameter block so that fields won't
 be left over from a previous open. (This implies that you must set
@@ -87,13 +87,13 @@ File with the message pushNew: LoadFile. The objPtr Topfile is
 maintained to always point to the last File object allocated, which is
 the 'top' of the file stack. Thus, you can use phrases like:
 
-`open: topfile`\
-`myBuf 100 read: topfile`
+`open: topfile`\
+`myBuf 100 read: topfile`
 
 After you are through using a dynamically allocated File object, you
 must close it and remove it from the file stack:
 
-`drop: loadFile`
+`drop: loadFile`
 
 Drop: automatically ensures that topFile is closed, but if you need to
 see the 'close' return code you will want to issue close:
@@ -134,13 +134,13 @@ With the StdGet: message, you provide a list of up to four file types to
 be filtered by SFGetFile. Only the file types that you have listed will
 be included in the list of files to select. For instance,
 
-`'type TEXT 1 stdGet: topfile`
+`'type TEXT 1 stdGet: topfile`
 
 causes the Standard File Package to include only files of type
 'TEXT' in its list, (the 1 indicates the number of types
 specified). If you want all file types to be shown, do it thus:
 
-`-1 stdGet: topfile`
+`-1 stdGet: topfile`
 
 Keep in mind that neither StdGet: nor StdPut: ever actually open the
 chosen file. They are identical in function to sending Name: &
@@ -183,10 +183,10 @@ you to have to provide full pathnames or answer many Standard File
 dialogs. We call this set of pathnames a pathlist. You specify a
 pathlist in an ordinary text file. The format is, for example,
 
-`::System source:`\
-`::Module source:`\
-`::Toolbox Classes:`\
-`::Mops folder:`
+`::System source:`\
+`::Module source:`\
+`::Toolbox Classes:`\
+`::Mops folder:`
 
 Each line specifies the exact string which will in turn be prepended to
 the unqualified filename in the file object in an attempt to find the
@@ -208,7 +208,7 @@ or you might use three colons which say to step out of two folder levels
 then step down. You may also begin with no colon which specifies a disk
 name. To load a pathlist file, type e.g.:
 
-`" myPath" getPaths`
+`" myPath" getPaths`
 
 This loads the list from the file named myPath into a string which is
 maintained by the PathsMod module, which is called by Open:. From then

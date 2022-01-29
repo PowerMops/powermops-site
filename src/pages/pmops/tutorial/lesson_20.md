@@ -35,7 +35,7 @@ actually has ID = 8, because it has a **zoom box**, the small square in
 the top right hand corner. Mops' Window+ class adds the zoom box
 because of the line:
 
-`true setZoom: self \ zoomable`
+`true setZoom: self \ zoomable`
 
 When the window is created, Window+ adds 8 to the procID if zoom is set
 true. Hence a `docWind` (0) becomes a ZoomdocWind (8),
@@ -57,7 +57,7 @@ ivar `WindowClass` of the window object before sending
 `NEW:` message. For example, when you need a floating
 window, you may do like following:
 
-`konst kFloatingWindowClass put: ivar> WindowClass in aWindowObj ...  new: aWindowObj`
+`konst kFloatingWindowClass put: ivar> WindowClass in aWindowObj ...  new: aWindowObj`
 
 As for public ivars, see [Reference 4](/pmops/reference/reference_4) (Part
 II) of this manual.

@@ -104,14 +104,14 @@ your view was really clicked---you don't have to test anything.
 In the situation I mentioned above, where a view wants to handle clicks
 on its children, you can now simply override VIEW\_FOR\_CLICK?: Thus:
 
-`:m view_for_click?: ( -- ^view true | false )`\
-`   view_for_click?: super`\
-`   IF                \ child was clicked`\
-`       drop ^base    \ substitute my addr`\
-`       true        \ and tell caller we want the click`\
-`   ELSE`\
-`       false        \ no, don't want it`\
-`   THEN`\
+`:m view_for_click?: ( -- ^view true | false )`\
+`   view_for_click?: super`\
+`   IF                \ child was clicked`\
+`       drop ^base    \ substitute my addr`\
+`       true        \ and tell caller we want the click`\
+`   ELSE`\
+`       false        \ no, don't want it`\
+`   THEN`\
 `;m`
 
 Using Controls
@@ -184,13 +184,13 @@ Creating control objects
 Defining a control object requires three steps. First, instantiate the
 object with a phrase like:
 
-`button saveBtn`
+`button saveBtn`
 
 You should then initialize the newly created object to assign it a
 position and a title. For example:
 
-`100 250 " Save" init: saveBtn<br>`\
-`' doSave actions: saveBtn`
+`100 250 " Save" init: saveBtn<br>`\
+`' doSave actions: saveBtn`
 
 Here we define saveBtn as a Button, specify that its top left corner
 will be be at coordinates (100, 250) relative to the view that it will
@@ -209,7 +209,7 @@ bar arrows is to get the control's value, add some increment to it, and
 put the new value in the control. This could be done in the following
 manner:
 
-`: doUpArrow  get: [ thisCtl ] 1- put: [ thisCtl ] -1 scroll: theText ;`
+`: doUpArrow  get: [ thisCtl ] 1- put: [ thisCtl ] -1 scroll: theText ;`
 
 In this example, the word thisCtl is actually a Value that Mops provides
 as a simple way for a control action word to derive its owning control
@@ -768,7 +768,7 @@ following clases on PowerMops.
   getLine:
   lineEnd:
   wrapit:
-  \<nowiki\>NoWrap:\</nowiki\>
+  NoWrap:
   >hState:
   editing
   ?scroll:

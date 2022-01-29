@@ -29,7 +29,7 @@ at all (even though in Mops, it is).
 
 So, if your code has anything like this:
 
-`['] myValue w@`
+`['] myValue w@`
 
 in order to fetch the top 2 bytes of a Value, this will work in 68k
 Mops, but not in PowerMops. A Value in PowerMops has a header in the
@@ -80,7 +80,7 @@ Remember that for Toolbox calls you MUST use the SYSCALL syntax. The old
 As we noted in the Tutorial, if you're passing records to the Toolbox,
 you have to use the syntax
 
-`68k_record{ ... }`
+`68k_record{ ... }`
 
 This is because the normal `record{ \... }` uses
 PowerPC-optimized alignment of fields, which is different to the 68k.
@@ -209,7 +209,7 @@ process, but as you can see it's not very difficult as it is.
 
 PowerMops allows you to both call and compile shared libraries. Shared
 libraries are intended to replace things like extensions or
-INITs&\#148;they are a little like applications, but in another way they
+INITs&#148;they are a little like applications, but in another way they
 are a bit like additions to the Toolbox, in that they contain routines
 that can be called from any application, which can do all sorts of
 useful things. And although they may be being used from several
@@ -228,11 +228,11 @@ first declare your library, like this:
 
 PEF shared library:
 
-`library MySharedLib`
+`library MySharedLib`
 
 Mach-O framework:
 
-`framework Myframework.framework`
+`framework Myframework.framework`
 
 (As with `SYSCALL`, the library name is case sensitive.)
 
@@ -244,11 +244,11 @@ and `Frwkcall` like this:
 
 PEF:
 
-`libcall myEntry { parm1 parm2 %parm3 -- result }`
+`libcall myEntry { parm1 parm2 %parm3 -- result }`
 
 Mach-O:
 
-`frwkcall myEntry { parm1 parm2 %parm3 -- result }`
+`frwkcall myEntry { parm1 parm2 %parm3 -- result }`
 
 You'll notice that the syntax is similar to the declaration of named
 parameters. A floating parameter has '%' in front of it. We have to
@@ -258,7 +258,7 @@ xcalls file). However the parameter syntax is exactly as for named
 parameters for normal Mops words. If the call returns a floating result,
 you indicate this the in way you'd expect:
 
-`libcall [or frwkcall] myFloatWord { %parm1 parm2 -- %float_result }`
+`libcall [or frwkcall] myFloatWord { %parm1 parm2 -- %float_result }`
 
 The library that will be used is the one given by the nearest preceding
 LIBRARY/FRAMEWORK declaration.
@@ -286,8 +286,8 @@ you want to be callable from the outside world. These are 'entry
 points' to your library. You declare them like this:
 
 ```shell
-`:entry  myEntry  { parm1 parm2 %parm3 -- result }`\
-`       <your code> `\
+`:entry  myEntry  { parm1 parm2 %parm3 -- result }`\
+`       <your code> `\
 `;entry`\
 ```
 

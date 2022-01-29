@@ -141,9 +141,9 @@ Now, let's take a closer look at the mechanics of building a new class.
 A class definition has the following skeletal structure:
 
 ```shell
-:class  ClassName  super{ super1 ... superN } [ n indexed ] [ large ]
-       [ instance variable names ] 
-       [ method definitions ] 
+:class  ClassName  super{ super1 ... superN } [ n indexed ] [ large ]
+       [ instance variable names ] 
+       [ method definitions ] 
 ;class
 ```
 
@@ -186,7 +186,7 @@ doing, and only inherit methods which don't access the indexed area.
 Next in a class definition come the instance variable declarations,
 which are simply statements of the form:
 
-`[ # of elements ] ClassName ivarName`
+`[ # of elements ] ClassName ivarName`
 
   ClassName here is the class that defines the characteristics of the ivar. Each ivar declaration statement creates an entry in the private **instance variable dictionary** of the class currently being defined. The entry for each ivar contains fields for the header, data, and a pointer to the class specified by the ivar's ClassName. An instance variable definition is really just a **template** for the private data of the object. When an object is created, the object's data area is assembled (i.e., memory space is reserved) according to the specifications in the template.
 
@@ -245,9 +245,9 @@ pseudo-class to allocate a string of bytes with a single name. For
 instance, the following ivar declaration:
 
 ```shell
-var    v1
-20     bytes   junk
-var    v2
+var    v1
+20     bytes   junk
+var    v2
 ```
 
 builds a data area that has two 4-byte `Var`s,
@@ -290,8 +290,8 @@ methods for the new class. A method definition takes the form (here
 brackets denote optional sections):
 
 ```shell
-:m SELECTOR: [ { named args \ local vars -- results } ] 
-       [ method code ]  ;m
+:m SELECTOR: [ { named args \ local vars -- results } ] 
+       [ method code ]  ;m
 ```
 
 A valid selector name (any alphanumerics ending in a colon) must follow
@@ -340,7 +340,7 @@ address. The get: method for class LongWord, for instance, could have
 been defined in this manner:
 
 ```shell
-:m GET: ^base @ ;m
+:m GET: ^base @ ;m
 ```
 
 which fetches the longword (32 bits wide) at the object's data area.

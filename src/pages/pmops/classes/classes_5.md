@@ -125,9 +125,9 @@ initialize the action vectors of the window using the actions: method.
 For windows whose data exists in the dictionary or a module, this can
 occur at compile time:
 
-`window myWind    \ create a new window object`\
-`xts{ doClose doActivate null null } actions: myWind`\
-`    \ Set the close, activate, draw and content vectors`
+`window myWind    \ create a new window object`\
+`xts{ doClose doActivate null null } actions: myWind`\
+`    \ Set the close, activate, draw and content vectors`
 
 The Activate vector is executed when the window becomes active, and the
 Close vector is executed when the use clicks the Close box. Typically,
@@ -156,8 +156,8 @@ boolean on the top of the stack reflecting whether the window is
 growable or draggable, and the four coordinates of a rectangle
 underneath the boolean if it is true. For example:
 
-`10 10 500 300 true setDrag: myWind`\
-`false setGrow: myWind`\
+`10 10 500 300 true setDrag: myWind`\
+`false setGrow: myWind`\
 
 causes myWind to be draggable, but not growable. But note, in class
 Window, we actually ignore the rectangle coordinates passed in for
@@ -174,8 +174,8 @@ window's frame, a title, a procID for the window type, and booleans
 reflecting whether the window should be visible when created and whether
 it should have a close box. For instance:
 
-`10 10 300 200 put: tempRect`\
-`tempRect " A New Window" docWind true true new: myWind`
+`10 10 300 200 put: tempRect`\
+`tempRect " A New Window" docWind true true new: myWind`
 
 would create a new document window using the dimensions stored in
 tempRect that would be visible and have a close box. If you would rather

@@ -27,7 +27,7 @@ definition of the Turtle program (Pen) to remove Turtle from memory.
 
 To prove it, type:
 
-`forget pen`
+`forget pen`
 
 and then select List Words from the Utilities pull-down menu. After
 several lines have printed on the screen, press any key (other than the
@@ -42,7 +42,7 @@ Mops and load Sin. Our Logo program will load atop Sin.
 > defined in PowerMops but its execution deletes only a part (code part)
 > of the dictionary.
 > 
-> **So in the present case it is better to quit PowerMops once.**
+> **So in the present case it is better to quit PowerMops once.**
 
 ## Designing the language
 
@@ -75,15 +75,15 @@ with parameters, you can place a special method inside class Pen that
 fetches the current values of the parameters from an object:
 
 ```shell
-`:m INSPECT:            \ (  --  HiPat  LoPat  mode w h x y )`\
-`            get: PnPatHi  get: PnPatLo  get: PnMode`\
-`            get: PnSize  get: PnLoc   ;m`\
+`:m INSPECT:            \ (  --  HiPat  LoPat  mode w h x y )`\
+`            get: PnPatHi  get: PnPatLo  get: PnMode`\
+`            get: PnSize  get: PnLoc   ;m`\
 ```
 
 Send a message like:
 
 ```shell
-inspect: Bic
+inspect: Bic
 ```
 
 Then perform a .S operation to view the parameters on the stack.
@@ -98,9 +98,9 @@ object with a white pen, and then restore the pen to black.\<br /\> The
 UNDRAW: method could look like this:
 
 ```shell
-`:m UNDRAW:            \ Erases object before moving it and restore black pen`\
-`            0 0  put: PnPatHi  put: PnPatLo  draw: self`\
-`            -1 -1  put: PnPatHi  put: PnPatLo  ;m`\
+`:m UNDRAW:            \ Erases object before moving it and restore black pen`\
+`            0 0  put: PnPatHi  put: PnPatLo  draw: self`\
+`            -1 -1  put: PnPatHi  put: PnPatLo  ;m`\
 ```
 
 ## Implementing a Logo-like language
@@ -109,37 +109,37 @@ Here is the listing of Mops definitions added to the end of the modified
 Turtle listing:
 
 ```shell
-`\ Create Logo-like environment`
+`\ Create Logo-like environment`
 
-`poly turtle                   \ the name of our Logo object`\
-`250 160 center: turtle        \ define the center of the screen`\
-`10 3 size: turtle             \ set turtle's size`
+`poly turtle                   \ the name of our Logo object`\
+`250 160 center: turtle        \ define the center of the screen`\
+`10 3 size: turtle             \ set turtle's size`
 
-`: SPOT            \ Erases old Logo command onscreen and repositions prompt`\
-`            8 210 gotoxy  ;`
+`: SPOT            \ Erases old Logo command onscreen and repositions prompt`\
+`            8 210 gotoxy  ;`
 
-`: .OK  -curs  spot  15 spaces  spot  +curs  ;`
+`: .OK  -curs  spot  15 spaces  spot  +curs  ;`
 
-`\ Shortcut definition for later:`
+`\ Shortcut definition for later:`
 
-`: TURN  -curs  undraw: turtle  turn: turtle  draw: turtle  .ok  ;`
+`: TURN  -curs  undraw: turtle  turn: turtle  draw: turtle  .ok  ;`
 
-`\ Logo-like commands:`
+`\ Logo-like commands:`
 
-`: HOME    -curs   cls   home: turtle   up: turtle`\
-`          draw: turtle  .ok  ;`
+`: HOME    -curs   cls   home: turtle   up: turtle`\
+`          draw: turtle  .ok  ;`
 
-`: FORWARD            \ ( dist -- )`\
-`            -curs   undraw: turtle   move: turtle`\
-`            draw: turtle   .ok  ;`
+`: FORWARD            \ ( dist -- )`\
+`            -curs   undraw: turtle   move: turtle`\
+`            draw: turtle   .ok  ;`
 
-`: LEFT  ( deg -- )    turn  ;`
+`: LEFT  ( deg -- )    turn  ;`
 
-`: RIGHT  ( deg -- )            negate  turn  ;`
+`: RIGHT  ( deg -- )            negate  turn  ;`
 
-`: SQUARE   { len -- }`\
-`           -curs   4 0  DO  len forward  90 right   LOOP`\
-`            .ok  ;`\
+`: SQUARE   { len -- }`\
+`           -curs   4 0  DO  len forward  90 right   LOOP`\
+`            .ok  ;`\
 ```
 
 The above Mops words should be self explanatory, except perhaps for the
@@ -155,7 +155,7 @@ Select 'Echo during load' from the Mops (Utilities) menu. Then load
 Logo into memory with the Load selection from the File menu or by
 typing:
 
-`// logo`
+`// logo`
 
 The program source code will appear on the screen, line by line, as it
 is being compiled into memory. If you used a word not previously

@@ -47,7 +47,7 @@ second value (on the top of the stack) is incremented before the loop
 begins.
 
   ---------------------------------------------- -------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  `DO`\...`LOOP`   `( n1 n2 \-- )`   Increments '`n2`' each time after performing operations between `DO` and `LOOP`\<nowiki\>; exits loop when\</nowiki\> '`n2`' equals '`n1`'.
+  `DO`\...`LOOP`   `( n1 n2 \-- )`   Increments '`n2`' each time after performing operations between `DO` and `LOOP`; exits loop when '`n2`' equals '`n1`'.
   ---------------------------------------------- -------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Because loops work only in compiled statements, you will need to put
@@ -56,8 +56,8 @@ new word that adds up 10 numbers from the stack by repeatedly performing
 nine addition operations:
 
 ```shell
-`: ADDTEN  ( n1 ... n10 -- sum )`\
-`       9 0 DO  +  LOOP  . cr ;`\
+`: ADDTEN  ( n1 ... n10 -- sum )`\
+`       9 0 DO  +  LOOP  . cr ;`\
 ```
 
 During execution, this `DO`\...`LOOP`
@@ -104,10 +104,10 @@ Remember that this word only copies the index; it does not disturb the
 index in any way. Here are a couple of examples to demonstrate.
 
 Define a word, `FIVECOUNT`, that displays a series of
-numbers from 101 to 105\<nowiki\>: \</nowiki\>
+numbers from 101 to 105: 
 
 ```shell
-`: FIVECOUNT  106 101 DO  i .  LOOP  cr ;`\
+`: FIVECOUNT  106 101 DO  i .  LOOP  cr ;`\
 ```
 
 Notice that the limit is set to 106. Remember that the index is
@@ -124,8 +124,8 @@ passed on the parameter stack prior to execution. Consider the following
 definition:
 
 ```shell
-`: TIMESTABLES  { n -- }`\
-`       13 1 DO  n i *  .  LOOP  cr ;`\
+`: TIMESTABLES  { n -- }`\
+`       13 1 DO  n i *  .  LOOP  cr ;`\
 ```
 
 If you then type '`5 timestables`', the program goes
@@ -153,9 +153,9 @@ You can even use a negative number if you wish the loop to decrement.
 Here's how you would use `+LOOP` to manage a countdown:
 
 ```shell
-`: COUNTDOWN`\
-`       1 10 DO  i . cr  -1 +LOOP`\
-`       ." Ignition...Liftoff!" cr ;`\
+`: COUNTDOWN`\
+`       1 10 DO  i . cr  -1 +LOOP`\
+`       ." Ignition...Liftoff!" cr ;`\
 ```
 
 Notice that in this case, since the program loop is counting backwards,
@@ -183,13 +183,13 @@ inside one another. All you have to remember is to supply one
 `DO` within the colon definition.
 
 ```shell
-`: NESTEDLOOP`\
-`       1 10 DO`\
-`               ." Loop: " i . cr`\
-`                       4 0 DO`\
-`                               ." Nested Loop: " i . cr`\
-`                       LOOP`\
-`       -1 +LOOP cr ;`\
+`: NESTEDLOOP`\
+`       1 10 DO`\
+`               ." Loop: " i . cr`\
+`                       4 0 DO`\
+`                               ." Nested Loop: " i . cr`\
+`                       LOOP`\
+`       -1 +LOOP cr ;`\
 ```
 
 Type `NESTEDLOOP` and watch how the inner loop iterates
@@ -208,15 +208,15 @@ outside the current `DO`\...`LOOP`
 construction and copies that number to the parameter stack.
 
 ```shell
-`: NESTEDLOOP2`\
-`       1 10 DO`\
-`               ." Loop " i . cr`\
-`                       4 0 DO`\
-`                               ." Loop " i .`\
-`                               ." within Loop " j .`\
-`                               cr`\
-`                       LOOP`\
-`       -1 +LOOP cr ;`\
+`: NESTEDLOOP2`\
+`       1 10 DO`\
+`               ." Loop " i . cr`\
+`                       4 0 DO`\
+`                               ." Loop " i .`\
+`                               ." within Loop " j .`\
+`                               cr`\
+`                       LOOP`\
+`       -1 +LOOP cr ;`\
 ```
 
 > Note: If you factor out an inner loop into another definition, you
@@ -228,7 +228,7 @@ construction and copies that number to the parameter stack.
 
 You may have a situation in which you need to bail out of a
 `DO`\...`LOOP` before its normal
-completion&\#148;perhaps because of some special case situation. The
+completion&#148;perhaps because of some special case situation. The
 word `LEAVE` is available for this purpose.
 
   ------------------------ -------------------------- -------------------------------------
@@ -238,11 +238,11 @@ word `LEAVE` is available for this purpose.
 Here's our countdown example again, appropriately modified:
 
 ```shell
-`: COUNTDOWN2`\
-`       1 10 DO`\
-`               i . cr`\
-`               i 7 = IF  ." Aborted!!" cr LEAVE  THEN`\
-`       -1 +LOOP ;`\
+`: COUNTDOWN2`\
+`       1 10 DO`\
+`               i . cr`\
+`               i 7 = IF  ." Aborted!!" cr LEAVE  THEN`\
+`       -1 +LOOP ;`\
 ```
 
 We had to remove the Ignition\...Liftoff! message, otherwise it would
@@ -266,14 +266,14 @@ presence of a flag on top of the stack.
 Indefinite loops with `BEGIN`\...`UNTIL`
 can be used like this:
 
-`BEGIN  <var>xxx</var>  UNTIL`
+`BEGIN  <var>xxx</var>  UNTIL`
 
 Operation(s) \<var\>xxx\</var\> will be performed repeatedly (with no
 end in sight) until a TRUE flag exists on the stack for
 `UNTIL`.
 
 A useful variation of this construct uses the word
-`NUNTIL`\<nowiki\>:\</nowiki\>
+`NUNTIL`:
 
   ------------------------- ------------------------------------------------------ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   `NUNTIL`   class="STACK" nowrap \| `( n \-- )`   Alternative word for `UNTIL`. Breaks out of an indefinite loop if '`n`' is zero (FALSE); otherwise returns execution to the nearest `BEGIN`.
@@ -281,7 +281,7 @@ A useful variation of this construct uses the word
 
 It used in the place of `UNTIL` in the previous example:
 
-`BEGIN  <var>xxx</var>  NUNTIL`
+`BEGIN  <var>xxx</var>  NUNTIL`
 
 As before, operation(s) \<var\>xxx\</var\> will be performed repeatedly,
 but this time the loop won't stop until a FALSE flag exists on the
@@ -300,9 +300,9 @@ is placed on the stack, and execution returns to the beginning of the
 loop.
 
 ```shell
-`: BEGINTEST`\
-`       BEGIN  key 97 =  UNTIL`\
-`       ." Loop broken." cr ;`\
+`: BEGINTEST`\
+`       BEGIN  key 97 =  UNTIL`\
+`       ." Loop broken." cr ;`\
 ```
 
 Now, type `BEGINTEST`, and tap all kinds of letters on
@@ -321,7 +321,7 @@ With all three words taken together, it is called a
 `BEGIN`\...`WHILE`\...`REPEAT`
 loop, and naturally enough, it is used like this:
 
-`BEGIN <var>xxx</var>  WHILE  <var>yyy</var>  REPEAT`
+`BEGIN <var>xxx</var>  WHILE  <var>yyy</var>  REPEAT`
 
 This statement will executes \<var\>xxx\</var\> each time through the
 loop, and executes \<var\>yyy\</var\> only if a non-zero number (TRUE)
@@ -341,14 +341,14 @@ Here is a variation on our `BEGINTEST` example to show
 the new construct at work:
 
 ```shell
-`: BEGINTEST2`\
-`       ." Type a lower-case letter 'a', please." cr`\
-`       BEGIN`\
-`               key 97 =`\
-`       NWHILE`\
-`               ." Wrong key!" cr`\
-`       REPEAT`\
-`       ." Thank you. Loop broken." cr ;`\
+`: BEGINTEST2`\
+`       ." Type a lower-case letter 'a', please." cr`\
+`       BEGIN`\
+`               key 97 =`\
+`       NWHILE`\
+`               ." Wrong key!" cr`\
+`       REPEAT`\
+`       ." Thank you. Loop broken." cr ;`\
 ```
 
 This example begins by printing a message prompting the user to type the
@@ -374,25 +374,25 @@ another very useful operation, `EXIT`.
 Unlike `LEAVE`, `EXIT` exits the
 *definition* entirely. Here's a modified version of the our first
 `BEGINTEST` example that uses
-`EXIT`\<nowiki\>:\</nowiki\>
+`EXIT`:
 
 ```shell
-`: BEGINTEST`\
-`       BEGIN`\
-`               key 97 = IF EXIT THEN`\
-`               key 98 =`\
-`       UNTIL ;`\
+`: BEGINTEST`\
+`       BEGIN`\
+`               key 97 = IF EXIT THEN`\
+`               key 98 =`\
+`       UNTIL ;`\
 ```
 
 This definion will keep running until you type either an 'a' (ASCII
 code number 97) or a 'b' (ASCII code number 98). You can also write:
 
 ```shell
-`: BEGINTEST`\
-`       BEGIN`\
-`               key 97 = IF EXIT THEN`\
-`               key 98 = IF EXIT THEN`\
-`       AGAIN ;`\
+`: BEGINTEST`\
+`       BEGIN`\
+`               key 97 = IF EXIT THEN`\
+`               key 98 = IF EXIT THEN`\
+`       AGAIN ;`\
 ```
 
 Yes, we sneaked in yet another indefinite loop that uses
@@ -423,12 +423,12 @@ is, not via `LOOP`, `+LOOP` or
 We'll illustrate this with the countdown example again:
 
 ```shell
-`: COUNTDOWN3`\
-`       1 10 DO`\
-`               i . cr`\
-`               i 7 = IF  ." Aborted!!" cr UNLOOP EXIT  THEN`\
-`       -1 +LOOP`\
-`       ." Ignition...Liftoff!" cr ;`\
+`: COUNTDOWN3`\
+`       1 10 DO`\
+`               i . cr`\
+`               i 7 = IF  ." Aborted!!" cr UNLOOP EXIT  THEN`\
+`       -1 +LOOP`\
+`       ." Ignition...Liftoff!" cr ;`\
 ```
 
 You'll notice that we've been able to reinstate the

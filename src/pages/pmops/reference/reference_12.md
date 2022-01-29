@@ -33,7 +33,7 @@ parameters and locals.
 You begin a local section with the word `LOCAL`. The
 syntax is e.g.:
 
-`LOCAL LocName { parm1 parm2 \ loc1 loc2 loc3 -- }`
+`LOCAL LocName { parm1 parm2 \ loc1 loc2 loc3 -- }`
 
 The word LocName is the 'main' word of the local section,
 i.e. the one which takes the named parameters and whose entry causes any
@@ -64,20 +64,20 @@ definition (or local section), and have no storage allocated otherwise.
 The syntax is as in this example:
 
 ```shell
-`: SomeWord`\
-`temp{  int     anInt`\
-`       var     aVar`\
-`       string  aString  }`
+`: SomeWord`\
+`temp{  int     anInt`\
+`       var     aVar`\
+`       string  aString  }`
 
-`       123 put: anInt`\
-`       " hello" put: aString`\
-`       ...`\
+`       123 put: anInt`\
+`       " hello" put: aString`\
+`       ...`\
 `;`\
 ```
 
 You can also use the syntax
 
-`temp { ... }`
+`temp { ... }`
 
 with '`temp`' and
 '`{`' as separate words, if you prefer. I
@@ -101,9 +101,9 @@ As with local variables, if you call a definition recursively, you will
 get a fresh copy of any temporary objects. The syntax for temporary
 objects within a local section is exactly as you would expect:
 
-`LOCAL localName { parm1 parm2 \ loc1 loc2 -- }`\
-`temp{  int   int1`\
-`       var   var1   }`
+`LOCAL localName { parm1 parm2 \ loc1 loc2 -- }`\
+`temp{  int   int1`\
+`       var   var1   }`
 
 The local variables here are entirely optional. A local section can have
 either local variables, or temporary objects, or both. (Not much point
@@ -119,20 +119,20 @@ Tutorial](/pmops/tutorial/lesson_12#The_CASE_Decision). We'll use expr1,
 exprn2 and so on to mean any code that leaves one result on the stack.
 
 `expr1`\
-`CASE   expr2 OF some code      ENDOF`\
-`       expr3 OF some more code ENDOF`\
-`       default code comes here`\
+`CASE   expr2 OF some code      ENDOF`\
+`       expr3 OF some more code ENDOF`\
+`       default code comes here`\
 `ENDCASE`
 
 This form of case construct compiles directly to a set of equivalent
 simpler operations:
 
-`expr1 expr2 OVER =`\
-`IF     some code`\
-`ELSE   expr3 OVER =`\
-`       IF      some more code`\
-`       ELSE    default code`\
-`       THEN`\
+`expr1 expr2 OVER =`\
+`IF     some code`\
+`ELSE   expr3 OVER =`\
+`       IF      some more code`\
+`       ELSE    default code`\
+`       THEN`\
 `THEN`\
 `DROP`
 
@@ -146,13 +146,13 @@ spurious value on the stack. But if you consume the expr1 value in the
 default code, remember to put a dummy value on the stack to be consumed
 by the `DROP`. Here's a (rather useless) example:
 
-`CASE   10      OF              ." ten"         ENDOF`\
-`       12      OF              ." twelve"              ENDOF `\
-`       13      OF              ." thirteen or sixteen"         ENDOF`\
-`       16      OF              ." thirteen or sixteen"         ENDOF`\
-`       20 30   RANGEOF ." twenty to thirty inclusive"  ENDOF`\
-`       ( default )             ." something else, namely " .`\
-`       0       ( to be consumed )`\
+`CASE   10      OF              ." ten"         ENDOF`\
+`       12      OF              ." twelve"              ENDOF `\
+`       13      OF              ." thirteen or sixteen"         ENDOF`\
+`       16      OF              ." thirteen or sixteen"         ENDOF`\
+`       20 30   RANGEOF ." twenty to thirty inclusive"  ENDOF`\
+`       ( default )             ." something else, namely " .`\
+`       0       ( to be consumed )`\
 `ENDCASE`
 
 Notice that the `ENDCASE` consumes one value off the
@@ -163,11 +163,11 @@ The second type of `CASE` we have in Mops is a keyed
 case, in which a test value is compared to succesive values in a linear
 list. Here's the equivalent of the above example:
 
-`CASE[ 10 ]=>                ." ten"`\
-`    [ 12 ]=>                ." twelve"`\
-`    [ 13 ], [ 16 ]=>        ." thirteen or sixteen"`\
-`    [ 20 30 RANGE]=>        ." twenty to thirty inclusive"`\
-`    DEFAULT=>               ." something else, namely " .`\
+`CASE[ 10 ]=>                ." ten"`\
+`    [ 12 ]=>                ." twelve"`\
+`    [ 13 ], [ 16 ]=>        ." thirteen or sixteen"`\
+`    [ 20 30 RANGE]=>        ." twenty to thirty inclusive"`\
+`    DEFAULT=>               ." something else, namely " .`\
 `]CASE`
 
 This format will compile to more compact code than the former example,
@@ -190,10 +190,10 @@ The third type of case we have is an indexed case. In this kind of case,
 a direct table lookup is done to determine the outcome. Here's our
 example again, with one change:
 
-`SELECT[ 10 ]=>              ." ten"`\
-`       [ 12 ]=>             ." twelve"`\
-`       [ 13 ], [ 16 ]=>     ." thirteen or sixteen"`\
-`       DEFAULT=>            ." something else, namely " .`\
+`SELECT[ 10 ]=>              ." ten"`\
+`       [ 12 ]=>             ." twelve"`\
+`       [ 13 ], [ 16 ]=>     ." thirteen or sixteen"`\
+`       DEFAULT=>            ." something else, namely " .`\
 `]SELECT`
 
 Notice that the syntax is almost the same as for the keyed case, but
@@ -235,12 +235,12 @@ it has been defined, you can use Mops' **forward reference** facility.
 Before the word can be referenced the first time, you must declare it as
 forward in the following manner:
 
-`forward newWord`
+`forward newWord`
 
 This declares newWord as a forward referenced Mops word. Later, when you
 are able to define newWord, you must do so in the following manner:
 
-`:f newWord ... ;f`
+`:f newWord ... ;f`
 
 `:f` is a special colon compiling word that resolves
 forward referenced definitions. It creates a headerless entry for the
@@ -258,10 +258,10 @@ classes and modules to check the return code from file and other I/O
 operations:
 
 ```shell
-forward        I/O_ERR         \ ( err# -- )  Call when there's an I/O error.
+forward        I/O_ERR         \ ( err# -- )  Call when there's an I/O error.
 
-: OK?          \ ( rc -- )  A useful word to use after an I/O op.
-       ?dup  0EXIT  I/O_err  ;
+: OK?          \ ( rc -- )  A useful word to use after an I/O op.
+       ?dup  0EXIT  I/O_err  ;
 ```
 
 The word `I/O\_ERR` is not actually defined in the basic
@@ -315,27 +315,27 @@ Putting Together a Mops Application).
 Mops provides an easy way to define a resource item from within your
 application. For instance:
 
-`resource myWind<br /> 'Type WIND 256 set: myWind`
+`resource myWind<br /> 'Type WIND 256 set: myWind`
 
 defines a resource called myWind that has type WIND and a resource ID of
 256. When you need to access this resource, send the message
 
-`getnew: myWind`
+`getnew: myWind`
 
 Resource is a subclass of Handle, so you can now obtain a pointer to the
 resource data with
 
-`ptr: myWind`
+`ptr: myWind`
 
 Note that if you then do anything that might cause a heap compaction,
 this pointer will be wrong; but you can avoid this with the lock: method
 of class Handle, thus:
 
-`lock: myWind`
+`lock: myWind`
 
 You can open a new resource file in the following manner:
 
-`" myFile.rsrc" openResFile`
+`" myFile.rsrc" openResFile`
 
 This opens the resource file named 'myFile.rsrc' and make it
 the first file in the search order. All open resource files are closed
@@ -400,12 +400,12 @@ from disk --- all Mops words that accept keyboard input will then
 take their input from disk, instead of from the keyboard. For example:
 
 ```shell
-: diskKey Here 1 read: ffcb drop       \ get 1 character from disk
-       here c@ ;                       \ place it on the stack
+: diskKey Here 1 read: ffcb drop       \ get 1 character from disk
+       here c@ ;                       \ place it on the stack
 
-" sam" name: ffcb
-open: ffcb .
-' diskKey -> keyVec                 \ set KEYVEC to get chars from disk file Sam
+" sam" name: ffcb
+open: ffcb .
+' diskKey -> keyVec                 \ set KEYVEC to get chars from disk file Sam
 ```
 
 Of course, in a real example you would have to restore the proper
@@ -439,7 +439,7 @@ discussed separately later.
   TYPEVEC    ( addr len \-- )               sends a string to the primary output device
   PTYPEVEC   ( addr len \-- )               sends a string to the secondary output device
   ECHOVEC    ( char \-- )                   handles echoing to the output device of the keys being input by ACCEPT
-  ABORTVEC   ( \-- )                        cleans up the stacks and notifies the user of an error. The Mops word CL3 (&\#152;clean-up 3') is normally executed by this vector, and your error word should call CL3 if it is to return to the Mops interpreter
+  ABORTVEC   ( \-- )                        cleans up the stacks and notifies the user of an error. The Mops word CL3 (&#152;clean-up 3') is normally executed by this vector, and your error word should call CL3 if it is to return to the Mops interpreter
   QUITVEC    ( \-- )                        this word will be executed before the interpreter enters its main loop. It should be the startup word for an installed application
   UFIND      ( \-- xt true OR \-- false )   is a special purpose variant of FIND (this vector is actually called by FIND before FIND searches the Mops dictionary for an occurrence of a particular name at the top of the dictionary \-- HERE. You won't have to worry about this vector unless you plan to write new compiling words for Mops
   OBJINIT    ( \-- )                        initializes certain areas of the kernel at Mops startup. It normally contains the xt of SYSINIT. Should not be altered by the user
@@ -495,7 +495,7 @@ Mops' error handling is based upon the ANSI Forth Standard, which uses
 the two words `CATCH` and `THROW`.
 `CATCH` is used as follows:
 
-`['] someWord catch`
+`['] someWord catch`
 
 (of course, if interpreting rather than compiling, put
 `'` instead of `\['\]`). The action
@@ -547,7 +547,7 @@ of the data stack is true (nonzero), it will print the string between
 the quotes and then execute abort. If false, `ABORT"`
 returns without doing anything. For instance, the phrase
 
-`read: theFile abort" File read failed"`
+`read: theFile abort" File read failed"`
 
 would check the return code from a disk read operation, and abort if it
 indicated an error. You can force an `ABORT"` to occur
@@ -561,7 +561,7 @@ the string to print, assumed to be a resource of type 'STR ' (note the
 space at the end). It works conditionally in the same way as
 `ABORT"`. For instance,
 
-`find not ?error -13`
+`find not ?error -13`
 
 prints the string with resource ID `-13` if the word in
 the input stream is not found, and then aborts. Mops uses
@@ -576,14 +576,14 @@ messages and their numbers, type
 
 If you want to add a new message, do it this way:
 
-`<msg number> " the text of your message" addMsg`
+`<msg number> " the text of your message" addMsg`
 
 If you want to change an existing message, you can't just use
 `AddMsg` as above or you'll get an error --- this is
 just as a safety check. You have to remove the existing message first,
 thus:
 
-`<msg number> removeMsg`
+`<msg number> removeMsg`
 
 If adding your own messages, please use numbers above
 `200`, so as not to clash with future error messages we
@@ -606,7 +606,7 @@ at key places.
 
 Mops assertions must come within definitions. You use them like this:
 
-`ASSERT{ <something that evaluates to a flag>  }`
+`ASSERT{ <something that evaluates to a flag>  }`
 
 If `ASSERTIONS?` is true, this will give error
 `216` ('assertion failed') if the evaluated
@@ -634,7 +634,7 @@ You may specify that a definition or method is to be compiled inline
 whenever it is used. This allows faster execution. The syntax is:
 
 ```shell
-: XXX inline{ <some code>} ;
+: XXX inline{ <some code>} ;
 ```
 
 The code `<some code>` is stored as a string, and
@@ -646,15 +646,15 @@ to our optimization, which is why we took this approach. This syntax is
 really equivalent to
 
 ```shell
-: XXX " <some code>" evaluate ; immediate
+: XXX " <some code>" evaluate ; immediate
 ```
 
 but the syntax is probably clearer. It also has advantages when used in
 methods. The syntax for an inline method is as you would expect:
 
 ```shell
-`:m YYY:`\
-`       inline{ <some code>}`\
+`:m YYY:`\
+`       inline{ <some code>}`\
 `;m`\
 ```
 

@@ -17,14 +17,14 @@ isn't supported any more, as indeed it couldn't be on the PowerPC.
 Here's an example of a word to set the cursor:
 
 ```shell
-`syscall GetCursor              \ Note: these are CASE-SENSITIVE!`\
-`syscall SetCursor`
+`syscall GetCursor              \ Note: these are CASE-SENSITIVE!`\
+`syscall SetCursor`
 
-`: set_my_curs { curs# -- }`\
-`       curs#                   \ push cursor #`\
-`       GetCursor               \ Returns handle to cursor`\
-`       @                       \ needs to be a pointer for SetCursor`\
-`       SetCursor`\
+`: set_my_curs { curs# -- }`\
+`       curs#                   \ push cursor #`\
+`       GetCursor               \ Returns handle to cursor`\
+`       @                       \ needs to be a pointer for SetCursor`\
+`       SetCursor`\
 `;`\
 ```
 
@@ -33,7 +33,7 @@ Note the following points:
 1.  You have to 'pre-declare' any Toolbox call you're going to use,
     outside any definition, and before any definition in which you do
     the call. It doesn't matter if you use `SYSCALL`
-    several times over for the one call&\#148;in different source files,
+    several times over for the one call&#148;in different source files,
     say --- subsequent ones will be ignored.
 2.  The name of the Toolbox call (following `SYSCALL`) is
     case-sensitive, unlike everything else in Mops! This was
@@ -121,7 +121,7 @@ therefore increased the default and minimum partition sizes for Mops to
 
 But note, this increased memory footprint won't apply to installed
 applications, since these won't contain CallsMod (unless you need it
-because you do compiling at run time in installed apps&\#148;in this
+because you do compiling at run time in installed apps&#148;in this
 unusual situation, you will need the memory space).
 
 CallsMod also takes quite a while to compile, if you have a slower Mac,
@@ -172,23 +172,23 @@ with the equivalent Mops code:
 
 Pascal:
 
-`PROCEDURE InvertRndRect (r: Rect; ovalWidth, ovalHeight: INTEGER);`
+`PROCEDURE InvertRndRect (r: Rect; ovalWidth, ovalHeight: INTEGER);`
 
 C:
 
-`pascal void InvertRoundRect (const Rect *r, short ovalWidth, short ovalHeight);`
+`pascal void InvertRoundRect (const Rect *r, short ovalWidth, short ovalHeight);`
 
 Mops:
 
 ```shell
-`syscall InvertRoundRect`
+`syscall InvertRoundRect`
 
-`rect   myRect                  \ declare a rectangle object`
+`rect   myRect                  \ declare a rectangle object`
 
-`: InvertMyRect { rWidth rHeight -- }`\
-`       addr: myRect            \ get a pointer to the rectangle`\
-`       rWidth rHeight          \ push width and height`\
-`       InvertRoundRect         \ call the Toolbox routine`\
+`: InvertMyRect { rWidth rHeight -- }`\
+`       addr: myRect            \ get a pointer to the rectangle`\
+`       rWidth rHeight          \ push width and height`\
+`       InvertRoundRect         \ call the Toolbox routine`\
 `;`\
 ```
 
@@ -198,31 +198,31 @@ Mops:
 
 Pascal:
 
-` FUNCTION GetNewWindow (windowID: INTEGER; wStorage: Ptr;`\
-`    behind: WindowPtr) : WindowPtr;`
+` FUNCTION GetNewWindow (windowID: INTEGER; wStorage: Ptr;`\
+`    behind: WindowPtr) : WindowPtr;`
 
 C:
 
-` pascal WindowPtr GetNewWindow (short windowID, void *wStorage, WindowPtr behind);`
+` pascal WindowPtr GetNewWindow (short windowID, void *wStorage, WindowPtr behind);`
 
 Mops:
 
-`syscall GetNewWindow`\
+`syscall GetNewWindow`\
 \
-`[let's say we're in a method in the Window class here]`\
+`[let's say we're in a method in the Window class here]`\
 \
-`get: resID             \ get this window's resource ID (ivar)`\
-`^base                  \ addr of this window object window i.e. wStorage`\
-`-1                     \ in front of all other windows i.e. behind window -1`\
-`GetNewWindow           \ call the Toolbox routine`\
-`put: windowPtr         \ save the returned window ptr (ivar)`
+`get: resID             \ get this window's resource ID (ivar)`\
+`^base                  \ addr of this window object window i.e. wStorage`\
+`-1                     \ in front of all other windows i.e. behind window -1`\
+`GetNewWindow           \ call the Toolbox routine`\
+`put: windowPtr         \ save the returned window ptr (ivar)`
 
 ## Accessing System Constants
 
 You may sometimes need to access system constants which Apple defines by
 name. You do it thus:
 
-`konst <name>`
+`konst <name>`
 
 and the value corresponding to `<name>` will be pushed at run time.
 
@@ -250,17 +250,17 @@ Here's an example of a callback routine, taken from the class
 PowerMops:
 
 ```shell
-`' NewControlActionUPP  ' DisposeControlActionUPP`\
-`:callback  CtlProc  { ^ctl part# -- }  \ on PPC, callback parms must be named`\
-`   part#  ctlExec`\
+`' NewControlActionUPP  ' DisposeControlActionUPP`\
+`:callback  CtlProc  { ^ctl part# -- }  \ on PPC, callback parms must be named`\
+`   part#  ctlExec`\
 `;callback`\
 ```
 
 68k Mops:
 
 ```shell
-`:proc CtlPROC      \  ( ^ctl int:part# -- )`\
-`   word0  nip  ctlExec`\
+`:proc CtlPROC      \  ( ^ctl int:part# -- )`\
+`   word0  nip  ctlExec`\
 `;proc`\
 ```
 
@@ -329,15 +329,15 @@ the number of the item (16-bit) on the stack. Your
 `:PROC` might look like this:
 
 ```shell
-`:proc mydrawitemproc ( dlgptr w:item -- )`\
-`       i->l                 \ convert 16-bit to 32-bit`\
-`       MyDrawItemWord`\
+`:proc mydrawitemproc ( dlgptr w:item -- )`\
+`       i->l                 \ convert 16-bit to 32-bit`\
+`       MyDrawItemWord`\
 `;proc`
 
-`: MyDrawitemWord { dlgptr item -- }`\
-`                               \ the value 'item' is now a 32-bit value and can `\
-`                               \ be taken off the stack normally by Mops`\
-`(Do your stuff here)`\
+`: MyDrawitemWord { dlgptr item -- }`\
+`                               \ the value 'item' is now a 32-bit value and can `\
+`                               \ be taken off the stack normally by Mops`\
+`(Do your stuff here)`\
 `;`\
 ```
 
