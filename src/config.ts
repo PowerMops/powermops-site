@@ -8,6 +8,16 @@ export const sidebar = [
     ],
   },
   {
+    subtree: 'amops',
+    text: 'aMops', link: '/amops/',
+    children: [
+      { text: 'Read Me', link: '/amops/readme/' },
+      { text: 'Release Notes', link: '/amops/release-notes/' },
+      { text: 'SourceForge', link: 'https://sourceforge.net/projects/powermops/' },
+    ],
+  },
+  {
+    subtree: 'pmops',
     text: 'Powermops', link: '/pmops/',
     children: [
       { text: 'Open Me First', link: '/pmops/openmefirst' },
