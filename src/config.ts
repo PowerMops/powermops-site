@@ -13,6 +13,7 @@ export const sidebar = [
       { text: 'Open Me First', link: '/pmops/openmefirst' },
       { text: 'Manual', link: '/pmops/overview' },
       { text: 'FAQ', link: '/pmops/faq' },
+      { text: 'Tips', link: '/pmops/tips' },
       { text: 'Wiki', link: 'http://wiki.powermops.org/' },
       { text: 'SourceForge', link: 'https://sourceforge.net/projects/powermops/' },
     ],

@@ -1,6 +1,6 @@
 ---
 title: Documentation
-layout: ../../layouts/Main.astro
+layout: ../layouts/Main.astro
 ---
 
 ## Open Me First
@@ -24,6 +24,10 @@ You can browse the manual online:
 ## FAQ
 
 [Frequently asked questions](/pmops/FAQ) (and answers) about PowerMops.
+
+## Tips
+
+[Powermops Tips](/pmops/tips)
 
 ## Mailing List
 
