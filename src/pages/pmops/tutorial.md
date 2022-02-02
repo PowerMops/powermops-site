@@ -232,4 +232,4 @@ Now let's move on with the Tutorial, and I hope you find you enjoy
 Mops.
 
 * [Lesson 1](lesson_1)
-* [Documentation](Documentation)                                     
+* [Documentation](/pmops/)                                     
