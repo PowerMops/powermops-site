@@ -28,7 +28,7 @@ The best way to demonstrate how a stack works is to use the oft-cited analogy of
 
 You can see that this principle applies to the Mops stack, since the number 7, which you entered first, is at the bottom of the stack, while the number 1, which is the most recent entry, is at the top.
 
-How can you remove numbers from the stack? One way is to use the Mops word that does the reverse of what you did when you entered a number&#148;it takes a number off the stack, and "types" (or prints) it at position of the flashing cursor in the lower part of the screen. That word is a simple `.` (a period, pronounced "dot"). Try typing this:
+How can you remove numbers from the stack? One way is to use the Mops word that does the reverse of what you did when you entered a number: it takes a number off the stack, and "types" (or prints) it at position of the flashing cursor in the lower part of the screen. That word is a simple `.` (a period, pronounced "dot"). Try typing this:
 
 ```shell
 .<ENTER>
@@ -37,9 +37,9 @@ How can you remove numbers from the stack? One way is to use the Mops word that 
 
 What happened here was that the dot (type to screen) command pulled the 1 off the top of the stack and "typed" it. The stack display will show that two numbers (4 and 7) are still on the stack.
 
-In other words, whenever you perform a dot operation on a number in the stack, the number is removed from the stack and "typed"&#148;that is, displayed in the current window. If the Mops window is the current window (as it is in this example), any number "typed" will appear at the cursor position, just as if you had typed it at the keyboard yourself.
+In other words, whenever you perform a dot operation on a number in the stack, the number is removed from the stack and "typed": that is, displayed in the current window. If the Mops window is the current window (as it is in this example), any number "typed" will appear at the cursor position, just as if you had typed it at the keyboard yourself.
 
-To bring the Mops prompt to the left margin, where it will be less confusing, simply press RETURN (''not'' ENTER!) once. (Carriage returns are not automatically printed, unless you, as the programmer, tell Mops to print one. We'll show how to do that very shortly.)
+To bring the Mops prompt to the left margin, where it will be less confusing, simply press RETURN (_not_ ENTER!) once. (Carriage returns are not automatically printed, unless you, as the programmer, tell Mops to print one. We'll show how to do that very shortly.)
 
 Now type two periods, with a space in between, and press ENTER.
 
@@ -50,7 +50,7 @@ Now type two periods, with a space in between, and press ENTER.
 
 Mops has now printed the two remaining numbers in the order in which they came off the stack. Remember that the 7 was at the bottom of the stack; it was therefore the last number off the stack, and was displayed on the screen as the final item before the Mops prompt (the flashing cursor) reappeared. As you can see, multiple dot commands leave a trail of numbers coming off the top of the stack, printing them from left to right across the screen. And notice, too, that nothing remains in the stack when the last dot command was executed.
 
-Mops also has a word, `.S` (pronounced "dot-ess"), that displays a list of all numbers on the stack without removing them. This can be useful during the running of a program, since you may not want to stop the program to see the stack displayed at the top of the window. Also, there may be more items on the stack than can fit in the stack display. The stack can hold far more items than we have room to display in the upper part of the Mops window, but if you use `.S`, ''all'' the stack items will be typed in the lower part of the window.
+Mops also has a word, `.S` (pronounced _dot-ess_), that displays a list of all numbers on the stack without removing them. This can be useful during the running of a program, since you may not want to stop the program to see the stack displayed at the top of the window. Also, there may be more items on the stack than can fit in the stack display. The stack can hold far more items than we have room to display in the upper part of the Mops window, but if you use `.S`, _all_ the stack items will be typed in the lower part of the window.
 
 To see how it works, place the same three numbers that we used before on the stack (don't forget the spaces):
 
@@ -94,7 +94,7 @@ Error # -4  stack underflow
 Current object:  TW    class:  MLTEFWIND
 ```
 
-The stack is also called the parameter stack (sometimes referred to as the data stack), because a good many operations in Mops require that one or more values be present on the stack before an operation can be performed. These values, in computer jargon, are called parameters, and they are said to be ''' passed''', or handed to, an operation. Actually, the operation looks to the stack for the number(s) it needs, and pulls them off.
+The stack is also called the parameter stack (sometimes referred to as the data stack), because a good many operations in Mops require that one or more values be present on the stack before an operation can be performed. These values, in computer jargon, are called parameters, and they are said to be _passed_, or handed to, an operation. Actually, the operation looks to the stack for the number(s) it needs, and pulls them off.
 
 You saw a glimpse in the last section of how parameters work, when the parameter stack held values that were to be printed to the screen. The parameter stack, in other words, is a kind of container for values that many operations rely on. This concept will become clearer as we now discuss how Mops performs arithmetic.
 

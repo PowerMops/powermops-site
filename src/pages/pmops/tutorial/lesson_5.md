@@ -26,7 +26,7 @@ listings, indentions, spacings, capitalizations, and the like. While
 Mops is pretty loose about how you can make your programs look, the ways
 prescribed hereafter will help you read printouts of your code for
 debugging and enhancement. Also consult Chapters 3, 5, and 6 of the
-\[../Reference/index.html Reference\] for in-depth discussions of this
+[Reference](/pmops/reference/) for in-depth discussions of this
 and related topics.
 
 Defining a Class

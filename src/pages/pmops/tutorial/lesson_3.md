@@ -73,11 +73,10 @@ programs.
 Here are Mops stack descriptions of the four basic arithmetic
 operations:
 
-  `+`                         `( n1 n2 \-- sum )`    Adds 'n1' and 'n2' and leaves the sum on the stack.
-  ------------------------------------------ ------------------------------------- -------------------------------------------------------------------------------
-  `-`                         `( n1 n2 \-- diff )`   Subtracts 'n1' and 'n2' and leaves the difference on the stack.
-  `*`   `( n1 n2 \-- prod )`   Multiplies 'n1' and 'n2' and leaves the product on the stack.
-  `/`                         `( n1 n2 \-- quot )`   Divides 'n1' and 'n2' and leaves the quotient on the stack.
+* `+  ( n1 n2 -- sum )`  Adds `n1` and `n2` and leaves the sum on the stack.
+*  `-  ( n1 n2 -- diff )`  Subtracts `n1` and `n2` and leaves the difference on the stack.
+*  `*  ( n1 n2 -- prod )`  Multiplies `n1` and `n2` and leaves the product on the stack.
+*  `/  ( n1 n2 -- quot )`  Divides `n1` and `n2` and leaves the quotient on the stack.
 
 To newcomers, the stack order (the way in which numbers come out in the
 reverse order) may be confusing when it comes to subtraction and
@@ -92,7 +91,7 @@ write the problem like this:
 
 `10 - 4`
 
-and get the desired answer, 6. In Mops arithmetic, the order of the
+and get the desired answer, `6`. In Mops arithmetic, the order of the
 numbers going on the stack is the same. All you do is move the operation
 sign to the right.
 
@@ -131,8 +130,8 @@ When you use the divide operation (`/`) in Mops, the
 remainder is lost forever. But Mops has two other operations that take
 care of the remainder for you:
 
-  `/MOD`   `( n1 n2 \-- rem quot )`   Divides 'n1' by 'n2' and then places the quotient and remainder on the stack.
-  `MOD`    `( n1 n2 \-- rem )`        Divides 'n1' by 'n2' and then places only the remainder on the stack.
+* `/MOD`   `( n1 n2 \-- rem quot )`   Divides `n1` by `n2` and then places the quotient and remainder on the stack.
+* `MOD`    `( n1 n2 \-- rem )`        Divides `n1` by `n2` and then places only the remainder on the stack.
 
 Let's try dividing 10 by 3 again, but this time using the
 `/MOD` operation instead of straight division
