@@ -3,13 +3,17 @@ title: News
 layout: ../layouts/Main.astro
 ---
 
+- 2022-02-05: iMops 2.23 [Download page](https://sourceforge.net/projects/powermops/files/iMops/)
+  - Fixed crash on launch on Monterey (macOS 12)
+  - Other bug fixes
+  - iMops is now a third party application without any developer signature.  In order to avoid possible GateKeeper troubles, see file _Read Before Launching iMops or iBucket_ in the distribution.
 - 2022-01-12: aMops Code Generator 3.0 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
 - 2021-11-17: aMops Code Generator 2.6
-    - Can compile a definition under emulation, up to the point where it needs to make a new dictionary entry for the new definition.
+  - Can compile a definition under emulation, up to the point where it needs to make a new dictionary entry for the new definition.
 - 2021-10-08: aMops Code Generator 2.5
-    - It can now completely load itself.
-    - This target-compiled version of the code generator can begin to run under the emulator, up to the point where the big object_array "theNodes" is created in the heap.
-    - There are new features to help in following an emulation trace.
+  - It can now completely load itself.
+  - This target-compiled version of the code generator can begin to run under the emulator, up to the point where the big object_array "theNodes" is created in the heap.
+  - There are new features to help in following an emulation trace.
 - 2021-08-25: aMops Code Generator 2.3 
 - 2021-08-04: aMops Code Generator 2.2
 - 2021-06-22: aMops Code Generator 2.1
@@ -26,11 +30,11 @@ layout: ../layouts/Main.astro
 - 2020-08-07: aMops Code Generator alpha-2
 - 2020-07-31: aMops Code Generator alpha-1
 - 2018-12-29: iMops 2.22 distribution was revised. (Previous distribution seemed broken)
-- 2017-07-10: iMops 2.21 released -- Interruption into "Echo during Load" by Space key was made possible. Some bugs were fixed [Download page](http://sourceforge.net/projects/powermops/files/iMops/)
-- 2016-11-12: iMops 2.2 released -- A maintenance release but now iMops is a developer-signed application. [Download page](http://sourceforge.net/projects/powermops/files/iMops/)
-- 2016-05-05: iMops 2.11 released -- A maintenance release. Few bugs were fixed. Details are in a file "What's new". [Download page](http://sourceforge.net/projects/powermops/files/iMops/)
-- 2015-08-01: iMops 2.1 released -- some bugs have been fixed and new STRING+ class source file included. [Download page](http://sourceforge.net/projects/powermops/files/iMops/)
-- 2015-01-18: iMops 2.01 released -- a bug was fixed and object cascading feature was added. [Download page](http://sourceforge.net/projects/powermops/files/iMops/)
+- 2017-07-10: iMops 2.21 released -- Interruption into "Echo during Load" by Space key was made possible. Some bugs were fixed
+- 2016-11-12: iMops 2.2 released -- A maintenance release but now iMops is a developer-signed application.
+- 2016-05-05: iMops 2.11 released -- A maintenance release. Few bugs were fixed. Details are in a file "What's new".
+- 2015-08-01: iMops 2.1 released -- some bugs have been fixed and new STRING+ class source file included.
+- 2015-01-18: iMops 2.01 released -- a bug was fixed and object cascading feature was added.
 - 2014-09-07: PowerMops wiki restored after SourceForge hosted app shutdown.
 - 2014-07-27: iMops 2.0 released -- many bugs fixed and French language resource is included (thanks to Gérard Castagné).
 - 2009-10-24 : PowerMops 6.2 has been released -- a few bugs fixed, and a new mechanism for creating arrays and lists of objects.
