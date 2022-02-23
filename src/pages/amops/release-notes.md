@@ -6,6 +6,112 @@ author: mike
 
 **This release**
 
+This is the next version (3.1) of the Arm code generator.  With this version, the code generator is essentially complete.  From here on, once we have real hardware to run on, it will be more a matter of fixing bugs.  (Bugs?  What bugs??)
+
+This version can load itself, then under emulation compile a little test definition successfully.
+
+Quite a number of bugs were uncovered and fixed.
+
+* I had very cleverly omitted to code for the case of a CYCLE within a `FOR...LOOP`.  Some very strange code resulted, but this was easy to fix.
+
+* There was a bug in the alignment algorithm which affected the NodeID_stack class.
+
+* The class: method in class Object was wrongly grabbing a parameter off the stack, and this affected all the words calling this method.
+
+* When code calls a word with the `__unknown_regs?` flag set (e.g. FORWARD definitions), a flag `__calls_unknown_regs?` is set to that we know that THIS word may cause any registerto be used.  This flag obviously needs to be propagated to any words which call this word, but this wasn't being done.
+
+* There was a subtle bug affecting `CASE[` and `SELECT[` constructs.  Live ranges coming into the construct should be propagated into each stub (so that the registers assigned to those live ranges aren't clobbered by code in the stub).  This was done, but the ranges weren't always marked required, and this could have caused the registers to be clobbered.  My fix for this (in Liveness) is a bit clumsy, but it seems to work.  (My comment there uses the words "appalling hack" ?)
+
+* When compiling a definition which calls another, I had been neglecting to add the list of registers changed in the called definition, to the list for this definition.  This of course meant that 
+this list wasn't complete, and the problem was worse for complex definition calling many others.  So the register allocation could wrongly assign a register which was going to be changed when a call is made, and the regression tests hadn't picked this up because at present they don't include deeply nested calls.  This is now fixed, and I have also taken the opportunity to change the "registers changed" list back to a bitmap which is more efficient.  It had been a bitmap many years ago but had become a list with MAX 1 which had two sets of 256 registers.
+
+* I wasn't handling the shifted immediate option in add and subtract properly (where an immediate value can be optionally shifted left 12 bits, allowing values such as `$ 1230000` to be encoded as immediates).  I was detecting this possibility but not implementing it completely, so the shift wasn't happening, and the resulting immediate value was wrong.
+
+* Fixing that bug unmasked another one, since some code in handling common subexpressions was wrongly being skipped.  The unmasked bug was a faulty implementation of the `CLASS_AS>` syntax.  This is now hopefully fixed.
+
+* In the file Operands, I found that the definition `GET_ON_ENTRY` was not correct.  The general idea was that if we found, while processing a definition in pass1, that we needed an operand or operands deeper than what we were keeping track of, we could add it to the list of entry nodes for the definition and pretend it had been there all the time.  This was fine for the initial basic block in a definition, including very simple definitions with one BB.  However in subsequent BBs, it was a very bad idea.  In these BBs, the new operands may not always be needed, or may be needed multiple times if the BB is in a loop.  It would certainly be wrong to only grab them once.  This problem was probably in PowerMops but just hadn't shown up, for some reason.  This definition is now correct, hopefully, and is a lot simpler.  If the new operands are needed in the first BB in the definition, we do what we were doing before, and add new input nodes.  If it's in a subsequent BB, or if the defn is unknown_regs, we pull the new operands from the memory part of the stack, at the point where they are needed.  The new name of this definition is EXTRA_OPERANDS.
+
+I have also added a new optimization, which is related to the last bug fix above.  The way inlining works, means that it needs to be blocked if `EXTRA_OPERANDS` is called, that is when a definition takes anonymous operands from the stack (NOT named parms).  `EXTRA_OPERANDS` needs to know if it's in the first BB of a definition or not, so in general this code can't be dropped anywhere into the middle of another definition.  This could perhaps be coded around, but would be very difficult to get right.
+
+However, we can in fact handle some of the most frequent occurrences of this situation, in a different way which I call "Plan B inlining".  Take for example in class Byte, where we have
+
+```shell
+:m TO:    ^base  c!  ;m
+```
+
+the value being stored is an anonymous stack operand, so this method wouldn't be inlined in the normal way.  However it is valid, at Codegen time, to simply copy the compiled code for the definition into the call location, omitting the final RET (return).  The registers are all correct.  At runtime the result is identical to calling the out-of-line code, but without the call and return.
+
+This "Plan B" is done whenever the definition is a leaf, is short (currently less than 10 instructions) and doesn't contain an `EXIT`.  It's done regardless of the inline_on or inline_off directives.  It's not as elegant as the regular inlining, but picks up a number of common cases which can't be done the regular way, as in the example above.  It's simple and appears to work well.
+
+As in the last couple of versions, the target-compiled version of the code generator can begin to run under the emulator.  The word "test" is executed (the last word loaded).  This calls `setup_CG`, which creates the big object_array "theNodes" in the heap, then initializes it by calling __init_nodes, exactly as in the non-target version.
+
+Next a little test definition is passed to Arm-interpret.  This is simply
+
+```shell
+: test 1 2 3 ;
+```
+
+This is now processed and the correct code is compiled, into a new bytestring `INSTRUCTIONS` (redefining the old one - see ArmBase).  At the end of the source line, the word `REFILL` (in PrimitivesB) is executed to get another line, but at this point the test run ends with a success message.  Of course in the "proper" version running on real hardward, `REFILL` will be properly implemented.
+
+As with the previous versions, the target compilation is done with the load file arm1.ld.  See below for the details.
+
+---
+
+As before, the regression tests run over 60 tests and exercise all the features, prior to target compiling the code generator itself.
+
+The emulator is integrated with the disassembler (see the files dem1, dem2 and dem3).  It's not a full emulator of course, which would be a huge job, but just aims to emulate the instructions the code generator generates.  This should give us a lot of confidence that the compiled code is correct, since the disassembler/emulator is completely independent of the code generator.
+
+***How to run it***
+
+You have already downloaded the project.  There will be one folder, aMops.
+
+Put this folder into iMops/source.
+
+Then in iMops:
+
+|     |     |
+| --- | --- |
+|"&nbsp;aMops"&nbsp;add&#x2011;project | \ Adds the project to the project paths.  Case doesn't matter.
+| // arm.ld           | \ loads the Arm compiler.
+| // armtest0         | \ or whichever test you're running, currently up to armtest46.
+
+You can set the value `stop_after_pass1?` true, and compilation will stop after pass1.
+
+After loading, you can do:
+
+|     |     |
+| --- | --- |
+| n   | \ prints the nodes.
+| d   |\ disassembles everything, so you can see what the code looks like.
+| m   |\ "eMulate".  Does a disassembly, then runs the Arm emulator, starting from the last definition compiled.  You get an output of one line per operation, which has the hex of the instruction, then the disassembly of that instruction, then the condition flags and the result register if there is a change.<br> Any results left on the Arm data stack are transferred to the iMops stack at the end.  (Warnin - don't use m for the Ackermann test.  It executes almost 100,000 instructions.  Use m-.)
+| m-   |\ Similar to m but with much less output.  This word is used in the regression tests.
+
+To run the full regression tests, instead of // arm.ld, do:
+
+```shell
+// regression\tab\tab 
+```
+
+This loads the compiler and then runs 50 or so regression tests.  These should run to completion and print a congratulatory message.
+
+***Target-compiling the code generator***
+
+To do this, use:
+
+```shell
+// arm1.ld
+```
+
+Most of the loaded files are the same as those already loaded under iMops, however we have a few named prolog1, defns1 etc.  These are slightly modified versions of prolog, dic etc, to remove a few lines which won't target compile since they call iMops words, but which aren't needed anyway.  In some of the files we use conditional compilation - however these duplicate files are those where the conditional compilation became unwieldy so it was simpler to just duplicate the file and make the necessary changes.
+
+You can begin to run the target-compiled code generator, by using the "m" command as given above.  This begins to run the final definition loaded, "test", which is in the file CG-setup.  This definition calls "setup_CG" (sorry, the names are a bit confusing), which creates a block in the heap for TIB, PAD, WORD_BUF and INPUT_BUF.  Then it calls __INIT_NODES which is in the target compilation is in the same file.  This calls __new on the big object_array "theNodes".  This word calls ALLOCATE_REF which does the main work of creating an object on the heap.  It first calls (MAKE_OBJECT) to applly the alignment algorithm to all the ivars and array elements, and work out the total object size.  Then it allocates the memory on the heap with a malloc call.  Then it calls SETUP_OBJECT to put in all the object headers and indexed headers in the new object_array.
+
+ SETUP_OBJECT is a big recursive definition.  Currently a MARKER97 is used to turn tracking off, otherwise it would be too long.  
+
+Then after setup_CG, our little test definition ` : test 1 2 3 ; ` is placed in input_buf, and we call Arm_interpret to compile it.  The line is successfully compiled and the correct compiled code is placed into a new bytestring INSTRUCTIONS (redefining the old one - see ArmBase).  At the end of the source line, the word REFILL (in PrimitivesB) is executed to get another line, but at this point the test run ends with a success message.  Of course in the "proper" version running on real hardward, REFILL will be properly implemented.
+
+**3.0 release:**
+
 This is the next version (3.0) of the Arm code generator. It continues on from the 2.6 release, and has a number of important improvements.
 
 * The global area was previously a bytestring, and could therefore move in memory. This mustn't happen at run time, since compiled code can add new global items and keep absolute addresses into the global area. So now at CROSS time, when we start target compilation, we allocate a big pointer-based block and never add to it. See the declaration of GLOBAL_SPACE near the start of Prolog.
@@ -63,7 +169,7 @@ Any results left on the Arm data stack are transferred to the iMops stack at the
 
 `m-`    Similar to m but with much less output. This word is used in the regression tests.
 
-To run the full regression tests, instead of // arm.ld, do:
+To run the full regression tests, instead of `// arm.ld`, do:
 
 `// regression  `
 
@@ -79,13 +185,11 @@ Most of the loaded files are the same as those already loaded under iMops, howev
 
 You can begin to run the target-compiled code generator, by using the "m" command as given above. This begins to run the final definition loaded, "test", which is in the file CG-setup. This definition calls "setup_CG" (sorry, the names are a bit confusing), which creates a block in the heap for TIB, PAD, WORD_BUF and INPUT_BUF. Then it calls __INIT_NODES which is in the target compilation is in the same file. This calls __new on the big object_array "theNodes". This word calls ALLOCATE_REF which does the main work of creating an object on the heap. It first calls (MAKE_OBJECT) to applly the alignment algorithm to all the ivars and array elements, and work out the total object size. Then it allocates the memory on the heap with a malloc call. Then it calls SETUP_OBJECT to put in all the object headers and indexed headers in the new object_array.
 
- SETUP_OBJECT is a big recursive definition. Currently a MARKER97 is used to turn tracking off, otherwise it would be too long. 
+ `SETUP_OBJECT` is a big recursive definition. Currently a `MARKER97` is used to turn tracking off, otherwise it would be too long. 
 
-Then after setup_CG, our little test definition ` : test 1 2 3 ; ` is placed in input_buf, and we call Arm_interpret to compile it. This successfully runs up to the semicolon, where in a word it calls it runs into a zero address error, which is caught by the emulator. However by then all the nodes for the definition are created in theNodes. You can print out the nodes with the command "printnodes".
+Then after `setup_CG`, our little test definition ` : test 1 2 3 ; ` is placed in input_buf, and we call Arm_interpret to compile it. This successfully runs up to the semicolon, where in a word it calls it runs into a zero address error, which is caught by the emulator. However by then all the nodes for the definition are created in theNodes. You can print out the nodes with the command "printnodes".
 
 I will need to continue tracking through the execution of (;) and related words, and then on into the subsequent passes.
-
-**From earlier release notes**
 
 ***2.6 release:***
 

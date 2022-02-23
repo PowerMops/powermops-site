@@ -3,11 +3,13 @@ title: News
 layout: ../layouts/Main.astro
 ---
 
+- 2022-02-21: aMops Code Generator 3.1 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
+  - [Release Notes](/amops/release-notes/)
 - 2022-02-05: iMops 2.23 [Download page](https://sourceforge.net/projects/powermops/files/iMops/)
   - Fixed crash on launch on Monterey (macOS 12)
   - Other bug fixes
   - iMops is now a third party application without any developer signature.  In order to avoid possible GateKeeper troubles, see file _Read Before Launching iMops or iBucket_ in the distribution.
-- 2022-01-12: aMops Code Generator 3.0 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
+- 2022-01-12: aMops Code Generator 3.0
 - 2021-11-17: aMops Code Generator 2.6
   - Can compile a definition under emulation, up to the point where it needs to make a new dictionary entry for the new definition.
 - 2021-10-08: aMops Code Generator 2.5
