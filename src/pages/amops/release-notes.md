@@ -13,33 +13,25 @@ This version can load itself, then under emulation compile a little test definit
 Quite a number of bugs were uncovered and fixed.
 
 * I had very cleverly omitted to code for the case of a CYCLE within a `FOR...LOOP`.  Some very strange code resulted, but this was easy to fix.
-
 * There was a bug in the alignment algorithm which affected the NodeID_stack class.
-
 * The class: method in class Object was wrongly grabbing a parameter off the stack, and this affected all the words calling this method.
-
 * When code calls a word with the `__unknown_regs?` flag set (e.g. FORWARD definitions), a flag `__calls_unknown_regs?` is set to that we know that THIS word may cause any registerto be used.  This flag obviously needs to be propagated to any words which call this word, but this wasn't being done.
-
 * There was a subtle bug affecting `CASE[` and `SELECT[` constructs.  Live ranges coming into the construct should be propagated into each stub (so that the registers assigned to those live ranges aren't clobbered by code in the stub).  This was done, but the ranges weren't always marked required, and this could have caused the registers to be clobbered.  My fix for this (in Liveness) is a bit clumsy, but it seems to work.  (My comment there uses the words "appalling hack" ?)
-
 * When compiling a definition which calls another, I had been neglecting to add the list of registers changed in the called definition, to the list for this definition.  This of course meant that 
 this list wasn't complete, and the problem was worse for complex definition calling many others.  So the register allocation could wrongly assign a register which was going to be changed when a call is made, and the regression tests hadn't picked this up because at present they don't include deeply nested calls.  This is now fixed, and I have also taken the opportunity to change the "registers changed" list back to a bitmap which is more efficient.  It had been a bitmap many years ago but had become a list with MAX 1 which had two sets of 256 registers.
-
 * I wasn't handling the shifted immediate option in add and subtract properly (where an immediate value can be optionally shifted left 12 bits, allowing values such as `$ 1230000` to be encoded as immediates).  I was detecting this possibility but not implementing it completely, so the shift wasn't happening, and the resulting immediate value was wrong.
-
 * Fixing that bug unmasked another one, since some code in handling common subexpressions was wrongly being skipped.  The unmasked bug was a faulty implementation of the `CLASS_AS>` syntax.  This is now hopefully fixed.
-
-* In the file Operands, I found that the definition `GET_ON_ENTRY` was not correct.  The general idea was that if we found, while processing a definition in pass1, that we needed an operand or operands deeper than what we were keeping track of, we could add it to the list of entry nodes for the definition and pretend it had been there all the time.  This was fine for the initial basic block in a definition, including very simple definitions with one BB.  However in subsequent BBs, it was a very bad idea.  In these BBs, the new operands may not always be needed, or may be needed multiple times if the BB is in a loop.  It would certainly be wrong to only grab them once.  This problem was probably in PowerMops but just hadn't shown up, for some reason.  This definition is now correct, hopefully, and is a lot simpler.  If the new operands are needed in the first BB in the definition, we do what we were doing before, and add new input nodes.  If it's in a subsequent BB, or if the defn is unknown_regs, we pull the new operands from the memory part of the stack, at the point where they are needed.  The new name of this definition is EXTRA_OPERANDS.
+* In the file Operands, I found that the definition `GET_ON_ENTRY` was not correct.  The general idea was that if we found, while processing a definition in pass1, that we needed an operand or operands deeper than what we were keeping track of, we could add it to the list of entry nodes for the definition and pretend it had been there all the time.  This was fine for the initial basic block in a definition, including very simple definitions with one BB.  However in subsequent BBs, it was a very bad idea.  In these BBs, the new operands may not always be needed, or may be needed multiple times if the BB is in a loop.  It would certainly be wrong to only grab them once.  This problem was probably in PowerMops but just hadn't shown up, for some reason.  This definition is now correct, hopefully, and is a lot simpler.  If the new operands are needed in the first BB in the definition, we do what we were doing before, and add new input nodes.  If it's in a subsequent BB, or if the defn is unknown_regs, we pull the new operands from the memory part of the stack, at the point where they are needed.  The new name of this definition is `EXTRA_OPERANDS`.
 
 I have also added a new optimization, which is related to the last bug fix above.  The way inlining works, means that it needs to be blocked if `EXTRA_OPERANDS` is called, that is when a definition takes anonymous operands from the stack (NOT named parms).  `EXTRA_OPERANDS` needs to know if it's in the first BB of a definition or not, so in general this code can't be dropped anywhere into the middle of another definition.  This could perhaps be coded around, but would be very difficult to get right.
 
-However, we can in fact handle some of the most frequent occurrences of this situation, in a different way which I call "Plan B inlining".  Take for example in class Byte, where we have
+However, we can in fact handle some of the most frequent occurrences of this situation, in a different way which I call "Plan B inlining".  Take for example in class `Byte`, where we have
 
 ```shell
 :m TO:    ^base  c!  ;m
 ```
 
-the value being stored is an anonymous stack operand, so this method wouldn't be inlined in the normal way.  However it is valid, at Codegen time, to simply copy the compiled code for the definition into the call location, omitting the final RET (return).  The registers are all correct.  At runtime the result is identical to calling the out-of-line code, but without the call and return.
+the value being stored is an anonymous stack operand, so this method wouldn't be inlined in the normal way.  However it is valid, at Codegen time, to simply copy the compiled code for the definition into the call location, omitting the final `RET` (return).  The registers are all correct.  At runtime the result is identical to calling the out-of-line code, but without the call and return.
 
 This "Plan B" is done whenever the definition is a leaf, is short (currently less than 10 instructions) and doesn't contain an `EXIT`.  It's done regardless of the inline_on or inline_off directives.  It's not as elegant as the regular inlining, but picks up a number of common cases which can't be done the regular way, as in the example above.  It's simple and appears to work well.
 
