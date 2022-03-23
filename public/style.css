@@ -1,0 +1,15 @@
+a, .prevnext {
+  text-decoration: none;
+}
+
+.direct-link {
+  text-decoration: none;
+  opacity: 0.2;
+  font-size: smaller;
+}
+
+.direct-link:hover {
+  text-decoration: none;
+  opacity: 1;
+}
+
