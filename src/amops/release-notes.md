@@ -1,6 +1,10 @@
 ---
 title: Release Notes
 layout: layouts/default.njk
+eleventyNavigation:
+  key: Release Notes
+  parent: aMops
+  order: 250
 author: mike
 ---
 

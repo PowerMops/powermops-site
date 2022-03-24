@@ -1,5 +1,9 @@
 ---
 title: Open Me First
+eleventyNavigation:
+  key: Open Me First
+  parent: Powermops
+  order: 200
 layout: layouts/default.njk
 ---
 

@@ -1,5 +1,9 @@
 ---
 title: Read Me
+eleventyNavigation:
+  key: Read Me
+  parent: aMops
+  order: 240
 layout: layouts/default.njk
 ---
 

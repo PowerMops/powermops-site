@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 a, .prevnext {
   text-decoration: none;
 }
@@ -13,3 +14,14 @@ a, .prevnext {
   opacity: 1;
 }
 
+.nav a {
+  text-decoration: none;
+}
+
+.nav li {
+  list-style: none
+}
+
+.nav>ul>li {
+  padding-top: 2em;
+}

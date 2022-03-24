@@ -1,5 +1,9 @@
 ---
 title: Tutorial
+eleventyNavigation:
+  key: Tutorial
+  parent: Powermops
+  order: 220
 layout: layouts/default.njk
 ---
 

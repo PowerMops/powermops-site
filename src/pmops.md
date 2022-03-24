@@ -1,5 +1,8 @@
 ---
 title: Documentation
+eleventyNavigation:
+  key: Powermops
+  order: 200
 layout: layouts/default.njk
 ---
 

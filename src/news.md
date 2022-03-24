@@ -1,5 +1,8 @@
 ---
 title: News
+eleventyNavigation:
+  key: News
+  order: 20
 layout: layouts/default.njk
 ---
 

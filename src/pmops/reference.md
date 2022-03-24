@@ -1,5 +1,9 @@
 ---
 title: Reference
+eleventyNavigation:
+  parent: Powermops
+  key: Reference
+  order: 230
 layout: layouts/default.njk
 ---
 

@@ -1,5 +1,9 @@
 ---
 title: The Mops Manual
+eleventyNavigation:
+  key: Overview
+  parent: Powermops
+  order: 210
 layout: layouts/default.njk
 ---
 

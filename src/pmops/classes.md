@@ -1,5 +1,9 @@
 ---
 title: Mops Classes General Reference
+eleventyNavigation:
+  key: Classes
+  parent: Powermops
+  order: 240
 layout: layouts/default.njk
 ---
 

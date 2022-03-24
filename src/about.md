@@ -1,5 +1,8 @@
 ---
 title: About
+eleventyNavigation:
+  key: About
+  order: 10
 layout: layouts/default.njk
 ---
 

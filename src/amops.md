@@ -1,5 +1,8 @@
 ---
 title: aMops
+eleventyNavigation:
+  key: aMops
+  order: 100
 layout: layouts/default.njk
 ---
 
