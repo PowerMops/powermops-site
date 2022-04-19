@@ -8,7 +8,81 @@ eleventyNavigation:
 author: mike
 ---
 
-**This release**
+**3.2 Release**
+
+This is the next version (3.2) of the Arm code generator.  Unlike the previous release, which had many new features, this one has only one - late binding.
+This is actually a very straightforward addition.  See the code LATE_BIND in Selectors, and also LB_DISPATCH near the end of Classes.  When the syntax
+
+`method: []`
+
+or
+
+`method: **`
+
+is encountered, LATE_BIND is called at compile time, which compiles the hash value for method: as a literal, then compiles a call to LB_DISPATCH.  At run time, this simply calls SEARCH_IN_CLASS to find the method with the given hash, then dispatches to the glue for that method (thus looking after any arbitrary stack effects).  An error occurs (exception 2) if the method isn’t found.  This of course is a run time error.
+
+For my simple test code in the file late_bind, it takes about 150 instructions to execute `put: **` where the matching method is in a superclass, not the given class of the target object.  Obviously the execution time will depend critically on the time for a method search, and this may have to pass through several superclasses.  This would be the case for any OO language supporting late binding.  Once we have a late binding cache, this performance will be considerably improved.  The next version may implement this, however it isn’t a high priority just now.
+
+___
+
+As in the last few versions, the target-compiled version of the code generator can begin to run under the emulator.  The word “test” is executed (the last word loaded).  This calls setup_CG, which creates the big object_array “theNodes” in the heap, then initializes it by calling `__init_nodes`, exactly as in the non-target version.
+
+Next a little test definition is passed to Arm-interpret.  This is simply
+
+`: test 1 2 3 ;`
+
+This is now processed and the correct code is compiled, into a new bytestring INSTRUCTIONS (redefining the old one - see ArmBase).  At the end of the source line, the word REFILL (in PrimitivesB) is executed to get another line, but at this point the test run ends with a success message.  Of course in the “proper” version running on real hardward, REFILL will be properly implemented.
+
+As with the previous versions, the target compilation is done with the load file `arm1.ld`.  See below for the details.
+
+
+___
+
+As before, the regression tests run over 60 tests and exercise all the features, prior to target compiling the code generator itself.
+The emulator is integrated with the disassembler (see the files dem1, dem2 and dem3).  It’s not a full emulator of course, which would be a huge job, but just aims to emulate the instructions the code generator generates.  This should give us a lot of confidence that the compiled code is correct, since the disassembler/emulator is completely independent of the code generator.
+
+***How to run it***
+
+You have already downloaded the project.  There will be one folder, aMops.
+Put this folder into iMops/source.
+Then in iMops:
+
+```bash
+“ aMops” add-project		\ Adds the project to the project paths.  Case doesn’t matter.
+// arm.ld				\ loads the Arm compiler.
+// armtest0				\ or whichever test you’re running, currently up to armtest46.
+```
+
+	You can set the value stop_after_pass1? true, and compilation will stop after pass1.
+After loading, you can do:
+
+|     |     |
+|-----|-----|
+|`n`		|\ prints the nodes. |
+|`d`    |\ disassembles everything, so you can see what the code looks like.
+|`m`	  |	\ “eMulate”.  Does a disassembly, then runs the Arm emulator, starting from the last definition compiled.  You get an output of one line per operation, which has the hex of the instruction, then the disassembly of that instruction, then the condition flags and the result register if there is a change.<br>  Any results left on the Arm data stack are transferred to the iMops stack at the end.  (Warning - don’t use m for the Ackermann test.  It executes almost 100,000 instructions.  Use m-.)
+|`m-`	 |	\ Similar to m but with much less output.  This word is used in the regression tests.|
+
+To run the full regression tests, instead of `// arm.ld`, do:
+
+`// regression`	
+
+This loads the compiler and then runs 50 or so regression tests.  These should run to completion and print a congratulatory message.
+
+***Target-compiling the code generator***
+
+To do this, use:
+
+`// arm1.ld`
+
+Most of the loaded files are the same as those already loaded under iMops, however we have a few named prolog1, defns1 etc.  These are slightly modified versions of prolog, dic etc, to remove a few lines which won’t target compile since they call iMops words, but which aren’t needed anyway.  In some of the files we use conditional compilation - however these duplicate files are those where the conditional compilation became unwieldy so it was simpler to just duplicate the file and make the necessary changes.
+
+You can begin to run the target-compiled code generator, by using the “m” command as given above.  This begins to run the final definition loaded, “test”, which is in the file CG-setup.  This definition calls “setup_CG” (sorry, the names are a bit confusing), which creates a block in the heap for TIB, PAD, WORD_BUF and INPUT_BUF.  Then it calls __INIT_NODES which is in the target compilation is in the same file.  This calls __new on the big object_array “theNodes”.  This word calls ALLOCATE_REF which does the main work of creating an object on the heap.  It first calls (MAKE_OBJECT) to applly the alignment algorithm to all the ivars and array elements, and work out the total object size.  Then it allocates the memory on the heap with a malloc call.  Then it calls SETUP_OBJECT to put in all the object headers and indexed headers in the new object_array.
+ SETUP_OBJECT is a big recursive definition.  Currently a MARKER97 is used to turn tracking off, otherwise it would be too long.  
+
+Then after setup_CG, our little test definition `: test 1 2 3 ;` is placed in input_buf, and we call `Arm_interpret` to compile it.  The line is successfully compiled and the correct compiled code is placed into a new bytestring INSTRUCTIONS (redefining the old one - see ArmBase).  At the end of the source line, the word `REFILL` (in PrimitivesB) is executed to get another line, but at this point the test run ends with a success message.  Of course in the “proper” version running on real hardware, `REFILL` will be properly implemented.
+
+**3.1 Release**
 
 This is the next version (3.1) of the Arm code generator.  With this version, the code generator is essentially complete.  From here on, once we have real hardware to run on, it will be more a matter of fixing bugs.  (Bugs?  What bugs??)
 
@@ -39,7 +113,7 @@ the value being stored is an anonymous stack operand, so this method wouldn't be
 
 This "Plan B" is done whenever the definition is a leaf, is short (currently less than 10 instructions) and doesn't contain an `EXIT`.  It's done regardless of the inline_on or inline_off directives.  It's not as elegant as the regular inlining, but picks up a number of common cases which can't be done the regular way, as in the example above.  It's simple and appears to work well.
 
-As in the last couple of versions, the target-compiled version of the code generator can begin to run under the emulator.  The word "test" is executed (the last word loaded).  This calls `setup_CG`, which creates the big object_array "theNodes" in the heap, then initializes it by calling __init_nodes, exactly as in the non-target version.
+As in the last couple of versions, the target-compiled version of the code generator can begin to run under the emulator.  The word `test` is executed (the last word loaded).  This calls `setup_CG`, which creates the big object_array `theNodes` in the heap, then initializes it by calling `__init_nodes`, exactly as in the non-target version.
 
 Next a little test definition is passed to Arm-interpret.  This is simply
 
@@ -100,7 +174,7 @@ To do this, use:
 
 Most of the loaded files are the same as those already loaded under iMops, however we have a few named prolog1, defns1 etc.  These are slightly modified versions of prolog, dic etc, to remove a few lines which won't target compile since they call iMops words, but which aren't needed anyway.  In some of the files we use conditional compilation - however these duplicate files are those where the conditional compilation became unwieldy so it was simpler to just duplicate the file and make the necessary changes.
 
-You can begin to run the target-compiled code generator, by using the "m" command as given above.  This begins to run the final definition loaded, "test", which is in the file CG-setup.  This definition calls "setup_CG" (sorry, the names are a bit confusing), which creates a block in the heap for TIB, PAD, WORD_BUF and INPUT_BUF.  Then it calls __INIT_NODES which is in the target compilation is in the same file.  This calls __new on the big object_array "theNodes".  This word calls ALLOCATE_REF which does the main work of creating an object on the heap.  It first calls (MAKE_OBJECT) to applly the alignment algorithm to all the ivars and array elements, and work out the total object size.  Then it allocates the memory on the heap with a malloc call.  Then it calls SETUP_OBJECT to put in all the object headers and indexed headers in the new object_array.
+You can begin to run the target-compiled code generator, by using the `m` command as given above.  This begins to run the final definition loaded, "test", which is in the file CG-setup.  This definition calls "setup_CG" (sorry, the names are a bit confusing), which creates a block in the heap for TIB, PAD, WORD_BUF and INPUT_BUF.  Then it calls __INIT_NODES which is in the target compilation is in the same file.  This calls __new on the big object_array "theNodes".  This word calls ALLOCATE_REF which does the main work of creating an object on the heap.  It first calls (MAKE_OBJECT) to applly the alignment algorithm to all the ivars and array elements, and work out the total object size.  Then it allocates the memory on the heap with a malloc call.  Then it calls SETUP_OBJECT to put in all the object headers and indexed headers in the new object_array.
 
  SETUP_OBJECT is a big recursive definition.  Currently a MARKER97 is used to turn tracking off, otherwise it would be too long.  
 
@@ -179,7 +253,7 @@ To do this, use:
 
 Most of the loaded files are the same as those already loaded under iMops, however we have a few named prolog1, defns1 etc. These are slightly modified versions of prolog, dic etc, to remove a few lines which won't target compile since they call iMops words, but which aren't needed anyway. In some of the files we use conditional compilation - however these duplicate files are those where the conditional compilation became unwieldy so it was simpler to just duplicate the file and make the necessary changes.
 
-You can begin to run the target-compiled code generator, by using the "m" command as given above. This begins to run the final definition loaded, "test", which is in the file CG-setup. This definition calls "setup_CG" (sorry, the names are a bit confusing), which creates a block in the heap for TIB, PAD, WORD_BUF and INPUT_BUF. Then it calls __INIT_NODES which is in the target compilation is in the same file. This calls __new on the big object_array "theNodes". This word calls ALLOCATE_REF which does the main work of creating an object on the heap. It first calls (MAKE_OBJECT) to applly the alignment algorithm to all the ivars and array elements, and work out the total object size. Then it allocates the memory on the heap with a malloc call. Then it calls SETUP_OBJECT to put in all the object headers and indexed headers in the new object_array.
+You can begin to run the target-compiled code generator, by using the `m` command as given above. This begins to run the final definition loaded, `test`, which is in the file CG-setup. This definition calls "setup_CG" (sorry, the names are a bit confusing), which creates a block in the heap for `TIB`, `PAD`, `WORD_BUF`, and `INPUT_BUF`. Then it calls `__INIT_NODES` which is in the target compilation is in the same file. This calls `__new` on the big object_array `theNodes`. This word calls `ALLOCATE_REF` which does the main work of creating an object on the heap. It first calls `(MAKE_OBJECT)` to apply the alignment algorithm to all the ivars and array elements, and work out the total object size. Then it allocates the memory on the heap with a malloc call. Then it calls `SETUP_OBJECT` to put in all the object headers and indexed headers in the new object_array.
 
  `SETUP_OBJECT` is a big recursive definition. Currently a `MARKER97` is used to turn tracking off, otherwise it would be too long. 
 
@@ -193,7 +267,7 @@ This is the next version (2.6) of the Arm code generator. It continues on from t
 
 * It can now completely load itself.
 
-* This target-compiled version of the code generator can begin to run under the emulator. The word "test" is executed (the last word loaded). This calls setup_CG, which creates the big object_array "theNodes" in the heap, then initializes it by calling __init_nodes, exactly as in the non-target version.
+* This target-compiled version of the code generator can begin to run under the emulator. The word `test` is executed (the last word loaded). This calls setup_CG, which creates the big object_array "theNodes" in the heap, then initializes it by calling __init_nodes, exactly as in the non-target version.
 
 Next a little test definition is passed to Arm-interpret. This is simply
 

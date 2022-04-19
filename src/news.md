@@ -6,8 +6,9 @@ eleventyNavigation:
 layout: layouts/default.njk
 ---
 
-- 2022-02-21: aMops Code Generator 3.1 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
+- 2022-04-02: aMops Code Generator 3.2 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
   - [Release Notes](/amops/release-notes/)
+- 2022-02-21: aMops Code Generator 3.1
 - 2022-02-05: iMops 2.23 [Download page](https://sourceforge.net/projects/powermops/files/iMops/)
   - Fixed crash on launch on Monterey (macOS 12)
   - Other bug fixes
