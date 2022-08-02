@@ -6,6 +6,9 @@ eleventyNavigation:
 layout: layouts/default.njk
 ---
 
+- 2022-07-23: MAX 5.0 [Download page](https://sourceforge.net/projects/powermops/files/MAX/)
+  - major new version, incorporating some of the new ideas from aMops
+  - rejigged opcodes
 - 2022-04-02: aMops Code Generator 3.2 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
   - [Release Notes](/amops/release-notes/)
 - 2022-02-21: aMops Code Generator 3.1
