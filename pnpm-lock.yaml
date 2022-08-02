@@ -3,9 +3,9 @@ lockfileVersion: 5.4
 specifiers:
   '@11ty/eleventy': ^1.0.1
   '@11ty/eleventy-navigation': ^0.3.2
-  '@11ty/eleventy-plugin-syntaxhighlight': ^4.0.0
+  '@11ty/eleventy-plugin-syntaxhighlight': 4.1.0
   '@types/markdown-it': '*'
-  markdown-it: ^12.3.2
+  markdown-it: 13.0.1
   markdown-it-anchor: ^8.6.2
 
 dependencies:
@@ -14,9 +14,9 @@ dependencies:
 devDependencies:
   '@11ty/eleventy': 1.0.1
   '@11ty/eleventy-navigation': 0.3.3
-  '@11ty/eleventy-plugin-syntaxhighlight': 4.0.0
-  markdown-it: 12.3.2
-  markdown-it-anchor: 8.6.4_2zb4u3vubltivolgu556vv4aom
+  '@11ty/eleventy-plugin-syntaxhighlight': 4.1.0
+  markdown-it: 13.0.1
+  markdown-it-anchor: 8.6.4_ea7kj7wzjkld5jo2noyjqxi764
 
 packages:
 
@@ -30,8 +30,8 @@ packages:
       dependency-graph: 0.11.0
     dev: true
 
-  /@11ty/eleventy-plugin-syntaxhighlight/4.0.0:
-    resolution: {integrity: sha512-t95DIZQ7MnaspgpmXyKIgz2TpyN7EshMt9+SFfqVUYKTISU3+T3FTXFscoLownyNWb/5EC0od69BnCZwEcMzCg==}
+  /@11ty/eleventy-plugin-syntaxhighlight/4.1.0:
+    resolution: {integrity: sha512-bLpV8DKFZRgh0kToh8JPCjABfalL5ydyP6rxj/aUgrlR2v9TheLGRNqoKMhfgwUETOas2nMo/rd7sCE4kSvBNQ==}
     dependencies:
       linkedom: 0.13.7
       prismjs: 1.28.0
@@ -1283,6 +1283,12 @@ packages:
       uc.micro: 1.0.6
     dev: true
 
+  /linkify-it/4.0.1:
+    resolution: {integrity: sha512-C7bfi1UZmoj8+PQx22XyeXCuBlokoyWQL5pWSP+EI6nzRylyThouddufc2c1NDIcP9k5agmN9fLpA7VNJfIiqw==}
+    dependencies:
+      uc.micro: 1.0.6
+    dev: true
+
   /liquidjs/9.37.0:
     resolution: {integrity: sha512-qDj9iiNdB+QNZTR4iKjiQzoHQma7V8Itx5oZG/ZCP7xjebh1LI+s5IG2ZYUbs1ALO6hBzmW36Ptd8RR4eohuDA==}
     engines: {node: '>=4.8.7'}
@@ -1333,14 +1339,14 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /markdown-it-anchor/8.6.4_2zb4u3vubltivolgu556vv4aom:
+  /markdown-it-anchor/8.6.4_ea7kj7wzjkld5jo2noyjqxi764:
     resolution: {integrity: sha512-Ul4YVYZNxMJYALpKtu+ZRdrryYt/GlQ5CK+4l1bp/gWXOG2QWElt6AqF3Mih/wfUKdZbNAZVXGR73/n6U/8img==}
     peerDependencies:
       '@types/markdown-it': '*'
       markdown-it: '*'
     dependencies:
       '@types/markdown-it': 12.2.3
-      markdown-it: 12.3.2
+      markdown-it: 13.0.1
     dev: true
 
   /markdown-it/12.3.2:
@@ -1350,6 +1356,17 @@ packages:
       argparse: 2.0.1
       entities: 2.1.0
       linkify-it: 3.0.3
+      mdurl: 1.0.1
+      uc.micro: 1.0.6
+    dev: true
+
+  /markdown-it/13.0.1:
+    resolution: {integrity: sha512-lTlxriVoy2criHP0JKRhO2VDG9c2ypWCsT237eDiLqi09rmbKoUetyGHq2uOIRoRS//kfoJckS0eUzzkDR+k2Q==}
+    hasBin: true
+    dependencies:
+      argparse: 2.0.1
+      entities: 3.0.1
+      linkify-it: 4.0.1
       mdurl: 1.0.1
       uc.micro: 1.0.6
     dev: true
