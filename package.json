@@ -2,6 +2,7 @@
   "name": "@powermops/powermops-site",
   "version": "2.0.0",
   "description": "Powermops - Mops web site",
+  "private": true,
   "scripts": {
     "build": "npx @11ty/eleventy",
     "bench": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
