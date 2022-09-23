@@ -1,22 +1,22 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@11ty/eleventy': ^1.0.1
-  '@11ty/eleventy-navigation': ^0.3.2
+  '@11ty/eleventy': ^1.0.2
+  '@11ty/eleventy-navigation': ^0.3.5
   '@11ty/eleventy-plugin-syntaxhighlight': 4.1.0
   '@types/markdown-it': '*'
   markdown-it: 13.0.1
-  markdown-it-anchor: ^8.6.2
+  markdown-it-anchor: ^8.6.5
 
 dependencies:
   '@types/markdown-it': 12.2.3
 
 devDependencies:
-  '@11ty/eleventy': 1.0.1
-  '@11ty/eleventy-navigation': 0.3.3
+  '@11ty/eleventy': 1.0.2
+  '@11ty/eleventy-navigation': 0.3.5
   '@11ty/eleventy-plugin-syntaxhighlight': 4.1.0
   markdown-it: 13.0.1
-  markdown-it-anchor: 8.6.4_ea7kj7wzjkld5jo2noyjqxi764
+  markdown-it-anchor: 8.6.5_ea7kj7wzjkld5jo2noyjqxi764
 
 packages:
 
@@ -24,8 +24,8 @@ packages:
     resolution: {integrity: sha512-5R+DsT9LJ9tXiSQ4y+KLFppCkQyXhzAm1AIuBWE/sbU0hSXY5pkhoqQYEcPJQFg/nglL+wD55iv2j+7O96UAvg==}
     dev: true
 
-  /@11ty/eleventy-navigation/0.3.3:
-    resolution: {integrity: sha512-O5C/NbDeTBnHQvDYZDr0Va6a7mEzifPUL1XRiqyKIAQqXZJsX/2K13PFLhX7t6kQRT1w6D0TSQyiT8skXbgWKA==}
+  /@11ty/eleventy-navigation/0.3.5:
+    resolution: {integrity: sha512-4aKW5aIQDFed8xs1G1pWcEiFPcDSwZtA4IH1eERtoJ+Xy+/fsoe0pzbDmw84bHZ9ACny5jblENhfZhcCxklqQw==}
     dependencies:
       dependency-graph: 0.11.0
     dev: true
@@ -44,8 +44,8 @@ packages:
       normalize-path: 3.0.0
     dev: true
 
-  /@11ty/eleventy/1.0.1:
-    resolution: {integrity: sha512-2fJDHVBkRr1SB7CqBexwoLdiOGUE0f22O+Ie1TT/FI65XQZWshgHVZzvmZfmtKvQW4qtaC/FuJG3wMxkXfel7w==}
+  /@11ty/eleventy/1.0.2:
+    resolution: {integrity: sha512-03ER4zukR6BgwppI5DHRE11lc+8B0fWsBrqacVWo3o49QkdEFXnEWjhyI9qd9LrPlgQHK2/MYyxuOvNwecyCLQ==}
     engines: {node: '>=12'}
     hasBin: true
     dependencies:
@@ -65,10 +65,10 @@ packages:
       hamljs: 0.6.2
       handlebars: 4.7.7
       is-glob: 4.0.3
-      kleur: 4.1.4
-      liquidjs: 9.37.0
+      kleur: 4.1.5
+      liquidjs: 9.42.0
       lodash: 4.17.21
-      luxon: 2.4.0
+      luxon: 2.5.0
       markdown-it: 12.3.2
       minimist: 1.2.6
       moo: 0.5.1
@@ -1001,7 +1001,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.16.1
+      uglify-js: 3.17.1
     dev: true
 
   /has-ansi/2.0.0:
@@ -1258,8 +1258,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /kleur/4.1.4:
-    resolution: {integrity: sha512-8QADVssbrFjivHWQU7KkMgptGTl6WAcSdlbBPY4uNF+mWr6DGcKrvY2w4FQJoXch7+fKMjj0dRrL75vk3k23OA==}
+  /kleur/4.1.5:
+    resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
     dev: true
 
@@ -1289,8 +1289,8 @@ packages:
       uc.micro: 1.0.6
     dev: true
 
-  /liquidjs/9.37.0:
-    resolution: {integrity: sha512-qDj9iiNdB+QNZTR4iKjiQzoHQma7V8Itx5oZG/ZCP7xjebh1LI+s5IG2ZYUbs1ALO6hBzmW36Ptd8RR4eohuDA==}
+  /liquidjs/9.42.0:
+    resolution: {integrity: sha512-krvhwGFrMCMGhybGkxJIvlWVVnoCSpYCn7NhEN43+uvlg2vOkYWpq8be+L3NMlOfwe4ZrKQ7hCh1EmS4yhLKow==}
     engines: {node: '>=4.8.7'}
     hasBin: true
     dev: true
@@ -1334,13 +1334,13 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /luxon/2.4.0:
-    resolution: {integrity: sha512-w+NAwWOUL5hO0SgwOHsMBAmZ15SoknmQXhSO0hIbJCAmPKSsGeK8MlmhYh2w6Iib38IxN2M+/ooXWLbeis7GuA==}
+  /luxon/2.5.0:
+    resolution: {integrity: sha512-IDkEPB80Rb6gCAU+FEib0t4FeJ4uVOuX1CQ9GsvU3O+JAGIgu0J7sf1OarXKaKDygTZIoJyU6YdZzTFRu+YR0A==}
     engines: {node: '>=12'}
     dev: true
 
-  /markdown-it-anchor/8.6.4_ea7kj7wzjkld5jo2noyjqxi764:
-    resolution: {integrity: sha512-Ul4YVYZNxMJYALpKtu+ZRdrryYt/GlQ5CK+4l1bp/gWXOG2QWElt6AqF3Mih/wfUKdZbNAZVXGR73/n6U/8img==}
+  /markdown-it-anchor/8.6.5_ea7kj7wzjkld5jo2noyjqxi764:
+    resolution: {integrity: sha512-PI1qEHHkTNWT+X6Ip9w+paonfIQ+QZP9sCeMYi47oqhH+EsW8CrJ8J7CzV19QVOj6il8ATGbK2nTECj22ZHGvQ==}
     peerDependencies:
       '@types/markdown-it': '*'
       markdown-it: '*'
@@ -2111,8 +2111,8 @@ packages:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
     dev: true
 
-  /uglify-js/3.16.1:
-    resolution: {integrity: sha512-X5BGTIDH8U6IQ1TIRP62YC36k+ULAa1d59BxlWvPUJ1NkW5L3FwcGfEzuVvGmhJFBu0YJ5Ge25tmRISqCmLiRQ==}
+  /uglify-js/3.17.1:
+    resolution: {integrity: sha512-+juFBsLLw7AqMaqJ0GFvlsGZwdQfI2ooKQB39PSBgMnMakcFosi9O8jCwE+2/2nMNcc0z63r9mwjoDG8zr+q0Q==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true
