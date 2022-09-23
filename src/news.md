@@ -6,7 +6,10 @@ eleventyNavigation:
 layout: layouts/default.njk
 ---
 
-- 2022-09-04: MAX 5.1 [Download page](https://sourceforge.net/projects/powermops/files/MAX/)
+- 2022-09-23: MAX 5.2 [Download page](https://sourceforge.net/projects/powermops/files/MAX/)
+  - re-implementation of multitasking
+  - addition of garbage collection
+- 2022-09-04: MAX 5.1
   - class/object code re-implemented, simplifying things
   - bug fixes
 - 2022-07-23: MAX 5.0
