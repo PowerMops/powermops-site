@@ -8,14 +8,14 @@ eleventyNavigation:
 author: mike
 ---
 
-**3.3 Release**
+## 3.3 Release
 
 This is the next version (3.3) of the Arm code generator.  It fixes one minor bug in 3.2,  but also has important changes under the hood, anticipating future Arm enhancements.
 
 * The bug fixed:  definitions which had input operands which were unused (named parms which weren’t used, or stack operands which were DROPped without being used) would not update the data stack properly. (The Liveness pass would see that the operand was unused and completely remove it, before checking for the end of the definition which is when unused operands were properly dealt with.  This bug turned up in MAX and the code was substantially the same.)
 * The under-the-hood changes are described below in the section called “Morello”.
 
-***How to run it***
+## How to run it
 
 You have already downloaded the project.  There will be one folder, aMops.
 Put this folder into iMops/source.
@@ -43,7 +43,7 @@ To run the full regression tests, instead of `// arm.ld`, do:
 
 This loads the compiler and then runs 50 or so regression tests.  These should run to completion and print a congratulatory message.
 
-***Target-compiling the code generator***
+## Target-compiling the code generator
 
 To do this, use:
 
@@ -78,8 +78,9 @@ Under Morello, existing memory instructions work as before, but if a base regist
 
 For aMops, I plan to progressively modify the current instructions and implement the new instructions in the compiler and the emulator.  The present version has the new extended GPRs, now implemented using the class TGitem (tagged item).  (If you’ve been looking at MAX, you’ll find this familiar.)  So far I have implemented a number of capability methods in the TGitem class, but not the instructions as yet.  The work in the TGitem class does include the quite complex SetBounds: and GetBounds: methods which do much of the hard work of creating and modifying capabilities.  If you’re curious, have a read of the commentary at the start of the TGitem file.  A very sophisticated encoding scheme is used in order to fit an address and lower and upper bounds into a 129-bit capability.  Also there is  test file “captest” which tests a few of the new methods.  In future releases I will add capability tests to the regression tests.
 
+## From Earlier Release Notes
 
-**3.2 Release**
+### 3.2 Release
 
 This is the next version (3.2) of the Arm code generator.  Unlike the previous release, which had many new features, this one has only one - late binding.
 This is actually a very straightforward addition.  See the code LATE_BIND in Selectors, and also LB_DISPATCH near the end of Classes.  When the syntax
@@ -112,7 +113,7 @@ ___
 As before, the regression tests run over 60 tests and exercise all the features, prior to target compiling the code generator itself.
 The emulator is integrated with the disassembler (see the files dem1, dem2 and dem3).  It’s not a full emulator of course, which would be a huge job, but just aims to emulate the instructions the code generator generates.  This should give us a lot of confidence that the compiled code is correct, since the disassembler/emulator is completely independent of the code generator.
 
-**3.1 Release**
+### 3.1 Release
 
 This is the next version (3.1) of the Arm code generator.  With this version, the code generator is essentially complete.  From here on, once we have real hardware to run on, it will be more a matter of fixing bugs.  (Bugs?  What bugs??)
 
@@ -210,7 +211,7 @@ You can begin to run the target-compiled code generator, by using the `m` comman
 
 Then after setup_CG, our little test definition ` : test 1 2 3 ; ` is placed in input_buf, and we call Arm_interpret to compile it.  The line is successfully compiled and the correct compiled code is placed into a new bytestring INSTRUCTIONS (redefining the old one - see ArmBase).  At the end of the source line, the word REFILL (in PrimitivesB) is executed to get another line, but at this point the test run ends with a success message.  Of course in the "proper" version running on real hardward, REFILL will be properly implemented.
 
-**3.0 release:**
+### 3.0 release:
 
 This is the next version (3.0) of the Arm code generator. It continues on from the 2.6 release, and has a number of important improvements.
 
@@ -291,7 +292,7 @@ Then after `setup_CG`, our little test definition ` : test 1 2 3 ; ` is placed i
 
 I will need to continue tracking through the execution of (;) and related words, and then on into the subsequent passes.
 
-***2.6 release:***
+### 2.6 release:
 
 This is the next version (2.6) of the Arm code generator. It continues on from the 2.5 release:
 
@@ -307,7 +308,7 @@ This gets as far as the `: test`, where it needs to create a new dictionary entr
 
 This is real progress, and is probably quite near the end of the road for my work on the code generator. I'm really pleased to have got this far. I won't have time to do much further work until the new year, but I think with what we have there's a good foundation for aMops once we have the new hardware.
 
-***2.5 release:***
+### 2.5 release:
 
 This is the next version (2.5) of the Arm code generator. It represents another significant step forward from the previous version:
 
@@ -321,7 +322,7 @@ This is the next version (2.5) of the Arm code generator. It represents another 
 
 * Of course, a few new bugs showed up and have been fixed. I had MAX and MIN back to front (!). Also there were two bugs involving alignment, in which I was allocating too much space before an indexed area, but not enough before the indexed header. These two bugs had managed to cancel each other out so I hadn't found them before, but of course as soon as I fixed the first one, the second showed up. Also you may know that in Arm instructions, "r31" may either be the system stack pointer (our RP) or rZero which reads as zero and consumes anything stored there. Which is which depends on the instruction and the specific operand. Now for loads and stores, if "Rt" (the operand being loaded or stored) is r31, it means rZero, but for the other operands it means RP. This is useful for setting a memory location to zero. I was compiling correct code, but had it wrong in the emulator.
 
-***2.4 release:***
+### 2.4 release:
 
 This is the next version (2.4) of the Arm code generator. It represents a significant step forward.
 
@@ -333,7 +334,7 @@ This is the next version (2.4) of the Arm code generator. It represents a signif
 
 With these changes, we can now target compile the code generator up to the file "pass1" (see the load file arm1.ld). This is about halfway through the load file, though hopefully we have already hit the main problems and fixed them. During the load, there is a print of the occasions when a virtual register must be used, and you can see that it's quite infrequent.
 
-***2.3 release:***
+### 2.3 release:
 
 This is an interim release, since I have now encountered situations where registers can run out in complicated definitions, which I had hoped wouldn't happen, but which has. A fix is in the pipeline, but isn't fully implemented yet.
 
@@ -345,7 +346,7 @@ The load so far has a number of big definitions, but we only need virtual regist
 
 As usual, a few bugs have been fixed with this version, including one which was giving a false indication of registers running out.
 
-***2.2 release:***
+### 2.2 release:
 
 There are no major new features, but with this version we begin target compiling the code generator. This won't do anything useful yet since it's just a partial load, but it's progress. See the details below on how do do the load. Here are the changes made with this version:
 
@@ -361,7 +362,7 @@ There are no major new features, but with this version we begin target compiling
 
 * The target compilation is done with a load file arm1.ld. See below for details.
 
-***2.1 release:***
+### 2.1 release:
 
 This is a fairly minor revision, to prepare the way for target compiling the code generaor. There are these changes:
 
@@ -375,7 +376,7 @@ And when a call to <name> is compiled, parameters will be placed in registers X0
 
 4. A small optimization is added in which a load of a long literal which would require more than two MOVx instructions to load, is instead stored in the constant data area where it can be loaded with a single LDR instruction. This area is in the instruction space and so is read-only.
 
-***2.0 release:***
+### 2.0 release:
 
 This is the next version (2.0) of the Arm code generator. We have a new major version number because the changes are quite significant. We now have object_arrays, and the whole object alignment algorithm has been revamped.
 
@@ -385,12 +386,12 @@ All the details are in the aMops runtime.rtf document, which has substantially r
 
 ---
 
-**Future plans**
+## Future plans
 
-As I mentioned above, I need to continue tracking through the emulated execution of (;) and related words, and then on into the subsequent passes and code generation for my little test program.
+I think the main part of my job is almost done for now.  Probably once we have real hardware to run on more work will be needed.  One feature I should add is a cache for late binding, as we did in PowerMops and iMops.  This is transparent to the programmer but gives a very useful performance boost.  However it isn’t a high priority at this stage.
 
-Beyond this, there may not be a lot more I can do with the code generator until we have real hardware to run on.
+I will also progressively enhance the Morello support, but this may not be needed for a few years yet.
 
-In Arm FP is integrated with SIMD instructions (single-instruction, multiple data - i.e. vectors), and there is a huge, very rich set of SIMD instructions. These can be added in stages, but probably with lower priority. The first priority will be to get a native system running once we have access to real hardware.
+In Arm FP is integrated with SIMD instructions (single-instruction, multiple data - i.e. vectors), and there is a huge, very rich set of SIMD instructions.  These can be added in stages, but probably with lower priority, once we have real hardware.
 
---- Mike Hore, Darwin, Northern Territory, Australia. January 2022.
+--- Mike Hore, Darwin, Northern Territory, Australia. November 2022.
