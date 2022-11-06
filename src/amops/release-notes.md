@@ -8,38 +8,12 @@ eleventyNavigation:
 author: mike
 ---
 
-**3.2 Release**
+**3.3 Release**
 
-This is the next version (3.2) of the Arm code generator.  Unlike the previous release, which had many new features, this one has only one - late binding.
-This is actually a very straightforward addition.  See the code LATE_BIND in Selectors, and also LB_DISPATCH near the end of Classes.  When the syntax
+This is the next version (3.3) of the Arm code generator.  It fixes one minor bug in 3.2,  but also has important changes under the hood, anticipating future Arm enhancements.
 
-`method: []`
-
-or
-
-`method: **`
-
-is encountered, LATE_BIND is called at compile time, which compiles the hash value for method: as a literal, then compiles a call to LB_DISPATCH.  At run time, this simply calls SEARCH_IN_CLASS to find the method with the given hash, then dispatches to the glue for that method (thus looking after any arbitrary stack effects).  An error occurs (exception 2) if the method isn’t found.  This of course is a run time error.
-
-For my simple test code in the file late_bind, it takes about 150 instructions to execute `put: **` where the matching method is in a superclass, not the given class of the target object.  Obviously the execution time will depend critically on the time for a method search, and this may have to pass through several superclasses.  This would be the case for any OO language supporting late binding.  Once we have a late binding cache, this performance will be considerably improved.  The next version may implement this, however it isn’t a high priority just now.
-
-___
-
-As in the last few versions, the target-compiled version of the code generator can begin to run under the emulator.  The word “test” is executed (the last word loaded).  This calls setup_CG, which creates the big object_array “theNodes” in the heap, then initializes it by calling `__init_nodes`, exactly as in the non-target version.
-
-Next a little test definition is passed to Arm-interpret.  This is simply
-
-`: test 1 2 3 ;`
-
-This is now processed and the correct code is compiled, into a new bytestring INSTRUCTIONS (redefining the old one - see ArmBase).  At the end of the source line, the word REFILL (in PrimitivesB) is executed to get another line, but at this point the test run ends with a success message.  Of course in the “proper” version running on real hardward, REFILL will be properly implemented.
-
-As with the previous versions, the target compilation is done with the load file `arm1.ld`.  See below for the details.
-
-
-___
-
-As before, the regression tests run over 60 tests and exercise all the features, prior to target compiling the code generator itself.
-The emulator is integrated with the disassembler (see the files dem1, dem2 and dem3).  It’s not a full emulator of course, which would be a huge job, but just aims to emulate the instructions the code generator generates.  This should give us a lot of confidence that the compiled code is correct, since the disassembler/emulator is completely independent of the code generator.
+* The bug fixed:  definitions which had input operands which were unused (named parms which weren’t used, or stack operands which were DROPped without being used) would not update the data stack properly. (The Liveness pass would see that the operand was unused and completely remove it, before checking for the end of the definition which is when unused operands were properly dealt with.  This bug turned up in MAX and the code was substantially the same.)
+* The under-the-hood changes are described below in the section called “Morello”.
 
 ***How to run it***
 
@@ -81,6 +55,62 @@ You can begin to run the target-compiled code generator, by using the “m” co
  SETUP_OBJECT is a big recursive definition.  Currently a MARKER97 is used to turn tracking off, otherwise it would be too long.  
 
 Then after setup_CG, our little test definition `: test 1 2 3 ;` is placed in input_buf, and we call `Arm_interpret` to compile it.  The line is successfully compiled and the correct compiled code is placed into a new bytestring INSTRUCTIONS (redefining the old one - see ArmBase).  At the end of the source line, the word `REFILL` (in PrimitivesB) is executed to get another line, but at this point the test run ends with a success message.  Of course in the “proper” version running on real hardware, `REFILL` will be properly implemented.
+
+## Morello
+
+“Morello” describes a planned enhancement to the Arm architecture, basically to add capabilities to Arm.
+
+This is a big important subject—see for example: [Capability-based_security](https://en.m.wikipedia.org/wiki/Capability-based_security). Morello is a project derived from academic work done in the UK at the University of Cambridge, called [CHERI](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/) (Capability Hardware Enhanced RISC Instructions).
+
+Apparently “Morello” is a type of cherry (all groan).  A good introduction is on the Arm website: [Morello Prototype Architecture Overview](https://developer.arm.com/documentation/den0133/0100/Morello-prototype-architecture)
+
+Under Morello, Arm GPRs will be extended to 129 bits.  That’s not a typo.  It’s really 129 bits.  The top bit is a tag bit, and when on, it says “I’m a capability”.  A capability is basically an enhanced pointer.  It can designate any system information, including memory.  Capabilities cannot be arbitrarily changed by a program, and in this way they enhance system security.  When addressing memory, they contain upper and lower bounds information, as well as access permissions.  Any memory operation based on a capability is checked for legality and is disallowed if the access is not within the bounds or violates the permissions.
+
+New instructions are provided to modify capabilities, and only modifications in a more restrictive direction are allowed.  Any other attempted modification causes the tag bit to be turned off so that that item can no longer be used as a capability.
+
+Normal programs are not allowed to set a tag bit at all.  This makes it impossible for a program to forge a capability, and thus malware should be unable to access arbitrary parts of memory.  This should prevent a whole class of secutity violation.  Not all of course, but many.
+
+In memory, every aligned block of 16 bytes has an associated tag bit which is notionally the 129th bit, though where the bit is actually stored is not revealed to the program.  These 16 bytes can be loaded to a GPR as a capability, and the tag bit is retrieved and placed in bit position 129.  Similarly a capability in a GPR can be stored to an aligned location, and the tag bit in memory is set appropriately.  However if any other store operation is done to the 16 bytes, the tag bit is turned off, and this preserves the integrity of the capability system for accessing memory.
+
+I expect that when Morello is implemented on new Arm chips, future Apple OSs will use this facility.  So I expect that for example, if we malloc a heap block, we will receive a capability with bounds that make it impossible to address outside the block.
+
+Under Morello, existing memory instructions work as before, but if a base register contains a capability the bounds will apply to any memory address using that register.  There are also a number of new instructions defined for manipulating capabilities.
+
+For aMops, I plan to progressively modify the current instructions and implement the new instructions in the compiler and the emulator.  The present version has the new extended GPRs, now implemented using the class TGitem (tagged item).  (If you’ve been looking at MAX, you’ll find this familiar.)  So far I have implemented a number of capability methods in the TGitem class, but not the instructions as yet.  The work in the TGitem class does include the quite complex SetBounds: and GetBounds: methods which do much of the hard work of creating and modifying capabilities.  If you’re curious, have a read of the commentary at the start of the TGitem file.  A very sophisticated encoding scheme is used in order to fit an address and lower and upper bounds into a 129-bit capability.  Also there is  test file “captest” which tests a few of the new methods.  In future releases I will add capability tests to the regression tests.
+
+
+**3.2 Release**
+
+This is the next version (3.2) of the Arm code generator.  Unlike the previous release, which had many new features, this one has only one - late binding.
+This is actually a very straightforward addition.  See the code LATE_BIND in Selectors, and also LB_DISPATCH near the end of Classes.  When the syntax
+
+`method: []`
+
+or
+
+`method: **`
+
+is encountered, LATE_BIND is called at compile time, which compiles the hash value for method: as a literal, then compiles a call to LB_DISPATCH.  At run time, this simply calls SEARCH_IN_CLASS to find the method with the given hash, then dispatches to the glue for that method (thus looking after any arbitrary stack effects).  An error occurs (exception 2) if the method isn’t found.  This of course is a run time error.
+
+For my simple test code in the file late_bind, it takes about 150 instructions to execute `put: **` where the matching method is in a superclass, not the given class of the target object.  Obviously the execution time will depend critically on the time for a method search, and this may have to pass through several superclasses.  This would be the case for any OO language supporting late binding.  Once we have a late binding cache, this performance will be considerably improved.  The next version may implement this, however it isn’t a high priority just now.
+
+___
+
+As in the last few versions, the target-compiled version of the code generator can begin to run under the emulator.  The word “test” is executed (the last word loaded).  This calls setup_CG, which creates the big object_array “theNodes” in the heap, then initializes it by calling `__init_nodes`, exactly as in the non-target version.
+
+Next a little test definition is passed to Arm-interpret.  This is simply
+
+`: test 1 2 3 ;`
+
+This is now processed and the correct code is compiled, into a new bytestring INSTRUCTIONS (redefining the old one - see ArmBase).  At the end of the source line, the word REFILL (in PrimitivesB) is executed to get another line, but at this point the test run ends with a success message.  Of course in the “proper” version running on real hardware, REFILL will be properly implemented.
+
+As with the previous versions, the target compilation is done with the load file `arm1.ld`.  See below for the details.
+
+
+___
+
+As before, the regression tests run over 60 tests and exercise all the features, prior to target compiling the code generator itself.
+The emulator is integrated with the disassembler (see the files dem1, dem2 and dem3).  It’s not a full emulator of course, which would be a huge job, but just aims to emulate the instructions the code generator generates.  This should give us a lot of confidence that the compiled code is correct, since the disassembler/emulator is completely independent of the code generator.
 
 **3.1 Release**
 

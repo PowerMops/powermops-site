@@ -6,6 +6,9 @@ eleventyNavigation:
 layout: layouts/default.njk
 ---
 
+- 2022-11-04: aMops Code Generator 3.3 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
+  - minor bug fix
+  - initial support for [Morello](https://www.arm.com/architecture/cpu/morello)
 - 2022-09-23: MAX 5.2 [Download page](https://sourceforge.net/projects/powermops/files/MAX/)
   - re-implementation of multitasking
   - addition of garbage collection
@@ -16,7 +19,6 @@ layout: layouts/default.njk
   - major new version, incorporating some of the new ideas from aMops
   - rejigged opcodes
 - 2022-04-02: aMops Code Generator 3.2 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
-  - [Release Notes](/amops/release-notes/)
 - 2022-02-21: aMops Code Generator 3.1
 - 2022-02-05: iMops 2.23 [Download page](https://sourceforge.net/projects/powermops/files/iMops/)
   - Fixed crash on launch on Monterey (macOS 12)
