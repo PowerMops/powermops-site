@@ -6,10 +6,15 @@ eleventyNavigation:
 layout: layouts/default.njk
 ---
 
+- 2022-12-08: MAX 6.0 [Download page](https://sourceforge.net/projects/powermops/files/MAX/) which reflect
+early rethinking based on the ARM Morello architecture
+  - GPRs containing binary data have a full 128 bits available
+  - *capability* has become the standard term for what was previously called *codeword*
+  - Multitasking and garbage collection are on hold since they need updating for the new tagging scheme
 - 2022-11-04: aMops Code Generator 3.3 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
   - minor bug fix
   - initial support for [Morello](https://www.arm.com/architecture/cpu/morello)
-- 2022-09-23: MAX 5.2 [Download page](https://sourceforge.net/projects/powermops/files/MAX/)
+- 2022-09-23: MAX 5.2
   - re-implementation of multitasking
   - addition of garbage collection
 - 2022-09-04: MAX 5.1
@@ -23,7 +28,7 @@ layout: layouts/default.njk
 - 2022-02-05: iMops 2.23 [Download page](https://sourceforge.net/projects/powermops/files/iMops/)
   - Fixed crash on launch on Monterey (macOS 12)
   - Other bug fixes
-  - iMops is now a third party application without any developer signature.  In order to avoid possible GateKeeper troubles, see file _Read Before Launching iMops or iBucket_ in the distribution.
+  - iMops is now a third party application without any developer signature.  To avoid possible GateKeeper troubles, see file *Read Before Launching iMops or iBucket* in the distribution.
 - 2022-01-12: aMops Code Generator 3.0
 - 2021-11-17: aMops Code Generator 2.6
   - Can compile a definition under emulation, up to the point where it needs to make a new dictionary entry for the new definition.
@@ -31,11 +36,11 @@ layout: layouts/default.njk
   - It can now completely load itself.
   - This target-compiled version of the code generator can begin to run under the emulator, up to the point where the big object_array "theNodes" is created in the heap.
   - There are new features to help in following an emulation trace.
-- 2021-08-25: aMops Code Generator 2.3 
+- 2021-08-25: aMops Code Generator 2.3
 - 2021-08-04: aMops Code Generator 2.2
 - 2021-06-22: aMops Code Generator 2.1
 - 2021-05-26: aMops Code Generator 2.0
-- 2021-05-25: new **Mops** web site, built in Markdown
+- 2021-05-25: new **Mops** website, built in Markdown
 - 2021-03-02: aMops Code Generator 1.5
 - 2021-01-26: aMops Code Generator 1.4
 - 2021-01-11: aMops Code Generator 1.3
