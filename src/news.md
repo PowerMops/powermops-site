@@ -6,7 +6,10 @@ eleventyNavigation:
 layout: layouts/default.njk
 ---
 
-- 2022-12-08: MAX 6.0 [Download page](https://sourceforge.net/projects/powermops/files/MAX/) which reflect
+- 2023-01-03: MAX 6.1 [Download page](https://sourceforge.net/projects/powermops/files/MAX/)
+  - reimplements multitasking
+  - reimplements garbage collection
+- 2022-12-08: MAX 6.0 which reflects
 early rethinking based on the ARM Morello architecture
   - GPRs containing binary data have a full 128 bits available
   - *capability* has become the standard term for what was previously called *codeword*
