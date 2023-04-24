@@ -6,6 +6,9 @@ eleventyNavigation:
 layout: layouts/default.njk
 ---
 
+- 2022-11-04: aMops Code Generator 3.4 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
+  - bug fixes
+  - late-bind cache
 - 2023-01-03: MAX 6.1 [Download page](https://sourceforge.net/projects/powermops/files/MAX/)
   - reimplements multitasking
   - reimplements garbage collection
@@ -14,7 +17,7 @@ early rethinking based on the ARM Morello architecture
   - GPRs containing binary data have a full 128 bits available
   - *capability* has become the standard term for what was previously called *codeword*
   - Multitasking and garbage collection are on hold since they need updating for the new tagging scheme
-- 2022-11-04: aMops Code Generator 3.3 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
+- 2022-11-04: aMops Code Generator 3.3
   - minor bug fix
   - initial support for [Morello](https://www.arm.com/architecture/cpu/morello)
 - 2022-09-23: MAX 5.2
