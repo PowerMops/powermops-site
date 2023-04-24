@@ -6,7 +6,7 @@ eleventyNavigation:
 layout: layouts/default.njk
 ---
 
-- 2022-11-04: aMops Code Generator 3.4 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
+- 2023-04-23: aMops Code Generator 3.4 [Download page](https://sourceforge.net/projects/powermops/files/aMops-CG/)
   - bug fixes
   - late-bind cache
 - 2023-01-03: MAX 6.1 [Download page](https://sourceforge.net/projects/powermops/files/MAX/)
