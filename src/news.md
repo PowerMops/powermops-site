@@ -7,7 +7,6 @@ layout: layouts/default.njk
 ---
 
 - 2024-12-05: After creating Mops way back in 1986, project founder Mike Hore announced he is formally ending his involvement with the project. He gave a couple of reasons, including:
-
   - He is still using a large screen intel-based iMac, so
   doesn't have a way to progress work on an ARM version.
   - _"But the main reason is that Mops just doesn't represent the state of the art in system-level programming any more.  Object orientation has fallen out of favor as unnecessarily complex.  With hindsight multiple inheritance wasn't worth the complexities of implementation and simply wasn't such a good idea."_
