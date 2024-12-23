@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 a, .prevnext {
   text-decoration: none;
 }
@@ -25,3 +24,9 @@ a, .prevnext {
 .nav>ul>li {
   padding-top: 2em;
 }
+
+/* improve layout of News page */
+article li ul {
+  margin-bottom: 1em;
+}
+
